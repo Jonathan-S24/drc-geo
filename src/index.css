@@ -8,6 +8,9 @@
   --color-card: #ffffff;
   --color-line: #dde6e9;
   --color-accent: #c8a24a;
+
+  /* desktop 3-pane layout needs more room than Tailwind's default 768px */
+  --breakpoint-md: 900px;
 }
 
 html,

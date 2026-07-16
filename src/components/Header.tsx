@@ -7,9 +7,10 @@ import { LanguageToggle } from './LanguageToggle'
 
 interface HeaderProps {
   data: DrcData
+  onToggleSidebar: () => void
 }
 
-export function Header({ data }: HeaderProps) {
+export function Header({ data, onToggleSidebar }: HeaderProps) {
   const { t, lang } = useLanguage()
   const locale: NumberLocale = lang === 'fr' ? 'fr-FR' : 'en-US'
   const { compare, showCompare } = useAppState()
@@ -18,16 +19,24 @@ export function Header({ data }: HeaderProps) {
 
   return (
     <header className="flex flex-wrap items-center gap-3.5 bg-teal px-4 py-2.5 text-white">
+      <button
+        type="button"
+        onClick={onToggleSidebar}
+        aria-label={t('browseList')}
+        className="text-lg leading-none text-white md:hidden"
+      >
+        ☰
+      </button>
       <div>
         <h1 className="text-[18px] font-bold tracking-wide">{t('appTitle')}</h1>
         <div className="text-[11.5px] opacity-75">{t('appSubtitle')}</div>
       </div>
       <div className="ml-auto flex items-center gap-3.5 text-xs">
-        <div className="text-right">
+        <div className="hidden text-right sm:block">
           <b className="block text-[15px]">{(totalPopulation / 1e6).toFixed(1)} M</b>
           {t('statPopulation')}
         </div>
-        <div className="text-right">
+        <div className="hidden text-right sm:block">
           <b className="block text-[15px]">{formatNumber(data.provinces.length + data.units.length, locale)}</b>
           {t('statUnits')}
         </div>
