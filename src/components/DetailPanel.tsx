@@ -57,6 +57,7 @@ export function DetailPanel({ data, pcode }: DetailPanelProps) {
 
         <div className="px-4 pb-4">
           <Section title={t('languages')}>
+            <p className="mb-1.5 text-[12px] text-ink/60">{t('officialLanguageNote')}</p>
             <Chips items={unit.languages} />
           </Section>
           <Section title={t('mainActivities')}>

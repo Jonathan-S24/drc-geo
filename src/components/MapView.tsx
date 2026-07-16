@@ -4,34 +4,57 @@ import type { Feature, GeometryObject } from 'geojson'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import type { DrcData } from '../data/useDrcData'
-import { useAppState } from '../state/AppStateContext'
+import { useAppState, type Selection } from '../state/AppStateContext'
 import { buildProvinceColorMap } from '../utils/provinceColors'
 import { sameName } from '../utils/match'
 
 const DRC_CENTER: [number, number] = [-2.9, 23.6]
-const SELECTED_COLOR = '#c8a24a'
 const HOVER_COLOR = '#1f4e5f'
+const DIMMED_OPACITY = 0.08
 
 interface MapViewProps {
   data: DrcData
 }
 
+function isSelected(selection: Selection, pcode: string, province: string): boolean {
+  return (
+    (selection.view === 'unit' && selection.pcode === pcode) ||
+    (selection.view === 'province' && sameName(selection.name, province))
+  )
+}
+
+function hasActiveSelection(selection: Selection): boolean {
+  return selection.view === 'unit' || selection.view === 'province'
+}
+
 export function MapView({ data }: MapViewProps) {
-  const { selectUnit } = useAppState()
+  const { selectUnit, selection } = useAppState()
   const geoJsonRef = useRef<L.GeoJSON | null>(null)
-  const highlightedRef = useRef<Set<string>>(new Set())
+  // Event handlers are bound once by onEachFeature, so they read the live
+  // selection through this ref rather than a stale closure.
+  const selectionRef = useRef<Selection>(selection)
+  selectionRef.current = selection
 
   const colorMap = useMemo(() => buildProvinceColorMap(data.provinces.map((p) => p.name)), [data.provinces])
 
+  // Style for a unit given the current selection: selected shapes keep their
+  // full province color while everything else fades back, so the selection
+  // stands out without a highlight color that could collide with the palette.
   const styleFor = (pcode: string): L.PathOptions => {
     const u = data.byPcode.get(pcode)
     const provinceColor = (u && colorMap.get(u.province)) || '#888'
-    return {
+    const base: L.PathOptions = {
       color: '#ffffff',
       weight: 0.7,
       fillColor: provinceColor,
       fillOpacity: u?.type === 'ville' ? 0.95 : 0.55,
     }
+    const sel = selectionRef.current
+    if (!u || !hasActiveSelection(sel)) return base
+    if (isSelected(sel, pcode, u.province)) {
+      return { ...base, weight: 1.6, fillOpacity: u.type === 'ville' ? 1 : 0.85 }
+    }
+    return { ...base, weight: 0.5, fillOpacity: DIMMED_OPACITY }
   }
 
   return (
@@ -52,15 +75,12 @@ export function MapView({ data }: MapViewProps) {
           if (!u) return
           const path = layer as L.Polygon
           layer.bindTooltip(`${u.name} (${u.province})`, { sticky: true })
-          layer.on('click', () => selectUnit(u.pcode, false))
+          layer.on('click', () => selectUnit(u.pcode, true))
           layer.on('mouseover', () => path.setStyle({ weight: 2, color: HOVER_COLOR }))
-          layer.on('mouseout', () => {
-            if (highlightedRef.current.has(u.pcode)) return
-            geoJsonRef.current?.resetStyle(path)
-          })
+          layer.on('mouseout', () => path.setStyle(styleFor(pcode)))
         }}
       />
-      <MapController data={data} geoJsonRef={geoJsonRef} highlightedRef={highlightedRef} />
+      <MapController data={data} geoJsonRef={geoJsonRef} styleFor={styleFor} />
     </MapContainer>
   )
 }
@@ -68,10 +88,10 @@ export function MapView({ data }: MapViewProps) {
 interface MapControllerProps {
   data: DrcData
   geoJsonRef: React.RefObject<L.GeoJSON | null>
-  highlightedRef: React.RefObject<Set<string>>
+  styleFor: (pcode: string) => L.PathOptions
 }
 
-function MapController({ data, geoJsonRef, highlightedRef }: MapControllerProps) {
+function MapController({ data, geoJsonRef, styleFor }: MapControllerProps) {
   const map = useMap()
   const { selection } = useAppState()
 
@@ -89,36 +109,33 @@ function MapController({ data, geoJsonRef, highlightedRef }: MapControllerProps)
     const gj = geoJsonRef.current
     if (!gj) return
 
-    const prevHighlighted = highlightedRef.current
-    const nextHighlighted = new Set<string>()
+    // Dimming affects every feature, so restyle all layers on each selection change.
     let bounds: L.LatLngBounds | null = null
-
     gj.eachLayer((layer) => {
       const poly = layer as L.Polygon
       const pcode = poly.feature && 'properties' in poly.feature ? (poly.feature.properties as { p: string }).p : undefined
       if (!pcode) return
       const u = data.byPcode.get(pcode)
       if (!u) return
-
-      const isHighlighted =
-        (selection.view === 'unit' && selection.pcode === pcode) ||
-        (selection.view === 'province' && sameName(selection.name, u.province))
-
-      if (isHighlighted) {
-        nextHighlighted.add(pcode)
-        poly.setStyle({ weight: 2.5, color: SELECTED_COLOR, fillOpacity: 0.75 })
+      poly.setStyle(styleFor(pcode))
+      if (isSelected(selection, pcode, u.province)) {
         const b = poly.getBounds()
         bounds = bounds ? bounds.extend(b) : L.latLngBounds(b.getSouthWest(), b.getNorthEast())
-      } else if (prevHighlighted.has(pcode)) {
-        gj.resetStyle(poly)
       }
     })
 
-    highlightedRef.current = nextHighlighted
-
-    const shouldZoom = selection.view === 'province' || (selection.view === 'unit' && selection.zoom)
-    if (bounds && shouldZoom) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 8 })
-  }, [selection, data, map, geoJsonRef, highlightedRef])
+    // Center-stage the selection with a smooth fly animation.
+    if (bounds) {
+      map.flyToBounds(bounds, {
+        padding: [50, 50],
+        maxZoom: selection.view === 'unit' ? 8.5 : 7,
+        duration: 0.9,
+      })
+    } else if (!hasActiveSelection(selection)) {
+      map.flyToBounds(gj.getBounds(), { padding: [10, 10], duration: 0.9 })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selection, data, map, geoJsonRef])
 
   return null
 }

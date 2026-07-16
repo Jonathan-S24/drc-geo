@@ -53,6 +53,7 @@ export function ProvinceDetailPanel({ data, name }: ProvinceDetailPanelProps) {
 
         <div className="px-4 pb-4">
           <Section title={t('languages')}>
+            <p className="mb-1 text-[12px] text-ink/60">{t('officialLanguageNote')}</p>
             <p className="text-[13px] text-ink/90">
               <b>{t('nationalLanguages')} :</b> {province.national_languages} · <b>{t('localLanguages')} :</b>{' '}
               {province.local_languages}
