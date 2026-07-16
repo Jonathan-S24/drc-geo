@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react'
-import { MapContainer, GeoJSON, useMap } from 'react-leaflet'
+import { MapContainer, GeoJSON, TileLayer, useMap } from 'react-leaflet'
 import type { Feature, GeometryObject } from 'geojson'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -9,8 +9,10 @@ import { buildProvinceColorMap } from '../utils/provinceColors'
 import { sameName } from '../utils/match'
 
 const DRC_CENTER: [number, number] = [-2.9, 23.6]
-const HOVER_COLOR = '#1f4e5f'
-const DIMMED_OPACITY = 0.08
+const HOVER_COLOR = '#ffffff'
+// Esri World Imagery — free satellite basemap, no API key required.
+const SATELLITE_URL = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+const SATELLITE_ATTRIB = 'Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community'
 
 interface MapViewProps {
   data: DrcData
@@ -37,24 +39,26 @@ export function MapView({ data }: MapViewProps) {
 
   const colorMap = useMemo(() => buildProvinceColorMap(data.provinces.map((p) => p.name)), [data.provinces])
 
-  // Style for a unit given the current selection: selected shapes keep their
-  // full province color while everything else fades back, so the selection
-  // stands out without a highlight color that could collide with the palette.
+  // Style for a unit given the current selection. Over the satellite basemap,
+  // the province color is a translucent wash so the imagery reads through.
+  // When something is selected, the selected shape's fill nearly clears to
+  // reveal the real satellite of that place, framed by a bold white border,
+  // while the rest stay colored — so the selection is literally center-staged.
   const styleFor = (pcode: string): L.PathOptions => {
     const u = data.byPcode.get(pcode)
     const provinceColor = (u && colorMap.get(u.province)) || '#888'
     const base: L.PathOptions = {
       color: '#ffffff',
-      weight: 0.7,
+      weight: 0.8,
       fillColor: provinceColor,
-      fillOpacity: u?.type === 'ville' ? 0.95 : 0.55,
+      fillOpacity: u?.type === 'ville' ? 0.5 : 0.42,
     }
     const sel = selectionRef.current
     if (!u || !hasActiveSelection(sel)) return base
     if (isSelected(sel, pcode, u.province)) {
-      return { ...base, weight: 1.6, fillOpacity: u.type === 'ville' ? 1 : 0.85 }
+      return { ...base, color: '#ffffff', weight: 3, fillOpacity: 0.06 }
     }
-    return { ...base, weight: 0.5, fillOpacity: DIMMED_OPACITY }
+    return { ...base, weight: 0.5, fillOpacity: u.type === 'ville' ? 0.62 : 0.55 }
   }
 
   return (
@@ -65,6 +69,7 @@ export function MapView({ data }: MapViewProps) {
       className="h-full w-full"
       attributionControl={false}
     >
+      <TileLayer url={SATELLITE_URL} attribution={SATELLITE_ATTRIB} maxZoom={18} />
       <GeoJSON
         ref={geoJsonRef}
         data={data.boundaries}

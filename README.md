@@ -18,6 +18,16 @@ as-is by Vite:
 `DRC_Geo_Interactive.html` and the `.xlsx` files at the repo root are kept for reference
 (the original prototype and human-readable data exports) and are not part of the app build.
 
+### Place media (`public/data/place_media.json`)
+
+A separate, **editable** file (not a source-of-truth data file) holding per-place hero
+images and "unique facts" shown when a place is selected. Keyed by unit P-code
+(e.g. `CD1000`) or `province:<Name>`. It ships with 3 seed examples as a template; the
+`_meta` key documents the schema. Remaining places are to be curated in a coowork
+research pass. Missing entries degrade gracefully to a "coming soon" placeholder.
+
+The map uses Esri World Imagery satellite tiles as a free basemap (no API key).
+
 ## Development
 
 ```sh

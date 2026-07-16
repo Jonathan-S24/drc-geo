@@ -70,5 +70,24 @@ export interface UnitFeatureProperties {
   p: string // pcode, joins to TerritoryUnit.pcode
 }
 
+export interface PlaceFact {
+  icon?: string
+  en: string
+  fr: string
+}
+
+export interface PlaceMedia {
+  image?: string
+  image_credit?: string
+  facts?: PlaceFact[]
+}
+
+/**
+ * Editable, separate from the source-of-truth data files. Keyed by unit P-code
+ * (e.g. "CD1000") or "province:<Name>". Entries beyond the seed examples are
+ * curated in a coowork research pass. The "_meta" key documents the schema.
+ */
+export type PlaceMediaFile = Record<string, PlaceMedia | Record<string, unknown>>
+
 /** The subset of a search/selection target shared by units and provinces. */
 export type SelectableKind = 'unit' | 'province'

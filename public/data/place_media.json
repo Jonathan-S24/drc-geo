@@ -1,0 +1,39 @@
+{
+  "_meta": {
+    "project": "DRC.Geo",
+    "purpose": "Per-place imagery and 'unique fact' highlights, shown when a place is selected. This file is EDITABLE and separate from the three source-of-truth data files — fill it during a coowork research pass.",
+    "keys": "Use the unit P-code for territoires/villes (e.g. 'CD1000'), or 'province:<Name>' for provinces (e.g. 'province:Nord-Kivu').",
+    "entry_schema": {
+      "image": "Absolute image URL (Wikimedia Commons recommended). Landscape orientation works best.",
+      "image_credit": "Short attribution string, e.g. 'Wikimedia Commons / Author (CC BY-SA 4.0)'.",
+      "facts": [
+        { "icon": "one emoji, optional (e.g. 🌋, 🐘, 🌿, ⛏️)", "en": "unique fact in English", "fr": "le même fait en français" }
+      ]
+    },
+    "status": "Seeded with 3 examples as a template. Remaining places to be curated in coowork."
+  },
+  "CD1000": {
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg",
+    "image_credit": "Wikimedia Commons (CC BY-SA)",
+    "facts": [
+      { "icon": "🌍", "en": "Largest French-speaking city in the world.", "fr": "Plus grande ville francophone du monde." },
+      { "icon": "🌊", "en": "Faces Brazzaville across the Congo River — the closest pair of capital cities in the world.", "fr": "Fait face à Brazzaville de l'autre côté du fleuve Congo — la paire de capitales les plus proches au monde." }
+    ]
+  },
+  "CD6101": {
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Ville_de_Goma_vue_a%C3%A9rienne.png",
+    "image_credit": "Wikimedia Commons (CC BY-SA)",
+    "facts": [
+      { "icon": "🌋", "en": "Sits at the foot of Nyiragongo, one of the world's most active volcanoes.", "fr": "Située au pied du Nyiragongo, l'un des volcans les plus actifs du monde." },
+      { "icon": "🏞️", "en": "Gateway to Virunga, Africa's oldest national park.", "fr": "Porte d'entrée du Virunga, le plus ancien parc national d'Afrique." }
+    ]
+  },
+  "province:Nord-Kivu": {
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Virunga_National_Park-107997.jpg",
+    "image_credit": "Wikimedia Commons (CC BY-SA)",
+    "facts": [
+      { "icon": "🦍", "en": "Home to Virunga National Park and roughly a third of the world's remaining mountain gorillas.", "fr": "Abrite le parc national des Virunga et environ un tiers des gorilles de montagne restants au monde." },
+      { "icon": "🌋", "en": "Contains two of Africa's most active volcanoes, Nyiragongo and Nyamuragira.", "fr": "Compte deux des volcans les plus actifs d'Afrique, le Nyiragongo et le Nyamuragira." }
+    ]
+  }
+}

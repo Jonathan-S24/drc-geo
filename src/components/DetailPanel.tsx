@@ -7,6 +7,7 @@ import { sameName } from '../utils/match'
 import { PanelHeader } from './PanelHeader'
 import { Section, Chips, Prose, FrenchSourceNote } from './DetailSections'
 import { KpiCard } from './KpiCard'
+import { PlaceMediaBanner } from './PlaceMediaBanner'
 
 interface DetailPanelProps {
   data: DrcData
@@ -38,6 +39,7 @@ export function DetailPanel({ data, pcode }: DetailPanelProps) {
       />
 
       <div className="thin-scroll flex-1 overflow-y-auto">
+        <PlaceMediaBanner media={data.media.get(unit.pcode)} />
         {!unit.has_caid_fiche && (
           <div className="m-4 rounded-md bg-accent/15 px-3 py-2 text-[12px] text-ink/80">{t('noCaidFiche')}</div>
         )}

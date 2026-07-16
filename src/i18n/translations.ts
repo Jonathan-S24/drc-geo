@@ -62,6 +62,8 @@ export const translations = {
     caveatGaps:
       'Kabambare (Maniema) n’a pas de fiche CAID. Les 44 villes n’ont pas de fiche CAID. 25 petites villes ont leur population comptée dans l’entité environnante (population non disponible).',
     caveatUpdated: 'Fiche CAID mise à jour',
+    uniqueFacts: 'À savoir',
+    mediaComingSoon: 'Photos et faits marquants — à venir (recherche coowork)',
     langToggle: 'English',
   },
   en: {
@@ -125,6 +127,8 @@ export const translations = {
     caveatGaps:
       'Kabambare (Maniema) has no CAID fiche. All 44 villes have no CAID fiche. 25 small villes have their population counted inside the surrounding unit (population not available).',
     caveatUpdated: 'CAID fiche last updated',
+    uniqueFacts: 'Did you know',
+    mediaComingSoon: 'Photos & highlights — coming soon (coowork research)',
     langToggle: 'Français',
   },
 } as const

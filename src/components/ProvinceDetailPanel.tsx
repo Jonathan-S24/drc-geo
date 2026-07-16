@@ -8,6 +8,7 @@ import { PanelHeader } from './PanelHeader'
 import { Section } from './DetailSections'
 import { KpiCard } from './KpiCard'
 import { PopulationBarChart } from './PopulationBarChart'
+import { PlaceMediaBanner } from './PlaceMediaBanner'
 
 interface ProvinceDetailPanelProps {
   data: DrcData
@@ -42,6 +43,7 @@ export function ProvinceDetailPanel({ data, name }: ProvinceDetailPanelProps) {
       />
 
       <div className="thin-scroll flex-1 overflow-y-auto">
+        <PlaceMediaBanner media={data.media.get(`province:${province.name}`)} />
         <div className="grid grid-cols-2 gap-2 p-4">
           <KpiCard label={t('area')} value={formatArea(province.area_km2, locale)} sub="INS 2020" />
           <KpiCard
