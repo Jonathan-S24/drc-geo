@@ -1,7 +1,7 @@
 import type { DrcData } from '../data/useDrcData'
 import { useAppState } from '../state/AppStateContext'
 import { useLanguage } from '../i18n/LanguageContext'
-import { formatArea, formatNumber } from '../utils/format'
+import { formatArea, formatNumber, formatYearMonth } from '../utils/format'
 import type { NumberLocale } from '../utils/format'
 import { sameName } from '../utils/match'
 import { PanelHeader } from './PanelHeader'
@@ -40,8 +40,14 @@ export function DetailPanel({ data, pcode }: DetailPanelProps) {
 
       <div className="thin-scroll flex-1 overflow-y-auto">
         <PlaceMediaBanner media={data.media.get(unit.pcode)} />
-        {!unit.has_caid_fiche && (
-          <div className="m-4 rounded-md bg-accent/15 px-3 py-2 text-[12px] text-ink/80">{t('noCaidFiche')}</div>
+        {unit.provenance_note ? (
+          <div className="m-4 rounded-md bg-accent/15 px-3 py-2 text-[12px] text-ink/80">
+            <b>{t('dataProvenance')} :</b> {unit.provenance_note}
+          </div>
+        ) : (
+          !unit.has_caid_fiche && (
+            <div className="m-4 rounded-md bg-accent/15 px-3 py-2 text-[12px] text-ink/80">{t('noCaidFiche')}</div>
+          )
         )}
 
         <div className="grid grid-cols-2 gap-2 p-4">
@@ -65,6 +71,12 @@ export function DetailPanel({ data, pcode }: DetailPanelProps) {
           <Section title={t('mainActivities')}>
             <Chips items={unit.main_activities} />
           </Section>
+          {unit.economy_note && (
+            <Section title={t('economy')}>
+              <Prose text={unit.economy_note} />
+              <FrenchSourceNote />
+            </Section>
+          )}
           <Section title={t('agriculturalProducts')}>
             <Chips items={unit.agricultural_products} />
             <FrenchSourceNote />
@@ -94,8 +106,18 @@ export function DetailPanel({ data, pcode }: DetailPanelProps) {
             <Prose text={unit.accessibility_tourism} />
             <FrenchSourceNote />
           </Section>
+          {unit.security_note_2026 && (
+            <Section title={t('securityCurrent')}>
+              <p className="mb-1.5 text-[11.5px] font-medium text-teal">
+                {t('securityAsOf')} {formatYearMonth(unit.security_note_2026_date ?? '2026-07', locale)} —{' '}
+                {t('securitySources')}
+              </p>
+              <Prose text={unit.security_note_2026} />
+              <FrenchSourceNote />
+            </Section>
+          )}
           {unit.security_note && (
-            <Section title={t('securityNote')}>
+            <Section title={unit.security_note_2026 ? t('securityNoteHistorical') : t('securityNote')}>
               <Prose text={unit.security_note} />
               <FrenchSourceNote />
             </Section>

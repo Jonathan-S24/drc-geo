@@ -26,7 +26,7 @@ let inflight: Promise<DrcData> | null = null
 async function loadAll(): Promise<DrcData> {
   const [provincesRes, territoriesRes, boundariesRes, mediaRes] = await Promise.all([
     fetch('/data/drc_geo_provinces_v1.json'),
-    fetch('/data/drc_geo_territories_v1.json'),
+    fetch('/data/drc_geo_territories_v2.json'),
     fetch('/data/drc_geo_boundaries_adm2.geojson'),
     fetch('/data/place_media.json'),
   ])

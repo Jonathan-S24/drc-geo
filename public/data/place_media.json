@@ -1,39 +1,802 @@
 {
-  "_meta": {
-    "project": "DRC.Geo",
-    "purpose": "Per-place imagery and 'unique fact' highlights, shown when a place is selected. This file is EDITABLE and separate from the three source-of-truth data files — fill it during a coowork research pass.",
-    "keys": "Use the unit P-code for territoires/villes (e.g. 'CD1000'), or 'province:<Name>' for provinces (e.g. 'province:Nord-Kivu').",
-    "entry_schema": {
-      "image": "Absolute image URL (Wikimedia Commons recommended). Landscape orientation works best.",
-      "image_credit": "Short attribution string, e.g. 'Wikimedia Commons / Author (CC BY-SA 4.0)'.",
-      "facts": [
-        { "icon": "one emoji, optional (e.g. 🌋, 🐘, 🌿, ⛏️)", "en": "unique fact in English", "fr": "le même fait en français" }
-      ]
-    },
-    "status": "Seeded with 3 examples as a template. Remaining places to be curated in coowork."
+ "_meta": {
+  "project": "DRC.Geo",
+  "purpose": "Per-place imagery and 'unique fact' highlights, shown when a place is selected. This file is EDITABLE and separate from the three source-of-truth data files — fill it during a coowork research pass.",
+  "keys": "Use the unit P-code for territoires/villes (e.g. 'CD1000'), or 'province:<Name>' for provinces (e.g. 'province:Nord-Kivu').",
+  "entry_schema": {
+   "image": "Absolute image URL (Wikimedia Commons recommended). Landscape orientation works best.",
+   "image_credit": "Short attribution string, e.g. 'Wikimedia Commons / Author (CC BY-SA 4.0)'.",
+   "facts": [
+    {
+     "icon": "one emoji, optional (e.g. 🌋, 🐘, 🌿, ⛏️)",
+     "en": "unique fact in English",
+     "fr": "le même fait en français"
+    }
+   ]
   },
-  "CD1000": {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg",
-    "image_credit": "Wikimedia Commons (CC BY-SA)",
-    "facts": [
-      { "icon": "🌍", "en": "Largest French-speaking city in the world.", "fr": "Plus grande ville francophone du monde." },
-      { "icon": "🌊", "en": "Faces Brazzaville across the Congo River — the closest pair of capital cities in the world.", "fr": "Fait face à Brazzaville de l'autre côté du fleuve Congo — la paire de capitales les plus proches au monde." }
-    ]
-  },
-  "CD6101": {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Ville_de_Goma_vue_a%C3%A9rienne.png",
-    "image_credit": "Wikimedia Commons (CC BY-SA)",
-    "facts": [
-      { "icon": "🌋", "en": "Sits at the foot of Nyiragongo, one of the world's most active volcanoes.", "fr": "Située au pied du Nyiragongo, l'un des volcans les plus actifs du monde." },
-      { "icon": "🏞️", "en": "Gateway to Virunga, Africa's oldest national park.", "fr": "Porte d'entrée du Virunga, le plus ancien parc national d'Afrique." }
-    ]
-  },
-  "province:Nord-Kivu": {
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Virunga_National_Park-107997.jpg",
-    "image_credit": "Wikimedia Commons (CC BY-SA)",
-    "facts": [
-      { "icon": "🦍", "en": "Home to Virunga National Park and roughly a third of the world's remaining mountain gorillas.", "fr": "Abrite le parc national des Virunga et environ un tiers des gorilles de montagne restants au monde." },
-      { "icon": "🌋", "en": "Contains two of Africa's most active volcanoes, Nyiragongo and Nyamuragira.", "fr": "Compte deux des volcans les plus actifs d'Afrique, le Nyiragongo et le Nyamuragira." }
-    ]
-  }
+  "status": "Curated 2026-07-18: 49 entries (26 provinces, 17 villes, 6 territoires). Images: Wikipedia/Commons pageimage API, 1280px thumbnails (Wikimedia-recommended form), URLs sample-verified; credit includes license where available. Facts authored from established public knowledge (parks, geography, history)."
+ },
+ "CD1000": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg/1280px-La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Francis Shok Mweze (CC BY-SA 4.0)",
+  "image_source_page": "en:Kinshasa",
+  "facts": [
+   {
+    "icon": "🌍",
+    "en": "Largest French-speaking city in the world.",
+    "fr": "Plus grande ville francophone du monde."
+   },
+   {
+    "icon": "🎶",
+    "en": "World capital of rumba congolaise, inscribed by UNESCO in 2021.",
+    "fr": "Capitale mondiale de la rumba congolaise, inscrite à l'UNESCO en 2021."
+   }
+  ]
+ },
+ "CD2001": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/1/16/Aerial_view_of_Matadi.jpg",
+  "image_credit": "Wikimedia Commons / MONUSCO/Myriam Asmani (CC BY-SA 2.0)",
+  "image_source_page": "fr:Matadi",
+  "facts": [
+   {
+    "icon": "⚓",
+    "en": "The country's main seaport, on the Congo's maritime reach.",
+    "fr": "Premier port maritime du pays, sur le bief maritime du fleuve."
+   },
+   {
+    "icon": "🌉",
+    "en": "The Matadi (Maréchal) bridge was Africa's longest suspension bridge at its opening in 1983.",
+    "fr": "Le pont de Matadi (Maréchal) était le plus long pont suspendu d'Afrique à son inauguration en 1983."
+   }
+  ]
+ },
+ "CD2002": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Boma_DR_Congo.jpg/1280px-Boma_DR_Congo.jpg",
+  "image_credit": "Wikimedia Commons / Χρίστος Ιμμανοελ (CC BY-SA 4.0)",
+  "image_source_page": "en:Boma, Democratic Republic of the Congo",
+  "facts": [
+   {
+    "icon": "🏛️",
+    "en": "Capital of the Congo Free State and Belgian Congo from 1886 to 1923.",
+    "fr": "Capitale de l'État indépendant du Congo puis du Congo belge de 1886 à 1923."
+   }
+  ]
+ },
+ "CD3203": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Crossing_kwilu_river.jpg",
+  "image_credit": "Wikimedia Commons",
+  "image_source_page": "fr:Kwilu (rivière)",
+  "facts": [
+   {
+    "icon": "🌾",
+    "en": "The Kwilu's commercial hub, feeding Kinshasa along the RN1.",
+    "fr": "Pôle commercial du Kwilu, qui nourrit Kinshasa par la RN1."
+   },
+   {
+    "icon": "🏥",
+    "en": "Site of the landmark 1995 Ebola outbreak investigation.",
+    "fr": "Lieu de l'enquête fondatrice sur l'épidémie d'Ebola de 1995."
+   }
+  ]
+ },
+ "CD4101": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Oxfam_East_Africa_-_Mbandaka_market.jpg",
+  "image_credit": "Wikimedia Commons / Oxfam East Africa (CC BY 2.0)",
+  "image_source_page": "fr:Mbandaka",
+  "facts": [
+   {
+    "icon": "🧭",
+    "en": "Sits almost exactly on the Equator, by the Congo River.",
+    "fr": "Située presque exactement sur l'équateur, au bord du fleuve Congo."
+   },
+   {
+    "icon": "🌺",
+    "en": "The nearby Eala botanical garden (1900) is one of Africa's oldest.",
+    "fr": "Le jardin botanique d'Eala (1900), tout proche, est l'un des plus anciens d'Afrique."
+   }
+  ]
+ },
+ "CD4301": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Gbadolite_aerial_view.jpg",
+  "image_credit": "Wikimedia Commons / Radio Okapi/John Bompengo / MONUSCO (CC BY-SA 2.0)",
+  "image_source_page": "fr:Gbadolite",
+  "facts": [
+   {
+    "icon": "🏛️",
+    "en": "Mobutu's jungle palaces and an airport built to receive the Concorde.",
+    "fr": "Palais de Mobutu en pleine jungle et aéroport conçu pour accueillir le Concorde."
+   }
+  ]
+ },
+ "CD5101": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/1/14/Vi_lle.jpg",
+  "image_credit": "Wikimedia Commons / Yannick Mbangi (CC BY-SA 4.0)",
+  "image_source_page": "fr:Kisangani",
+  "facts": [
+   {
+    "icon": "⛵",
+    "en": "Head of navigation of the Congo River, at the Boyoma Falls.",
+    "fr": "Tête de navigation du fleuve Congo, aux chutes Boyoma."
+   },
+   {
+    "icon": "🎣",
+    "en": "Famous for the Wagenia fishermen's giant wooden fish traps.",
+    "fr": "Célèbre pour les nasses géantes des pêcheurs Wagenia."
+   }
+  ]
+ },
+ "CD5401": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Bunia.JPG/1280px-Bunia.JPG",
+  "image_credit": "Wikimedia Commons / HokieRNB (Public domain)",
+  "image_source_page": "fr:Bunia",
+  "facts": [
+   {
+    "icon": "🥇",
+    "en": "Trading hub of the Kilo-Moto gold belt and humanitarian gateway of Ituri.",
+    "fr": "Place commerciale de la ceinture d'or de Kilo-Moto et porte humanitaire de l'Ituri."
+   }
+  ]
+ },
+ "CD5403": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Epulu_Okapi_Reserve.jpg/1280px-Epulu_Okapi_Reserve.jpg",
+  "image_credit": "Wikimedia Commons / J. Doremus (Public domain)",
+  "image_source_page": "en:Okapi Wildlife Reserve",
+  "facts": [
+   {
+    "icon": "🦓",
+    "en": "Home of the Okapi Wildlife Reserve, a UNESCO World Heritage site.",
+    "fr": "Terre de la Réserve de faune à okapis, patrimoine mondial de l'UNESCO."
+   },
+   {
+    "icon": "🏹",
+    "en": "The Ituri forest is the ancestral home of the Mbuti people.",
+    "fr": "La forêt de l'Ituri est la terre ancestrale du peuple Mbuti."
+   }
+  ]
+ },
+ "CD6101": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Ville_de_Goma_vue_a%C3%A9rienne.png",
+  "image_credit": "Wikimedia Commons / Dieulaisevambesa (CC BY-SA 4.0)",
+  "image_source_page": "fr:Goma",
+  "facts": [
+   {
+    "icon": "🌋",
+    "en": "Sits at the foot of Nyiragongo, one of the world's most active volcanoes.",
+    "fr": "Située au pied du Nyiragongo, l'un des volcans les plus actifs du monde."
+   },
+   {
+    "icon": "🏞️",
+    "en": "Gateway to Virunga, Africa's oldest national park.",
+    "fr": "Porte d'entrée du Virunga, plus ancien parc national d'Afrique."
+   }
+  ]
+ },
+ "CD6102": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/An_aerial_view_of_the_towering_volcanic_peak_of_Mt._Nyiragongo.jpg/1280px-An_aerial_view_of_the_towering_volcanic_peak_of_Mt._Nyiragongo.jpg",
+  "image_credit": "Wikimedia Commons / MONUSCO / Neil Wetmore (CC BY-SA 2.0)",
+  "image_source_page": "en:Mount Nyiragongo",
+  "facts": [
+   {
+    "icon": "🌋",
+    "en": "Nyiragongo's crater holds the world's largest lava lake.",
+    "fr": "Le cratère du Nyiragongo abrite le plus grand lac de lave du monde."
+   },
+   {
+    "icon": "🏃",
+    "en": "Its 2002 and 2021 eruptions reached the outskirts of Goma.",
+    "fr": "Ses éruptions de 2002 et 2021 ont atteint les abords de Goma."
+   }
+  ]
+ },
+ "CD6110": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Butembo%2C_2016.jpg/1280px-Butembo%2C_2016.jpg",
+  "image_credit": "Wikimedia Commons / Gavin Finnegan (CC BY-SA 4.0)",
+  "image_source_page": "fr:Butembo",
+  "facts": [
+   {
+    "icon": "🛍️",
+    "en": "Powerhouse of Nande commerce, trading directly with East Africa and Asia.",
+    "fr": "Place forte du commerce nande, en lien direct avec l'Afrique de l'Est et l'Asie."
+   }
+  ]
+ },
+ "CD6111": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Virunga_National_Park-107997.jpg/1280px-Virunga_National_Park-107997.jpg",
+  "image_credit": "Wikimedia Commons / Yvette Kaboza (CC BY-SA 3.0 igo)",
+  "image_source_page": "en:Virunga National Park",
+  "facts": [
+   {
+    "icon": "🏞️",
+    "en": "Core of Virunga NP, Africa's oldest national park (1925).",
+    "fr": "Cœur du parc des Virunga, plus ancien parc national d'Afrique (1925)."
+   },
+   {
+    "icon": "🦍",
+    "en": "Its Mikeno sector shelters mountain gorilla families.",
+    "fr": "Son secteur Mikeno abrite des familles de gorilles de montagne."
+   }
+  ]
+ },
+ "CD6201": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Bukavu%2C_PE_Lumumba.jpeg",
+  "image_credit": "Wikimedia Commons / CMurhabazi (CC BY-SA 4.0)",
+  "image_source_page": "fr:Bukavu",
+  "facts": [
+   {
+    "icon": "🏞️",
+    "en": "Lakeside capital of Sud-Kivu on five peninsulas of Lake Kivu.",
+    "fr": "Chef-lieu du Sud-Kivu étagé sur cinq presqu'îles du lac Kivu."
+   },
+   {
+    "icon": "🕊️",
+    "en": "Home of Panzi Hospital, founded by Nobel laureate Denis Mukwege.",
+    "fr": "Ville de l'hôpital de Panzi, fondé par le prix Nobel Denis Mukwege."
+   }
+  ]
+ },
+ "CD6202": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/PXL_20230311_111951731.jpg/1280px-PXL_20230311_111951731.jpg",
+  "image_credit": "Wikimedia Commons / Lydie maliki (CC BY-SA 4.0)",
+  "image_source_page": "en:Kahuzi-Biéga National Park",
+  "facts": [
+   {
+    "icon": "🦍",
+    "en": "Gateway to Kahuzi-Biega NP and the Grauer's gorilla.",
+    "fr": "Porte du parc Kahuzi-Biega et du gorille de Grauer."
+   }
+  ]
+ },
+ "CD6206": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/7/79/29.13117E_2.jpg",
+  "image_credit": "Wikimedia Commons / NASA Jet Propulsion Laboratory (Public domain)",
+  "image_source_page": "en:Idjwi",
+  "facts": [
+   {
+    "icon": "🏝️",
+    "en": "Idjwi is one of Africa's largest inland islands (~40 km long) in Lake Kivu.",
+    "fr": "Idjwi est l'une des plus grandes îles intérieures d'Afrique (~40 km) sur le lac Kivu."
+   },
+   {
+    "icon": "☕",
+    "en": "Known for its coffee and its relative peace amid the Kivu conflicts.",
+    "fr": "Réputée pour son café et sa paix relative au milieu des conflits du Kivu."
+   }
+  ]
+ },
+ "CD6301": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/La_place_Monument_de_Kindu_%284095837516%29.jpg/1280px-La_place_Monument_de_Kindu_%284095837516%29.jpg",
+  "image_credit": "Wikimedia Commons / Radio Okapi (CC BY 2.0)",
+  "image_source_page": "fr:Kindu",
+  "facts": [
+   {
+    "icon": "🚂",
+    "en": "Rail-meets-river junction on the Lualaba, historic gateway to the east.",
+    "fr": "Jonction rail-fleuve sur le Lualaba, porte historique de l'est."
+   }
+  ]
+ },
+ "CD6309": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Kindu_church.jpg/1280px-Kindu_church.jpg",
+  "image_credit": "Wikimedia Commons / Julien Harneis (CC BY-SA 2.0)",
+  "image_source_page": "en:Maniema",
+  "facts": [
+   {
+    "icon": "🕌",
+    "en": "Kabambare town was a key 19th-century Swahili-Arab trading post.",
+    "fr": "Kabambare fut un comptoir majeur du commerce swahili-arabe au XIXe siècle."
+   },
+   {
+    "icon": "🥇",
+    "en": "Hosts the Namoya industrial gold mine at Salamabila.",
+    "fr": "Abrite la mine d'or industrielle de Namoya à Salamabila."
+   }
+  ]
+ },
+ "CD7101": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Lubumbashi_Cathedral.jpg",
+  "image_credit": "Wikimedia Commons / Nick Hobgood from Cap-Haitien, Haiti (CC BY 2.0)",
+  "image_source_page": "en:Lubumbashi",
+  "facts": [
+   {
+    "icon": "🏭",
+    "en": "Second city of the country and historic capital of Katanga copper.",
+    "fr": "Deuxième ville du pays et capitale historique du cuivre du Katanga."
+   },
+   {
+    "icon": "🎓",
+    "en": "Home of UNILU, one of the country's leading universities.",
+    "fr": "Siège de l'UNILU, l'une des principales universités du pays."
+   }
+  ]
+ },
+ "CD7106": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Central_African_Copper_Belt.png",
+  "image_credit": "Wikimedia Commons",
+  "image_source_page": "en:Copperbelt",
+  "facts": [
+   {
+    "icon": "🏭",
+    "en": "Historic metallurgical city of the copper belt (Shituru plants).",
+    "fr": "Ville métallurgique historique de la ceinture du cuivre (usines de Shituru)."
+   }
+  ]
+ },
+ "CD7201": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Kamoto_Mine_-_panoramio.jpg/1280px-Kamoto_Mine_-_panoramio.jpg",
+  "image_credit": "Wikimedia Commons / Martin Tuchscherer (CC BY-SA 3.0)",
+  "image_source_page": "fr:Kolwezi",
+  "facts": [
+   {
+    "icon": "🔋",
+    "en": "'World capital of cobalt' — and one of Africa's fastest-growing cities.",
+    "fr": "'Capitale mondiale du cobalt' — et l'une des villes d'Afrique à la croissance la plus rapide."
+   }
+  ]
+ },
+ "CD8201": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/A%C3%A9roport_de_Mbuji-Mayi.jpg/1280px-A%C3%A9roport_de_Mbuji-Mayi.jpg",
+  "image_credit": "Wikimedia Commons / MONUSCO/Myriam Asmani (CC BY-SA 2.0)",
+  "image_source_page": "fr:Mbuji-Mayi",
+  "facts": [
+   {
+    "icon": "💎",
+    "en": "Once the world capital of industrial diamonds (MIBA).",
+    "fr": "Ancienne capitale mondiale du diamant industriel (MIBA)."
+   }
+  ]
+ },
+ "CD9101": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Kananga_vue_aerienne_0.webp",
+  "image_credit": "Wikimedia Commons / Andrelukengu (CC0)",
+  "image_source_page": "fr:Kananga",
+  "facts": [
+   {
+    "icon": "🚂",
+    "en": "A rail city on the Ilebo–Lubumbashi line, heart of Tshiluba culture.",
+    "fr": "Ville ferroviaire sur la ligne Ilebo-Lubumbashi, cœur de la culture tshiluba."
+   }
+  ]
+ },
+ "province:Bas-Uele": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pont_riv_rubi.jpg/1280px-Pont_riv_rubi.jpg",
+  "image_credit": "Wikimedia Commons / Iyongi (CC0)",
+  "image_source_page": "fr:Buta",
+  "facts": [
+   {
+    "icon": "🐒",
+    "en": "The Bili forest is famed for its unusually large, ground-nesting chimpanzees.",
+    "fr": "La forêt de Bili est célèbre pour ses chimpanzés étonnamment grands nichant au sol."
+   },
+   {
+    "icon": "🌾",
+    "en": "The least densely populated province in the country.",
+    "fr": "La province la moins densément peuplée du pays."
+   }
+  ]
+ },
+ "province:Haut-Katanga": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Lubumbashi_Cathedral.jpg",
+  "image_credit": "Wikimedia Commons / Nick Hobgood from Cap-Haitien, Haiti (CC BY 2.0)",
+  "image_source_page": "en:Lubumbashi",
+  "facts": [
+   {
+    "icon": "🏭",
+    "en": "Cradle of Congolese industrial mining, around a century of copper at Lubumbashi.",
+    "fr": "Berceau de l'industrie minière congolaise, un siècle de cuivre autour de Lubumbashi."
+   },
+   {
+    "icon": "💦",
+    "en": "Kundelungu NP's Lofoi Falls (~340 m) are among Africa's tallest.",
+    "fr": "Les chutes Lofoi (~340 m), au parc des Kundelungu, comptent parmi les plus hautes d'Afrique."
+   }
+  ]
+ },
+ "province:Haut-Lomami": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Upemba_National_Park.jpg/1280px-Upemba_National_Park.jpg",
+  "image_credit": "Wikimedia Commons / Chris Power Ilunga Mpako (CC BY-SA 2.0)",
+  "image_source_page": "en:Upemba National Park",
+  "facts": [
+   {
+    "icon": "👑",
+    "en": "Heartland of the historic Luba Empire.",
+    "fr": "Berceau de l'empire Luba historique."
+   },
+   {
+    "icon": "🦩",
+    "en": "Upemba NP protects vast lake-and-wetland landscapes rich in birdlife.",
+    "fr": "Le parc de l'Upemba protège de vastes zones humides et lacs riches en oiseaux."
+   }
+  ]
+ },
+ "province:Haut-Uele": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Garamba_National_Park_overhead.jpg",
+  "image_credit": "Wikimedia Commons / Nuria Ortega (CC BY-SA 3.0)",
+  "image_source_page": "en:Garamba National Park",
+  "facts": [
+   {
+    "icon": "🥇",
+    "en": "Kibali is one of Africa's largest gold mines.",
+    "fr": "Kibali est l'une des plus grandes mines d'or d'Afrique."
+   },
+   {
+    "icon": "🐘",
+    "en": "Garamba NP, a 1938-founded UNESCO site, once ran the world's only elephant domestication station.",
+    "fr": "Le parc de la Garamba (1938, UNESCO) abrita l'unique station de domestication d'éléphants au monde."
+   }
+  ]
+ },
+ "province:Ituri": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Epulu_Okapi_Reserve.jpg/1280px-Epulu_Okapi_Reserve.jpg",
+  "image_credit": "Wikimedia Commons / J. Doremus (Public domain)",
+  "image_source_page": "en:Okapi Wildlife Reserve",
+  "facts": [
+   {
+    "icon": "🦓",
+    "en": "The okapi, the country's emblematic 'forest giraffe', is endemic to the Ituri forest.",
+    "fr": "L'okapi, la 'girafe des forêts' emblème du pays, est endémique de la forêt de l'Ituri."
+   },
+   {
+    "icon": "🥇",
+    "en": "The Kilo-Moto belt has been mined for gold since 1903.",
+    "fr": "La ceinture aurifère de Kilo-Moto est exploitée depuis 1903."
+   }
+  ]
+ },
+ "province:Kasaï": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tshikapa%2C_Kasai_province%2C_DR_Congo_%E2%80%93_As_part_of_its_Quick_Impact_Project%2C_MONUSCO_has_refurbished_the_Central_Prison_in_Tshikapa.jpg/1280px-Tshikapa%2C_Kasai_province%2C_DR_Congo_%E2%80%93_As_part_of_its_Quick_Impact_Project%2C_MONUSCO_has_refurbished_the_Central_Prison_in_Tshikapa.jpg",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
+  "image_source_page": "fr:Tshikapa",
+  "facts": [
+   {
+    "icon": "💎",
+    "en": "The Tshikapa fields have produced gem diamonds for over a century.",
+    "fr": "Les gisements de Tshikapa produisent des diamants de joaillerie depuis plus d'un siècle."
+   },
+   {
+    "icon": "🤝",
+    "en": "Busy cross-border trade with Angola shapes the local economy.",
+    "fr": "Le commerce transfrontalier avec l'Angola structure l'économie locale."
+   }
+  ]
+ },
+ "province:Kasaï-Central": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Kananga_vue_aerienne_0.webp",
+  "image_credit": "Wikimedia Commons / Andrelukengu (CC0)",
+  "image_source_page": "fr:Kananga",
+  "facts": [
+   {
+    "icon": "🚂",
+    "en": "Kananga grew around the Ilebo–Lubumbashi railway, lifeline of the Kasaï.",
+    "fr": "Kananga s'est développée autour du chemin de fer Ilebo-Lubumbashi, artère vitale du Kasaï."
+   },
+   {
+    "icon": "🎭",
+    "en": "A cultural heartland of the Luba-Kasaï people and the Tshiluba language.",
+    "fr": "Terre culturelle du peuple Luba-Kasaï et de la langue tshiluba."
+   }
+  ]
+ },
+ "province:Kasaï-Oriental": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/A%C3%A9roport_de_Mbuji-Mayi.jpg/1280px-A%C3%A9roport_de_Mbuji-Mayi.jpg",
+  "image_credit": "Wikimedia Commons / MONUSCO/Myriam Asmani (CC BY-SA 2.0)",
+  "image_source_page": "fr:Mbuji-Mayi",
+  "facts": [
+   {
+    "icon": "💎",
+    "en": "Mbuji-Mayi was long the world's largest source of industrial diamonds.",
+    "fr": "Mbuji-Mayi fut longtemps la première source mondiale de diamant industriel."
+   },
+   {
+    "icon": "📏",
+    "en": "The smallest province — and the densest outside Kinshasa.",
+    "fr": "La plus petite province — et la plus densément peuplée hors Kinshasa."
+   }
+  ]
+ },
+ "province:Kinshasa": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg/1280px-La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Francis Shok Mweze (CC BY-SA 4.0)",
+  "image_source_page": "en:Kinshasa",
+  "facts": [
+   {
+    "icon": "🌍",
+    "en": "Largest French-speaking city in the world.",
+    "fr": "Plus grande ville francophone du monde."
+   },
+   {
+    "icon": "🌊",
+    "en": "Faces Brazzaville across the Congo River — the world's closest pair of capitals.",
+    "fr": "Fait face à Brazzaville de l'autre côté du fleuve Congo — les deux capitales les plus proches au monde."
+   }
+  ]
+ },
+ "province:Kongo-Central": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Pont_Marechal%2C_Matadi%2C_Congo.jpg/1280px-Pont_Marechal%2C_Matadi%2C_Congo.jpg",
+  "image_credit": "Wikimedia Commons / 3nigma (CC BY-SA 3.0)",
+  "image_source_page": "en:Matadi Bridge",
+  "facts": [
+   {
+    "icon": "🌅",
+    "en": "The country's only window on the Atlantic Ocean (~37 km of coast at Muanda).",
+    "fr": "Seule fenêtre du pays sur l'océan Atlantique (~37 km de côte à Muanda)."
+   },
+   {
+    "icon": "⚡",
+    "en": "The Inga site on the Congo River holds the largest untapped hydropower potential on Earth.",
+    "fr": "Le site d'Inga sur le fleuve Congo recèle le plus grand potentiel hydroélectrique inexploité au monde."
+   }
+  ]
+ },
+ "province:Kwango": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Tazua.jpg/1280px-Tazua.jpg",
+  "image_credit": "Wikimedia Commons / Brian Harrington Spier from Shanghai, China (CC BY-SA 2.0)",
+  "image_source_page": "en:Kwango River",
+  "facts": [
+   {
+    "icon": "👑",
+    "en": "Heartland of the historic Yaka kingdom.",
+    "fr": "Cœur du royaume historique Yaka."
+   },
+   {
+    "icon": "💎",
+    "en": "Artisanal diamond digging along the Kwango River, on the Angolan border.",
+    "fr": "Exploitation artisanale du diamant le long de la rivière Kwango, à la frontière angolaise."
+   }
+  ]
+ },
+ "province:Kwilu": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Crossing_kwilu_river.jpg",
+  "image_credit": "Wikimedia Commons (Public domain)",
+  "image_source_page": "en:Kwilu River",
+  "facts": [
+   {
+    "icon": "🌾",
+    "en": "The food basket of Kinshasa — cassava, maize and palm oil flow down the RN1.",
+    "fr": "Grenier de Kinshasa — manioc, maïs et huile de palme descendent par la RN1."
+   },
+   {
+    "icon": "🏥",
+    "en": "Kikwit gave its name to the landmark 1995 Ebola outbreak that shaped modern epidemic response.",
+    "fr": "Kikwit a donné son nom à l'épidémie d'Ebola de 1995, fondatrice de la riposte épidémique moderne."
+   }
+  ]
+ },
+ "province:Lomami": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG/1280px-Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG",
+  "image_credit": "Wikimedia Commons",
+  "image_source_page": "fr:Lomami (rivière)",
+  "facts": [
+   {
+    "icon": "🚂",
+    "en": "Mwene-Ditu is a key railway crossroads between the Kasaï and Katanga.",
+    "fr": "Mwene-Ditu est un carrefour ferroviaire clé entre le Kasaï et le Katanga."
+   },
+   {
+    "icon": "🌽",
+    "en": "A major maize and groundnut producing region.",
+    "fr": "Grande région productrice de maïs et d'arachide."
+   }
+  ]
+ },
+ "province:Lualaba": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Kamoto_Mine_-_panoramio.jpg/1280px-Kamoto_Mine_-_panoramio.jpg",
+  "image_credit": "Wikimedia Commons / Martin Tuchscherer (CC BY-SA 3.0)",
+  "image_source_page": "fr:Kolwezi",
+  "facts": [
+   {
+    "icon": "🔋",
+    "en": "The single largest source of the world's cobalt — key to electric batteries.",
+    "fr": "Première source mondiale de cobalt — clé des batteries électriques."
+   },
+   {
+    "icon": "⛏️",
+    "en": "Kamoa-Kakula is among the largest, highest-grade new copper mines on Earth.",
+    "fr": "Kamoa-Kakula figure parmi les plus grandes et plus riches nouvelles mines de cuivre au monde."
+   }
+  ]
+ },
+ "province:Maniema": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/La_place_Monument_de_Kindu_%284095837516%29.jpg/1280px-La_place_Monument_de_Kindu_%284095837516%29.jpg",
+  "image_credit": "Wikimedia Commons / Radio Okapi (CC BY 2.0)",
+  "image_source_page": "fr:Kindu",
+  "facts": [
+   {
+    "icon": "🕌",
+    "en": "Historic corridor of the 19th-century Swahili-Arab trade routes of Tippu Tip.",
+    "fr": "Corridor historique des routes commerciales swahili-arabes de Tippu Tip au XIXe siècle."
+   },
+   {
+    "icon": "⛏️",
+    "en": "Rich in cassiterite, coltan and gold, with the Namoya mine in the south.",
+    "fr": "Riche en cassitérite, coltan et or, avec la mine de Namoya au sud."
+   }
+  ]
+ },
+ "province:Maï-Ndombe": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/3/34/Lake_Mai-Ndombe_NASA.jpg",
+  "image_credit": "Wikimedia Commons (Public domain)",
+  "image_source_page": "en:Lake Mai-Ndombe",
+  "facts": [
+   {
+    "icon": "🌿",
+    "en": "Hosts the world's first jurisdiction-wide REDD+ forest-carbon program.",
+    "fr": "Accueille le premier programme juridictionnel REDD+ (carbone forestier) au monde."
+   },
+   {
+    "icon": "🏞️",
+    "en": "Lake Maï-Ndombe doubles in size between dry and wet seasons.",
+    "fr": "Le lac Maï-Ndombe double de superficie entre saison sèche et saison des pluies."
+   }
+  ]
+ },
+ "province:Mongala": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/CH-NB_-_Belgisch-Kongo%2C_Lisala-_Geb%C3%A4ude_-_Annemarie_Schwarzenbach_-_SLA-Schwarzenbach-A-5-25-169.jpg/1280px-CH-NB_-_Belgisch-Kongo%2C_Lisala-_Geb%C3%A4ude_-_Annemarie_Schwarzenbach_-_SLA-Schwarzenbach-A-5-25-169.jpg",
+  "image_credit": "Wikimedia Commons / Annemarie Schwarzenbach (Public domain)",
+  "image_source_page": "fr:Lisala",
+  "facts": [
+   {
+    "icon": "🚢",
+    "en": "Lisala, on the Congo River, is the birthplace of Mobutu Sese Seko.",
+    "fr": "Lisala, sur le fleuve Congo, est la ville natale de Mobutu Sese Seko."
+   },
+   {
+    "icon": "🌴",
+    "en": "Old rubber and palm plantations line the river ports.",
+    "fr": "D'anciennes plantations d'hévéa et de palmier bordent les ports fluviaux."
+   }
+  ]
+ },
+ "province:Nord-Kivu": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Virunga_National_Park-107997.jpg/1280px-Virunga_National_Park-107997.jpg",
+  "image_credit": "Wikimedia Commons / Yvette Kaboza (CC BY-SA 3.0 igo)",
+  "image_source_page": "en:Virunga National Park",
+  "facts": [
+   {
+    "icon": "🦍",
+    "en": "Home to Virunga NP and roughly a third of the world's remaining mountain gorillas.",
+    "fr": "Abrite le parc des Virunga et environ un tiers des gorilles de montagne restants au monde."
+   },
+   {
+    "icon": "🌋",
+    "en": "Contains two of Africa's most active volcanoes, Nyiragongo and Nyamuragira.",
+    "fr": "Compte deux des volcans les plus actifs d'Afrique, le Nyiragongo et le Nyamuragira."
+   }
+  ]
+ },
+ "province:Nord-Ubangi": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Gbadolite_aerial_view.jpg",
+  "image_credit": "Wikimedia Commons / Radio Okapi/John Bompengo / MONUSCO (CC BY-SA 2.0)",
+  "image_source_page": "fr:Gbadolite",
+  "facts": [
+   {
+    "icon": "🏛️",
+    "en": "Gbadolite's ruined palaces earned it the nickname 'Versailles of the jungle'.",
+    "fr": "Les palais en ruine de Gbadolite lui ont valu le surnom de 'Versailles de la jungle'."
+   },
+   {
+    "icon": "☕",
+    "en": "A historic coffee-growing region on the Ubangi River.",
+    "fr": "Région caféière historique au bord de l'Oubangui."
+   }
+  ]
+ },
+ "province:Sankuru": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/7/77/Sankuru_River_entering_Kasai_River_NASA.jpg",
+  "image_credit": "Wikimedia Commons (Public domain)",
+  "image_source_page": "en:Sankuru River",
+  "facts": [
+   {
+    "icon": "✊",
+    "en": "Birthplace of Patrice Lumumba, independence hero, at Onalua.",
+    "fr": "Terre natale de Patrice Lumumba, héros de l'indépendance, à Onalua."
+   },
+   {
+    "icon": "🦧",
+    "en": "The Sankuru Nature Reserve protects one of the largest bonobo habitats.",
+    "fr": "La Réserve naturelle du Sankuru protège l'un des plus vastes habitats du bonobo."
+   }
+  ]
+ },
+ "province:Sud-Kivu": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/PXL_20230311_111951731.jpg/1280px-PXL_20230311_111951731.jpg",
+  "image_credit": "Wikimedia Commons / Lydie maliki (CC BY-SA 4.0)",
+  "image_source_page": "en:Kahuzi-Biéga National Park",
+  "facts": [
+   {
+    "icon": "🦍",
+    "en": "Kahuzi-Biega NP shelters the Grauer's gorilla, the world's largest primate.",
+    "fr": "Le parc Kahuzi-Biega abrite le gorille de Grauer, le plus grand primate du monde."
+   },
+   {
+    "icon": "🕊️",
+    "en": "Home of Panzi Hospital and Dr Denis Mukwege, 2018 Nobel Peace laureate.",
+    "fr": "Terre de l'hôpital de Panzi et du Dr Denis Mukwege, prix Nobel de la paix 2018."
+   }
+  ]
+ },
+ "province:Sud-Ubangi": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/d/d1/CD-Gemena.png",
+  "image_credit": "Wikimedia Commons / The original uploader was Acntx at English Wikipedia. (CC BY-SA 3.0)",
+  "image_source_page": "fr:Gemena",
+  "facts": [
+   {
+    "icon": "🤝",
+    "en": "Hosts one of the largest Central African Republic refugee populations.",
+    "fr": "Accueille l'une des plus importantes populations de réfugiés centrafricains."
+   },
+   {
+    "icon": "🌴",
+    "en": "Palm oil and coffee country between the Ubangi and Mongala rivers.",
+    "fr": "Pays d'huile de palme et de café entre l'Oubangui et la Mongala."
+   }
+  ]
+ },
+ "province:Tanganyika": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/STS51G-034-0012_Lake_Tanganyika_June1985.jpg/1280px-STS51G-034-0012_Lake_Tanganyika_June1985.jpg",
+  "image_credit": "Wikimedia Commons / NASA (Public domain)",
+  "image_source_page": "en:Lake Tanganyika",
+  "facts": [
+   {
+    "icon": "🌊",
+    "en": "Lake Tanganyika is the world's second-deepest lake (1,470 m).",
+    "fr": "Le lac Tanganyika est le deuxième lac le plus profond du monde (1 470 m)."
+   },
+   {
+    "icon": "🚂",
+    "en": "Kalemie links the national railway to lake shipping toward East Africa.",
+    "fr": "Kalemie relie le rail national à la navigation lacustre vers l'Afrique de l'Est."
+   }
+  ]
+ },
+ "province:Tshopo": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Zaire_kisangani_stroom_11_copy.jpg/1280px-Zaire_kisangani_stroom_11_copy.jpg",
+  "image_credit": "Wikimedia Commons / Ad Meskens (CC BY-SA 3.0)",
+  "image_source_page": "en:Boyoma Falls",
+  "facts": [
+   {
+    "icon": "🎣",
+    "en": "At Boyoma Falls, Wagenia fishermen still work spectacular wooden fish traps.",
+    "fr": "Aux chutes Boyoma (Wagenia), les pêcheurs manœuvrent toujours leurs nasses spectaculaires."
+   },
+   {
+    "icon": "📐",
+    "en": "The largest province by area, centred on the great bend of the Congo River.",
+    "fr": "La plus vaste province du pays, au grand coude du fleuve Congo."
+   }
+  ]
+ },
+ "province:Tshuapa": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/5/54/La_rivi%C3%A8re_Lulilaka%2C_parc_national_de_Salonga%2C_2005.jpg",
+  "image_credit": "Wikimedia Commons / Radio Okapi (CC BY 2.0)",
+  "image_source_page": "en:Salonga National Park",
+  "facts": [
+   {
+    "icon": "🦧",
+    "en": "Salonga, Africa's largest rainforest park, is a stronghold of the bonobo.",
+    "fr": "La Salonga, plus grand parc forestier d'Afrique, est un bastion du bonobo."
+   },
+   {
+    "icon": "🛶",
+    "en": "One of the most isolated provinces — rivers are the main highways.",
+    "fr": "L'une des provinces les plus enclavées — les rivières sont les vraies routes."
+   }
+  ]
+ },
+ "province:Équateur": {
+  "image": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Oxfam_East_Africa_-_Mbandaka_market.jpg",
+  "image_credit": "Wikimedia Commons / Oxfam East Africa (CC BY 2.0)",
+  "image_source_page": "fr:Mbandaka",
+  "facts": [
+   {
+    "icon": "🧭",
+    "en": "Crossed by the Equator line that gave it its name.",
+    "fr": "Traversée par la ligne de l'équateur qui lui a donné son nom."
+   },
+   {
+    "icon": "🌱",
+    "en": "Part of the Cuvette Centrale peatlands — the world's largest tropical peat carbon store.",
+    "fr": "Fait partie des tourbières de la Cuvette centrale — premier stock de carbone tourbeux tropical au monde."
+   }
+  ]
+ }
 }

@@ -51,6 +51,15 @@ export interface TerritoryUnit {
   caid_updated: string | null
   has_caid_fiche: boolean
   type: UnitType
+  // v2 fields (drc_geo_territories_v2.json), present on a subset of units:
+  /** Current security situation for eastern units, compiled July 2026 (sources cited in text). */
+  security_note_2026?: string
+  /** "YYYY-MM" the 2026 security note refers to; may be absent (fall back to 2026-07). */
+  security_note_2026_date?: string
+  /** Economy profile for major villes, compiled 2026-07 (source named inside the text). */
+  economy_note?: string
+  /** For units filled without a CAID fiche (Kabambare): where the data came from. */
+  provenance_note?: string
 }
 
 export interface TerritoriesFile {
@@ -79,6 +88,7 @@ export interface PlaceFact {
 export interface PlaceMedia {
   image?: string
   image_credit?: string
+  image_source_page?: string
   facts?: PlaceFact[]
 }
 
