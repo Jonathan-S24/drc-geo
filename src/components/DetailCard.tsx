@@ -157,6 +157,7 @@ function SourcesBlock({ extra }: { extra?: string }) {
   const { t } = useLanguage()
   return (
     <div className="flex flex-col gap-1.5 text-[12px] text-ink/70">
+      <p className="font-semibold text-ink/80">{t('dataDate')}</p>
       <p>{t('sourcesFooter')}</p>
       <p>{t('caveatDivergence')}</p>
       <p>{t('caveatGaps')}</p>

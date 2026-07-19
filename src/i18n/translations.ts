@@ -80,6 +80,10 @@ export const translations = {
     backToCountry: 'RDC',
     mapAttribution: 'UN COD-AB · OCHA HPC 2024 · CAID — recensement 1984, populations projetées',
     loadError: 'Erreur de chargement des données',
+    offline: 'Hors ligne',
+    offlineReady: 'Prête hors ligne',
+    install: 'Installer l’app',
+    dataDate: 'Données à jour du 2026-07',
     langToggle: 'English',
   },
   en: {
@@ -161,6 +165,10 @@ export const translations = {
     backToCountry: 'DRC',
     mapAttribution: 'UN COD-AB · OCHA HPC 2024 · CAID — 1984 census, projected populations',
     loadError: 'Data failed to load',
+    offline: 'Offline',
+    offlineReady: 'Ready offline',
+    install: 'Install app',
+    dataDate: 'Data current as of 2026-07',
     langToggle: 'Français',
   },
 } as const

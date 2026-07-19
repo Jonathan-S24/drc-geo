@@ -6,6 +6,7 @@ import { MapView } from './components/MapView'
 import { SearchPill } from './components/SearchPill'
 import { DetailCard } from './components/DetailCard'
 import { BottomSheet } from './components/BottomSheet'
+import { PwaChrome } from './components/PwaChrome'
 import { sameName } from './utils/match'
 
 function Breadcrumb({ data }: { data: DrcData }) {
@@ -120,7 +121,10 @@ function AppShell({ data }: { data: DrcData }) {
           <div className="flex min-w-0 flex-1 justify-center md:justify-start">
             <SearchPill data={data} />
           </div>
-          <LangToggle />
+          <div className="flex shrink-0 items-center gap-2">
+            <PwaChrome />
+            <LangToggle />
+          </div>
         </div>
         <div className="flex justify-center md:justify-start">
           <Breadcrumb data={data} />
