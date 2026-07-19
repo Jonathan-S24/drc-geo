@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://drc.geo/sitemap.xml

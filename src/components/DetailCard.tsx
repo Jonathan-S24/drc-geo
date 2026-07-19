@@ -10,6 +10,7 @@ import { PROVINCE_COLORS, mix } from '../theme/palette'
 import { Accordion } from './Accordion'
 import { ShapeSilhouette } from './ShapeSilhouette'
 import { PopulationBarChart } from './PopulationBarChart'
+import { ShareButton } from './ShareButton'
 
 type UnitFeature = Feature<Polygon, UnitFeatureProperties>
 
@@ -65,6 +66,7 @@ function CardHero({
         <img
           src={media!.image}
           alt={name}
+          crossOrigin="anonymous" // so the same cached fetch is reusable, untainted, by the share canvas
           className="h-full w-full object-cover"
           onError={() => setImageOk(false)}
         />
@@ -178,12 +180,12 @@ function SourceLangNote() {
   )
 }
 
-function CtaPill({ label, onClick }: { label: string; onClick: () => void }) {
+function CtaPill({ label, onClick, fullWidth }: { label: string; onClick: () => void; fullWidth?: boolean }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="mx-5 my-3 rounded-full bg-teal px-5 py-2.5 text-[13.5px] font-bold text-white shadow-md transition hover:bg-teal-light active:scale-[0.98]"
+      className={`${fullWidth ? 'w-full' : 'mx-5'} my-3 rounded-full bg-teal px-5 py-2.5 text-[13.5px] font-bold text-white shadow-md transition hover:bg-teal-light active:scale-[0.98]`}
     >
       {label}
     </button>
@@ -247,7 +249,12 @@ function UnitCard({ data, unit }: { data: DrcData; unit: TerritoryUnit }) {
         )}
       </div>
 
-      <CtaPill label={t('ctaViewMap')} onClick={() => selectUnit(unit.pcode, true)} />
+      <div className="flex items-center gap-2 px-5">
+        <div className="flex-1">
+          <CtaPill label={t('ctaViewMap')} onClick={() => selectUnit(unit.pcode, true)} fullWidth />
+        </div>
+        <ShareButton data={data} target={{ kind: 'unit', unit }} />
+      </div>
 
       {unit.provenance_note && (
         <p className="mx-5 mb-3 rounded-xl bg-accent/15 px-3 py-2 text-[11.5px] text-ink/75">
@@ -400,7 +407,12 @@ function ProvinceCard({ data, province }: { data: DrcData; province: Province })
         <KvRow label={t('languages')} value={province.national_languages} sub={t('officialLanguageNote')} />
       </div>
 
-      <CtaPill label={t('ctaExplore')} onClick={() => selectProvince(province.name)} />
+      <div className="flex items-center gap-2 px-5">
+        <div className="flex-1">
+          <CtaPill label={t('ctaExplore')} onClick={() => selectProvince(province.name)} fullWidth />
+        </div>
+        <ShareButton data={data} target={{ kind: 'province', province }} />
+      </div>
 
       <SourceLangNote />
 

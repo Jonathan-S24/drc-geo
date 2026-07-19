@@ -7,6 +7,7 @@ import { SearchPill } from './components/SearchPill'
 import { DetailCard } from './components/DetailCard'
 import { BottomSheet } from './components/BottomSheet'
 import { PwaChrome } from './components/PwaChrome'
+import { useUrlSync } from './routing/useUrlSync'
 import { sameName } from './utils/match'
 
 function Breadcrumb({ data }: { data: DrcData }) {
@@ -88,7 +89,8 @@ function LoadingState() {
 
 function AppShell({ data }: { data: DrcData }) {
   const { selection, selectProvince, clearSelection } = useAppState()
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
+  useUrlSync(data, lang)
   const hasCard = selection.view !== 'none'
 
   // Esc steps back: unit → its province → country

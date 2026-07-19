@@ -84,6 +84,8 @@ export const translations = {
     offlineReady: 'Prête hors ligne',
     install: 'Installer l’app',
     dataDate: 'Données à jour du 2026-07',
+    share: 'Partager',
+    shareGenerating: 'Génération…',
     langToggle: 'English',
   },
   en: {
@@ -169,6 +171,8 @@ export const translations = {
     offlineReady: 'Ready offline',
     install: 'Install app',
     dataDate: 'Data current as of 2026-07',
+    share: 'Share',
+    shareGenerating: 'Generating…',
     langToggle: 'Français',
   },
 } as const

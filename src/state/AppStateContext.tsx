@@ -1,30 +1,13 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { createContext, useContext, useMemo, useState, type ReactNode } from 'react'
 
 export type Selection =
   | { view: 'none' }
   | { view: 'unit'; pcode: string; zoom: boolean }
   | { view: 'province'; name: string }
 
-function readFromUrl(): Selection {
-  const params = new URLSearchParams(window.location.search)
-  const unit = params.get('unit')
-  if (unit) return { view: 'unit', pcode: unit, zoom: true }
-  const province = params.get('province')
-  if (province) return { view: 'province', name: decodeURIComponent(province) }
-  return { view: 'none' }
-}
-
-function writeToUrl(selection: Selection) {
-  const params = new URLSearchParams()
-  if (selection.view === 'unit') params.set('unit', selection.pcode)
-  else if (selection.view === 'province') params.set('province', selection.name)
-  const qs = params.toString()
-  const url = qs ? `${window.location.pathname}?${qs}` : window.location.pathname
-  window.history.replaceState(null, '', url)
-}
-
 interface AppStateValue {
   selection: Selection
+  setSelection: (s: Selection) => void
   selectUnit: (pcode: string, zoom?: boolean) => void
   selectProvince: (name: string) => void
   clearSelection: () => void
@@ -32,16 +15,15 @@ interface AppStateValue {
 
 const AppStateContext = createContext<AppStateValue | null>(null)
 
+// URL ↔ selection sync lives in useUrlSync (it needs DrcData to resolve slugs);
+// this context just owns the selection state.
 export function AppStateProvider({ children }: { children: ReactNode }) {
-  const [selection, setSelection] = useState<Selection>(readFromUrl)
-
-  useEffect(() => {
-    writeToUrl(selection)
-  }, [selection])
+  const [selection, setSelection] = useState<Selection>({ view: 'none' })
 
   const value = useMemo<AppStateValue>(
     () => ({
       selection,
+      setSelection,
       selectUnit: (pcode, zoom = true) => setSelection({ view: 'unit', pcode, zoom }),
       selectProvince: (name) => setSelection({ view: 'province', name }),
       clearSelection: () => setSelection({ view: 'none' }),
