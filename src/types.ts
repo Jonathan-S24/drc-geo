@@ -89,6 +89,11 @@ export interface PlaceMedia {
   image?: string
   image_credit?: string
   image_source_page?: string
+  /** "unit" = photo of the place itself; "province" = provincial fallback photo. Absent ⇒ unit. */
+  image_scope?: 'unit' | 'province'
+  /** Caption shown over province-scope fallback photos, explaining the substitution. */
+  image_note_fr?: string
+  image_note_en?: string
   facts?: PlaceFact[]
 }
 

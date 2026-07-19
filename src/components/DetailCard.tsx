@@ -52,10 +52,14 @@ function CardHero({
   media: PlaceMedia | undefined
   features: UnitFeature[]
 }) {
+  const { lang } = useLanguage()
   const [imageOk, setImageOk] = useState(true)
   const hasImage = Boolean(media?.image) && imageOk
 
   if (hasImage) {
+    // province-scope = the photo is a provincial fallback, not the place itself
+    const isFallback = media!.image_scope === 'province'
+    const note = lang === 'fr' ? media!.image_note_fr : media!.image_note_en
     return (
       <div className="relative h-44 w-full shrink-0 overflow-hidden">
         <img
@@ -71,6 +75,12 @@ function CardHero({
         {media?.image_credit && (
           <span className="absolute right-2 top-2 rounded-full bg-black/45 px-2 py-0.5 text-[9px] text-white/85">
             {media.image_credit}
+          </span>
+        )}
+        {isFallback && note && (
+          <span className="absolute left-2 top-2 flex max-w-[68%] items-start gap-1 rounded-lg bg-black/55 px-2 py-1 text-[10px] font-medium leading-snug text-white/90 backdrop-blur-sm">
+            <span aria-hidden>ⓘ</span>
+            <span>{note}</span>
           </span>
         )}
       </div>
