@@ -1,8 +1,14 @@
 # DRC.Geo
 
 Interactive geographic reference of the Democratic Republic of the Congo — 26 provinces,
-145 territoires, 44 villes, with map, search, detail panels, province aggregation,
-comparison mode, and a French/English toggle.
+145 territoires, 44 villes. A full-bleed map is the hero: real ADM2 shapes on a deep
+teal ocean, a curated palette where neighboring provinces never share a color,
+search-as-teleport (press `/`), fly-to selection, zoom-dependent labels, and a floating
+detail card (photo hero or shape-silhouette fallback) with all data behind accordions.
+French/English toggle; mobile gets a drag-to-expand bottom sheet.
+
+(The earlier sidebar/compare-mode UI was retired in the map-first redesign — its code
+lives in git history if ever needed again.)
 
 See [HANDOFF.md](./HANDOFF.md) for the project brief, data sources, and known caveats.
 
