@@ -87,6 +87,7 @@ function LoadingState() {
 
 function AppShell({ data }: { data: DrcData }) {
   const { selection, selectProvince, clearSelection } = useAppState()
+  const { t } = useLanguage()
   const hasCard = selection.view !== 'none'
 
   // Esc steps back: unit → its province → country
@@ -128,7 +129,7 @@ function AppShell({ data }: { data: DrcData }) {
 
       {/* attribution / caveat line over the ocean */}
       <p className="pointer-events-none absolute bottom-2 left-3 z-[900] hidden max-w-[46%] text-[10px] leading-snug text-white/45 md:block">
-        UN COD-AB · OCHA HPC 2024 · CAID — recensement 1984, populations projetées
+        {t('mapAttribution')}
       </p>
 
       {/* detail card: floating right on desktop, bottom sheet on mobile */}
@@ -147,12 +148,15 @@ function AppShell({ data }: { data: DrcData }) {
 }
 
 function AppContent() {
+  const { t } = useLanguage()
   const state = useDrcData()
   if (state.status === 'loading') return <LoadingState />
   if (state.status === 'error') {
     return (
       <div className="flex h-screen items-center justify-center bg-ocean text-white/80">
-        <p>Erreur de chargement des données : {state.error}</p>
+        <p>
+          {t('loadError')} : {state.error}
+        </p>
       </div>
     )
   }

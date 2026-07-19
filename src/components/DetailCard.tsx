@@ -155,6 +155,18 @@ function SourcesBlock({ extra }: { extra?: string }) {
   )
 }
 
+/** Shown in English mode only: the detailed source paragraphs are French, untranslated. */
+function SourceLangNote() {
+  const { t, lang } = useLanguage()
+  if (lang !== 'en') return null
+  return (
+    <p className="mx-5 mb-1 mt-2 flex items-center gap-1.5 text-[11px] italic text-ink/45">
+      <span aria-hidden>ℹ️</span>
+      {t('sourceFrench')}
+    </p>
+  )
+}
+
 function CtaPill({ label, onClick }: { label: string; onClick: () => void }) {
   return (
     <button
@@ -231,6 +243,8 @@ function UnitCard({ data, unit }: { data: DrcData; unit: TerritoryUnit }) {
           <b>{t('dataProvenance')} :</b> {unit.provenance_note}
         </p>
       )}
+
+      <SourceLangNote />
 
       <div className="mt-1">
         {media?.facts?.length ? (
@@ -376,6 +390,8 @@ function ProvinceCard({ data, province }: { data: DrcData; province: Province })
       </div>
 
       <CtaPill label={t('ctaExplore')} onClick={() => selectProvince(province.name)} />
+
+      <SourceLangNote />
 
       <div className="mt-1">
         {media?.facts?.length ? (

@@ -78,6 +78,8 @@ export const translations = {
     densityLabel: 'Densité',
     photoCredit: 'Photo',
     backToCountry: 'RDC',
+    mapAttribution: 'UN COD-AB · OCHA HPC 2024 · CAID — recensement 1984, populations projetées',
+    loadError: 'Erreur de chargement des données',
     langToggle: 'English',
   },
   en: {
@@ -157,6 +159,8 @@ export const translations = {
     densityLabel: 'Density',
     photoCredit: 'Photo',
     backToCountry: 'DRC',
+    mapAttribution: 'UN COD-AB · OCHA HPC 2024 · CAID — 1984 census, projected populations',
+    loadError: 'Data failed to load',
     langToggle: 'Français',
   },
 } as const
