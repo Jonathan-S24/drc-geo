@@ -92,3 +92,41 @@ export function indexFeatures(
 ): Map<string, UnitFeature> {
   return new Map(fc.features.map((f) => [f.properties.p, f]))
 }
+
+export interface CountrySvg {
+  viewBox: string
+  paths: { pcode: string; d: string }[]
+}
+
+/** Project every unit into ONE shared coordinate space (for the quiz click-map). */
+export function countryToSvgPaths(
+  fc: FeatureCollection<Polygon, UnitFeatureProperties>,
+  size = 900,
+): CountrySvg {
+  let minX = Infinity
+  let minY = Infinity
+  let maxX = -Infinity
+  let maxY = -Infinity
+  for (const f of fc.features) {
+    for (const ring of f.geometry.coordinates) {
+      for (const [x, y] of ring) {
+        if (x < minX) minX = x
+        if (x > maxX) maxX = x
+        if (y < minY) minY = y
+        if (y > maxY) maxY = y
+      }
+    }
+  }
+  const scale = size / Math.max(maxX - minX, maxY - minY)
+  const w = (maxX - minX) * scale
+  const h = (maxY - minY) * scale
+  const px = (x: number) => ((x - minX) * scale).toFixed(1)
+  const py = (y: number) => ((maxY - y) * scale).toFixed(1)
+  const paths = fc.features.map((f) => ({
+    pcode: f.properties.p,
+    d: f.geometry.coordinates
+      .map((ring) => `M${ring.map(([x, y]) => `${px(x)},${py(y)}`).join('L')}Z`)
+      .join(''),
+  }))
+  return { viewBox: `0 0 ${w.toFixed(1)} ${h.toFixed(1)}`, paths }
+}

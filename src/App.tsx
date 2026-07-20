@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext'
 import { AppStateProvider, useAppState } from './state/AppStateContext'
 import { LayerProvider } from './state/LayerContext'
@@ -10,6 +10,8 @@ import { BottomSheet } from './components/BottomSheet'
 import { PwaChrome } from './components/PwaChrome'
 import { LayersControl } from './components/LayersControl'
 import { LayerOverlays } from './components/LayerOverlays'
+import { QuizMode } from './components/QuizMode'
+import { DailyCard } from './components/DailyCard'
 import { useUrlSync } from './routing/useUrlSync'
 import { sameName } from './utils/match'
 
@@ -95,6 +97,7 @@ function AppShell({ data }: { data: DrcData }) {
   const { t, lang } = useLanguage()
   useUrlSync(data, lang)
   const hasCard = selection.view !== 'none'
+  const [quizOpen, setQuizOpen] = useState(false)
 
   // Esc steps back: unit → its province → country
   useEffect(() => {
@@ -128,12 +131,20 @@ function AppShell({ data }: { data: DrcData }) {
           </div>
           <div className="flex shrink-0 items-center gap-2">
             <PwaChrome />
+            <button
+              type="button"
+              onClick={() => setQuizOpen(true)}
+              className="pointer-events-auto flex items-center gap-1.5 rounded-full bg-accent px-3.5 py-2 text-[12px] font-bold text-white shadow-lg transition hover:brightness-110 active:scale-[0.98]"
+            >
+              🎮 <span className="hidden sm:inline">{t('play')}</span>
+            </button>
             <LangToggle />
           </div>
         </div>
         <div className="flex justify-center md:justify-start">
           <Breadcrumb data={data} />
         </div>
+        <DailyCard data={data} />
       </div>
 
       {/* layers control + active-layer overlay (legend / timeline / health / note) */}
@@ -158,6 +169,8 @@ function AppShell({ data }: { data: DrcData }) {
           </BottomSheet>
         </>
       )}
+
+      {quizOpen && <QuizMode data={data} onClose={() => setQuizOpen(false)} />}
     </div>
   )
 }

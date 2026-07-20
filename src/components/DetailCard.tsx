@@ -8,6 +8,7 @@ import { formatArea, formatNumber, formatYearMonth, type NumberLocale } from '..
 import { sameName } from '../utils/match'
 import { PROVINCE_COLORS, mix } from '../theme/palette'
 import { Accordion } from './Accordion'
+import { pronounce, canPronounce } from '../engage/pronounce'
 import { ShapeSilhouette } from './ShapeSilhouette'
 import { PopulationBarChart } from './PopulationBarChart'
 import { ShareButton } from './ShareButton'
@@ -42,13 +43,36 @@ function unitFeatures(data: DrcData, pcodes: string[]): UnitFeature[] {
   return feats.filter((f) => set.has(f.properties.p))
 }
 
+function HeroTitle({ name, pcode, large }: { name: string; pcode?: string; large?: boolean }) {
+  const { t } = useLanguage()
+  return (
+    <h2
+      className={`absolute bottom-3 left-5 right-12 ${large ? 'text-[28px]' : 'text-[26px]'} font-extrabold leading-tight text-white drop-shadow`}
+    >
+      {name}
+      {canPronounce() && (
+        <button
+          type="button"
+          aria-label={t('listen')}
+          onClick={() => pronounce(name, pcode)}
+          className="ml-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-black/30 align-middle text-[14px] backdrop-blur transition hover:bg-black/50 active:scale-[0.98]"
+        >
+          🔊
+        </button>
+      )}
+    </h2>
+  )
+}
+
 function CardHero({
   name,
+  pcode,
   color,
   media,
   features,
 }: {
   name: string
+  pcode?: string
   color: string
   media: PlaceMedia | undefined
   features: UnitFeature[]
@@ -71,9 +95,7 @@ function CardHero({
           onError={() => setImageOk(false)}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-        <h2 className="absolute bottom-3 left-5 right-12 text-[26px] font-extrabold leading-tight text-white drop-shadow">
-          {name}
-        </h2>
+        <HeroTitle name={name} pcode={pcode} />
         {media?.image_credit && (
           <span className="absolute right-2 top-2 rounded-full bg-black/45 px-2 py-0.5 text-[9px] text-white/85">
             {media.image_credit}
@@ -99,9 +121,7 @@ function CardHero({
         features={features}
         className="absolute -right-4 -top-6 h-[130%] text-white/20"
       />
-      <h2 className="absolute bottom-3 left-5 right-12 text-[28px] font-extrabold leading-tight text-white drop-shadow">
-        {name}
-      </h2>
+      <HeroTitle name={name} pcode={pcode} large />
     </div>
   )
 }
@@ -205,7 +225,7 @@ function UnitCard({ data, unit }: { data: DrcData; unit: TerritoryUnit }) {
 
   return (
     <CardShell>
-      <CardHero name={unit.name} color={color} media={media} features={unitFeatures(data, [unit.pcode])} />
+      <CardHero name={unit.name} pcode={unit.pcode} color={color} media={media} features={unitFeatures(data, [unit.pcode])} />
 
       <div className="flex flex-wrap items-center gap-1.5 px-5 pt-3">
         <span className="rounded-full bg-ink/8 px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-wide text-ink/70">
