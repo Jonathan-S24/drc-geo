@@ -9,13 +9,23 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null)
 
+const LANG_KEY = 'drcgeo-lang'
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>('fr')
+  // FR is the default; the user's explicit choice persists across visits.
+  const [lang, setLang] = useState<Lang>(() =>
+    localStorage.getItem(LANG_KEY) === 'en' ? 'en' : 'fr',
+  )
 
   const value = useMemo<LanguageContextValue>(
     () => ({
       lang,
-      toggleLang: () => setLang((l) => (l === 'fr' ? 'en' : 'fr')),
+      toggleLang: () =>
+        setLang((l) => {
+          const next = l === 'fr' ? 'en' : 'fr'
+          localStorage.setItem(LANG_KEY, next)
+          return next
+        }),
       t: (key) => translations[lang][key],
     }),
     [lang],

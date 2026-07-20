@@ -128,6 +128,13 @@ export const translations = {
     dailyCta: 'Découvrir',
     listen: 'Écouter la prononciation',
     close2: 'Fermer',
+    reportError: 'Signaler une erreur',
+    reportErrorBody:
+      'Décrivez l’erreur (champ concerné, valeur correcte, source si possible) :',
+    contributePhoto: 'Contribuer une photo',
+    contributePhotoDesc:
+      'Aucune photo libre de ce lieu n’existe sur Wikimedia Commons. Si vous en avez une (prise par vous), téléversez-la sur Commons sous licence libre — elle apparaîtra ici lors de la prochaine mise à jour.',
+    contributePhotoCta: 'Téléverser sur Wikimedia Commons',
     langToggle: 'English',
   },
   en: {
@@ -257,6 +264,12 @@ export const translations = {
     dailyCta: 'Discover',
     listen: 'Listen to pronunciation',
     close2: 'Close',
+    reportError: 'Report an error',
+    reportErrorBody: 'Describe the error (field, correct value, source if possible):',
+    contributePhoto: 'Contribute a photo',
+    contributePhotoDesc:
+      'No freely licensed photo of this place exists on Wikimedia Commons. If you have one (taken by you), upload it to Commons under a free license — it will appear here in the next update.',
+    contributePhotoCta: 'Upload to Wikimedia Commons',
     langToggle: 'Français',
   },
 } as const

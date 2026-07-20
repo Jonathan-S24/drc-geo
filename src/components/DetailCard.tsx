@@ -12,6 +12,7 @@ import { pronounce, canPronounce } from '../engage/pronounce'
 import { ShapeSilhouette } from './ShapeSilhouette'
 import { PopulationBarChart } from './PopulationBarChart'
 import { ShareButton } from './ShareButton'
+import { TrustLinks } from './TrustLinks'
 
 type UnitFeature = Feature<Polygon, UnitFeatureProperties>
 
@@ -369,6 +370,7 @@ function UnitCard({ data, unit }: { data: DrcData; unit: TerritoryUnit }) {
         <Accordion title={t('sourcesTitle')}>
           <SourcesBlock extra={unit.caid_updated ? `${t('caveatUpdated')}: ${unit.caid_updated}.` : undefined} />
         </Accordion>
+        <TrustLinks placeName={unit.name} pcode={unit.pcode} media={media} />
       </div>
     </CardShell>
   )
@@ -479,6 +481,7 @@ function ProvinceCard({ data, province }: { data: DrcData; province: Province })
         <Accordion title={t('sourcesTitle')}>
           <SourcesBlock />
         </Accordion>
+        <TrustLinks placeName={province.name} pcode={province.iso_code} media={media} />
       </div>
     </CardShell>
   )
