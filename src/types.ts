@@ -106,3 +106,19 @@ export type PlaceMediaFile = Record<string, PlaceMedia | Record<string, unknown>
 
 /** The subset of a search/selection target shared by units and provinces. */
 export type SelectableKind = 'unit' | 'province'
+
+export interface HealthZone {
+  zone: string
+  pcode_zs: string
+  territory: string
+  pcode_territory: string
+  province: string
+  population_2024: number
+}
+
+/** One historical administrative era: a FeatureCollection whose features carry
+ *  { name, modern[] } — the modern provinces each historical province became. */
+export interface HistoricalEraProps {
+  name: string
+  modern: string[]
+}

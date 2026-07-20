@@ -1,12 +1,15 @@
 import { useEffect } from 'react'
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext'
 import { AppStateProvider, useAppState } from './state/AppStateContext'
+import { LayerProvider } from './state/LayerContext'
 import { useDrcData, type DrcData } from './data/useDrcData'
 import { MapView } from './components/MapView'
 import { SearchPill } from './components/SearchPill'
 import { DetailCard } from './components/DetailCard'
 import { BottomSheet } from './components/BottomSheet'
 import { PwaChrome } from './components/PwaChrome'
+import { LayersControl } from './components/LayersControl'
+import { LayerOverlays } from './components/LayerOverlays'
 import { useUrlSync } from './routing/useUrlSync'
 import { sameName } from './utils/match'
 
@@ -133,8 +136,14 @@ function AppShell({ data }: { data: DrcData }) {
         </div>
       </div>
 
+      {/* layers control + active-layer overlay (legend / timeline / health / note) */}
+      <div className="pointer-events-none absolute bottom-6 left-4 z-[1000] flex flex-col gap-2 md:bottom-8 md:left-6">
+        <LayerOverlays data={data} />
+        <LayersControl data={data} />
+      </div>
+
       {/* attribution / caveat line over the ocean */}
-      <p className="pointer-events-none absolute bottom-2 left-3 z-[900] hidden max-w-[46%] text-[10px] leading-snug text-white/45 md:block">
+      <p className="pointer-events-none absolute bottom-2 left-1/2 z-[900] hidden -translate-x-1/2 text-[10px] leading-snug text-white/45 lg:block">
         {t('mapAttribution')}
       </p>
 
@@ -173,7 +182,9 @@ function App() {
   return (
     <LanguageProvider>
       <AppStateProvider>
-        <AppContent />
+        <LayerProvider>
+          <AppContent />
+        </LayerProvider>
       </AppStateProvider>
     </LanguageProvider>
   )

@@ -1,16 +1,18 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { MapContainer, GeoJSON, useMap } from 'react-leaflet'
-import type { Feature, Polygon } from 'geojson'
+import type { Feature, Geometry, Polygon } from 'geojson'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import type { DrcData } from '../data/useDrcData'
-import type { UnitFeatureProperties } from '../types'
+import type { HistoricalEraProps, UnitFeatureProperties } from '../types'
 import { useAppState, type Selection } from '../state/AppStateContext'
 import { useLanguage } from '../i18n/LanguageContext'
+import { useLayer, type MapLayer } from '../state/LayerContext'
 import { formatNumber } from '../utils/format'
 import { sameName } from '../utils/match'
 import { featureSize, groupCentroid, featureCentroid } from '../utils/geo'
 import { PROVINCE_COLORS, SUB_HUES, idleFill, dimmedFill, mix } from '../theme/palette'
+import { buildLanguageMap, LANGUAGE_COLORS } from '../theme/languages'
 
 const DRC_CENTER: [number, number] = [-2.9, 23.6]
 const FLY = { duration: 0.4, easeLinearity: 0.2 }
@@ -35,17 +37,32 @@ function subHue(data: DrcData, unit: { pcode: string; province: string }): strin
 export function MapView({ data }: MapViewProps) {
   const { selectUnit, selection } = useAppState()
   const { lang } = useLanguage()
+  const { layer } = useLayer()
   const geoJsonRef = useRef<L.GeoJSON | null>(null)
   const selectionRef = useRef<Selection>(selection)
   selectionRef.current = selection
+  const layerRef = useRef<MapLayer>(layer)
+  layerRef.current = layer
+  const languageMap = useMemo(() => buildLanguageMap(data), [data])
 
   // Full style state machine: idle (calm, desaturated) → hover (saturated) →
   // selected (full color, white outline) with everything else dropped darker.
   const styleFor = (pcode: string, hovered = false): L.PathOptions => {
     const u = data.byPcode.get(pcode)
     if (!u) return {}
-    const hue = provinceHue(u.province)
+    const activeLayer = layerRef.current
+    // In history mode the modern boundaries are replaced by the era layer.
+    if (activeLayer === 'histoire') return { opacity: 0, fillOpacity: 0, weight: 0 }
+    // Language layer recolors every province by its dominant national language.
+    const hue =
+      activeLayer === 'langues'
+        ? (languageMap.get(u.province) && LANGUAGE_COLORS[languageMap.get(u.province)!]) || provinceHue(u.province)
+        : provinceHue(u.province)
     const sel = selectionRef.current
+
+    if (activeLayer === 'langues' && sel.view === 'none') {
+      return { color: 'rgba(255,255,255,0.7)', weight: hovered ? 1.6 : 0.6, fillColor: hue, fillOpacity: 0.9 }
+    }
 
     if (sel.view === 'unit') {
       if (sel.pcode === pcode) {
@@ -121,16 +138,27 @@ export function MapView({ data }: MapViewProps) {
           if (!u) return
           const path = layer as L.Polygon
           layer.bindTooltip(tooltipHtml(pcode), { sticky: true, className: 'map-tip', opacity: 1 })
-          layer.on('click', () => selectUnit(u.pcode, true))
+          // In history mode the base layer is hidden — it must not swallow
+          // clicks/hovers meant for the era shapes underneath it.
+          layer.on('click', () => {
+            if (layerRef.current === 'histoire') return
+            selectUnit(u.pcode, true)
+          })
           layer.on('mouseover', () => {
+            if (layerRef.current === 'histoire') return
             path.setStyle(styleFor(pcode, true))
             path.bringToFront()
           })
-          layer.on('mouseout', () => path.setStyle(styleFor(pcode)))
+          layer.on('mouseout', () => {
+            if (layerRef.current === 'histoire') return
+            path.setStyle(styleFor(pcode))
+          })
         }}
       />
-      <MapController data={data} geoJsonRef={geoJsonRef} styleFor={styleFor} />
-      <MapLabels data={data} />
+      <MapController data={data} geoJsonRef={geoJsonRef} styleFor={styleFor} layer={layer} />
+      {layer !== 'histoire' && <MapLabels data={data} />}
+      {layer === 'parcs' && data.parks && <ParksLayer data={data} />}
+      {layer === 'histoire' && <HistoryLayer data={data} />}
       <ZoomControls />
     </MapContainer>
   )
@@ -142,11 +170,25 @@ interface MapControllerProps {
   data: DrcData
   geoJsonRef: React.RefObject<L.GeoJSON | null>
   styleFor: (pcode: string) => L.PathOptions
+  layer: MapLayer
 }
 
-function MapController({ data, geoJsonRef, styleFor }: MapControllerProps) {
+function MapController({ data, geoJsonRef, styleFor, layer }: MapControllerProps) {
   const map = useMap()
   const { selection } = useAppState()
+
+  // Restyle every base feature when the active layer changes (language recolor,
+  // history hide/show), independent of selection.
+  useEffect(() => {
+    const gj = geoJsonRef.current
+    if (!gj) return
+    gj.eachLayer((l) => {
+      const poly = l as L.Polygon
+      const pcode = poly.feature && 'properties' in poly.feature ? (poly.feature.properties as { p: string }).p : undefined
+      if (pcode) poly.setStyle(styleFor(pcode))
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [layer])
 
   // Fit the whole country once. invalidateSize() because flexbox can leave the
   // container measured 0x0 at Leaflet construction time.
@@ -337,4 +379,96 @@ function ZoomControls() {
       </button>
     </div>
   )
+}
+
+// ---------- parks overlay ----------
+
+function ParksLayer({ data }: { data: DrcData }) {
+  const map = useMap()
+  const { lang } = useLanguage()
+  useEffect(() => {
+    if (!data.parks) return
+    const group = L.layerGroup().addTo(map)
+    const gj = L.geoJSON(data.parks, {
+      style: { color: '#2f7d4f', weight: 1.5, fillColor: '#3ba05f', fillOpacity: 0.4 },
+      onEachFeature: (f, layer) => {
+        const name = (lang === 'en' && f.properties?.name_en) || f.properties?.name || ''
+        layer.bindTooltip(name, { sticky: true, className: 'map-tip', opacity: 1 })
+        const b = (layer as L.Polygon).getBounds()
+        L.marker(b.getCenter(), {
+          interactive: false,
+          keyboard: false,
+          icon: L.divIcon({
+            className: 'map-label',
+            html: `<span style="font-size:11px">🌳 ${name}</span>`,
+            iconSize: [0, 0],
+          }),
+        }).addTo(group)
+      },
+    }).addTo(group)
+    void gj
+    return () => {
+      group.remove()
+    }
+  }, [map, data.parks, lang])
+  return null
+}
+
+// ---------- historical eras ----------
+
+type EraFeature = Feature<Geometry, HistoricalEraProps>
+
+function HistoryLayer({ data }: { data: DrcData }) {
+  const map = useMap()
+  const { lang } = useLanguage()
+  const { eraIndex } = useLayer()
+  const eras = data.historicalEras
+
+  useEffect(() => {
+    const era = eras[Math.min(eraIndex, eras.length - 1)]
+    if (!era) return
+    const palette = ['#e8836b', '#e3b04e', '#67bfa0', '#9d8cc9', '#5b9bd1', '#94aa7e', '#b07d4f', '#a2666f']
+    const group = L.layerGroup().addTo(map)
+    let i = 0
+    const gj = L.geoJSON(era.fc, {
+      style: () => ({
+        color: '#ffffff',
+        weight: 1.4,
+        fillColor: palette[i++ % palette.length],
+        fillOpacity: 0.72,
+      }),
+      onEachFeature: (f, layer) => {
+        const props = (f as EraFeature).properties
+        const became = `<div style="margin-top:4px;opacity:.85"><b>${lang === 'fr' ? 'Provinces actuelles' : 'Modern provinces'} :</b> ${props.modern.join(', ')}</div>`
+        layer.bindPopup(`<b>${props.name}</b>${became}`, { className: 'map-tip' })
+        const b = (layer as L.Polygon).getBounds()
+        L.marker(b.getCenter(), {
+          interactive: false,
+          keyboard: false,
+          icon: L.divIcon({
+            className: 'map-label',
+            html: `<span style="font-size:13px">${props.name}</span>`,
+            iconSize: [0, 0],
+          }),
+        }).addTo(group)
+      },
+    })
+    gj.addTo(group)
+    gj.bringToFront() // above the (hidden but still hit-testable) base boundaries
+    // crossfade the newly mounted era in via the SVG renderer's root group
+    const renderer = (gj.getLayers()[0] as L.Path | undefined)?.getElement()?.parentElement
+    if (renderer) {
+      renderer.style.transition = 'opacity 320ms ease'
+      renderer.style.opacity = '0'
+      requestAnimationFrame(() => {
+        renderer.style.opacity = '1'
+      })
+    }
+    map.fitBounds(gj.getBounds(), { padding: [30, 30], animate: true, duration: 0.4 })
+    return () => {
+      group.remove()
+    }
+  }, [map, eras, eraIndex, lang])
+
+  return null
 }

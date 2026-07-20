@@ -9,7 +9,8 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "gen:sitemap": "node scripts/gen-sitemap.mjs",
-    "prebuild": "node scripts/gen-sitemap.mjs"
+    "prebuild": "node scripts/gen-sitemap.mjs",
+    "fetch:parks": "node scripts/fetch-parks.mjs"
   },
   "dependencies": {
     "@fontsource/nunito": "^5.2.7",

@@ -81,13 +81,25 @@ define(['./workbox-5ccb27be'], (function (workbox) { 'use strict';
     "revision": "3ca0b8505b4bec776b69afdba2768812"
   }, {
     "url": "/index.html",
-    "revision": "0.v4u12k114g8"
+    "revision": "0.d0b4k3tte3g"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("/index.html"), {
     allowlist: [/^\/$/],
     denylist: [/^\/data\//, /^\/icons\//]
   }));
+  workbox.registerRoute(({
+    url,
+    sameOrigin
+  }) => sameOrigin && url.pathname.startsWith("/data/"), new workbox.StaleWhileRevalidate({
+    "cacheName": "drc-data",
+    plugins: [new workbox.ExpirationPlugin({
+      maxEntries: 40,
+      maxAgeSeconds: 7776000
+    }), new workbox.CacheableResponsePlugin({
+      statuses: [0, 200]
+    })]
+  }), 'GET');
   workbox.registerRoute(({
     url
   }) => url.hostname === "upload.wikimedia.org", new workbox.StaleWhileRevalidate({

@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react'
-import type { Province, ProvincesFile, TerritoriesFile, TerritoryUnit } from '../types'
-import type { FeatureCollection, Polygon } from 'geojson'
+import type { HealthZone, HistoricalEraProps, Province, ProvincesFile, TerritoriesFile, TerritoryUnit } from '../types'
+import type { FeatureCollection, Geometry, Polygon } from 'geojson'
 import type { PlaceMedia, PlaceMediaFile, UnitFeatureProperties } from '../types'
+
+export interface HistoricalEra {
+  key: string
+  label: string
+  fc: FeatureCollection<Geometry, HistoricalEraProps>
+}
 
 export interface DrcData {
   provinces: Province[]
@@ -13,6 +19,13 @@ export interface DrcData {
   byProvinceName: Map<string, Province>
   /** Look up per-place imagery/facts by unit P-code or "province:<Name>". Empty until curated. */
   media: Map<string, PlaceMedia>
+  /** Health zones grouped by territory pcode (Phase 3 layer). Empty if unavailable. */
+  healthZonesByTerritory: Map<string, HealthZone[]>
+  /** Historical administrative eras, chronological (Phase 3 layer). Empty if unavailable. */
+  historicalEras: HistoricalEra[]
+  historicalNote: string
+  /** National parks / protected areas overlay (Phase 3). Null if the OSM fetch was skipped. */
+  parks: FeatureCollection<Geometry, { name: string; name_en?: string }> | null
 }
 
 type State =
@@ -55,6 +68,9 @@ async function loadAll(): Promise<DrcData> {
     }
   }
 
+  // Layer data (Phase 3) — all optional and non-fatal.
+  const { healthZonesByTerritory, historicalEras, historicalNote, parks } = await loadLayers()
+
   return {
     provinces: provincesFile.provinces,
     units: territoriesFile.units,
@@ -64,7 +80,54 @@ async function loadAll(): Promise<DrcData> {
     byPcode,
     byProvinceName,
     media,
+    healthZonesByTerritory,
+    historicalEras,
+    historicalNote,
+    parks,
   }
+}
+
+async function loadLayers() {
+  const healthZonesByTerritory = new Map<string, HealthZone[]>()
+  let historicalEras: HistoricalEra[] = []
+  let historicalNote = ''
+  let parks: DrcData['parks'] = null
+
+  const safeJson = async (url: string) => {
+    try {
+      const r = await fetch(url)
+      return r.ok ? await r.json() : null
+    } catch {
+      return null
+    }
+  }
+
+  const [health, historical, parksData] = await Promise.all([
+    safeJson('/data/health_zones.json'),
+    safeJson('/data/historical_provinces.json'),
+    safeJson('/data/parks.geojson'),
+  ])
+
+  if (health?.zones) {
+    for (const z of health.zones as HealthZone[]) {
+      const arr = healthZonesByTerritory.get(z.pcode_territory) ?? []
+      arr.push(z)
+      healthZonesByTerritory.set(z.pcode_territory, arr)
+    }
+  }
+
+  if (historical?.eras) {
+    historicalNote = historical.meta?.note_fr ?? ''
+    historicalEras = Object.entries(historical.eras).map(([label, fc]) => ({
+      key: label.split(/[ —]/)[0], // "1919 — 4 provinces" → "1919"
+      label,
+      fc: fc as HistoricalEra['fc'],
+    }))
+  }
+
+  if (parksData?.features) parks = parksData
+
+  return { healthZonesByTerritory, historicalEras, historicalNote, parks }
 }
 
 /** Fetches and memoizes the three source-of-truth data files (fetched once per session). */
