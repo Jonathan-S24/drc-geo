@@ -57,9 +57,12 @@ export function LayersControl({ data }: LayersControlProps) {
           layer !== 'none' ? 'bg-teal text-white' : 'bg-white/95 text-ink hover:bg-white'
         }`}
       >
-        <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8">
-          <path d="m10 3 7 4-7 4-7-4 7-4Z" strokeLinejoin="round" />
-          <path d="m3 11 7 4 7-4" strokeLinejoin="round" />
+        <svg viewBox="0 0 20 20" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path
+            d="M2 10c1.8-3.2 4.6-4.8 8-4.8s6.2 1.6 8 4.8c-1.8 3.2-4.6 4.8-8 4.8S3.8 13.2 2 10Z"
+            strokeLinejoin="round"
+          />
+          <circle cx="10" cy="10" r="2.2" />
         </svg>
         {layer === 'none' ? t('layers') : t(`layer${layer[0].toUpperCase()}${layer.slice(1)}` as never)}
       </button>

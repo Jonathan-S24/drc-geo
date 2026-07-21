@@ -83,8 +83,9 @@ function CardHero({
   const hasImage = Boolean(media?.image) && imageOk
 
   if (hasImage) {
-    // province-scope = the photo is a provincial fallback, not the place itself
-    const isFallback = media!.image_scope === 'province'
+    // national-symbol = a dignified placeholder (DRC flag or leopard totem)
+    // standing in until a real local photo is contributed — not an error state.
+    const isSymbol = media!.image_scope === 'national-symbol'
     const note = lang === 'fr' ? media!.image_note_fr : media!.image_note_en
     return (
       <div className="relative h-44 w-full shrink-0 overflow-hidden">
@@ -92,21 +93,29 @@ function CardHero({
           src={media!.image}
           alt={name}
           crossOrigin="anonymous" // so the same cached fetch is reusable, untainted, by the share canvas
-          className="h-full w-full object-cover"
+          className={`h-full w-full object-cover ${isSymbol ? 'opacity-95' : ''}`}
           onError={() => setImageOk(false)}
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
         <HeroTitle name={name} pcode={pcode} />
         {media?.image_credit && (
-          <span className="absolute right-2 top-2 rounded-full bg-black/45 px-2 py-0.5 text-[9px] text-white/85">
+          <span
+            className={`absolute right-2 rounded-full bg-black/45 px-2 py-0.5 text-[9px] text-white/85 ${
+              isSymbol ? 'bottom-2' : 'top-2'
+            }`}
+          >
             {media.image_credit}
           </span>
         )}
-        {isFallback && note && (
-          <span className="absolute left-2 top-2 flex max-w-[68%] items-start gap-1 rounded-lg bg-black/55 px-2 py-1 text-[10px] font-medium leading-snug text-white/90 backdrop-blur-sm">
-            <span aria-hidden>ⓘ</span>
-            <span>{note}</span>
-          </span>
+        {isSymbol && note && (
+          <div className="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-ocean-deep/90 via-ocean-deep/50 to-transparent px-4 pb-8 pt-2.5 pr-11">
+            <p className="flex items-start gap-1.5 text-[11px] font-medium leading-snug text-white/95">
+              <span aria-hidden className="mt-px shrink-0 text-[12px]">
+                🇨🇩
+              </span>
+              <span>{note}</span>
+            </p>
+          </div>
         )}
       </div>
     )

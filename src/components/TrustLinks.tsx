@@ -30,7 +30,7 @@ interface TrustLinksProps {
 /** "Signaler une erreur" on every card + "Contribuer une photo" where the photo is a provincial fallback. */
 export function TrustLinks({ placeName, pcode, media }: TrustLinksProps) {
   const { t } = useLanguage()
-  const needsPhoto = media?.image_scope === 'province'
+  const needsPhoto = media?.image_scope === 'national-symbol'
 
   return (
     <div className="border-t border-line/70 px-5 py-3">

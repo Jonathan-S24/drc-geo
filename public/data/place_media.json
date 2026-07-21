@@ -13,9 +13,9 @@
      "fr": "le même fait en français"
     }
    ],
-   "image_scope": "\"unit\" = photo of the place itself; \"province\" = province-level fallback photo (see image_note_fr/en)."
+   "image_scope": "\"unit\" = photo of the place itself; \"national-symbol\" = DRC flag or leopard totem placeholder (see image_note_fr/en)."
   },
-  "status": "Full coverage 2026-07-19: 215 entries (26 provinces + 189 units). 132 units with own image (84 via Wikipedia pageimage, 48 via Commons geosearch at unit centroid, 1280px thumbnails, licensed); 33 remote territoires use their province image (image_scope=\"province\", bilingual note) because no freely licensed local photo exists on Commons. Facts curated for 49 key places; others image-only for now."
+  "status": "Audited 2026-07-19: 215 entries. Real place photos where verified appropriate; 88 entries use national symbols (DRC flag / leopard totem) because no usable freely licensed local photo exists (includes removal of out-of-context finds: ISS satellite views, wrong-country matches, specimen photos). image_scope: \"unit\" = local photo; \"national-symbol\" = flag/leopard placeholder with bilingual note."
  },
  "CD1000": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg/1280px-La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg",
@@ -836,10 +836,11 @@
   "image_scope": "unit"
  },
  "CD5110": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Les_%C3%A9l%C3%A8ves_du_Complexe_Scolaire_Nzege_de_Bengamisa_r%C3%A9pondent_aux_questions_de_PIO-Kisangani_sur_la_MONUSCO_%2815756428216%29.jpg",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "fr:Banalia (territoire)",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Banalia n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Banalia is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3201": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Bandundu_Centre%2C_vue_a%C3%A9rienne.jpg",
@@ -902,10 +903,11 @@
   "image_scope": "unit"
  },
  "CD7205": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Joint_operations_graphic_%28Ground%29._LOC_2003682606-25.jpg/1280px-Joint_operations_graphic_%28Ground%29._LOC_2003682606-25.jpg",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "fr:Dilolo",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Dilolo n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Dilolo is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9107": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Palm_oil_manufacture_%282%29_Lac_Mukamba%2C_Deretoire_de_Dimbelenge%2C_Kasai_occ._RD_Congo.JPG/1280px-Palm_oil_manufacture_%282%29_Lac_Mukamba%2C_Deretoire_de_Dimbelenge%2C_Kasai_occ._RD_Congo.JPG",
@@ -938,10 +940,11 @@
   "image_scope": "unit"
  },
  "CD3103": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Joint_operations_graphic_%28Ground%29._LOC_2003682606-31.tif/lossy-page1-1280px-Joint_operations_graphic_%28Ground%29._LOC_2003682606-31.tif.jpg",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "fr:Feshi",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Feshi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Feshi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6210": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Un_H%C3%A9licopt%C3%A8re_de_la_MONUSCO_en_train_d%27atterrir_sur_la_piste_de_Baraka_dans_le_Territoire_de_Fizi_%C3%A0_90_Km_d%27Uvira_au_Sud-Kivu._%2815267267554%29.jpg",
@@ -1118,10 +1121,11 @@
   "image_scope": "unit"
  },
  "CD7203": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/5/50/African_Smoke.jpg",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "fr:Lubudi (territoire)",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Lubudi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lubudi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9204": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/VingtAnnees_278.jpg/1280px-VingtAnnees_278.jpg",
@@ -1238,10 +1242,11 @@
   "image_scope": "unit"
  },
  "CD7206": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Joint_operations_graphic_%28Ground%29._LOC_2003682606-27.jpg/1280px-Joint_operations_graphic_%28Ground%29._LOC_2003682606-27.jpg",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "fr:Sandoa",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Sandoa n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Sandoa is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6203": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/La_rivi%C3%A8re_Ulindi%2C_qui_prend_sa_source_dans_le_Mont_Piernard%2C_se_dirige_vers_l%E2%80%99ouest_en_traversant_les_territoires_de_Mwenga_et_de_Shabunda%2C_dans_la_province_du_Sud_Kivu._%2819573766866%29.jpg/1280px-thumbnail.jpg",
@@ -1256,22 +1261,25 @@
   "image_scope": "unit"
  },
  "CD7207": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/MA_I227844_TePapa_Kapanga-alta-Forster_full.jpg/1280px-MA_I227844_TePapa_Kapanga-alta-Forster_full.jpg",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "en:Kapanga",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kapanga n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kapanga is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8108": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Lubao_Church%2C_Pampanga%2C_Jan_2026_%281%29.jpg/1280px-Lubao_Church%2C_Pampanga%2C_Jan_2026_%281%29.jpg",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "en:Lubao",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Lubao n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lubao is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2005": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Cabinda_pol77.jpg",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "en:Lukula",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Lukula n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lukula is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4105": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Station_bangala.jpg",
@@ -1322,214 +1330,214 @@
   "image_scope": "unit"
  },
  "CD5207": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pont_riv_rubi.jpg/1280px-Pont_riv_rubi.jpg",
-  "image_credit": "Wikimedia Commons / Iyongi (CC0)",
-  "image_source_page": "fr:Buta",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Bas-Uele) — aucune photo libre du territoire de Ango n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Bas-Uele) — no freely licensed photo of Ango territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Ango n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ango is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5209": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pont_riv_rubi.jpg/1280px-Pont_riv_rubi.jpg",
-  "image_credit": "Wikimedia Commons / Iyongi (CC0)",
-  "image_source_page": "fr:Buta",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Bas-Uele) — aucune photo libre du territoire de Bambesa n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Bas-Uele) — no freely licensed photo of Bambesa territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Bambesa n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bambesa is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5206": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pont_riv_rubi.jpg/1280px-Pont_riv_rubi.jpg",
-  "image_credit": "Wikimedia Commons / Iyongi (CC0)",
-  "image_source_page": "fr:Buta",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Bas-Uele) — aucune photo libre du territoire de Bondo n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Bas-Uele) — no freely licensed photo of Bondo territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Bondo n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bondo is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4102": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/STS123-E-9911_-_View_of_Earth.jpg/1280px-STS123-E-9911_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / NASA (Public domain)",
-  "image_source_page": "commons-geo:-0.72,18.21",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Bikoro n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bikoro is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4108": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/ISS067-E-162383_-_View_of_Earth.jpg/1280px-ISS067-E-162383_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:0.61,18.98",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Bolomba n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bolomba is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4104": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Oxfam_East_Africa_-_Mbandaka_market.jpg",
-  "image_credit": "Wikimedia Commons / Oxfam East Africa (CC BY 2.0)",
-  "image_source_page": "fr:Mbandaka",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Equateur) — aucune photo libre du territoire de Bomongo n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Equateur) — no freely licensed photo of Bomongo territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Bomongo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bomongo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4109": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/ISS063-E-56064_-_View_of_Earth.jpg/1280px-ISS063-E-56064_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, NASA Johnson Space Ce (Public domain)",
-  "image_source_page": "commons-geo:-0.70,19.45",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Ingende n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ingende is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7104": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/ISS063-E-95662_-_View_of_Earth.jpg/1280px-ISS063-E-95662_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, NASA Johnson Space Ce (Public domain)",
-  "image_source_page": "commons-geo:-12.60,29.15",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Sakania n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Sakania is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7304": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/ISS043-E-3172_-_View_of_Earth.jpg/1280px-ISS043-E-3172_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-7.10,25.54",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kabongo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kabongo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7303": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ISS011-E-12326_-_View_of_Democratic_Republic_of_the_Congo.jpg/1280px-ISS011-E-12326_-_View_of_Democratic_Republic_of_the_Congo.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-7.85,24.23",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kaniama n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kaniama is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5302": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Garamba_National_Park_overhead.jpg",
-  "image_credit": "Wikimedia Commons / Nuria Ortega (CC BY-SA 3.0)",
-  "image_source_page": "en:Garamba National Park",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Haut-Uele) — aucune photo libre du territoire de Rungu n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Haut-Uele) — no freely licensed photo of Rungu territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Rungu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Rungu is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5311": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Garamba_National_Park_overhead.jpg",
-  "image_credit": "Wikimedia Commons / Nuria Ortega (CC BY-SA 3.0)",
-  "image_source_page": "en:Garamba National Park",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Haut-Uele) — aucune photo libre du territoire de Wamba n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Haut-Uele) — no freely licensed photo of Wamba territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Wamba n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Wamba is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5309": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Garamba_National_Park_overhead.jpg",
-  "image_credit": "Wikimedia Commons / Nuria Ortega (CC BY-SA 3.0)",
-  "image_source_page": "en:Garamba National Park",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Haut-Uele) — aucune photo libre du territoire de Watsa n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Haut-Uele) — no freely licensed photo of Watsa territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Watsa n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Watsa is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5306": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Garamba_National_Park_overhead.jpg",
-  "image_credit": "Wikimedia Commons / Nuria Ortega (CC BY-SA 3.0)",
-  "image_source_page": "en:Garamba National Park",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Haut-Uele) — aucune photo libre du territoire de Aba n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Haut-Uele) — no freely licensed photo of Aba territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Aba n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Aba is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5410": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Epulu_Okapi_Reserve.jpg/1280px-Epulu_Okapi_Reserve.jpg",
-  "image_credit": "Wikimedia Commons / J. Doremus (Public domain)",
-  "image_source_page": "en:Okapi Wildlife Reserve",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Ituri) — aucune photo libre du territoire de Ariwara n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Ituri) — no freely licensed photo of Ariwara territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Ariwara n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ariwara is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5411": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ISS021-E-7699_-_View_of_Earth.jpg/1280px-ISS021-E-7699_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:3.39,30.77",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Ingbokolo n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ingbokolo is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5404": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/ISS053-E-240175_-_View_of_Earth.jpg/1280px-ISS053-E-240175_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:1.82,30.24",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Mongwalu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mongwalu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9208": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tshikapa%2C_Kasai_province%2C_DR_Congo_%E2%80%93_As_part_of_its_Quick_Impact_Project%2C_MONUSCO_has_refurbished_the_Central_Prison_in_Tshikapa.jpg/1280px-Tshikapa%2C_Kasai_province%2C_DR_Congo_%E2%80%93_As_part_of_its_Quick_Impact_Project%2C_MONUSCO_has_refurbished_the_Central_Prison_in_Tshikapa.jpg",
-  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
-  "image_source_page": "fr:Tshikapa",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Kasaï) — aucune photo libre du territoire de Dekese n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Kasaï) — no freely licensed photo of Dekese territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Dekese n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Dekese is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9205": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/ISS065-E-436946_-_View_of_Earth.jpg/1280px-ISS065-E-436946_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-5.06,20.63",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Ilebo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ilebo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9106": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Kananga_vue_aerienne_0.webp",
-  "image_credit": "Wikimedia Commons / Andrelukengu (CC0)",
-  "image_source_page": "fr:Kananga",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Kasaï-Central) — aucune photo libre du territoire de Demba n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Kasaï-Central) — no freely licensed photo of Demba territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Demba n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Demba is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9104": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/ISS030-E-20424_-_View_of_Earth.jpg/1280px-ISS030-E-20424_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-7.20,22.48",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Luiza n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Luiza is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8207": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/A%C3%A9roport_de_Mbuji-Mayi.jpg/1280px-A%C3%A9roport_de_Mbuji-Mayi.jpg",
-  "image_credit": "Wikimedia Commons / MONUSCO/Myriam Asmani (CC BY-SA 2.0)",
-  "image_source_page": "fr:Mbuji-Mayi",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Kasaï-Oriental) — aucune photo libre du territoire de Kabeya-Kamwanga n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Kasaï-Oriental) — no freely licensed photo of Kabeya-Kamwanga territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kabeya-Kamwanga n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kabeya-Kamwanga is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8208": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/A%C3%A9roport_de_Mbuji-Mayi.jpg/1280px-A%C3%A9roport_de_Mbuji-Mayi.jpg",
-  "image_credit": "Wikimedia Commons / MONUSCO/Myriam Asmani (CC BY-SA 2.0)",
-  "image_source_page": "fr:Mbuji-Mayi",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Kasaï-Oriental) — aucune photo libre du territoire de Lupatapata n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Kasaï-Oriental) — no freely licensed photo of Lupatapata territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Lupatapata n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lupatapata is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8205": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/A%C3%A9roport_de_Mbuji-Mayi.jpg/1280px-A%C3%A9roport_de_Mbuji-Mayi.jpg",
-  "image_credit": "Wikimedia Commons / MONUSCO/Myriam Asmani (CC BY-SA 2.0)",
-  "image_source_page": "fr:Mbuji-Mayi",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Kasaï-Oriental) — aucune photo libre du territoire de Miabi n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Kasaï-Oriental) — no freely licensed photo of Miabi territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Miabi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Miabi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8202": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/ISS030-E-45755_-_View_of_Earth.jpg/1280px-ISS030-E-45755_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-6.46,23.62",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Tshilenge n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Tshilenge is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8204": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/ISS030-E-45755_-_View_of_Earth.jpg/1280px-ISS030-E-45755_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-6.48,23.66",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Lukalaba n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lukalaba is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2019": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/ISS063-E-55879_-_View_of_Earth.jpg/1280px-ISS063-E-55879_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, NASA Johnson Space Ce (Public domain)",
-  "image_source_page": "commons-geo:-5.40,16.04",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kimvula n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kimvula is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2010": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/ISS024-E-13914_-_View_of_Earth.jpg/1280px-ISS024-E-13914_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-4.81,14.01",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Luozi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Luozi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2009": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ISS066-E-157266_-_View_of_Earth.jpg/1280px-ISS066-E-157266_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-5.40,13.38",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Seke-Banza n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Seke-Banza is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2007": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Pont_Marechal%2C_Matadi%2C_Congo.jpg/1280px-Pont_Marechal%2C_Matadi%2C_Congo.jpg",
-  "image_credit": "Wikimedia Commons / 3nigma (CC BY-SA 3.0)",
-  "image_source_page": "en:Matadi Bridge",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Kongo-Central) — aucune photo libre du territoire de Tshela n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Kongo-Central) — no freely licensed photo of Tshela territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Tshela n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Tshela is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2012": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/8/8d/La_cimenterie_nationale_de_Kimpese_%C2%AB_CINAT_SA_%C2%BB.jpg",
@@ -1538,339 +1546,353 @@
   "image_scope": "unit"
  },
  "CD3105": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Tazua.jpg/1280px-Tazua.jpg",
-  "image_credit": "Wikimedia Commons / Brian Harrington Spier from Shanghai, China (CC BY-SA 2.0)",
-  "image_source_page": "en:Kwango River",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Kwango) — aucune photo libre du territoire de Kahemba n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Kwango) — no freely licensed photo of Kahemba territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kahemba n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kahemba is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3107": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/ISS013-E-10613_-_View_of_Earth.jpg/1280px-ISS013-E-10613_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-7.00,17.71",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kasongo-Lunda n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kasongo-Lunda is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3202": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/ISS016-E-11551_-_View_of_Democratic_Republic_of_the_Congo.jpg/1280px-ISS016-E-11551_-_View_of_Democratic_Republic_of_the_Congo.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-3.92,17.97",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Bagata n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bagata is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3204": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/ISS052-E-37418_-_View_of_Earth.jpg/1280px-ISS052-E-37418_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-4.67,18.70",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Bulungu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bulungu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3210": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/ISS028-E-19833_-_View_of_Earth.jpg/1280px-ISS028-E-19833_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-5.78,19.35",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Gungu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Gungu is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3206": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Crossing_kwilu_river.jpg",
-  "image_credit": "Wikimedia Commons (Public domain)",
-  "image_source_page": "en:Kwilu River",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Kwilu) — aucune photo libre du territoire de Idiofa n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Kwilu) — no freely licensed photo of Idiofa territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Idiofa n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Idiofa is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3209": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/ISS013-E-10633_-_View_of_Democratic_Republic_of_the_Congo.jpg/1280px-ISS013-E-10633_-_View_of_Democratic_Republic_of_the_Congo.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-4.16,19.86",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Dibaya-Lubwe n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Dibaya-Lubwe is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3208": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/ISS045-E-24956_-_View_of_Earth.jpg/1280px-ISS045-E-24956_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-4.06,19.53",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Mangai n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mangai is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8102": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG/1280px-Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "fr:Lomami (rivière)",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Lomami) — aucune photo libre du territoire de Kabinda n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Lomami) — no freely licensed photo of Kabinda territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kabinda n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kabinda is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8105": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG/1280px-Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "fr:Lomami (rivière)",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Lomami) — aucune photo libre du territoire de Kamiji n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Lomami) — no freely licensed photo of Kamiji territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kamiji n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kamiji is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8104": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG/1280px-Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "fr:Lomami (rivière)",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Lomami) — aucune photo libre du territoire de Luilu n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Lomami) — no freely licensed photo of Luilu territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Luilu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Luilu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8106": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ISS053-E-239877_-_View_of_Earth.jpg/1280px-ISS053-E-239877_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-6.70,24.27",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Ngandajika n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ngandajika is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8103": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG/1280px-Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG",
-  "image_credit": "Wikimedia Commons",
-  "image_source_page": "fr:Lomami (rivière)",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Lomami) — aucune photo libre du territoire de Mwene-Ditu n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Lomami) — no freely licensed photo of Mwene-Ditu territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Mwene-Ditu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mwene-Ditu is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7202": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/ISS046-E-45008_-_View_of_Earth.jpg/1280px-ISS046-E-45008_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-10.84,25.16",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Mutshatsha n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mutshatsha is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7204": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/ISS060-E-74052_-_View_of_Earth.jpg/1280px-ISS060-E-74052_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, NASA Johnson Space Ce (Public domain)",
-  "image_source_page": "commons-geo:-10.36,23.45",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kasaji n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kasaji is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6305": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/ISS036-E-26562_-_View_of_Earth.jpg/1280px-ISS036-E-26562_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-0.72,27.02",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Lubutu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lubutu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6307": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/ISS042-E-237319_-_View_of_Earth.jpg/1280px-ISS042-E-237319_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-3.11,26.61",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Pangi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Pangi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6303": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/ISS056-E-143593_-_View_of_Earth.jpg/1280px-ISS056-E-143593_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, NASA Johnson Space Ce (Public domain)",
-  "image_source_page": "commons-geo:-1.73,26.76",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Punia n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Punia is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6308": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/ISS030-E-45775_-_View_of_Earth.jpg/1280px-ISS030-E-45775_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-2.51,26.56",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kalima n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kalima is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6310": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/La_place_Monument_de_Kindu_%284095837516%29.jpg/1280px-La_place_Monument_de_Kindu_%284095837516%29.jpg",
-  "image_credit": "Wikimedia Commons / Radio Okapi (CC BY 2.0)",
-  "image_source_page": "fr:Kindu",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Maniema) — aucune photo libre du territoire de Namoya n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Maniema) — no freely licensed photo of Namoya territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Namoya n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Namoya is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3303": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/3/34/Lake_Mai-Ndombe_NASA.jpg",
-  "image_credit": "Wikimedia Commons (Public domain)",
-  "image_source_page": "en:Lake Mai-Ndombe",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Maï-Ndombe) — aucune photo libre du territoire de Kiri n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Maï-Ndombe) — no freely licensed photo of Kiri territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kiri n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kiri is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3306": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/ISS014-E-20356_-_View_of_Angola.jpg/1280px-ISS014-E-20356_-_View_of_Angola.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-2.95,18.17",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kutu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kutu is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3311": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/ISS027-E-16667_-_View_of_Earth.jpg/1280px-ISS027-E-16667_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-2.54,17.15",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Mushie n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mushie is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3304": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/ISS052-E-37433_-_View_of_Earth.jpg/1280px-ISS052-E-37433_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-3.11,19.78",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Oshwe n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Oshwe is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3310": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/ISS034-E-47766_-_View_of_Earth.jpg/1280px-ISS034-E-47766_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-2.11,16.46",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Yumbi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Yumbi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4404": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/ISS031-E-47478_-_View_of_Earth.jpg/1280px-ISS031-E-47478_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:2.69,22.30",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Bumba n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bumba is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4306": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/ISS012-E-6957_-_View_of_Sudan.jpg/1280px-ISS012-E-6957_-_View_of_Sudan.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:4.34,19.89",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Bosobolo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bosobolo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4305": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Gbadolite_aerial_view.jpg",
-  "image_credit": "Wikimedia Commons / Radio Okapi/John Bompengo / MONUSCO (CC BY-SA 2.0)",
-  "image_source_page": "fr:Gbadolite",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Nord-Ubangi) — aucune photo libre du territoire de Businga n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Nord-Ubangi) — no freely licensed photo of Businga territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Businga n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Businga is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4302": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Gbadolite_aerial_view.jpg",
-  "image_credit": "Wikimedia Commons / Radio Okapi/John Bompengo / MONUSCO (CC BY-SA 2.0)",
-  "image_source_page": "fr:Gbadolite",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Nord-Ubangi) — aucune photo libre du territoire de Mobayi-Mbongo n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Nord-Ubangi) — no freely licensed photo of Mobayi-Mbongo territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Mobayi-Mbongo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mobayi-Mbongo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4304": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Gbadolite_aerial_view.jpg",
-  "image_credit": "Wikimedia Commons / Radio Okapi/John Bompengo / MONUSCO (CC BY-SA 2.0)",
-  "image_source_page": "fr:Gbadolite",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Nord-Ubangi) — aucune photo libre du territoire de Yakoma n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Nord-Ubangi) — no freely licensed photo of Yakoma territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Yakoma n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Yakoma is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8308": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/7/77/Sankuru_River_entering_Kasai_River_NASA.jpg",
-  "image_credit": "Wikimedia Commons (Public domain)",
-  "image_source_page": "en:Sankuru River",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Sankuru) — aucune photo libre du territoire de Katako-Kombe n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Sankuru) — no freely licensed photo of Katako-Kombe territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Katako-Kombe n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Katako-Kombe is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8307": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/ISS053-E-221231_-_View_of_Earth.jpg/1280px-ISS053-E-221231_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-2.38,23.42",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Lomela n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lomela is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8305": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/7/77/Sankuru_River_entering_Kasai_River_NASA.jpg",
-  "image_credit": "Wikimedia Commons (Public domain)",
-  "image_source_page": "en:Sankuru River",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Sankuru) — aucune photo libre du territoire de Bena-Dibele n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Sankuru) — no freely licensed photo of Bena-Dibele territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Bena-Dibele n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bena-Dibele is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8311": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/7/77/Sankuru_River_entering_Kasai_River_NASA.jpg",
-  "image_credit": "Wikimedia Commons (Public domain)",
-  "image_source_page": "en:Sankuru River",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Sankuru) — aucune photo libre du territoire de Tshumbe n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Sankuru) — no freely licensed photo of Tshumbe territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Tshumbe n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Tshumbe is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6207": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/ISS043-E-3255_-_View_of_Earth.jpg/1280px-ISS043-E-3255_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-2.77,28.60",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Walungu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Walungu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6213": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/ISS036-E-30313_-_View_of_Earth.jpg/1280px-ISS036-E-30313_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-3.06,28.19",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kamituga n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kamituga is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4203": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/ISS066-E-19944_-_View_of_Earth.jpg/1280px-ISS066-E-19944_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:2.67,20.07",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Budjala n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Budjala is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4204": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/ISS034-E-60042_-_View_of_Earth.jpg/1280px-ISS034-E-60042_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:2.55,18.74",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kungu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kungu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4206": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/ISS062-E-106342_-_View_of_Earth.jpg/1280px-ISS062-E-106342_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, NASA Johnson Space Ce (Public domain)",
-  "image_source_page": "commons-geo:4.19,18.72",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Zongo n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Zongo is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7407": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/ISS018-E-5913_-_View_of_Democratic_Republic_of_the_Congo.jpg/1280px-ISS018-E-5913_-_View_of_Democratic_Republic_of_the_Congo.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-6.18,26.98",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kabalo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kabalo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7406": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/ISS023-E-33462_-_View_of_Earth.jpg/1280px-ISS023-E-33462_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-7.43,27.59",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Manono n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Manono is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7403": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/STS51G-034-0012_Lake_Tanganyika_June1985.jpg/1280px-STS51G-034-0012_Lake_Tanganyika_June1985.jpg",
-  "image_credit": "Wikimedia Commons / NASA (Public domain)",
-  "image_source_page": "en:Lake Tanganyika",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Tanganyika) — aucune photo libre du territoire de Kaoze n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Tanganyika) — no freely licensed photo of Kaoze territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Kaoze n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kaoze is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5103": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/ISS030-E-21652_-_View_of_Earth.jpg/1280px-ISS030-E-21652_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-0.72,23.95",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Opala n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Opala is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5107": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Zaire_kisangani_stroom_11_copy.jpg/1280px-Zaire_kisangani_stroom_11_copy.jpg",
-  "image_credit": "Wikimedia Commons / Ad Meskens (CC BY-SA 3.0)",
-  "image_source_page": "en:Boyoma Falls",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Tshopo) — aucune photo libre du territoire de Yahuma n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Tshopo) — no freely licensed photo of Yahuma territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Yahuma n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Yahuma is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5106": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Centromyrmex_feae_sam-hym-c007974b_profile_1.jpg",
-  "image_credit": "Wikimedia Commons (CC BY 4.0)",
-  "image_source_page": "commons-geo:0.78,24.48",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Yangambi n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Yangambi is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4503": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/ISS063-E-92150_-_View_of_Earth.jpg/1280px-ISS063-E-92150_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, NASA Johnson Space Ce (Public domain)",
-  "image_source_page": "commons-geo:0.60,21.11",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Befale n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Befale is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4506": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/5/54/La_rivi%C3%A8re_Lulilaka%2C_parc_national_de_Salonga%2C_2005.jpg",
-  "image_credit": "Wikimedia Commons / Radio Okapi (CC BY 2.0)",
-  "image_source_page": "en:Salonga National Park",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Tshuapa) — aucune photo libre du territoire de Bokungu n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Tshuapa) — no freely licensed photo of Bokungu territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Bokungu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bokungu is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4504": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/ISS065-E-447737_-_View_of_Earth.jpg/1280px-ISS065-E-447737_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:0.68,22.23",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Djolu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Djolu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4505": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/ISS067-E-221772_-_View_of_Earth.jpg/1280px-ISS067-E-221772_-_View_of_Earth.jpg",
-  "image_credit": "Wikimedia Commons / Earth Science and Remote Sensing Unit, Lyndon B. Johnson Spa (Public domain)",
-  "image_source_page": "commons-geo:-1.00,23.11",
-  "image_scope": "unit"
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
+  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Ikela n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ikela is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4507": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/5/54/La_rivi%C3%A8re_Lulilaka%2C_parc_national_de_Salonga%2C_2005.jpg",
-  "image_credit": "Wikimedia Commons / Radio Okapi (CC BY 2.0)",
-  "image_source_page": "en:Salonga National Park",
-  "image_scope": "province",
-  "image_note_fr": "Photo de la province (Tshuapa) — aucune photo libre du territoire de Monkoto n'existe encore sur Wikimedia Commons.",
-  "image_note_en": "Province photo (Tshuapa) — no freely licensed photo of Monkoto territory exists on Wikimedia Commons yet."
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
+  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image_scope": "national-symbol",
+  "image_note_fr": "Aucune photo libre de Monkoto n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Monkoto is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  }
 }
