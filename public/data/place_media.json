@@ -15,7 +15,7 @@
    ],
    "image_scope": "\"unit\" = photo of the place itself; \"national-symbol\" = DRC flag or leopard totem placeholder (see image_note_fr/en)."
   },
-  "status": "Audited 2026-07-19: 215 entries. Real place photos where verified appropriate; 88 entries use national symbols (DRC flag / leopard totem) because no usable freely licensed local photo exists (includes removal of out-of-context finds: ISS satellite views, wrong-country matches, specimen photos). image_scope: \"unit\" = local photo; \"national-symbol\" = flag/leopard placeholder with bilingual note."
+  "status": "Audited 2026-07-19: 215 entries. Real place photos where verified appropriate; 88 places with no usable freely licensed photo show a DRC national symbol (coat of arms / flag, alternating) with a bilingual \"contribute a photo\" note. Out-of-context finds removed (ISS satellite views, wrong-country matches, specimen/stock images)."
  },
  "CD1000": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg/1280px-La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg",
@@ -836,11 +836,11 @@
   "image_scope": "unit"
  },
  "CD5110": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Banalia n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Banalia is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Banalia n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Banalia yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3201": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Bandundu_Centre%2C_vue_a%C3%A9rienne.jpg",
@@ -904,10 +904,10 @@
  },
  "CD7205": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Dilolo n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Dilolo is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Dilolo yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9107": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Palm_oil_manufacture_%282%29_Lac_Mukamba%2C_Deretoire_de_Dimbelenge%2C_Kasai_occ._RD_Congo.JPG/1280px-Palm_oil_manufacture_%282%29_Lac_Mukamba%2C_Deretoire_de_Dimbelenge%2C_Kasai_occ._RD_Congo.JPG",
@@ -940,11 +940,11 @@
   "image_scope": "unit"
  },
  "CD3103": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Feshi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Feshi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Feshi n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Feshi yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6210": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Un_H%C3%A9licopt%C3%A8re_de_la_MONUSCO_en_train_d%27atterrir_sur_la_piste_de_Baraka_dans_le_Territoire_de_Fizi_%C3%A0_90_Km_d%27Uvira_au_Sud-Kivu._%2815267267554%29.jpg",
@@ -1121,11 +1121,11 @@
   "image_scope": "unit"
  },
  "CD7203": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Lubudi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Lubudi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Lubudi n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lubudi yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9204": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/VingtAnnees_278.jpg/1280px-VingtAnnees_278.jpg",
@@ -1242,11 +1242,11 @@
   "image_scope": "unit"
  },
  "CD7206": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Sandoa n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Sandoa is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Sandoa n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Sandoa yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6203": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/La_rivi%C3%A8re_Ulindi%2C_qui_prend_sa_source_dans_le_Mont_Piernard%2C_se_dirige_vers_l%E2%80%99ouest_en_traversant_les_territoires_de_Mwenga_et_de_Shabunda%2C_dans_la_province_du_Sud_Kivu._%2819573766866%29.jpg/1280px-thumbnail.jpg",
@@ -1261,25 +1261,25 @@
   "image_scope": "unit"
  },
  "CD7207": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kapanga n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kapanga is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kapanga n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kapanga yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8108": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Lubao n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Lubao is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Lubao n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lubao yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2005": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Lukula n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Lukula is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Lukula n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lukula yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4105": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Station_bangala.jpg",
@@ -1330,214 +1330,214 @@
   "image_scope": "unit"
  },
  "CD5207": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Ango n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Ango is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Ango n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ango yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5209": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Bambesa n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Bambesa is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Bambesa n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bambesa yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5206": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Bondo n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Bondo is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Bondo n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bondo yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4102": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Bikoro n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Bikoro is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Bikoro yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4108": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Bolomba n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Bolomba is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Bolomba n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bolomba yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4104": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Bomongo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Bomongo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Bomongo n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bomongo yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4109": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Ingende n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Ingende is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Ingende n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ingende yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7104": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Sakania n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Sakania is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Sakania n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Sakania yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7304": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kabongo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kabongo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kabongo n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kabongo yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7303": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kaniama n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kaniama is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kaniama n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kaniama yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5302": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Rungu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Rungu is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Rungu yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5311": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Wamba n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Wamba is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Wamba n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Wamba yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5309": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Watsa n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Watsa is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Watsa n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Watsa yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5306": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Aba n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Aba is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Aba n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Aba yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5410": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Ariwara n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Ariwara is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Ariwara n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ariwara yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5411": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Ingbokolo n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Ingbokolo is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Ingbokolo yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5404": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Mongwalu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Mongwalu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Mongwalu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mongwalu yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9208": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Dekese n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Dekese is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Dekese n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Dekese yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9205": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Ilebo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Ilebo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Ilebo n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ilebo yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9106": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Demba n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Demba is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Demba yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD9104": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Luiza n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Luiza is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Luiza n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Luiza yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8207": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kabeya-Kamwanga n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kabeya-Kamwanga is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kabeya-Kamwanga n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kabeya-Kamwanga yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8208": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Lupatapata n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Lupatapata is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Lupatapata yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8205": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Miabi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Miabi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Miabi n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Miabi yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8202": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Tshilenge n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Tshilenge is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Tshilenge n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Tshilenge yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8204": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Lukalaba n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Lukalaba is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Lukalaba n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lukalaba yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2019": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kimvula n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kimvula is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kimvula n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kimvula yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2010": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Luozi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Luozi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Luozi n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Luozi yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2009": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Seke-Banza n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Seke-Banza is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Seke-Banza n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Seke-Banza yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2007": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Tshela n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Tshela is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Tshela yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD2012": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/8/8d/La_cimenterie_nationale_de_Kimpese_%C2%AB_CINAT_SA_%C2%BB.jpg",
@@ -1546,353 +1546,353 @@
   "image_scope": "unit"
  },
  "CD3105": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kahemba n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kahemba is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kahemba n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kahemba yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3107": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Kasongo-Lunda n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kasongo-Lunda is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Kasongo-Lunda yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3202": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Bagata n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Bagata is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Bagata n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bagata yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3204": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Bulungu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Bulungu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Bulungu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bulungu yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3210": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Gungu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Gungu is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Gungu yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3206": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Idiofa n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Idiofa is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Idiofa n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Idiofa yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3209": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Dibaya-Lubwe n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Dibaya-Lubwe is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Dibaya-Lubwe n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Dibaya-Lubwe yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3208": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Mangai n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Mangai is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Mangai n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mangai yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8102": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kabinda n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kabinda is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kabinda n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kabinda yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8105": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kamiji n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kamiji is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kamiji n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kamiji yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8104": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Luilu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Luilu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Luilu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Luilu yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8106": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Ngandajika n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Ngandajika is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Ngandajika yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8103": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Mwene-Ditu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Mwene-Ditu is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Mwene-Ditu n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mwene-Ditu yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7202": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Mutshatsha n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Mutshatsha is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Mutshatsha n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mutshatsha yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7204": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kasaji n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kasaji is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kasaji n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kasaji yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6305": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Lubutu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Lubutu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Lubutu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lubutu yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6307": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Pangi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Pangi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Pangi n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Pangi yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6303": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Punia n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Punia is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Punia n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Punia yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6308": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Kalima n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kalima is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Kalima yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6310": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Namoya n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Namoya is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Namoya n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Namoya yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3303": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kiri n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kiri is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kiri n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kiri yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3306": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kutu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kutu is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kutu n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kutu yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3311": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Mushie n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Mushie is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Mushie n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mushie yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3304": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Oshwe n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Oshwe is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Oshwe n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Oshwe yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD3310": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Yumbi n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Yumbi is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Yumbi n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Yumbi yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4404": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Bumba n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Bumba is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Bumba n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bumba yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4306": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Bosobolo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Bosobolo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Bosobolo n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bosobolo yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4305": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Businga n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Businga is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Businga n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Businga yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4302": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Mobayi-Mbongo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Mobayi-Mbongo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Mobayi-Mbongo n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Mobayi-Mbongo yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4304": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Yakoma n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Yakoma is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Yakoma n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Yakoma yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8308": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Katako-Kombe n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Katako-Kombe is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Katako-Kombe n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Katako-Kombe yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8307": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Lomela n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Lomela is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Lomela n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Lomela yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8305": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Bena-Dibele n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Bena-Dibele is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Bena-Dibele n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bena-Dibele yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD8311": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Tshumbe n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Tshumbe is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Tshumbe n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Tshumbe yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6207": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Walungu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Walungu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Walungu n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Walungu yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD6213": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kamituga n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kamituga is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kamituga n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kamituga yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4203": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Budjala n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Budjala is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Budjala n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Budjala yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4204": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kungu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kungu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kungu n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kungu yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4206": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Zongo n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Zongo is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Zongo yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7407": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kabalo n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kabalo is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kabalo n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kabalo yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7406": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Manono n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Manono is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Manono yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD7403": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Kaoze n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Kaoze is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Kaoze n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Kaoze yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5103": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Opala n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Opala is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Opala n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Opala yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5107": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Yahuma n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Yahuma is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Yahuma n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Yahuma yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD5106": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Yangambi n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Yangambi is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Yangambi yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4503": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
   "image_note_fr": "Aucune photo libre de Befale n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Befale is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_en": "No freely licensed photo of Befale yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4506": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
-  "image_credit": "Wikimedia Commons (domaine public)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Bokungu n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Bokungu is available yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Bokungu n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Bokungu yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4504": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1024px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png",
+  "image_credit": "Armoiries de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Djolu n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Djolu is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Djolu n'est encore disponible — les armoiries nationales sont affichées en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Djolu yet — the coat of arms is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4505": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/African_leopard_male_%28cropped%29.jpg/1280px-African_leopard_male_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons / Sumeet Moghe (CC BY-SA 4.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Ikela n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Ikela is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Ikela n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Ikela yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  },
  "CD4507": {
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Leopard_africa.jpg/1280px-Leopard_africa.jpg",
-  "image_credit": "Wikimedia Commons / JanErkamp (CC BY-SA 3.0)",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1280px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+  "image_credit": "Drapeau de la RDC — Wikimedia Commons (domaine public)",
   "image_scope": "national-symbol",
-  "image_note_fr": "Aucune photo libre de Monkoto n'est encore disponible — notre totem, le léopard est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
-  "image_note_en": "No freely licensed photo of Monkoto is available yet — our totem, the leopard is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
+  "image_note_fr": "Aucune photo libre de Monkoto n'est encore disponible — le drapeau national est affiché en attendant. Vous avez une photo ? Contribuez sur Wikimedia Commons.",
+  "image_note_en": "No freely licensed photo of Monkoto yet — the national flag is shown meanwhile. Have a photo? Contribute it on Wikimedia Commons."
  }
 }

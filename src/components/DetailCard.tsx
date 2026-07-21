@@ -82,33 +82,23 @@ function CardHero({
   const [imageOk, setImageOk] = useState(true)
   const hasImage = Boolean(media?.image) && imageOk
 
-  if (hasImage) {
-    // national-symbol = a dignified placeholder (DRC flag or leopard totem)
-    // standing in until a real local photo is contributed — not an error state.
-    const isSymbol = media!.image_scope === 'national-symbol'
-    const note = lang === 'fr' ? media!.image_note_fr : media!.image_note_en
+  const note = lang === 'fr' ? media?.image_note_fr : media?.image_note_en
+
+  // national-symbol = the DRC coat of arms / flag standing in until a real
+  // local photo is contributed. It's an emblem, not a scene: contain it,
+  // centered and padded, on a solid dark-teal panel — never cropped.
+  if (hasImage && media!.image_scope === 'national-symbol') {
     return (
-      <div className="relative h-44 w-full shrink-0 overflow-hidden">
+      <div className="relative h-44 w-full shrink-0 overflow-hidden bg-ocean-deep">
         <img
           src={media!.image}
           alt={name}
-          crossOrigin="anonymous" // so the same cached fetch is reusable, untainted, by the share canvas
-          className={`h-full w-full object-cover ${isSymbol ? 'opacity-95' : ''}`}
+          crossOrigin="anonymous"
+          className="h-full w-full object-contain px-6 pb-11 pt-14"
           onError={() => setImageOk(false)}
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-        <HeroTitle name={name} pcode={pcode} />
-        {media?.image_credit && (
-          <span
-            className={`absolute right-2 rounded-full bg-black/45 px-2 py-0.5 text-[9px] text-white/85 ${
-              isSymbol ? 'bottom-2' : 'top-2'
-            }`}
-          >
-            {media.image_credit}
-          </span>
-        )}
-        {isSymbol && note && (
-          <div className="pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-ocean-deep/90 via-ocean-deep/50 to-transparent px-4 pb-8 pt-2.5 pr-11">
+        {note && (
+          <div className="pointer-events-none absolute inset-x-0 top-0 bg-ocean-deep/80 px-4 py-2.5 pr-11">
             <p className="flex items-start gap-1.5 text-[11px] font-medium leading-snug text-white/95">
               <span aria-hidden className="mt-px shrink-0 text-[12px]">
                 🇨🇩
@@ -116,6 +106,34 @@ function CardHero({
               <span>{note}</span>
             </p>
           </div>
+        )}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-ocean-deep to-transparent" />
+        <HeroTitle name={name} pcode={pcode} />
+        {media?.image_credit && (
+          <span className="absolute right-2 bottom-2 rounded-full bg-black/45 px-2 py-0.5 text-[9px] text-white/85">
+            {media.image_credit}
+          </span>
+        )}
+      </div>
+    )
+  }
+
+  if (hasImage) {
+    return (
+      <div className="relative h-44 w-full shrink-0 overflow-hidden">
+        <img
+          src={media!.image}
+          alt={name}
+          crossOrigin="anonymous" // so the same cached fetch is reusable, untainted, by the share canvas
+          className="h-full w-full object-cover"
+          onError={() => setImageOk(false)}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+        <HeroTitle name={name} pcode={pcode} />
+        {media?.image_credit && (
+          <span className="absolute right-2 top-2 rounded-full bg-black/45 px-2 py-0.5 text-[9px] text-white/85">
+            {media.image_credit}
+          </span>
         )}
       </div>
     )
