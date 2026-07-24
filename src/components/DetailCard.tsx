@@ -71,31 +71,46 @@ function CardHero({
   color,
   media,
   features,
+  symbolFallback,
 }: {
   name: string
   pcode?: string
   color: string
   media: PlaceMedia | undefined
   features: UnitFeature[]
+  symbolFallback: string | null
 }) {
   const { lang } = useLanguage()
-  const [imageOk, setImageOk] = useState(true)
-  const hasImage = Boolean(media?.image) && imageOk
+  // ok → the curated image; 'symbol' → coat-of-arms fallback after a load error;
+  // 'silhouette' → last resort (no image / emblem also failed). Reset when the
+  // place changes (keyed remount already gives us a fresh mount per pcode).
+  const [stage, setStage] = useState<'ok' | 'symbol' | 'silhouette'>('ok')
 
   const note = lang === 'fr' ? media?.image_note_fr : media?.image_note_en
+  const isSymbolEntry = media?.image_scope === 'national-symbol'
 
-  // national-symbol = the DRC coat of arms / flag standing in until a real
-  // local photo is contributed. It's an emblem, not a scene: contain it,
-  // centered and padded, on a solid dark-teal panel — never cropped.
-  if (hasImage && media!.image_scope === 'national-symbol') {
+  // Which image is actually on screen, and whether to use the emblem layout.
+  const showImage = stage === 'ok' ? media?.image : stage === 'symbol' ? symbolFallback : undefined
+  const emblemLayout = isSymbolEntry || stage === 'symbol'
+
+  const onError = () => {
+    // A scenic photo that breaks falls over to the coat of arms; the emblem (or
+    // a missing fallback) drops to the silhouette. Never an empty header.
+    setStage((s) =>
+      s === 'ok' && !isSymbolEntry && symbolFallback ? 'symbol' : 'silhouette',
+    )
+  }
+
+  // ----- emblem layout: contain, centered, padded on a dark-teal panel -----
+  if (showImage && emblemLayout) {
     return (
       <div className="relative h-44 w-full shrink-0 overflow-hidden bg-ocean-deep">
         <img
-          src={media!.image}
+          src={showImage}
           alt={name}
           crossOrigin="anonymous"
           className="h-full w-full object-contain px-6 pb-11 pt-14"
-          onError={() => setImageOk(false)}
+          onError={onError}
         />
         {note && (
           <div className="pointer-events-none absolute inset-x-0 top-0 bg-ocean-deep/80 px-4 py-2.5 pr-11">
@@ -109,7 +124,7 @@ function CardHero({
         )}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-ocean-deep to-transparent" />
         <HeroTitle name={name} pcode={pcode} />
-        {media?.image_credit && (
+        {isSymbolEntry && media?.image_credit && (
           <span className="absolute right-2 bottom-2 rounded-full bg-black/45 px-2 py-0.5 text-[9px] text-white/85">
             {media.image_credit}
           </span>
@@ -118,15 +133,16 @@ function CardHero({
     )
   }
 
-  if (hasImage) {
+  // ----- scenic photo: cover -----
+  if (showImage) {
     return (
       <div className="relative h-44 w-full shrink-0 overflow-hidden">
         <img
-          src={media!.image}
+          src={showImage}
           alt={name}
           crossOrigin="anonymous" // so the same cached fetch is reusable, untainted, by the share canvas
           className="h-full w-full object-cover"
-          onError={() => setImageOk(false)}
+          onError={onError}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
         <HeroTitle name={name} pcode={pcode} />
@@ -139,7 +155,7 @@ function CardHero({
     )
   }
 
-  // no photo: the unit's map color + its real silhouette ARE the identity
+  // ----- no image at all: the unit's map color + its real silhouette -----
   return (
     <div
       className="relative h-44 w-full shrink-0 overflow-hidden"
@@ -253,7 +269,14 @@ function UnitCard({ data, unit }: { data: DrcData; unit: TerritoryUnit }) {
 
   return (
     <CardShell>
-      <CardHero name={unit.name} pcode={unit.pcode} color={color} media={media} features={unitFeatures(data, [unit.pcode])} />
+      <CardHero
+        name={unit.name}
+        pcode={unit.pcode}
+        color={color}
+        media={media}
+        features={unitFeatures(data, [unit.pcode])}
+        symbolFallback={data.nationalSymbolImage}
+      />
 
       <div className="flex flex-wrap items-center gap-1.5 px-5 pt-3">
         <span className="rounded-full bg-ink/8 px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-wide text-ink/70">
@@ -424,6 +447,7 @@ function ProvinceCard({ data, province }: { data: DrcData; province: Province })
         color={color}
         media={media}
         features={unitFeatures(data, units.map((u) => u.pcode))}
+        symbolFallback={data.nationalSymbolImage}
       />
 
       <div className="flex flex-wrap items-center gap-1.5 px-5 pt-3">

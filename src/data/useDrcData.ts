@@ -19,6 +19,9 @@ export interface DrcData {
   byProvinceName: Map<string, Province>
   /** Look up per-place imagery/facts by unit P-code or "province:<Name>". Empty until curated. */
   media: Map<string, PlaceMedia>
+  /** DRC coat-of-arms URL (from the national-symbol entries) used as the universal
+   *  image-load fallback so a header is never empty. Null if none in the data. */
+  nationalSymbolImage: string | null
   /** Health zones grouped by territory pcode (Phase 3 layer). Empty if unavailable. */
   healthZonesByTerritory: Map<string, HealthZone[]>
   /** Historical administrative eras, chronological (Phase 3 layer). Empty if unavailable. */
@@ -68,6 +71,17 @@ async function loadAll(): Promise<DrcData> {
     }
   }
 
+  // Coat of arms preferred (over the flag) as the universal image fallback.
+  let nationalSymbolImage: string | null = null
+  for (const entry of media.values()) {
+    if (entry.image_scope !== 'national-symbol' || !entry.image) continue
+    if (/coat_of_arms/i.test(entry.image)) {
+      nationalSymbolImage = entry.image
+      break
+    }
+    nationalSymbolImage = nationalSymbolImage ?? entry.image
+  }
+
   // Layer data (Phase 3) — all optional and non-fatal.
   const { healthZonesByTerritory, historicalEras, historicalNote, parks } = await loadLayers()
 
@@ -80,6 +94,7 @@ async function loadAll(): Promise<DrcData> {
     byPcode,
     byProvinceName,
     media,
+    nationalSymbolImage,
     healthZonesByTerritory,
     historicalEras,
     historicalNote,
