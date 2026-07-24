@@ -4,6 +4,7 @@ import { useLayer } from '../state/LayerContext'
 import { useLanguage } from '../i18n/LanguageContext'
 import { LANGUAGE_COLORS } from '../theme/languages'
 import { formatNumber, type NumberLocale } from '../utils/format'
+import { AnthemPlayer } from './AnthemPlayer'
 
 /** Renders the overlay UI (legend / timeline / health panel / note) for the active layer. */
 export function LayerOverlays({ data }: { data: DrcData }) {
@@ -34,17 +35,27 @@ function LanguageLegend() {
 
 function HistoryTimeline({ data }: { data: DrcData }) {
   const { eraIndex, setEraIndex } = useLayer()
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   // eras from data + a synthetic "2015" step (modern) rendered by the last era's clamp
   const stops = [...data.historicalEras.map((e) => e.key), '2015']
   const clamped = Math.min(eraIndex, data.historicalEras.length - 1)
   const activeEra = data.historicalEras[clamped]
 
+  // Match the current slider stop (e.g. "1988") to the country's naming era.
+  const stopKey = stops[eraIndex]
+  const naming = data.anthems?.namingEras.find((ne) => ne.map_era.includes(stopKey))
+  const countryName = naming ? (lang === 'en' ? naming.name_en : naming.name_fr) : null
+  const anthem = naming?.anthem ? data.anthems?.anthems[naming.anthem] : null
+  const anthemNote = naming ? (lang === 'en' ? naming.anthem_note_en ?? naming.anthem_note_fr : naming.anthem_note_fr) : null
+
   return (
     <div className="pointer-events-auto w-[min(92vw,520px)] rounded-2xl bg-white/95 px-4 py-3 shadow-xl backdrop-blur">
-      <div className="mb-1 flex items-baseline justify-between">
-        <span className="text-[13px] font-extrabold text-teal">{stops[eraIndex]}</span>
-        <span className="text-[12px] font-semibold text-ink/70">{activeEra?.label.split('—')[1]?.trim()}</span>
+      <div className="mb-1.5">
+        <p className="text-[14px] font-extrabold leading-tight text-teal">
+          {countryName ?? stopKey}
+          {naming && <span className="font-semibold text-ink/45"> · {naming.period}</span>}
+        </p>
+        <p className="text-[11px] font-semibold text-ink/55">{activeEra?.label.split('—')[1]?.trim()}</p>
       </div>
       <input
         type="range"
@@ -60,7 +71,20 @@ function HistoryTimeline({ data }: { data: DrcData }) {
           <span key={s}>{s}</span>
         ))}
       </div>
+
+      {anthem && naming ? (
+        <AnthemPlayer key={`${naming.anthem}:${naming.period}`} anthem={anthem} years={naming.period} />
+      ) : (
+        anthemNote && (
+          <p className="mt-2 flex items-start gap-1.5 rounded-xl bg-app-bg px-3 py-2 text-[11px] leading-snug text-ink/60">
+            <span aria-hidden>🎵</span>
+            <span>{anthemNote}</span>
+          </p>
+        )
+      )}
+
       <p className="mt-2 text-[11px] leading-snug text-ink/55">{data.historicalNote || t('historyNote')}</p>
+      {data.anthems && <p className="mt-1 text-[10px] italic leading-snug text-ink/40">{t('anthemBookend')}</p>}
     </div>
   )
 }

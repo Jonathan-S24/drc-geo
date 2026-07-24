@@ -30,7 +30,7 @@ export default defineConfig({
       workbox: {
         // Precache the shell + every data file so the app is fully usable offline
         // after the first visit. Data is ~1.3MB total, safe to precache.
-        globPatterns: ['**/*.{js,css,html,woff,woff2,svg,png,json,geojson}'],
+        globPatterns: ['**/*.{js,css,html,woff,woff2,svg,png,json,geojson,ogg}'],
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         navigateFallback: '/index.html',
         // SPA path routes (/province/x, /territoire/y) must resolve to the shell offline.

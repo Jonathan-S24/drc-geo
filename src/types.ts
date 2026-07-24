@@ -128,3 +128,30 @@ export interface HistoricalEraProps {
   name: string
   modern: string[]
 }
+
+export interface Anthem {
+  title: string
+  title_en?: string
+  audio: string
+  audio_credit: string
+  composer: string
+  lyricist: string
+  note_fr: string
+  note_en?: string
+}
+
+/** A period of the country's naming history, paired with an anthem (or none). */
+export interface NamingEra {
+  period: string
+  name_fr: string
+  name_en: string
+  anthem: string | null // key into anthems{}, or null (no national anthem)
+  anthem_note_fr?: string
+  anthem_note_en?: string
+  map_era: string // references the historical map-era label(s) this period spans
+}
+
+export interface AnthemsData {
+  anthems: Record<string, Anthem>
+  namingEras: NamingEra[]
+}

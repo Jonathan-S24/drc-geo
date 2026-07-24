@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { HealthZone, HistoricalEraProps, Province, ProvincesFile, TerritoriesFile, TerritoryUnit } from '../types'
+import type { AnthemsData, HealthZone, HistoricalEraProps, Province, ProvincesFile, TerritoriesFile, TerritoryUnit } from '../types'
 import type { FeatureCollection, Geometry, Polygon } from 'geojson'
 import type { PlaceMedia, PlaceMediaFile, UnitFeatureProperties } from '../types'
 
@@ -27,6 +27,8 @@ export interface DrcData {
   /** Historical administrative eras, chronological (Phase 3 layer). Empty if unavailable. */
   historicalEras: HistoricalEra[]
   historicalNote: string
+  /** National anthems + naming eras for the Histoire timeline. Null if unavailable. */
+  anthems: AnthemsData | null
   /** National parks / protected areas overlay (Phase 3). Null if the OSM fetch was skipped. */
   parks: FeatureCollection<Geometry, { name: string; name_en?: string }> | null
 }
@@ -83,7 +85,7 @@ async function loadAll(): Promise<DrcData> {
   }
 
   // Layer data (Phase 3) — all optional and non-fatal.
-  const { healthZonesByTerritory, historicalEras, historicalNote, parks } = await loadLayers()
+  const { healthZonesByTerritory, historicalEras, historicalNote, anthems, parks } = await loadLayers()
 
   return {
     provinces: provincesFile.provinces,
@@ -98,6 +100,7 @@ async function loadAll(): Promise<DrcData> {
     healthZonesByTerritory,
     historicalEras,
     historicalNote,
+    anthems,
     parks,
   }
 }
@@ -106,6 +109,7 @@ async function loadLayers() {
   const healthZonesByTerritory = new Map<string, HealthZone[]>()
   let historicalEras: HistoricalEra[] = []
   let historicalNote = ''
+  let anthems: AnthemsData | null = null
   let parks: DrcData['parks'] = null
 
   const safeJson = async (url: string) => {
@@ -117,9 +121,10 @@ async function loadLayers() {
     }
   }
 
-  const [health, historical, parksData] = await Promise.all([
+  const [health, historical, anthemsData, parksData] = await Promise.all([
     safeJson('/data/health_zones.json'),
     safeJson('/data/historical_provinces.json'),
+    safeJson('/data/anthems.json'),
     safeJson('/data/parks.geojson'),
   ])
 
@@ -140,9 +145,13 @@ async function loadLayers() {
     }))
   }
 
+  if (anthemsData?.anthems && anthemsData?.naming_eras) {
+    anthems = { anthems: anthemsData.anthems, namingEras: anthemsData.naming_eras }
+  }
+
   if (parksData?.features) parks = parksData
 
-  return { healthZonesByTerritory, historicalEras, historicalNote, parks }
+  return { healthZonesByTerritory, historicalEras, historicalNote, anthems, parks }
 }
 
 /** Fetches and memoizes the three source-of-truth data files (fetched once per session). */

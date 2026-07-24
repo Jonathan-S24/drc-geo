@@ -1,0 +1,60 @@
+{
+  "_meta": {
+    "purpose": "National anthems + naming eras for the Histoire timeline. Audio bundled locally (public/data/audio/) so it plays offline. Pair each map era with the anthem of its period.",
+    "audio_note": "Both files are freely licensed from Wikimedia Commons. Ogg Vorbis; use <audio> with a play/pause control. Autoplay only on user gesture.",
+    "sources": "Wikipedia 'Debout Congolais' & 'La Zaïroise'; audio: Wikimedia Commons."
+  },
+  "anthems": {
+    "debout_congolais": {
+      "title": "Debout Congolais",
+      "title_en": "Arise, Congolese",
+      "audio": "/data/audio/debout_congolais.ogg",
+      "audio_credit": "Wikimedia Commons (CC0)",
+      "composer": "Simon-Pierre Boka di Mpasi Londi (musique)",
+      "lyricist": "Joseph Lutumba (paroles)",
+      "note_fr": "Hymne de l'indépendance (1960), remis en vigueur en 1997 et toujours en usage aujourd'hui.",
+      "note_en": "Independence anthem (1960), readopted in 1997 and still in use today."
+    },
+    "la_zairoise": {
+      "title": "La Zaïroise",
+      "title_en": "The Zairean",
+      "audio": "/data/audio/la_zairoise.ogg",
+      "audio_credit": "Wikimedia Commons (domaine public)",
+      "composer": "Simon-Pierre Boka di Mpasi Londi (musique)",
+      "lyricist": "Joseph Lutumba (paroles)",
+      "note_fr": "Hymne de la République du Zaïre, adopté le 27 octobre 1971, abandonné le 17 mai 1997.",
+      "note_en": "Anthem of the Republic of Zaire, adopted 27 October 1971, dropped 17 May 1997."
+    }
+  },
+  "naming_eras": [
+    {
+      "period": "1908–1960",
+      "name_fr": "Congo belge",
+      "name_en": "Belgian Congo",
+      "anthem": null,
+      "anthem_note_fr": "Colonie belge — pas d'hymne national propre (« La Brabançonne » belge).",
+      "map_era": "1919 — 4 provinces / 1947 — 6 provinces"
+    },
+    {
+      "period": "1960–1971",
+      "name_fr": "République du Congo (Léopoldville)",
+      "name_en": "Republic of the Congo (Léopoldville)",
+      "anthem": "debout_congolais",
+      "map_era": "1966 — 8 provinces + Kinshasa"
+    },
+    {
+      "period": "1971–1997",
+      "name_fr": "République du Zaïre",
+      "name_en": "Republic of Zaire",
+      "anthem": "la_zairoise",
+      "map_era": "1988 — 11 provinces"
+    },
+    {
+      "period": "1997–présent",
+      "name_fr": "République démocratique du Congo",
+      "name_en": "Democratic Republic of the Congo",
+      "anthem": "debout_congolais",
+      "map_era": "2015 — 26 provinces (actuel)"
+    }
+  ]
+}
