@@ -364,7 +364,8 @@ function UnitCard({ data, unit }: { data: DrcData; unit: TerritoryUnit }) {
           </Accordion>
         )}
         {unit.economy_note && (
-          <Accordion title={t('economy')}>
+          // For villes this is the headline content (no CAID fiche), so lead with it open.
+          <Accordion title={t('economy')} defaultOpen={unit.type === 'ville'}>
             <Prose text={unit.economy_note} />
           </Accordion>
         )}
