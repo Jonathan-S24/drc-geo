@@ -1,7 +1,7 @@
 {
  "meta": {
   "project": "DRC.Geo",
-  "version": "2.1",
+  "version": "2.4",
   "level": "territory (adm2)",
   "territoires": 145,
   "villes": 44,
@@ -12,10 +12,27 @@
    "kabambare_fill": "Compiled 2026-07: CENI 2018; OCHA/ReliefWeb (Jan 2025); Africamuseum Maniema monograph; congovirtuel.com; Wikipédia FR. No CAID fiche exists.",
    "security_note_2026": "New field, 19 eastern territoires (+ Kabambare), as of 2026-07: OCHA Ituri sitrep #6 (15 Jun 2026), OCHA Sud-Kivu sitreps (2025-26), Critical Threats Congo War Security Review (Jan-Jul 2026), HRW (Jan 2026), Ebuteli (2026), SOS Médias Burundi (May/Jul 2026), Actualite.cd (May 2026), Crisis24 (May 2026). Old CAID security_note kept (pre-2022).",
    "villes_profiles": "New: languages/main_activities/economy_note for 16 major villes, compiled 2026-07 from Britannica, UN DESA 2024, OCHA, WHO, academic literature. Source named inside each economy_note.",
-   "villes_enrichment_v21": "28 sparse villes (no CAID fiche) enriched 2026-07 with languages, main_activities, economy_note. Languages from regional ethnolinguistic references; economic specifics verified via search (Wikipedia, Britannica, UNESCO, Mindat, Miningmx, RTNC, OCHA). Source named inside each economy_note."
+   "villes_enrichment_v21": "28 sparse villes (no CAID fiche) enriched 2026-07 with languages, main_activities, economy_note. Languages from regional ethnolinguistic references; economic specifics verified via search (Wikipedia, Britannica, UNESCO, Mindat, Miningmx, RTNC, OCHA). Source named inside each economy_note.",
+   "ville_population_v22": "For 25 villes with no separate OCHA adm2 population (folded into parent territoire per HDX caveat): added population_2024_zone_sante (real OCHA 2024 health-zone figure, from health_zones.json) for 11 whose health zone bears the city name — labelled as health-zone catchment, not strict city boundary; the other 14 carry population_note explaining the caveat. No figures invented.",
+   "gap_fill_v23": "Filled remaining small territoire gaps 2026-07 from CAID fiche prose (languages/activities/agricultural_products the earlier parser missed) + Kabambare accessibility from OCHA/monograph compilation.",
+   "gap_fill_v24": "Re-parsed CAID fiches with prose-aware extractors to recover health_note (named/counted zones de santé) and subdivisions (secteurs/chefferies/groupements/villages) the initial parser missed."
   },
   "caveat": "Last national census 1984; all populations are projections. CAID qualitative data is pre-2022.",
-  "updated": "2026-07-19"
+  "updated": "2026-07-19",
+  "data_completeness": {
+   "note": "Territoire fields come from CAID fiches (2019-2021). subdivisions & health_note are absent from some fiches at source — not recoverable. All other fields complete. Villes & provinces 100%.",
+   "territoires": {
+    "languages": "145/145 (100%)",
+    "main_activities": "145/145 (100%)",
+    "agricultural_products": "145/145 (100%)",
+    "development_opportunities": "145/145 (100%)",
+    "accessibility_tourism": "145/145 (100%)",
+    "health_note": "122/145 (84%)",
+    "subdivisions": "89/145 (61%)",
+    "population_2024_ocha": "145/145 (100%)",
+    "area_km2_codab": "145/145 (100%)"
+   }
+  }
  },
  "units": [
   {
@@ -133,7 +150,7 @@
     "Maïs (3%)",
     "Haricot (2%)"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Ganga (fiche CAID).",
    "schools_primary": 125,
    "schools_secondary": 44,
    "development_opportunities": "Secteur de l'agriculture : Comme le sol du territoire de Bambesa est propice à l'agriculture, l'accélération du processus de mécanisation agricole aurait pour effet d'accroître le niveau de production et ainsi permettre à la population d'exploiter de plus grandes étendues en un temps record. La relance des plantations abandonnées : de café, de coton et des palmiers à huile dans le territoire favoriserait l'accroissement de la production agricole du territoire. Cette dernière pourrait être écoulée soit vers d'autres territoires, provinces ou soit exportée vers d'autres pays générant en contrepa",
@@ -152,7 +169,7 @@
    "population_2024_ocha": 308298,
    "population_caid": 470669,
    "population_caid_source": "Bureau territoire",
-   "subdivisions": null,
+   "subdivisions": "10 chefferies, 256 villages",
    "languages": [
     "Zande (80%)",
     "Ngbandi (40%)",
@@ -221,7 +238,7 @@
     "Manioc 3%",
     "La banane"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Buta, Titule (fiche CAID).",
    "schools_primary": 106,
    "schools_secondary": 53,
    "development_opportunities": "Aménager et revaloriser tous ces sites touristiques afin d'attirer plus les touristes ; Réhabiliter les routes des dessertes agricoles. Ceci permettrait aux agriculteurs d'acheminer leurs produits vers les grandes villes ; Réhabiliter les Chemins de Fer des Uélé (CFU) : une société ferroviaire qui jadis, transportait des marchandises et des passagers, employait un bon nombre d'ouvriers ; Réhabilitation du trafic aérien, trafic du réseau domestique à l'aéroport de ZEGA BUTA qui aujourd'hui est inexploité. Par ailleurs, il sied de signaler que la piste de l'aéroport de ZEGA BUTA est en bon état ",
@@ -302,7 +319,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Ancien centre cotonnier du Bas-Uele en pays zande (source : histoire agricole de l'Uele)."
+   "economy_note": "Ancien centre cotonnier du Bas-Uele en pays zande (source : histoire agricole de l'Uele).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Ango (Bas-Uele) (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Equateur",
@@ -360,7 +378,12 @@
     "L'ekonda (40%)",
     "Le Lomongo (20%)"
    ],
-   "main_activities": [],
+   "main_activities": [
+    "Agriculture",
+    "Élevage",
+    "Pêche",
+    "Artisanat"
+   ],
    "agricultural_products": [
     "Manioc",
     "Maïs",
@@ -388,7 +411,7 @@
    "population_2024_ocha": 403876,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "4 secteurs",
    "languages": [
     "Ngombe 90%",
     "Mongo 40%",
@@ -503,7 +526,7 @@
    "population_2024_ocha": 161037,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "3 secteurs",
    "languages": [
     "le lingala 90%",
     "le mpama 35%",
@@ -523,7 +546,7 @@
     "Le maïs",
     "Les tarrots"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Lukolela (fiche CAID).",
    "schools_primary": 145,
    "schools_secondary": 68,
    "development_opportunities": "La réhabilitation des routes de desserte agricole, routes en général et ponts se trouvant dans un état de délabrement très avancé, doter le territoire d'un générateur (Groupe d'une grande capacité, 65 à 100, pourquoi pas 1000 kva) repartis selon le secteur. Si possible créer un central hydroélectrique, ceci permettra l'éclosion de la formation de la main d'œuvre et permettra la création des entreprises ou industries de transformation dans le territoire. Que l'Etat encourage les ONGD internationales ou locales à oeuvrer dans le territoire ou caremment l'Etat lui même crée des Entreprises qui po",
@@ -614,7 +637,7 @@
    "population_2024_ocha": 1135493,
    "population_caid": 640357,
    "population_caid_source": "Rapport annuel 2020 de l'administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "9 groupements",
    "languages": [
     "Le Swahili",
     "Le Onde",
@@ -656,7 +679,7 @@
    "population_2024_ocha": 780782,
    "population_caid": 569298,
    "population_caid_source": "Bureau du territoire rapport annuel 2020",
-   "subdivisions": null,
+   "subdivisions": "le territoire de Kasenga, 126 villages sont desservis en eau potable",
    "languages": [
     "le bemba",
     "le Swahili",
@@ -919,7 +942,12 @@
     "Kiluba (85%)",
     "Swahili (35%)"
    ],
-   "main_activities": [],
+   "main_activities": [
+    "Agriculture (62%)",
+    "Pêche artisanale (12%)",
+    "Commerce",
+    "Élevage"
+   ],
    "agricultural_products": [
     "Manioc (35%)",
     "Maïs (30%)",
@@ -1186,7 +1214,7 @@
    "population_2024_ocha": 156906,
    "population_caid": 154007,
    "population_caid_source": "Rapport annuel 2020 du bureau administratif du territoire",
-   "subdivisions": null,
+   "subdivisions": "7 chefferies",
    "languages": [
     "Lingala",
     "Kingbetu",
@@ -1209,7 +1237,7 @@
     "Bananes plantains (8%)",
     "Maïs (7%)"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Niangara (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Pour le développement du territoire de Niangara, le retour des éleveurs MBORORO et l'éradication du phénomène LRA est une condition préalable pour que le secteur agricole puisse décoller facilement sans craindre les contraintes liées à la destruction des champs par des bêtes en divagation ainsi que les menaces la population à travers des pillages et des tueries qui pénalisent plusieurs secteurs dont l'agriculture, l'économie et le bien-être. La production agricole ne pouvant pas atteindre le milieu urbain pour la consommation, une réhabilitation des routes permettrait de pallier à l'enclavemen",
@@ -1371,7 +1399,9 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Localité du nord du Haut-Uele proche de la frontière sud-soudanaise, en pays zande (source : géographie régionale Uele)."
+   "economy_note": "Localité du nord du Haut-Uele proche de la frontière sud-soudanaise, en pays zande (source : géographie régionale Uele).",
+   "population_2024_zone_sante": 176098,
+   "population_2024_zone_sante_note": "Population de la zone de santé de Aba (OCHA, projection 2024). La zone de santé (aire de desserte sanitaire) est généralement un peu plus vaste que la ville elle-même. OCHA ne publie pas de chiffre séparé pour la ville, comptée dans le territoire environnant."
   },
   {
    "province": "Haut-Uele",
@@ -1405,7 +1435,9 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Chef-lieu de la province du Haut-Uele, au cœur du pays mangbetu ; ancien terminus ferroviaire du Vicicongo (source : encyclopédies ; monographies Uele)."
+   "economy_note": "Chef-lieu de la province du Haut-Uele, au cœur du pays mangbetu ; ancien terminus ferroviaire du Vicicongo (source : encyclopédies ; monographies Uele).",
+   "population_2024_zone_sante": 337644,
+   "population_2024_zone_sante_note": "Population de la zone de santé de Isiro (OCHA, projection 2024). La zone de santé (aire de desserte sanitaire) est généralement un peu plus vaste que la ville elle-même. OCHA ne publie pas de chiffre séparé pour la ville, comptée dans le territoire environnant."
   },
   {
    "province": "Ituri",
@@ -1416,7 +1448,7 @@
    "population_2024_ocha": 822720,
    "population_caid": 1633142,
    "population_caid_source": "Rapport annuel du bureau de l'administrateur du territoire d'aru, exercice 2020.",
-   "subdivisions": null,
+   "subdivisions": "4 secteurs",
    "languages": [
     "Lugbarati",
     "Omiti",
@@ -1464,7 +1496,7 @@
    "population_2024_ocha": 1492432,
    "population_caid": 2945278,
    "population_caid_source": "Rapport 2020, administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "4 secteurs, 7 chefferies",
    "languages": [
     "Kilendu (90%)",
     "Swahili (70%)",
@@ -1486,7 +1518,7 @@
     "Haricot: 11%",
     "Pomme de terre: 5%"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Mangala (fiche CAID).",
    "schools_primary": 484,
    "schools_secondary": 153,
    "development_opportunities": "Le territoire de Djugu regorge plusieurs potentialités naturelles dont la fertilité de son sol, les minerais, le lac Albert et sa position frontalière d'avec l'Ouganda. Sa démographie pourrait également constituer un facteur de développement non négligeable. La fertilité du sol du territoire de Djugu lui confère une vocation agricole et agropastorale sans précédent. La réhabilitation des routes (routes des dessertes agricoles, la route provinciale Iga-Barrière-Mongbwalu et la RN27) par le gouvernement permettrait aux agriculteurs et opérateurs économiques d'évacuer facilement leurs produits/ma",
@@ -1546,7 +1578,7 @@
    "population_2024_ocha": 1149355,
    "population_caid": 3647508,
    "population_caid_source": "Rapport annuel 2020 du territoire",
-   "subdivisions": null,
+   "subdivisions": "8 chefferies",
    "languages": [
     "Alur (93%)",
     "Swahili (23%)",
@@ -1659,7 +1691,9 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Important marché commercial du nord de l'Ituri près de la frontière ougandaise, en pays lugbara (source : géographie de l'Ituri)."
+   "economy_note": "Important marché commercial du nord de l'Ituri près de la frontière ougandaise, en pays lugbara (source : géographie de l'Ituri).",
+   "population_2024_zone_sante": 177163,
+   "population_2024_zone_sante_note": "Population de la zone de santé de Ariwara (OCHA, projection 2024). La zone de santé (aire de desserte sanitaire) est généralement un peu plus vaste que la ville elle-même. OCHA ne publie pas de chiffre séparé pour la ville, comptée dans le territoire environnant."
   },
   {
    "province": "Ituri",
@@ -1692,7 +1726,9 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Chef-lieu de l'Ituri, place commerciale de la ceinture aurifère (Kilo-Moto) et hub des opérations humanitaires ; entourée de zones de conflit (Djugu, Irumu) (source : OCHA Ituri sitrep juin 2026)."
+   "economy_note": "Chef-lieu de l'Ituri, place commerciale de la ceinture aurifère (Kilo-Moto) et hub des opérations humanitaires ; entourée de zones de conflit (Djugu, Irumu) (source : OCHA Ituri sitrep juin 2026).",
+   "population_2024_zone_sante": 236011,
+   "population_2024_zone_sante_note": "Population de la zone de santé de Bunia (OCHA, projection 2024). La zone de santé (aire de desserte sanitaire) est généralement un peu plus vaste que la ville elle-même. OCHA ne publie pas de chiffre séparé pour la ville, comptée dans le territoire environnant."
   },
   {
    "province": "Ituri",
@@ -1725,7 +1761,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Localité du territoire d'Aru (nord Ituri), zone lugbara/alur (source : géographie de l'Ituri)."
+   "economy_note": "Localité du territoire d'Aru (nord Ituri), zone lugbara/alur (source : géographie de l'Ituri).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Aru (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Ituri",
@@ -1757,7 +1794,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Pôle aurifère majeur du territoire de Djugu ; ancienne concession OKIMO/AngloGold Ashanti Kilo, aujourd'hui très marquée par l'orpaillage artisanal (sources : Wikipedia 'Mongbwalu'; Miningmx 2023)."
+   "economy_note": "Pôle aurifère majeur du territoire de Djugu ; ancienne concession OKIMO/AngloGold Ashanti Kilo, aujourd'hui très marquée par l'orpaillage artisanal (sources : Wikipedia 'Mongbwalu'; Miningmx 2023).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Djugu (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Kasaï",
@@ -1808,7 +1846,7 @@
    "population_2024_ocha": 494628,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "4 secteurs",
    "languages": [
     "Le Tshiluba (90%)",
     "Le Lingala (80%)",
@@ -1849,7 +1887,7 @@
    "population_2024_ocha": 2198884,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "9 secteurs, 10 villages",
    "languages": [
     "Le Lingala",
     "Le Tshiluba",
@@ -1869,7 +1907,7 @@
     "Les arachides",
     "L'huile de palme"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Kamonia, Mutena, Kamuesha, Kitangua, Nyanga (fiche CAID).",
    "schools_primary": 1463,
    "schools_secondary": null,
    "development_opportunities": "Le territoire de Tshikapa possède plusieurs richesses naturelles. L'exploitation en amont et en aval de ces richesses pourraient causer un développement rapide et durable : L'agriculture : La présence des grandes concessions agricoles et la fertilité de son sol sont des facteurs déterminants pour le développement agricole de ce territoire. Une fois exploité, le territoire pourrait nourrir une très grande partie de la population congolaise et palier aux problèmes de malnutrition.Une forte sensibilisation de la population est envisageable à travers des grandes campagnes de vulgarisation agricole",
@@ -1934,7 +1972,7 @@
    "population_2024_ocha": 632496,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "58 groupements",
    "languages": [
     "Le Luba (85%)",
     "Le Kuba (75%)",
@@ -1995,7 +2033,9 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Chef-lieu du Kasaï et capitale diamantifère alluviale historique, au confluent des rivières Kasaï et Tshikapa (source : Britannica ; littérature minière)."
+   "economy_note": "Chef-lieu du Kasaï et capitale diamantifère alluviale historique, au confluent des rivières Kasaï et Tshikapa (source : Britannica ; littérature minière).",
+   "population_2024_zone_sante": 347255,
+   "population_2024_zone_sante_note": "Population de la zone de santé de Tshikapa (OCHA, projection 2024). La zone de santé (aire de desserte sanitaire) est généralement un peu plus vaste que la ville elle-même. OCHA ne publie pas de chiffre séparé pour la ville, comptée dans le territoire environnant."
   },
   {
    "province": "Kasaï-Central",
@@ -2088,8 +2128,13 @@
    "population_2024_ocha": 436494,
    "population_caid": 482275,
    "population_caid_source": "4 zones de sant du territoire",
-   "subdivisions": null,
-   "languages": [],
+   "subdivisions": "5 secteurs, 92 groupements, 675 villages",
+   "languages": [
+    "Tshiluba (majoritaire)",
+    "Lingala",
+    "Kisongé",
+    "Tshibindi"
+   ],
    "main_activities": [
     "Agriculture (70%)",
     "Elevage (10%)",
@@ -2122,7 +2167,7 @@
    "population_2024_ocha": 906387,
    "population_caid": 2252285,
    "population_caid_source": "Administration territorial",
-   "subdivisions": null,
+   "subdivisions": "9 secteurs",
    "languages": [
     "Tshiluba (70%)",
     "Tshibindi (20%)"
@@ -2156,7 +2201,7 @@
    "population_2024_ocha": 842219,
    "population_caid": 1515339,
    "population_caid_source": "Rapport annuel 2020 administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "7 secteurs, 72 groupements, 860 villages",
    "languages": [
     "Tshiluba (95%)",
     "Lingala (80%)",
@@ -2250,7 +2295,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Centre du territoire de Dibaya au sud de Kananga, en pays luba-kasaï (source : géographie du Kasaï-Central)."
+   "economy_note": "Centre du territoire de Dibaya au sud de Kananga, en pays luba-kasaï (source : géographie du Kasaï-Central).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Dibaya (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Kasaï-Oriental",
@@ -2335,7 +2381,7 @@
    "population_2024_ocha": 297731,
    "population_caid": 1114559,
    "population_caid_source": "Rapport de l'administration du territoire 2020",
-   "subdivisions": null,
+   "subdivisions": "552 secteurs",
    "languages": [
     "Tshiluba (80%)",
     "Lingala (15%)",
@@ -2408,7 +2454,7 @@
    "population_2024_ocha": 483625,
    "population_caid": 912353,
    "population_caid_source": "Rapport annuel 2020 du territoire",
-   "subdivisions": null,
+   "subdivisions": "29 groupements, 232 villages",
    "languages": [
     "Tshiluba (95%)",
     "Songe (1%)",
@@ -2470,7 +2516,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Localité du Kasaï-Oriental en pays luba (source : géographie du Kasaï-Oriental)."
+   "economy_note": "Localité du Kasaï-Oriental en pays luba (source : géographie du Kasaï-Oriental).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Miabi (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Kasaï-Oriental",
@@ -2548,7 +2595,7 @@
    "population_2024_ocha": 489475,
    "population_caid": 222803,
    "population_caid_source": "Etat civil du territoire",
-   "subdivisions": null,
+   "subdivisions": "le territoire ce qui fait que dans certains villages de secteur qu'il n'existe pas d'écoles vu que le territoire compte plus de 1000 villages",
    "languages": [
     "Lingala (85%)",
     "Kikongo (80%)",
@@ -2622,7 +2669,7 @@
    "population_2024_ocha": 664497,
    "population_caid": 294027,
    "population_caid_source": "Services du territoire",
-   "subdivisions": null,
+   "subdivisions": "5 secteurs, 60 groupements, 890 villages",
    "languages": [
     "Kiyombe (90%)",
     "Lingala (10 %)"
@@ -2741,7 +2788,7 @@
    "population_2024_ocha": 1416352,
    "population_caid": 819620,
    "population_caid_source": "Bureau de l'Etat civil",
-   "subdivisions": null,
+   "subdivisions": "5 Instituts Supérieurs et 1 Université: 4 premiers se concentrent dans le Secteur de Boko précisément dans la ville de Mbanza ngungu et les 2 derniers dans le secteur de Gombe Matadi",
    "languages": [
     "Lingala",
     "Kindibu",
@@ -2858,7 +2905,7 @@
    "population_2024_ocha": 673164,
    "population_caid": 299063,
    "population_caid_source": "Rapport annuel administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "5 secteurs",
    "languages": [
     "Kimboma (30%)",
     "Kimanianga (20%)",
@@ -2878,7 +2925,7 @@
     "Haricots (10%)",
     "Maïs (5%)"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Kimpese, Nsona (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Le territoire de Songololo situé dans le district des cataractes, regorge beaucoup de potentialités pour accueillir les investissements dans le domaine de l'industrie de transformation tels que les cimenteries. Le chef-lieu de territoire dispose de plusieurs opportunités partant de sa position géographique, le territoire de Songololo se situe au centre de la province du Kongo Central. Les opportunités sont les suivantes : Accessibilité Il est accessible par la route nationale n°1 en provenance de Kinshasa, le chemin de fer et une partie de voie navigable sur le fleuve Congo. Sol Il possède des",
@@ -2897,7 +2944,7 @@
    "population_2024_ocha": 842023,
    "population_caid": 443188,
    "population_caid_source": "Rapport annuel 2020",
-   "subdivisions": null,
+   "subdivisions": "8 secteurs, 76 groupements, 1226 villages",
    "languages": [
     "Kiyombe (95%)",
     "Lingala (20%)",
@@ -2956,7 +3003,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Localité du territoire de Songololo, en pays kongo (source : géographie du Kongo-Central)."
+   "economy_note": "Localité du territoire de Songololo, en pays kongo (source : géographie du Kongo-Central).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Songololo (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Kongo-Central",
@@ -3020,7 +3068,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Ville-marché sur l'axe Kinshasa-Matadi, proche du jardin botanique de Kisantu ; grenier maraîcher de Kinshasa (source : géographie du Kongo-Central)."
+   "economy_note": "Ville-marché sur l'axe Kinshasa-Matadi, proche du jardin botanique de Kisantu ; grenier maraîcher de Kinshasa (source : géographie du Kongo-Central).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Kasangulu (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Kongo-Central",
@@ -3138,8 +3187,20 @@
    "population_caid": 1705168,
    "population_caid_source": "Administrateur du territoire",
    "subdivisions": null,
-   "languages": [],
-   "main_activities": [],
+   "languages": [
+    "Kiyaka",
+    "Tshokwe",
+    "Holo",
+    "Suku",
+    "Kikongo",
+    "Lingala"
+   ],
+   "main_activities": [
+    "Agriculture (80% de la population)",
+    "Pêche",
+    "Élevage",
+    "Commerce"
+   ],
    "agricultural_products": [
     "Le manioc",
     "le Maïs",
@@ -3207,7 +3268,7 @@
    "population_2024_ocha": 227479,
    "population_caid": 845014,
    "population_caid_source": "Secretariat du territoire",
-   "subdivisions": null,
+   "subdivisions": "00 chefferies, 25 groupements, 696 villages",
    "languages": [
     "Kiyaka",
     "Lingala",
@@ -3226,7 +3287,7 @@
     "Courge",
     "Niébés"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Popokabaka (fiche CAID).",
    "schools_primary": 147,
    "schools_secondary": 105,
    "development_opportunities": "Le territoire de Popokabaka possède quelques richesses naturelles qui peuvent permettre son développement : Les rivières qui permettent les échangent commerciaux entre divers territoires, si la circulation par bief navigable augmente avec des pirogues motorisés de bon état aura est impact positif sur les revenus des ménages. La présence de minerais comme le diamant est aussi signalé dans ce territoire, ce diamant pourrait être exploité et cela créerait de l'emploi. La présence des chutes d'eaux comme celle de Kingunzi et dengo qui peuvent être exploités comme barrière électrique. Les routes si",
@@ -3343,7 +3404,13 @@
     "Agro-pastorales",
     "Commerce"
    ],
-   "agricultural_products": [],
+   "agricultural_products": [
+    "Manioc",
+    "Maïs",
+    "Arachide",
+    "Haricot",
+    "Courge"
+   ],
    "health_note": "4 zones de santé",
    "schools_primary": null,
    "schools_secondary": null,
@@ -3404,7 +3471,7 @@
    "population_2024_ocha": 1090255,
    "population_caid": 1740320,
    "population_caid_source": "Administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "86 Groupements dont 16 en conflit de pouvoir et il y a également 25 groupement de FAIT dont aucun n'est incorporé dans la ville de Masi-Manimba, ni même dans une nouvelle Commune",
    "languages": [
     "Le Kikongo",
     "Le Kimbala",
@@ -3500,7 +3567,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Centre de plantations de palmier historique sur le Kasaï, territoire d'Idiofa (source : histoire agro-industrielle du Kwilu)."
+   "economy_note": "Centre de plantations de palmier historique sur le Kasaï, territoire d'Idiofa (source : histoire agro-industrielle du Kwilu).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Idiofa (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Kwilu",
@@ -3563,7 +3631,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Port fluvial sur le Kasaï dans le territoire d'Idiofa (source : géographie du Kwilu)."
+   "economy_note": "Port fluvial sur le Kasaï dans le territoire d'Idiofa (source : géographie du Kwilu).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Idiofa (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Lomami",
@@ -3574,7 +3643,7 @@
    "population_2024_ocha": 646671,
    "population_caid": 1430504,
    "population_caid_source": "Bureau administratif 2020",
-   "subdivisions": null,
+   "subdivisions": "6 secteurs",
    "languages": [
     "kisongye (70%)",
     "kilande (50%)",
@@ -3615,7 +3684,7 @@
    "population_2024_ocha": 95916,
    "population_caid": 217649,
    "population_caid_source": "Rapport annuel 2020 du dveloppement rural de kamiji",
-   "subdivisions": null,
+   "subdivisions": "2 secteurs",
    "languages": [
     "Tshiluba (60%)",
     "Lingala (17%)",
@@ -3653,7 +3722,7 @@
    "population_2024_ocha": 524234,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "11 groupements, 753 villages",
    "languages": [
     "Songe (70%)",
     "Swahili (15%)",
@@ -3693,7 +3762,7 @@
    "population_2024_ocha": 830231,
    "population_caid": 3464215,
    "population_caid_source": "Rapport 2020 du bureau de service d'etat civil",
-   "subdivisions": null,
+   "subdivisions": "3 chefferies, 31 groupements, 560 villages",
    "languages": [
     "Kanyok",
     "Tshiluba",
@@ -3800,7 +3869,7 @@
    "population_2024_ocha": 813426,
    "population_caid": 333852,
    "population_caid_source": "Rapport annuel du territoire 2020",
-   "subdivisions": null,
+   "subdivisions": "2 secteurs",
    "languages": [
     "1. Tshokwe (59%)",
     "Swahili (23%)",
@@ -3842,7 +3911,11 @@
    "population_caid": 437938,
    "population_caid_source": "Bureau du territoire",
    "subdivisions": null,
-   "languages": [],
+   "languages": [
+    "Uruund/Ruund (80%)",
+    "Kiswahili (6%)",
+    "Tshokwe (4%)"
+   ],
    "main_activities": [
     "Agriculture: 75% de la population",
     "Elevage: 15% des habitants",
@@ -3856,7 +3929,7 @@
     "l'arachide (5%)",
     "le haricot (5%)"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Kapanga, Kalamba (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Le territoire de Kapanga présente d'énormes opportunités de développement par exemple : La présence des ressources naturelles (l'or, le dimant, le cobalt, les forêts riches en bois), Les rivières poissonneuses et sur lesquelles peuvent être construites des barrages électriques, Une population active et capable de travailler. Exporter ces données pour tous les territoires Visualiser ces données sous forme graphique Voir d'autres informations sur ce territoire : Fiche du territoire Économie Agriculture, élevage et pêche Santé Education Infrastructures Energie Mines Développement rural Voir les d",
@@ -3973,7 +4046,7 @@
     "Le riz",
     "Les légumes verts"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Sandoa, Kafakumba (fiche CAID).",
    "schools_primary": 89,
    "schools_secondary": 38,
    "development_opportunities": "Le territoire de SANDOA possède quelques richesses naturelles qui peuvent permettre son développement : Son sol argilo-sablonneux qui est très favorable à l'agriculture, même du type industriel. Investir donc dans le domaine de l'agriculture et l'élevage peut être très rentable et productif au sein du territoire de SANDOA car le sol et l'environnement le permettent. Le sol du territoire est trop arable, il peut facilement permettre la croissance d'une grande variété des cultures ; Les rivières qui drainent le territoire de SANDOA sont très poissonneuses. Si la pêche est bien organisée et contr",
@@ -4013,7 +4086,9 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Localité du territoire de Sandoa/Dilolo dans le Lualaba, en pays lunda (source : géographie du Lualaba)."
+   "economy_note": "Localité du territoire de Sandoa/Dilolo dans le Lualaba, en pays lunda (source : géographie du Lualaba).",
+   "population_2024_zone_sante": 481445,
+   "population_2024_zone_sante_note": "Population de la zone de santé de Kasaji (OCHA, projection 2024). La zone de santé (aire de desserte sanitaire) est généralement un peu plus vaste que la ville elle-même. OCHA ne publie pas de chiffre séparé pour la ville, comptée dans le territoire environnant."
   },
   {
    "province": "Lualaba",
@@ -4045,7 +4120,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Capitale mondiale du cobalt (Tenke Fungurume, Mutanda, KOV, Kamoa-Kakula à proximité) ; l'une des villes à la croissance la plus rapide d'Afrique (source : Flowminder 2024 ; presse minière 2024-2026)."
+   "economy_note": "Capitale mondiale du cobalt (Tenke Fungurume, Mutanda, KOV, Kamoa-Kakula à proximité) ; l'une des villes à la croissance la plus rapide d'Afrique (source : Flowminder 2024 ; presse minière 2024-2026).",
+   "population_note": "OCHA compte la population de cette ville dans le territoire environnant ; aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Maniema",
@@ -4082,7 +4158,7 @@
    "schools_secondary": null,
    "development_opportunities": "Or industriel de Namoya (Salamabila), l'un des principaux gisements aurifères du Maniema ; terres agricoles fertiles (manioc, riz, arachide) ; élevage ; position frontalière avec le Tanganyika et le Sud-Kivu. Défis : enclavement routier, insécurité récurrente autour des sites miniers (sources : monographie Maniema, Africamuseum ; presse minière 2020-2024).",
    "security_note": null,
-   "accessibility_tourism": null,
+   "accessibility_tourism": "Territoire enclavé du sud-est du Maniema, accessible surtout par pistes et par la route vers Kasongo et le Sud-Kivu ; peu d'infrastructures touristiques. Atouts potentiels : paysages de la Lwama et cours d'eau, sites miniers de Namoya (source : compilation OCHA / monographies Maniema).",
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "territoire",
@@ -4145,7 +4221,7 @@
    "population_2024_ocha": 831008,
    "population_caid": 1064087,
    "population_caid_source": "Rapport annuel de l'administration du territoire de kasongo,2020",
-   "subdivisions": null,
+   "subdivisions": "4 secteurs, 6 chefferies, 149 groupements",
    "languages": [
     "Swahili (98%)"
    ],
@@ -4183,7 +4259,7 @@
    "population_2024_ocha": 258033,
    "population_caid": 221247,
    "population_caid_source": "Rapport annuel de l'administration du territoire 2020",
-   "subdivisions": null,
+   "subdivisions": "5 chefferies, 2 groupements, 3 villages",
    "languages": [
     "Swahili 95%",
     "Kikusu 80%",
@@ -4261,7 +4337,7 @@
    "population_2024_ocha": 512370,
    "population_caid": 546188,
    "population_caid_source": "Rapport administration du territoire 2020",
-   "subdivisions": null,
+   "subdivisions": "3 secteurs, 1 chefferies, 29 groupements, 498 villages",
    "languages": [
     "Swahili (100%)",
     "Kirega (80%)"
@@ -4279,7 +4355,7 @@
     "Mais",
     "Arachide"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Pangi, Kampene, Kalima (fiche CAID).",
    "schools_primary": 138,
    "schools_secondary": 90,
    "development_opportunities": "Potentialités Le territoire de Pangi présente plusieurs potentialités dont les plus remarquables sont : La présence en abondance des minerais tels que la cassitérite, l'or, le wolframite, le tantale, etc.; Des vastes étendues des terres fertiles; Une flore riche et diversifiée; Plusieurs cours d'eaux; Le courant électrique produit par la centrale hydroélectrique de Lutshulukulu; La présence de la SAKIMA, une société du portefeuille public avec plusieurs périmètres d'exploitation où on peut retrouver de la cassitérite, de l'or, du tantale et du wolframite et d'une usine d'épuration de la cassit",
@@ -4357,7 +4433,9 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Ancien centre minier d'étain (cassitérite) du territoire de Pangi, en pays rega (source : histoire minière du Maniema)."
+   "economy_note": "Ancien centre minier d'étain (cassitérite) du territoire de Pangi, en pays rega (source : histoire minière du Maniema).",
+   "population_2024_zone_sante": 187074,
+   "population_2024_zone_sante_note": "Population de la zone de santé de Kalima (OCHA, projection 2024). La zone de santé (aire de desserte sanitaire) est généralement un peu plus vaste que la ville elle-même. OCHA ne publie pas de chiffre séparé pour la ville, comptée dans le territoire environnant."
   },
   {
    "province": "Maniema",
@@ -4420,7 +4498,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Site de la mine d'or industrielle de Namoya (territoire de Kabambare), l'un des principaux gisements aurifères du Maniema (source : presse minière ; OCHA)."
+   "economy_note": "Site de la mine d'or industrielle de Namoya (territoire de Kabambare), l'un des principaux gisements aurifères du Maniema (source : presse minière ; OCHA).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Kabambare (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Maï-Ndombe",
@@ -4431,7 +4510,7 @@
    "population_2024_ocha": 194064,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "72 villages",
    "languages": [
     "Nunu",
     "Tende",
@@ -4471,7 +4550,7 @@
    "population_2024_ocha": 528571,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "selon le rapport de DPS/Maï-ndombe 2015, 381 148 habitants et 625 villages dont (178 358 habitants et 329 villages dans la zone de santé d'Inongo, 116 059 habitants et 234 villages à Banzow-moke et 86 731 habitants et 62",
    "languages": [
     "Le Lingala",
     "Le Kisengele",
@@ -4487,8 +4566,14 @@
     "Elevage (5%)",
     "Petit commerce (5%)"
    ],
-   "agricultural_products": [],
-   "health_note": null,
+   "agricultural_products": [
+    "Manioc (22%)",
+    "Maïs (15%)",
+    "Riz",
+    "Arachide",
+    "Banane"
+   ],
+   "health_note": "Zones de santé : Ntandembelo (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Compris entre le 1er et le 2ème parallèle sud et situé au point le plus bas de la Cuvette Congolaise, le territoire d'Inongo possède dans le Bandundu, avec celui de Kiri, les caractéristiques climatiques les plus équatoriales : pluviométrie supérieure à 1900 mm, saisons sèches entrecoupées de pluies, température moyenne diurne de l'ordre de 30 °. D'une superficie de 24 149 km 2 , le De ce trois secteurs. Le secteur d'Inongo englobe les deux tiers du Lac Maï Ndombe, tous les rivages au sud de la Ville d'Inongo, y compris ceux de l'Ouest, jusqu'à l'embouchure de la Mfimi, dans Kutu. La rivière L",
@@ -4507,7 +4592,7 @@
    "population_2024_ocha": 263733,
    "population_caid": 307380,
    "population_caid_source": "Bureau de l'administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "3 secteurs",
    "languages": [
     "Lokonda (70%)",
     "Lingala (50%)",
@@ -4684,7 +4769,7 @@
    "population_2024_ocha": 465419,
    "population_caid": 625978,
    "population_caid_source": "Rapport annuel de l'administration du territoire 2020",
-   "subdivisions": null,
+   "subdivisions": "4 secteurs",
    "languages": [
     "Lonkundo (95%)",
     "Lingala (65%)",
@@ -4737,8 +4822,12 @@
     "Élevage",
     "Petits commerces"
    ],
-   "agricultural_products": [],
-   "health_note": null,
+   "agricultural_products": [
+    "Manioc",
+    "Riz",
+    "Maïs"
+   ],
+   "health_note": "Zones de santé : Yumbi (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Plusieurs avantages naturels peuvent permettre le développement de Yumbi: Une partie du fleuve et rivières très poissonneuses : L'organisation adéquate de la pêche permettrait aux poissons séchés et bien conservés à être vendu dans les autres territoires (Bolobo, Inongo,…), à Bandundu-ville, à Kinshasa, à Mbandaka et dans le Congo-Brazzaville. Le fleuve et rivières qui permettent les échanges commerciaux entre plusieurs territoires (Bolobo, Inongo, Mushi, Kwamout, Lukolela,…), entre les grandes villes (Bandundu-ville, Kinshasa, Mbadaka,…) et entre une partie du Congo-Brazzaville. L'augmentatio",
@@ -4779,7 +4868,9 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Ville-port sur la rivière Fimi, ancienne base de scieries et de plantations dans le Maï-Ndombe (source : géographie du Maï-Ndombe)."
+   "economy_note": "Ville-port sur la rivière Fimi, ancienne base de scieries et de plantations dans le Maï-Ndombe (source : géographie du Maï-Ndombe).",
+   "population_2024_zone_sante": 219253,
+   "population_2024_zone_sante_note": "Population de la zone de santé de Nioki (OCHA, projection 2024). La zone de santé (aire de desserte sanitaire) est généralement un peu plus vaste que la ville elle-même. OCHA ne publie pas de chiffre séparé pour la ville, comptée dans le territoire environnant."
   },
   {
    "province": "Mongala",
@@ -4790,7 +4881,7 @@
    "population_2024_ocha": 745615,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "4 secteurs, 15 groupements, 57 villages",
    "languages": [
     "Lingala (80%)",
     "Mongo (70%)",
@@ -4948,7 +5039,7 @@
    "population_2024_ocha": 1460115,
    "population_caid": 1703102,
    "population_caid_source": "Rapport annuel 2020 de l'administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "1 chefferies",
    "languages": [
     "Nande (90%)",
     "Swahili (60%)",
@@ -5037,7 +5128,7 @@
    "population_2024_ocha": 434441,
    "population_caid": 288404,
    "population_caid_source": "Bureau administratif du territoire de nyiragongo a kibumba",
-   "subdivisions": null,
+   "subdivisions": "63 villages",
    "languages": [
     "Swahili (80%)",
     "Kinyarwanda (60%)",
@@ -5125,7 +5216,12 @@
    "population_caid": 1199972,
    "population_caid_source": "Rapport annuel du territoire 2020",
    "subdivisions": null,
-   "languages": [],
+   "languages": [
+    "Kinyanga",
+    "Kirega (Kikano)",
+    "Kikumu",
+    "Swahili (véhiculaire)"
+   ],
    "main_activities": [
     "Agriculture 60%",
     "Mine 20%",
@@ -5258,7 +5354,7 @@
    "population_2024_ocha": 416389,
    "population_caid": 526235,
    "population_caid_source": "Rapport annuel 2020 secretariat du territoire",
-   "subdivisions": null,
+   "subdivisions": "3 secteurs, 23 groupements, 441 villages",
    "languages": [
     "Lingala",
     "Ngombe",
@@ -5347,7 +5443,7 @@
    "population_2024_ocha": 133666,
    "population_caid": 251173,
    "population_caid_source": "Rapport annuel administration du territoire 2020",
-   "subdivisions": null,
+   "subdivisions": "2 secteurs",
    "languages": [
     "Lingala (95%)",
     "Kingwandi (70%)",
@@ -5366,7 +5462,7 @@
     "Arachide (25%)",
     "Banane Plantain (15%)"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Mobayi-Mbongo (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Le territoire de Mobayi-Mbongo possède plusieurs richesses naturelles qui peuvent permettre son développement : La rivière Ubangi est poissonneuse : La pêche qui est l'activité principale dans le territoire, nécessite une attention particulière et son organisation et structuration, car la rivière Ubangi dispose en son sein plusieurs variétés des poissons.si la pêche est bien organisée et prise en charge par le gouvernement, les poissons fraîches seront bien conservés par l'installation d'une chambre froide qui n'existe pas dans ce territoire pour le commerce des cet animal aquatique dans d'aut",
@@ -5385,7 +5481,7 @@
    "population_2024_ocha": 392292,
    "population_caid": 597540,
    "population_caid_source": "Rapport annuel d'administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "121 opérateurs économiques et sont repartis par secteur : 79 opérateurs économiques en Secteur de Yakoma, 32 opérateurs en Secteur de Wapinda, et 10 opérateurs en secteur d'Abuzi",
    "languages": [
     "Lingala (98%)"
    ],
@@ -5456,7 +5552,7 @@
    "population_2024_ocha": 500181,
    "population_caid": 1488922,
    "population_caid_source": "Service de rensement de la population du bureau du territoire de katako kombe 2020",
-   "subdivisions": null,
+   "subdivisions": "4 secteurs",
    "languages": [
     "Tetela (100%)",
     "Swahili (30%)",
@@ -5477,7 +5573,7 @@
     "Haricot",
     "Arachides"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Djalo-Ndjeka, Wembo-Nyama (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "A l'instar des autres territoires de la Province du Sankuru, le territoire de Katako-Kombe est le plus grand de la province. En dépit de son enclavement, le territoire de Katako-Kombe possède d'énormes opportunités de développement plus que tout autre territoire de la Province du Sankuru : Pour l'agriculture Avec son sol du climat tropical, le territoire de Katako-Kombe est très riche à toutes sortes de cultures agricoles notamment les cultures vivrières, les cultures pérennes, les cultures fruitières et maraichères et cela en toutes saisons, que ça soit la saison sèche ou la saison de pluie. ",
@@ -5518,7 +5614,7 @@
     "Arachides",
     "soja"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Bena (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Le désenclavement du territoire de Kole constitue l'un des facteurs primordiaux de développement de ce territoire. Une fois que les routes d'intérêt provincial et celles de desserte agricole sont réhabilitées, cela va permettre l'évacuation des produits agricoles de la campagne vers les grands centres de commercialisation, Etant grenier agricole, avec une un sol fertile et favorable aux nombreuses cultures comme le manioc, le maïs, le riz, le café , le Cotton et l'hévéa. Ayant un basin agricole de 440 hea « IPAMI » abandonné. Si le gouvernement conjuguerait les efforts en : Mobilisation des mo",
@@ -5537,7 +5633,7 @@
    "population_2024_ocha": 733632,
    "population_caid": 927910,
    "population_caid_source": "Rapport annuel administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "643 villages",
    "languages": [
     "Otetela 75%",
     "Lingala 15%",
@@ -5597,7 +5693,7 @@
     "Nièbé",
     "Banane"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Lomela, Tshudi-loto, Tshudi (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Les opportunités de développement à Lomela sont innombrables grâce à son sol et sous sol riche en minerais et à ses eaux jusque là non exploitées. Comme qui dirait un scandale géologique à exploiter pour le bénéfice de la population pourtant en état de pauvreté grave. Le territoire a besoin des services sociaux de base pouvant attirer les investisseurs comme l'énergie électrique pour les industries et la déforestation, forage et sources d'eau pour la disponibilité de l'eau potable, la réhabilitation des routes de desserte agricole, autres routes et aérodromes et marchés pour la commercialisati",
@@ -5616,7 +5712,7 @@
    "population_2024_ocha": 665858,
    "population_caid": 927312,
    "population_caid_source": "Rapport annuel du territoire 2020",
-   "subdivisions": null,
+   "subdivisions": "20 groupements",
    "languages": [
     "Elles sont au nombre de deux à savoir :"
    ],
@@ -5634,7 +5730,7 @@
     "Arachide (12%)",
     "Millet (5%)"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Minga, Tshumbe (fiche CAID).",
    "schools_primary": 174,
    "schools_secondary": 83,
    "development_opportunities": "Le territoire de Lubefu a des atouts, qui pourraient concourir à son propre développement : De vastes étendues de savane et de foret L'agriculture : qui demande juste un encadrement des paysans par des formations en différentes techniques culturales pré et post récolte, ainsi que des formations en comptabilité agricole et en notion d'association paysanne pouvant créer un esprit de compétition positive pour accroitre la production au champ. Cette activité ainsi organisée permettrait la disponibilité d'une quantité suffisante des produits locaux pour l'exportation. Cela générerait de l'emploi et",
@@ -5714,7 +5810,9 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Port fluvial sur la Sankuru en pays tetela (source : géographie du Sankuru)."
+   "economy_note": "Port fluvial sur la Sankuru en pays tetela (source : géographie du Sankuru).",
+   "population_2024_zone_sante": 143593,
+   "population_2024_zone_sante_note": "Population de la zone de santé de Bena-Dibele (OCHA, projection 2024). La zone de santé (aire de desserte sanitaire) est généralement un peu plus vaste que la ville elle-même. OCHA ne publie pas de chiffre séparé pour la ville, comptée dans le territoire environnant."
   },
   {
    "province": "Sankuru",
@@ -5745,7 +5843,9 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Centre catholique historique (diocèse de Tshumbe) en pays tetela (source : géographie du Sankuru)."
+   "economy_note": "Centre catholique historique (diocèse de Tshumbe) en pays tetela (source : géographie du Sankuru).",
+   "population_2024_zone_sante": 162450,
+   "population_2024_zone_sante_note": "Population de la zone de santé de Tshumbe (OCHA, projection 2024). La zone de santé (aire de desserte sanitaire) est généralement un peu plus vaste que la ville elle-même. OCHA ne publie pas de chiffre séparé pour la ville, comptée dans le territoire environnant."
   },
   {
    "province": "Sud-Kivu",
@@ -5802,7 +5902,7 @@
    "population_2024_ocha": 325888,
    "population_caid": 320009,
    "population_caid_source": "Administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "108 chefferies",
    "languages": [
     "Kihavu (98%)",
     "Swahili (95%)",
@@ -5845,7 +5945,7 @@
    "population_2024_ocha": 1189174,
    "population_caid": 868616,
    "population_caid_source": "Division provinciale de la sant, pyramide sanitaire 2019",
-   "subdivisions": null,
+   "subdivisions": "14 groupements",
    "languages": [
     "Le Mashi",
     "Le swahili",
@@ -5883,7 +5983,7 @@
    "population_2024_ocha": 969740,
    "population_caid": 933181,
    "population_caid_source": "Administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "2 secteurs",
    "languages": [
     "Swahili 90%",
     "Kihavu 70%",
@@ -6051,7 +6151,7 @@
    "population_2024_ocha": 874825,
    "population_caid": 1509175,
    "population_caid_source": "Administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "deux ethnies principales : les Shi(Bashis) majoritaires, ils représentent près de 80% de la population et sont repartis sur l'ensemble du territoire et les Rega (minoritaires) habitant essentiellement le Sud-Ouest en gro",
    "languages": [
     "Langues parlées dans ce territoire"
    ],
@@ -6107,7 +6207,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Principal port du territoire de Fizi sur le lac Tanganyika, en pays bembe ; économie de pêche et de riziculture (sources : Wikipedia ; Pamoja/Lake Tanganyika)."
+   "economy_note": "Principal port du territoire de Fizi sur le lac Tanganyika, en pays bembe ; économie de pêche et de riziculture (sources : Wikipedia ; Pamoja/Lake Tanganyika).",
+   "population_note": "OCHA compte la population de cette ville dans le territoire environnant ; aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Sud-Kivu",
@@ -6172,7 +6273,9 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Ville aurifère du territoire de Mwenga en pays lega ; or exploité depuis les années 1930 (mine de Kamituga-Mobale), aujourd'hui dominée par l'orpaillage (sources : Wikipedia 'Kamituga'; Mindat)."
+   "economy_note": "Ville aurifère du territoire de Mwenga en pays lega ; or exploité depuis les années 1930 (mine de Kamituga-Mobale), aujourd'hui dominée par l'orpaillage (sources : Wikipedia 'Kamituga'; Mindat).",
+   "population_2024_zone_sante": 236182,
+   "population_2024_zone_sante_note": "Population de la zone de santé de Kamituga (OCHA, projection 2024). La zone de santé (aire de desserte sanitaire) est généralement un peu plus vaste que la ville elle-même. OCHA ne publie pas de chiffre séparé pour la ville, comptée dans le territoire environnant."
   },
   {
    "province": "Sud-Ubangi",
@@ -6203,7 +6306,7 @@
     "Riz",
     "Palmier à huile"
    ],
-   "health_note": null,
+   "health_note": "100 zones de santé (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Budjala est un territoire possédant des vastes plantations quasi non exploiter dans le secteur agricole; et la quantité produite les routes d'évacuation de ces deniers sont en mauvaise état ne rendant pas les producteur d'écouler leur produits comme bon le semble. Exporter ces données pour tous les territoires Visualiser ces données sous forme graphique Voir d'autres informations sur ce territoire : Fiche du territoire Économie Agriculture, élevage et pêche Santé Education Infrastructures Energie Mines Développement rural Voir les données compilées au niveau provincial",
@@ -6222,7 +6325,7 @@
    "population_2024_ocha": 1424873,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "4 secteurs",
    "languages": [
     "Ngbaka (50%)",
     "Lingala (40%)",
@@ -6333,7 +6436,7 @@
     "Ignames (11%)",
     "Ananas (9%)"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Libenge, Mawaya, Mawuya (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Le territoire de Libenge possède d'énormes potentialités pour faire booster son développement, à partir de son sol et sous-sol, jadis non exploités qui regorgent des richesses minières et agricole sans compter toutes les opportunités que présente ce territoire, de grands projets et initiatives qui demandent la relance, citons : Le finissage et la mise en œuvre de l'infrastructure de l'ISP qui peut abriter une grande université où l'on trouverait une faculté de l'écologie et qui attirerait des chercheurs et des étudiants départ l'Afrique et le Monde entier. La Réhabilitation de l'Aéroport dit i",
@@ -6384,7 +6487,7 @@
    "population_2024_ocha": 407520,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "2 secteurs, 10 groupements, 435 villages",
    "languages": [
     "Swahili (90%)",
     "kiluba (70%)",
@@ -6429,7 +6532,7 @@
    "population_2024_ocha": 1048815,
    "population_caid": 763373,
    "population_caid_source": "Territoire et mairie",
-   "subdivisions": null,
+   "subdivisions": "14 groupements, 626 villages",
    "languages": [
     "Le Swahili",
     "Le lingala",
@@ -6471,7 +6574,7 @@
    "population_2024_ocha": 794632,
    "population_caid": 670931,
    "population_caid_source": "Administration du territoire, rapport annuel 2020",
-   "subdivisions": null,
+   "subdivisions": "3 secteurs, 7 chefferies, 22 groupements, 558 villages",
    "languages": [
     "Swahili 93 %",
     "Hemba 56 %",
@@ -6515,7 +6618,7 @@
    "population_2024_ocha": 1135193,
    "population_caid": 804435,
    "population_caid_source": "Rapport annuel du territoire 2020",
-   "subdivisions": null,
+   "subdivisions": "20 chefferies, 5 groupements, 400 villages",
    "languages": [
     "Kiluba (100%)",
     "Swahili (45%)",
@@ -6554,7 +6657,7 @@
    "population_2024_ocha": 785209,
    "population_caid": 723800,
    "population_caid_source": "Rapport annuel du territoire",
-   "subdivisions": null,
+   "subdivisions": "5 chefferies, 35 groupements, 507 villages",
    "languages": [
     "Le swahili 90%",
     "Le kitabwa 85%",
@@ -6571,7 +6674,12 @@
     "Exploitation artisanale de l'or 0,5%",
     "Autres activités: 1,5%"
    ],
-   "agricultural_products": [],
+   "agricultural_products": [
+    "Manioc",
+    "Maïs",
+    "Haricot",
+    "Arachide"
+   ],
    "health_note": "deux zones de santé",
    "schools_primary": null,
    "schools_secondary": null,
@@ -6591,7 +6699,7 @@
    "population_2024_ocha": 418607,
    "population_caid": 813525990,
    "population_caid_source": "Rapport annuel du territoire de nyunzu 2020",
-   "subdivisions": null,
+   "subdivisions": "2 secteurs, 30 villages",
    "languages": [
     "Swahili (95%)",
     "Kiluba (50%)",
@@ -6651,7 +6759,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Localité du territoire de Moba sur le lac Tanganyika, en pays tabwa (source : géographie du Tanganyika)."
+   "economy_note": "Localité du territoire de Moba sur le lac Tanganyika, en pays tabwa (source : géographie du Tanganyika).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Moba (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Tshopo",
@@ -6806,7 +6915,7 @@
     "La banane plantin et",
     "Le maïs"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Yabaondo, Yakusu, Yahisuli (fiche CAID).",
    "schools_primary": 271,
    "schools_secondary": 99,
    "development_opportunities": "Des opportunités de développement restent évidentes et impressionnantes dans le territoire d'Isangi au regard de la taille de sa population dans la province de la Tshopo, son sol arable, sa réserve de biosphère de Yangambi, ses espèces de bois de forets, ses cours d'eau et espèces de la faune et la flore, quelques grandes institutions de recherche scientifique, ainsi que plusieurs autres potentialités. La taille de la population Avec 701 548 habitants (fin 2016), la population d'Isangi constitue une masse de ressources humaines qui étant bien encadrée peut servir de main d'œuvre et disponibili",
@@ -6825,7 +6934,7 @@
    "population_2024_ocha": 262696,
    "population_caid": 320650,
    "population_caid_source": "Rapport de l'administration du territoire d'opala 2019",
-   "subdivisions": null,
+   "subdivisions": "8 secteurs",
    "languages": [
     "LINGALA (100%)",
     "KIMBOLE (97%)",
@@ -6844,7 +6953,7 @@
     "Banane plantain",
     "Palmier à Huile"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Yaleko (fiche CAID).",
    "schools_primary": 10,
    "schools_secondary": 5,
    "development_opportunities": "Le territoire d'Opala peut se développer grâce à sa potentialité agricole et les voies d'accès dans le territoire : Le riz : Opala produit le riz préféré par les consommateurs et qualifié de meilleure qualité dans tous les grands centres de consommation de la Province de la Tshopo, principalement la ville de Kisangani. Si cette culture de riz est développée en appuyant les agriculteurs, de manière à accroitre la capacité de rendement et qu'on crée une rizerie moderne, la demande du riz d'Opala pourrait s'étendre au-delà de Kisangani comme dans la province du Nord Kivu (ville de Goma) et bien d",
@@ -6904,7 +7013,7 @@
    "population_2024_ocha": 181881,
    "population_caid": 242610,
    "population_caid_source": "Rapport annuel du territoire, 2020",
-   "subdivisions": null,
+   "subdivisions": "48 groupements",
    "languages": [
     "Lingala (90%)",
     "Longando (±65%)",
@@ -6929,7 +7038,7 @@
     "Le niébé",
     "Arachides"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Yahuma (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Le territoire de Yahuma présente beaucoup d'opportunités de développement et cela dans plusieurs secteurs. Son sol: Ce territoire est constitué de 90% de terres arables dont le sol est apte aux cultures de riz, de maïs, de manioc et de la banane. Mais des semences sont déjà désuètes qu'elles ne donnent plus bien comme elles produisaient dans le temps. Même la petite production à laquelle se contente la population aujourd'hui parvient à pourrir soit dans les champs ou dans les greniers faute de moyens et voies d'évacuation vers les grands centres de consommation. Dans ce domaine, le territoire ",
@@ -7001,7 +7110,8 @@
    "caid_updated": null,
    "has_caid_fiche": false,
    "type": "ville",
-   "economy_note": "Siège de la station de recherche de Yangambi (INERA), fondée en 1933 — la plus importante station de recherche sur la forêt tropicale d'Afrique — au cœur de la Réserve de biosphère de Yangambi (UNESCO) (sources : UNESCO ; Wikipedia 'Yangambi Biosphere Reserve'; CIFOR)."
+   "economy_note": "Siège de la station de recherche de Yangambi (INERA), fondée en 1933 — la plus importante station de recherche sur la forêt tropicale d'Afrique — au cœur de la Réserve de biosphère de Yangambi (UNESCO) (sources : UNESCO ; Wikipedia 'Yangambi Biosphere Reserve'; CIFOR).",
+   "population_note": "OCHA compte la population de cette ville à l'intérieur du territoire de Isangi (mise en garde HDX cod-ps-cod) — aucun chiffre urbain distinct n'est publié."
   },
   {
    "province": "Tshuapa",
@@ -7068,7 +7178,7 @@
     "maïs 30%",
     "riz10%Â"
    ],
-   "health_note": null,
+   "health_note": "Zones de santé : Boende (fiche CAID).",
    "schools_primary": null,
    "schools_secondary": null,
    "development_opportunities": "Le territoire de Boende offre plusieurs atouts pour son développement : Un climat favorable à plusieurs sortes de culture en aménageant les routes de desserte agricole qui permettraient l'évacuation de la production vers les centres de commercialisation. Exploitation des cours d'eau (exemple le tronçon Boende Mbandaka qui est navigable par la rivière Tshuapa) avec des bateaux et pirogues motorisées pour faciliter le déplacement des personnes et des marchandises. Devenu chef-lieu de la nouvelle province de la Tshuapa, le territoire a maintenant un flux élevé des passagers par voie aérienne, la ",
@@ -7130,7 +7240,7 @@
    "population_2024_ocha": 380376,
    "population_caid": 483545,
    "population_caid_source": "Bureau de l'administration du territoire",
-   "subdivisions": null,
+   "subdivisions": "30 groupements, 274 villages",
    "languages": [
     "Lingala (99%)",
     "Mongando (plus de 98%)"
@@ -7216,7 +7326,7 @@
    "population_2024_ocha": 138365,
    "population_caid": null,
    "population_caid_source": null,
-   "subdivisions": null,
+   "subdivisions": "3 secteurs, 28 groupements, 239 villages",
    "languages": [
     "Lingala",
     "Mongo"

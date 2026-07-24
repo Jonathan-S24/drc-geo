@@ -182,6 +182,63 @@ function KvRow({ label, value, sub }: { label: string; value: string; sub?: stri
   )
 }
 
+/**
+ * Population row for a unit. Never blank: OCHA figure → else the health-zone
+ * figure shown as "≈ N (zone de santé)" with its note accessible (never
+ * relabelled as an exact city population) → else the population_note caveat.
+ */
+function UnitPopulationRow({ unit }: { unit: TerritoryUnit }) {
+  const { t, lang } = useLanguage()
+  const locale: NumberLocale = lang === 'fr' ? 'fr-FR' : 'en-US'
+
+  if (unit.population_2024_ocha != null) {
+    return (
+      <KvRow
+        label={t('population')}
+        value={formatNumber(unit.population_2024_ocha, locale)}
+        sub={unit.population_caid ? `OCHA · CAID: ${formatNumber(unit.population_caid, locale)}` : 'OCHA'}
+      />
+    )
+  }
+
+  if (unit.population_2024_zone_sante != null) {
+    return (
+      <div className="border-t border-line/60 py-2 first:border-t-0">
+        <div className="flex items-baseline justify-between gap-3">
+          <span className="shrink-0 text-[11.5px] font-bold uppercase tracking-wide text-ink/45">
+            {t('population')}
+          </span>
+          <span className="text-right text-[13.5px] font-semibold text-ink">
+            ≈ {formatNumber(unit.population_2024_zone_sante, locale)}
+            <span className="block text-[10.5px] font-medium text-ink/45">{t('popZoneSante')} · OCHA 2024</span>
+          </span>
+        </div>
+        {unit.population_2024_zone_sante_note && (
+          <details className="mt-1">
+            <summary className="cursor-pointer text-[10.5px] font-semibold text-teal">
+              {t('popSourceDetails')}
+            </summary>
+            <p className="mt-1 text-[11px] italic leading-snug text-ink/55">
+              {unit.population_2024_zone_sante_note}
+            </p>
+          </details>
+        )}
+      </div>
+    )
+  }
+
+  if (unit.population_note) {
+    return (
+      <div className="border-t border-line/60 py-2 first:border-t-0">
+        <span className="text-[11.5px] font-bold uppercase tracking-wide text-ink/45">{t('population')}</span>
+        <p className="mt-1 text-[11.5px] italic leading-snug text-ink/55">{unit.population_note}</p>
+      </div>
+    )
+  }
+
+  return <KvRow label={t('population')} value="—" />
+}
+
 function Chip({ children }: { children: React.ReactNode }) {
   return (
     <span className="rounded-full bg-teal/8 px-2.5 py-1 text-[12px] font-semibold text-ink/85">{children}</span>
@@ -297,19 +354,7 @@ function UnitCard({ data, unit }: { data: DrcData; unit: TerritoryUnit }) {
 
       <div className="px-5 pt-3">
         <KvRow label={t('area')} value={formatArea(unit.area_km2_codab, locale)} sub="UN COD-AB" />
-        <KvRow
-          label={t('population')}
-          value={formatNumber(unit.population_2024_ocha, locale)}
-          sub={
-            unit.population_caid
-              ? `OCHA · CAID: ${formatNumber(unit.population_caid, locale)}`
-              : unit.population_2024_ocha == null
-                ? lang === 'fr'
-                  ? 'comptée dans l’entité environnante'
-                  : 'counted in surrounding unit'
-                : 'OCHA'
-          }
-        />
+        <UnitPopulationRow unit={unit} />
         <KvRow
           label={t('languages')}
           value={unit.languages.length ? unit.languages.slice(0, 3).join(', ') : '—'}

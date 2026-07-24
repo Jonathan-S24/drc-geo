@@ -60,6 +60,12 @@ export interface TerritoryUnit {
   economy_note?: string
   /** For units filled without a CAID fiche (Kabambare): where the data came from. */
   provenance_note?: string
+  /** Health-zone population (v2.2+) for villes OCHA doesn't count separately.
+   *  NOT the exact city figure — the zone is usually larger. */
+  population_2024_zone_sante?: number
+  population_2024_zone_sante_note?: string
+  /** Caveat line (v2.2+) for villes with neither an OCHA nor a zone-santé figure. */
+  population_note?: string
 }
 
 export interface TerritoriesFile {

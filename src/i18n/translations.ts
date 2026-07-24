@@ -128,6 +128,8 @@ export const translations = {
     dailyCta: 'Découvrir',
     listen: 'Écouter la prononciation',
     close2: 'Fermer',
+    popZoneSante: 'zone de santé',
+    popSourceDetails: 'ⓘ détails de la source',
     reportError: 'Signaler une erreur',
     reportErrorBody:
       'Décrivez l’erreur (champ concerné, valeur correcte, source si possible) :',
@@ -264,6 +266,8 @@ export const translations = {
     dailyCta: 'Discover',
     listen: 'Listen to pronunciation',
     close2: 'Close',
+    popZoneSante: 'health zone',
+    popSourceDetails: 'ⓘ source details',
     reportError: 'Report an error',
     reportErrorBody: 'Describe the error (field, correct value, source if possible):',
     contributePhoto: 'Contribute a photo',

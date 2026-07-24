@@ -35,7 +35,12 @@ export function ShareButton({ data, target }: ShareButtonProps) {
         { label: t('area'), value: formatArea(u.area_km2_codab, locale) },
         {
           label: t('population'),
-          value: u.population_2024_ocha != null ? formatNumber(u.population_2024_ocha, locale) : '—',
+          value:
+            u.population_2024_ocha != null
+              ? formatNumber(u.population_2024_ocha, locale)
+              : u.population_2024_zone_sante != null
+                ? `≈ ${formatNumber(u.population_2024_zone_sante, locale)}`
+                : '—',
         },
         { label: t('languages'), value: u.languages[0]?.split(' ')[0] ?? '—' },
       ]
