@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { AnthemsData, HealthZone, HistoricalEraProps, Province, ProvincesFile, TerritoriesFile, TerritoryUnit } from '../types'
+import type { AnthemsData, HealthZone, HistoricalEraProps, Park, Province, ProvincesFile, TerritoriesFile, TerritoryUnit } from '../types'
 import type { FeatureCollection, Geometry, Polygon } from 'geojson'
 import type { PlaceMedia, PlaceMediaFile, UnitFeatureProperties } from '../types'
 
@@ -31,6 +31,8 @@ export interface DrcData {
   anthems: AnthemsData | null
   /** National parks / protected areas overlay (Phase 3). Null if the OSM fetch was skipped. */
   parks: FeatureCollection<Geometry, { name: string; name_en?: string }> | null
+  /** Rich protected-area data for Sanctuaires mode (parks.json). Empty if unavailable. */
+  sanctuaries: Park[]
 }
 
 type State =
@@ -85,7 +87,8 @@ async function loadAll(): Promise<DrcData> {
   }
 
   // Layer data (Phase 3) — all optional and non-fatal.
-  const { healthZonesByTerritory, historicalEras, historicalNote, anthems, parks } = await loadLayers()
+  const { healthZonesByTerritory, historicalEras, historicalNote, anthems, parks, sanctuaries } =
+    await loadLayers()
 
   return {
     provinces: provincesFile.provinces,
@@ -102,6 +105,7 @@ async function loadAll(): Promise<DrcData> {
     historicalNote,
     anthems,
     parks,
+    sanctuaries,
   }
 }
 
@@ -111,6 +115,7 @@ async function loadLayers() {
   let historicalNote = ''
   let anthems: AnthemsData | null = null
   let parks: DrcData['parks'] = null
+  let sanctuaries: Park[] = []
 
   const safeJson = async (url: string) => {
     try {
@@ -121,11 +126,12 @@ async function loadLayers() {
     }
   }
 
-  const [health, historical, anthemsData, parksData] = await Promise.all([
+  const [health, historical, anthemsData, parksData, sanctuariesData] = await Promise.all([
     safeJson('/data/health_zones.json'),
     safeJson('/data/historical_provinces.json'),
     safeJson('/data/anthems.json'),
     safeJson('/data/parks.geojson'),
+    safeJson('/data/parks.json'),
   ])
 
   if (health?.zones) {
@@ -150,8 +156,9 @@ async function loadLayers() {
   }
 
   if (parksData?.features) parks = parksData
+  if (sanctuariesData?.parks) sanctuaries = sanctuariesData.parks as Park[]
 
-  return { healthZonesByTerritory, historicalEras, historicalNote, anthems, parks }
+  return { healthZonesByTerritory, historicalEras, historicalNote, anthems, parks, sanctuaries }
 }
 
 /** Fetches and memoizes the three source-of-truth data files (fetched once per session). */

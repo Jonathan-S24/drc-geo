@@ -155,3 +155,39 @@ export interface AnthemsData {
   anthems: Record<string, Anthem>
   namingEras: NamingEra[]
 }
+
+export interface ParkSpecies {
+  fr: string
+  en: string
+  status: string // "critique" | "en danger" | "vulnérable" | ...
+}
+
+/** A protected area for Sanctuaires mode (parks.json). Geometry is real OSM (ODbL). */
+export interface Park {
+  id: string
+  name: string
+  name_en: string
+  established: number
+  area_km2: number
+  provinces: string[]
+  territoires: string[]
+  unesco_year: number | null
+  danger_since: number | null
+  danger_period: string | null
+  iucn_category: string
+  tagline_fr: string
+  tagline_en: string
+  summary_fr: string
+  summary_en: string
+  species: ParkSpecies[]
+  features_fr: string[]
+  features_en?: string[]
+  threats_fr: string[]
+  threats_en?: string[]
+  fact_fr: string
+  fact_en: string
+  image?: string
+  image_credit?: string
+  centroid?: [number, number] // [lat, lon]
+  geometry: import('geojson').Polygon | import('geojson').MultiPolygon
+}

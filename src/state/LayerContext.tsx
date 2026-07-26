@@ -1,29 +1,39 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react'
 
-export type MapLayer = 'none' | 'langues' | 'sante' | 'histoire' | 'parcs'
+/** Fleuve "Options d'affichage" modes. 'provinces' is the default stage. */
+export type MapMode = 'provinces' | 'parks' | 'density' | 'histoire'
 
 interface LayerContextValue {
-  layer: MapLayer
-  setLayer: (l: MapLayer) => void
-  /** Index into DrcData.historicalEras (+ one synthetic "2015" step at the end). */
+  mode: MapMode
+  setMode: (m: MapMode) => void
+  /** Index into the historical era timeline (histoire mode). */
   eraIndex: number
   setEraIndex: (i: number) => void
+  /** Selected park id in Sanctuaires (parks) mode, or null. */
+  selectedPark: string | null
+  setSelectedPark: (id: string | null) => void
 }
 
 const LayerContext = createContext<LayerContextValue | null>(null)
 
 export function LayerProvider({ children }: { children: ReactNode }) {
-  const [layer, setLayerRaw] = useState<MapLayer>('none')
+  const [mode, setModeRaw] = useState<MapMode>('provinces')
   const [eraIndex, setEraIndex] = useState(0)
+  const [selectedPark, setSelectedPark] = useState<string | null>(null)
 
   const value = useMemo<LayerContextValue>(
     () => ({
-      layer,
-      setLayer: (l) => setLayerRaw((cur) => (cur === l ? 'none' : l)),
+      mode,
+      setMode: (m) => {
+        setModeRaw(m)
+        if (m !== 'parks') setSelectedPark(null)
+      },
       eraIndex,
       setEraIndex,
+      selectedPark,
+      setSelectedPark,
     }),
-    [layer, eraIndex],
+    [mode, eraIndex, selectedPark],
   )
 
   return <LayerContext.Provider value={value}>{children}</LayerContext.Provider>
