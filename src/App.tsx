@@ -5,6 +5,7 @@ import { LayerProvider, useLayer } from './state/LayerContext'
 import { useDrcData, type DrcData } from './data/useDrcData'
 import { useUrlSync } from './routing/useUrlSync'
 import { FleuveMap } from './components/FleuveMap'
+import { RiverCanvas } from './components/fleuve/RiverCanvas'
 import { Brand, Breadcrumb, LangToggle, FleuveSearch, OptionsPanel } from './components/fleuve/FleuveChrome'
 import { FicheDossier } from './components/fleuve/FicheDossier'
 import { ParkDossier } from './components/fleuve/ParkDossier'
@@ -55,6 +56,7 @@ function Shell({ data }: { data: DrcData }) {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden">
+      <RiverCanvas />
       <FleuveMap data={data} />
 
       <Brand />

@@ -50,6 +50,11 @@ export function FleuveMap({ data }: { data: DrcData }) {
     return m
   }, [features, proj])
 
+  // One combined path of every unit: painted opaque dark beneath the coloured
+  // fills so the country reads as *land* sitting on the animated water, and
+  // used again to keep the Kuba weave on the land only.
+  const landPath = useMemo(() => Array.from(pathById.values()).join(''), [pathById])
+
   const selectedPcode = selection.view === 'unit' ? selection.pcode : null
   const ghost = mode === 'parks' // administrative map drops back behind the sanctuaires
 
@@ -105,14 +110,18 @@ export function FleuveMap({ data }: { data: DrcData }) {
   }, [])
 
   return (
-    <div
-      ref={stageRef}
-      className="absolute inset-0"
-      style={{ background: 'radial-gradient(120% 90% at 50% 40%, #0C221D 0%, #071512 60%, #040D0B 100%)' }}
-    >
-      <svg width="100%" height="100%" viewBox={`0 0 ${size.w} ${size.h}`} style={{ display: 'block' }}>
+    <div ref={stageRef} className="absolute inset-0">
+      <svg
+        width="100%"
+        height="100%"
+        viewBox={`0 0 ${size.w} ${size.h}`}
+        style={{ display: 'block', position: 'relative', zIndex: 1 }}
+      >
         <FleuveDefs />
-        <rect width={size.w} height={size.h} fill="url(#kuba)" opacity="0.85" />
+
+        {/* landBack: the country as opaque land on the living river below */}
+        <path d={landPath} fill="#0A211C" stroke="none" />
+        <path d={landPath} fill="url(#kuba)" stroke="none" opacity={0.85} />
 
         {/* provinces & territoires */}
         <g ref={unitsGroupRef} style={{ pointerEvents: ghost ? 'none' : 'auto' }}>

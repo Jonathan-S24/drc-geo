@@ -56,6 +56,9 @@ body {
 
 .font-disp { font-family: var(--disp); }
 
+/* the living river — bottom layer of the stage, beneath the map SVG */
+.fl-river { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; z-index: 0; }
+
 /* film grain over the whole stage */
 .grain {
   position: absolute; inset: 0; pointer-events: none; opacity: 0.35; mix-blend-mode: overlay;
