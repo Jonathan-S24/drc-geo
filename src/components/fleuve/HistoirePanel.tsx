@@ -1,40 +1,56 @@
-import { useState } from 'react'
 import type { DrcData } from '../../data/useDrcData'
+import { useLayer } from '../../state/LayerContext'
 import { useLanguage } from '../../i18n/LanguageContext'
 import { AnthemPlayer } from '../AnthemPlayer'
 
-/** Histoire & hymnes: pick a period, hear its anthem. Driven by anthems.json naming_eras. */
+/**
+ * Histoire & hymnes. Five stops — the four historical eras from
+ * historical_provinces.json plus "2015", which restores the modern map.
+ * Each stop carries the country's name of the period and its anthem.
+ */
 export function HistoirePanel({ data }: { data: DrcData }) {
-  const { lang } = useLanguage()
-  const eras = data.anthems?.namingEras ?? []
-  const [idx, setIdx] = useState(eras.length - 1) // default to present-day
+  const { lang, t } = useLanguage()
+  const { eraIndex, setEraIndex } = useLayer()
+
+  const eras = data.historicalEras
   if (!eras.length) return null
 
-  const era = eras[Math.min(idx, eras.length - 1)]
-  const name = lang === 'en' ? era.name_en : era.name_fr
-  const anthem = era.anthem ? data.anthems?.anthems[era.anthem] : null
-  const note = lang === 'en' ? era.anthem_note_en ?? era.anthem_note_fr : era.anthem_note_fr
+  // stops: 1919, 1947, 1966, 1988 (historical) + 2015 (modern map)
+  const stops = [...eras.map((e) => ({ key: e.key, label: e.label })), { key: '2015', label: '2015 — 26 provinces' }]
+  const idx = Math.min(eraIndex, stops.length - 1)
+  const stop = stops[idx]
+
+  // naming_eras.map_era references the era label(s) this period spans
+  const naming = data.anthems?.namingEras.find((ne) => ne.map_era.includes(stop.key))
+  const countryName = naming ? (lang === 'en' ? naming.name_en : naming.name_fr) : null
+  const anthem = naming?.anthem ? data.anthems?.anthems[naming.anthem] : null
+  const provinceCount = stop.label.split('—')[1]?.trim()
 
   return (
-    <div className="fl-hist fl-rise">
+    <div className="fl-hist fl-rise-x">
       <div className="fl-hist-eras">
-        {eras.map((e, i) => (
-          <button key={e.period} className={`fl-hist-era${i === idx ? ' on' : ''}`} onClick={() => setIdx(i)}>
-            {e.period.split('–')[0]}
+        {stops.map((s, i) => (
+          <button
+            key={s.key}
+            className={`fl-hist-era${i === idx ? ' on' : ''}`}
+            onClick={() => setEraIndex(i)}
+            aria-pressed={i === idx}
+          >
+            {s.key}
           </button>
         ))}
       </div>
       <p className="fl-hist-name font-disp">
-        {name} <span>· {era.period}</span>
+        {countryName ?? stop.key}
+        {naming && <span> · {naming.period}</span>}
       </p>
+      <p className="fl-hist-sub">{provinceCount}</p>
       {anthem ? (
-        <AnthemPlayer key={`${era.anthem}:${era.period}`} anthem={anthem} years={era.period} />
+        <AnthemPlayer key={`${naming?.anthem}:${stop.key}`} anthem={anthem} years={naming?.period ?? stop.key} />
       ) : (
-        note && (
-          <p className="fl-hist-note">
-            <span aria-hidden>🎵</span> {note}
-          </p>
-        )
+        <p className="fl-hist-note">
+          <span aria-hidden>🎵</span> {t('histNoAnthem')}
+        </p>
       )}
     </div>
   )

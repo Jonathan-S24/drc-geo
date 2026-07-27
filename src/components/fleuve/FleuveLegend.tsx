@@ -1,9 +1,10 @@
 import type { DrcData } from '../../data/useDrcData'
 import { useLanguage } from '../../i18n/LanguageContext'
 import { DRC_AREA_KM2 } from '../../theme/fleuve'
+import { SANTE_BUCKETS, SANTE_RAMP } from '../FleuveMap'
 
 /** Bottom-right legend — switches content by map mode. */
-export function FleuveLegend({ mode, data }: { mode: 'parks' | 'density'; data: DrcData }) {
+export function FleuveLegend({ mode, data }: { mode: 'parks' | 'sante'; data: DrcData }) {
   const { t, lang } = useLanguage()
   const fmt = (n: number) => n.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US')
 
@@ -44,19 +45,27 @@ export function FleuveLegend({ mode, data }: { mode: 'parks' | 'density'; data: 
     )
   }
 
-  // density
-  const buckets = [0.08, 0.25, 0.45, 0.65, 0.9]
-  const labels = ['< 10', '10–30', '30–80', '80–300', '> 300']
+  // health zones
+  const total = [...data.healthZonesByTerritory.values()].reduce((s, arr) => s + arr.length, 0)
   return (
     <div className="fl-legend fl-rise">
-      <h6>{t('densityLegendTitle')}</h6>
-      {buckets.map((o, i) => (
-        <div key={i} className="fl-lr">
-          <span className="fl-sw" style={{ background: `rgba(200,121,65,${o})` }} />
-          {labels[i]} hab/km²
+      <h6>{t('santeLegendTitle')}</h6>
+      {SANTE_BUCKETS.map((label, i) => (
+        <div key={label} className="fl-lr">
+          <span
+            className="fl-sw"
+            style={{ background: SANTE_RAMP.color, opacity: SANTE_RAMP.steps[i] + 0.12 }}
+          />
+          {label} {t('santeLegendScale')}
         </div>
       ))}
-      <div className="fl-foot">{t('densityLegendCredit')}</div>
+      <div className="fl-lr" style={{ marginTop: 9, color: 'var(--parch)' }}>
+        <b className="font-disp" style={{ fontSize: 16 }}>
+          {fmt(total || 519)}
+        </b>
+        <span style={{ fontSize: 11 }}>{t('santeLegendTitle').toLowerCase()}</span>
+      </div>
+      <div className="fl-foot">{t('santeLegendCredit')}</div>
     </div>
   )
 }

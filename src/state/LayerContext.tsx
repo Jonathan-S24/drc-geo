@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react'
 
 /** Fleuve "Options d'affichage" modes. 'provinces' is the default stage. */
-export type MapMode = 'provinces' | 'parks' | 'density' | 'histoire'
+export type MapMode = 'provinces' | 'parks' | 'sante' | 'histoire'
 
 interface LayerContextValue {
   mode: MapMode

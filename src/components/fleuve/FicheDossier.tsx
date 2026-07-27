@@ -24,6 +24,9 @@ export function FicheDossier({ data, unit, onClose }: FicheDossierProps) {
   const parksHere = data.sanctuaries.filter(
     (p) => p.territoires?.includes(unit.name) || p.provinces?.includes(unit.province),
   )
+  const zones = (data.healthZonesByTerritory.get(unit.pcode) ?? [])
+    .slice()
+    .sort((a, b) => b.population_2024 - a.population_2024)
 
   const area = useCountUp(unit.area_km2_codab ?? null, locale)
   const popValue = unit.population_2024_ocha ?? unit.population_2024_zone_sante ?? null
@@ -133,6 +136,21 @@ export function FicheDossier({ data, unit, onClose }: FicheDossierProps) {
             ))}
           </Section>
         ) : null}
+        {zones.length > 0 && (
+          <Section title={`${t('santeZonesIn')} · ${zones.length}`}>
+            {zones.slice(0, 8).map((z) => (
+              <div key={z.pcode_zs} className="fl-zone">
+                <b>{z.zone}</b>
+                <em>{z.population_2024.toLocaleString(locale)}</em>
+              </div>
+            ))}
+            {zones.length > 8 && (
+              <p className="fl-zone-more">
+                + {zones.length - 8} {t('santeMore')}
+              </p>
+            )}
+          </Section>
+        )}
         {parksHere.length > 0 && (
           <Section title={t('ficheProtected')}>
             <div className="fl-chips">

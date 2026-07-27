@@ -19,9 +19,25 @@ interface Tip {
   sub: string
 }
 
+/** Health-zone count → green ramp. Buckets: 1–2 / 3–4 / 5–6 / 7–9 / 10+. */
+export const SANTE_RAMP = { color: '#47C98A', steps: [0.14, 0.3, 0.46, 0.64, 0.85] }
+export const SANTE_BUCKETS = ['1–2', '3–4', '5–6', '7–9', '10+']
+export function santeBucket(n: number): number {
+  if (n <= 0) return -1
+  if (n <= 2) return 0
+  if (n <= 4) return 1
+  if (n <= 6) return 2
+  if (n <= 9) return 3
+  return 4
+}
+function santeOpacity(n: number): number {
+  const b = santeBucket(n)
+  return b < 0 ? 0.05 : SANTE_RAMP.steps[b]
+}
+
 export function FleuveMap({ data }: { data: DrcData }) {
   const { selection, selectUnit } = useAppState()
-  const { mode, selectedPark, setSelectedPark } = useLayer()
+  const { mode, selectedPark, setSelectedPark, eraIndex } = useLayer()
   const { t, lang } = useLanguage()
   const reduced = useReducedMotion()
 
@@ -56,16 +72,20 @@ export function FleuveMap({ data }: { data: DrcData }) {
   const landPath = useMemo(() => Array.from(pathById.values()).join(''), [pathById])
 
   const selectedPcode = selection.view === 'unit' ? selection.pcode : null
-  const ghost = mode === 'parks' // administrative map drops back behind the sanctuaires
+  // In parks the admin map ghosts; in histoire (pre-2015) it clears entirely so
+  // the era's polygons take the stage.
+  const eraCount = data.historicalEras.length // 4 historical + a synthetic 2015
+  const showingHistory = mode === 'histoire' && eraIndex < eraCount
+  const ghost = mode === 'parks'
 
   // Per-unit fill + opacity for the active mode.
   const styleFor = (pcode: string): { fill: string; opacity: number } => {
     const u = data.byPcode.get(pcode)
     if (!u) return { fill: '#888', opacity: 0.3 }
-    if (mode === 'density') {
-      const dens = u.area_km2_codab && u.population_2024_ocha ? u.population_2024_ocha / u.area_km2_codab : 0
-      const k = Math.min(1, Math.log10(1 + dens) / 2.6)
-      return { fill: '#C87941', opacity: 0.06 + k * 0.82 }
+    if (showingHistory) return { fill: '#0A211C', opacity: 0 }
+    if (mode === 'sante') {
+      const n = data.healthZonesByTerritory.get(pcode)?.length ?? 0
+      return { fill: SANTE_RAMP.color, opacity: santeOpacity(n) }
     }
     const base = colors.get(u.province) ?? '#888'
     if (ghost) return { fill: base, opacity: 0.09 }
@@ -165,7 +185,17 @@ export function FleuveMap({ data }: { data: DrcData }) {
           })}
         </g>
 
-        {!reduced && mode !== 'parks' && <RiverFlow proj={proj} />}
+        {showingHistory && (
+          <HistoryEraLayer
+            era={data.historicalEras[eraIndex]}
+            proj={proj}
+            reduced={reduced}
+            onTip={setTip}
+            t={t}
+          />
+        )}
+
+        {!reduced && mode !== 'parks' && !showingHistory && <RiverFlow proj={proj} />}
 
         {mode === 'parks' && (
           <ParksLayer
@@ -256,6 +286,45 @@ function RiverFlow({ proj }: { proj: ReturnType<typeof makeProjection> }) {
       opacity={0.5}
       filter="url(#soft)"
     />
+  )
+}
+
+interface HistoryEraLayerProps {
+  era: import('../data/useDrcData').HistoricalEra
+  proj: ReturnType<typeof makeProjection>
+  reduced: boolean
+  onTip: (t: Tip | null) => void
+  t: (k: 'histModernProvinces') => string
+}
+
+/** The selected era's provinces, staggered in with gold strokes. */
+function HistoryEraLayer({ era, proj, reduced, onTip, t }: HistoryEraLayerProps) {
+  const ERA_PALETTE = ['#B4653C', '#3F7F6E', '#8A6E3C', '#4A6E8A', '#7A4A62', '#5C7A46', '#A8794B', '#3E6B72', '#6B5A82']
+  return (
+    <g>
+      {era.fc.features.map((f, i) => {
+        const props = f.properties as { name: string; modern: string[] }
+        const sub = `${props.modern.length} ${t('histModernProvinces')}`
+        return (
+          <path
+            key={`${era.key}-${props.name}`}
+            d={proj.d(f.geometry)}
+            fill={ERA_PALETTE[i % ERA_PALETTE.length]}
+            fillOpacity={0.62}
+            stroke="#E4B44C"
+            strokeWidth={1.4}
+            style={{
+              cursor: 'pointer',
+              opacity: reduced ? 1 : 0,
+              animation: reduced ? undefined : `fl-rise .55s ease-out ${i * 0.045}s forwards`,
+            }}
+            onMouseEnter={(e) => onTip({ x: e.clientX, y: e.clientY, title: props.name, sub })}
+            onMouseMove={(e) => onTip({ x: e.clientX, y: e.clientY, title: props.name, sub })}
+            onMouseLeave={() => onTip(null)}
+          />
+        )
+      })}
+    </g>
   )
 }
 

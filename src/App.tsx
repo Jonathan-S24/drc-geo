@@ -38,7 +38,7 @@ function Shell({ data }: { data: DrcData }) {
   const [quizOpen, setQuizOpen] = useState(false)
 
   const unit = selection.view === 'unit' ? data.byPcode.get(selection.pcode) : null
-  const showFiche = (mode === 'provinces' || mode === 'density') && !!unit
+  const showFiche = (mode === 'provinces' || mode === 'sante') && !!unit
   const park = selectedPark ? data.sanctuaries.find((p) => p.id === selectedPark) : null
 
   // Esc closes whatever dossier is open.
@@ -55,7 +55,11 @@ function Shell({ data }: { data: DrcData }) {
   const showHint = mode === 'provinces' && !unit
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden">
+    <div
+      className={`relative h-screen w-screen overflow-hidden${mode === 'parks' ? ' rail-on' : ''}${
+        mode === 'histoire' ? ' tl-on' : ''
+      }${showFiche ? ' fiche-on' : ''}`}
+    >
       <RiverCanvas />
       <FleuveMap data={data} />
 
@@ -73,7 +77,7 @@ function Shell({ data }: { data: DrcData }) {
       <OptionsPanel />
 
       {mode === 'parks' && <SanctuairesRail parks={data.sanctuaries} selectedPark={selectedPark} onSelect={setSelectedPark} />}
-      {(mode === 'parks' || mode === 'density') && <FleuveLegend mode={mode} data={data} />}
+      {(mode === 'parks' || mode === 'sante') && <FleuveLegend mode={mode} data={data} />}
       {mode === 'histoire' && <HistoirePanel data={data} />}
 
       {showFiche && unit && (

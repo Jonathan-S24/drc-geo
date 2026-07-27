@@ -178,17 +178,30 @@ export function FleuveSearch({ data }: { data: DrcData }) {
   )
 }
 
-const MODES: { key: MapMode; labelKey: 'modeProvinces' | 'modeParks' | 'modeDensity' | 'modeHistoire'; badge: string; group: 'layers' | 'stories' }[] = [
+const MODES: { key: MapMode; labelKey: 'modeProvinces' | 'modeParks' | 'modeSante' | 'modeHistoire'; badge: string; group: 'layers' | 'stories' }[] = [
   { key: 'provinces', labelKey: 'modeProvinces', badge: '215', group: 'layers' },
   { key: 'parks', labelKey: 'modeParks', badge: '9', group: 'layers' },
-  { key: 'density', labelKey: 'modeDensity', badge: '2024', group: 'layers' },
+  { key: 'sante', labelKey: 'modeSante', badge: '519', group: 'layers' },
   { key: 'histoire', labelKey: 'modeHistoire', badge: '1919→', group: 'stories' },
 ]
 
 export function OptionsPanel() {
-  const { mode, setMode } = useLayer()
+  const { mode, setMode, selectedPark, setSelectedPark } = useLayer()
   const { t } = useLanguage()
   const [open, setOpen] = useState(false)
+
+  // The panel and the park dossier share the bottom-left column, so the two are
+  // mutually exclusive — whichever opens dismisses the other, and nothing
+  // ever overlaps in any state.
+  const toggle = () => {
+    setOpen((o) => {
+      if (!o) setSelectedPark(null)
+      return !o
+    })
+  }
+  useEffect(() => {
+    if (selectedPark) setOpen(false)
+  }, [selectedPark])
 
   return (
     <>
@@ -204,7 +217,7 @@ export function OptionsPanel() {
           ))}
         </div>
       )}
-      <button className={`fl-pill fl-optbtn${mode !== 'provinces' ? ' hot' : ''}`} onClick={() => setOpen((o) => !o)}>
+      <button className={`fl-pill fl-optbtn${mode !== 'provinces' ? ' hot' : ''}`} onClick={toggle}>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="12" cy="12" r="3" />
           <path d="M2 12h4M18 12h4M12 2v4M12 18v4" />

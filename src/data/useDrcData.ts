@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { AnthemsData, HealthZone, HistoricalEraProps, Park, Province, ProvincesFile, TerritoriesFile, TerritoryUnit } from '../types'
 import type { FeatureCollection, Geometry, Polygon } from 'geojson'
+import { normalizeForMatch } from '../utils/match'
 import type { PlaceMedia, PlaceMediaFile, UnitFeatureProperties } from '../types'
 
 export interface HistoricalEra {
@@ -22,7 +23,9 @@ export interface DrcData {
   /** DRC coat-of-arms URL (from the national-symbol entries) used as the universal
    *  image-load fallback so a header is never empty. Null if none in the data. */
   nationalSymbolImage: string | null
-  /** Health zones grouped by territory pcode (Phase 3 layer). Empty if unavailable. */
+  /** Health zones grouped by unit P-code. Joined on normalised territory NAME —
+   *  that maps all 519 zones onto 164 territories (the pcode field in the source
+   *  only resolves a fraction). */
   healthZonesByTerritory: Map<string, HealthZone[]>
   /** Historical administrative eras, chronological (Phase 3 layer). Empty if unavailable. */
   historicalEras: HistoricalEra[]
@@ -88,7 +91,7 @@ async function loadAll(): Promise<DrcData> {
 
   // Layer data (Phase 3) — all optional and non-fatal.
   const { healthZonesByTerritory, historicalEras, historicalNote, anthems, parks, sanctuaries } =
-    await loadLayers()
+    await loadLayers(territoriesFile.units)
 
   return {
     provinces: provincesFile.provinces,
@@ -109,7 +112,7 @@ async function loadAll(): Promise<DrcData> {
   }
 }
 
-async function loadLayers() {
+async function loadLayers(units: TerritoryUnit[]) {
   const healthZonesByTerritory = new Map<string, HealthZone[]>()
   let historicalEras: HistoricalEra[] = []
   let historicalNote = ''
@@ -135,10 +138,26 @@ async function loadLayers() {
   ])
 
   if (health?.zones) {
+    // Join on normalised territory name: the source's pcode_territory only
+    // resolves a fraction, while names map all 519 zones onto 164 territories.
+    // Letters only — the source writes "Katako Kombe" where the unit is
+    // "Katako-Kombe", so punctuation and spacing must not break the join.
+    const key = (s: string) => normalizeForMatch(s).replace(/[^a-z0-9]/g, '')
+    const pcodesByName = new Map<string, string[]>()
+    for (const u of units) {
+      const k = key(u.name)
+      const arr = pcodesByName.get(k) ?? []
+      arr.push(u.pcode)
+      pcodesByName.set(k, arr)
+    }
     for (const z of health.zones as HealthZone[]) {
-      const arr = healthZonesByTerritory.get(z.pcode_territory) ?? []
-      arr.push(z)
-      healthZonesByTerritory.set(z.pcode_territory, arr)
+      const pcodes = pcodesByName.get(key(z.territory))
+      if (!pcodes) continue
+      for (const pcode of pcodes) {
+        const arr = healthZonesByTerritory.get(pcode) ?? []
+        arr.push(z)
+        healthZonesByTerritory.set(pcode, arr)
+      }
     }
   }
 
