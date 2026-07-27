@@ -78,8 +78,8 @@ export function ParkDossier({ park, onClose }: { park: Park; onClose: () => void
 
         <div className="fl-sec">
           <h5>{t('parkSpeciesFlagship')}</h5>
-          {park.species.map((s) => (
-            <div key={s.fr} className="fl-sp">
+          {park.species.map((s, i) => (
+            <div key={`${s.fr}-${i}`} className="fl-sp">
               <b>{lang === 'en' ? s.en : s.fr}</b>
               <em className={`fl-st-${speciesStatusKey(s.status)}`}>{s.status}</em>
             </div>
@@ -89,8 +89,8 @@ export function ParkDossier({ park, onClose }: { park: Park; onClose: () => void
         <div className="fl-sec">
           <h5>{t('parkToSee')}</h5>
           <div className="fl-chips">
-            {features.map((f) => (
-              <span key={f} className="fl-chip leaf">
+            {features.map((f, i) => (
+              <span key={`${f}-${i}`} className="fl-chip leaf">
                 {f}
               </span>
             ))}
@@ -100,8 +100,8 @@ export function ParkDossier({ park, onClose }: { park: Park; onClose: () => void
         <div className="fl-sec">
           <h5>{t('parkThreats')}</h5>
           <div className="fl-thr">
-            {threats.map((th) => (
-              <span key={th}>{th}</span>
+            {threats.map((th, i) => (
+              <span key={`${th}-${i}`}>{th}</span>
             ))}
           </div>
         </div>
@@ -109,8 +109,8 @@ export function ParkDossier({ park, onClose }: { park: Park; onClose: () => void
         <div className="fl-sec">
           <h5>{t('parkProvinces')}</h5>
           <div className="fl-chips">
-            {park.provinces.map((p) => (
-              <span key={p} className="fl-chip">
+            {park.provinces.map((p, i) => (
+              <span key={`${p}-${i}`} className="fl-chip">
                 {p}
               </span>
             ))}

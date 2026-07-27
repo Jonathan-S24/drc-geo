@@ -226,10 +226,11 @@ export function OptionsPanel() {
   // mutually exclusive — whichever opens dismisses the other, and nothing
   // ever overlaps in any state.
   const toggle = () => {
-    setOpen((o) => {
-      if (!o) setSelectedPark(null)
-      return !o
-    })
+    // Never call setSelectedPark from inside the setOpen updater — updaters run
+    // during render, and updating another component there is a React error.
+    const willOpen = !open
+    setOpen(willOpen)
+    if (willOpen) setSelectedPark(null)
   }
   useEffect(() => {
     if (selectedPark) setOpen(false)

@@ -103,8 +103,8 @@ export function FicheDossier({ data, unit, onClose }: FicheDossierProps) {
         {unit.languages.length > 0 && (
           <Section title={t('languages')}>
             <div className="fl-chips">
-              {unit.languages.slice(0, 5).map((l) => (
-                <span key={l} className="fl-chip">
+              {unit.languages.slice(0, 5).map((l, i) => (
+                <span key={`${l}-${i}`} className="fl-chip">
                   {l}
                 </span>
               ))}
@@ -114,8 +114,8 @@ export function FicheDossier({ data, unit, onClose }: FicheDossierProps) {
         {unit.main_activities.length > 0 && (
           <Section title={t('mainActivities')}>
             <div className="fl-chips">
-              {unit.main_activities.slice(0, 6).map((a) => (
-                <span key={a} className="fl-chip">
+              {unit.main_activities.slice(0, 6).map((a, i) => (
+                <span key={`${a}-${i}`} className="fl-chip">
                   {a}
                 </span>
               ))}
