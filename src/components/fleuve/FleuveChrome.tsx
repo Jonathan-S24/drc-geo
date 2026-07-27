@@ -4,24 +4,56 @@ import { useAppState } from '../../state/AppStateContext'
 import { useLayer, type MapMode } from '../../state/LayerContext'
 import { useLanguage } from '../../i18n/LanguageContext'
 import { buildFleuveColors } from '../../theme/fleuve'
+import { useReducedMotion } from '../../theme/useReducedMotion'
 import { matches } from '../../utils/match'
 
+/**
+ * The mark: a telescope on a tripod whose legs stand on the Congo's curves,
+ * its flared objective aimed at the flag's yellow star, inside a copper ring.
+ * Copied verbatim from DRCGeo_Fleuve_prototype.html — the coordinates are
+ * geometrically aligned, so don't "tidy" them.
+ */
 export function Brand() {
-  const { t } = useLanguage()
+  // SMIL <animate> ignores CSS animation properties, so the reduced-motion
+  // preference has to gate it here rather than in the stylesheet.
+  const reduced = useReducedMotion()
   return (
     <div className="fl-brand">
-      <svg width="38" height="38" viewBox="0 0 40 40" fill="none" aria-hidden>
+      <svg className="fl-mark" viewBox="0 0 40 40" fill="none" role="img" aria-label="DRC.Geo">
         <circle cx="20" cy="20" r="18.5" stroke="#C87941" strokeWidth="1.2" opacity=".55" />
-        <path d="M8 27c5-1.5 6.5-7 11-9s7.5-.5 13-5" stroke="#6FA8BC" strokeWidth="2.1" strokeLinecap="round" />
-        <path d="M11 32c4.5-2 7-8.5 12-10.5" stroke="#6FA8BC" strokeWidth="1.1" strokeLinecap="round" opacity=".5" />
-        <circle cx="20" cy="20" r="3.1" fill="#E4B44C" />
+        <path
+          d="M6.5 29.8Q13 33.2 20 30.2T33.5 27.8"
+          stroke="#6FA8BC"
+          strokeWidth="2.1"
+          strokeLinecap="round"
+          opacity=".9"
+        />
+        <path
+          d="M8 32.6Q14 35.2 20 32.8T31.5 30.6"
+          stroke="#6FA8BC"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          opacity=".4"
+        />
+        <g stroke="#F0E6D6" strokeLinecap="round" fill="none">
+          <path d="M18.5 17.9V21.2" strokeWidth="1.9" />
+          <path d="M18.5 21.2 13.8 31.2M18.5 21.2 19.2 30.6M18.5 21.2 23.2 30" strokeWidth="1.6" />
+          <path d="M15.9 26.5 21.6 25.6" strokeWidth="1" opacity=".75" />
+        </g>
+        <path d="M9.51 21.25 11.49 23.75 26.74 13.19 28.07 12.77 23.97 7.61 23.26 8.81Z" fill="#F0E6D6" />
+        <path d="M19.7 18.01 16.96 14.57" stroke="#C87941" strokeWidth="1.2" opacity=".9" />
+        <path d="M8.93 23.74 10.5 22.5" stroke="#C87941" strokeWidth="3.2" strokeLinecap="round" />
+        <path
+          d="M29.31 5.28 29.88 6.79 31.5 6.87 30.23 7.88 30.66 9.44 29.31 8.55
+               27.96 9.44 28.39 7.88 27.12 6.87 28.74 6.79Z"
+          fill="#E4B44C"
+        >
+          {!reduced && <animate attributeName="opacity" values="1;.6;1" dur="3.4s" repeatCount="indefinite" />}
+        </path>
       </svg>
-      <div>
-        <h1 className="font-disp">
-          DRC<span style={{ color: 'var(--copper)' }}>.</span>Geo
-        </h1>
-        <small>{t('tagline')}</small>
-      </div>
+      <h1 className="font-disp">
+        DRC<span style={{ color: 'var(--copper)' }}>.</span>Geo
+      </h1>
     </div>
   )
 }
