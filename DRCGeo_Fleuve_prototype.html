@@ -176,7 +176,19 @@ svg{display:block}
   backdrop-filter:blur(14px);border:1px solid rgba(244,235,220,.13);border-radius:15px;padding:13px 15px;
   display:none;font-size:11.5px;min-width:186px}
 .legend.on{display:block;animation:rise .4s}
-.legend h6{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#6E8A82;margin-bottom:9px;font-weight:600}
+.legend h6{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#6E8A82;margin-bottom:9px;
+  font-weight:600;padding-right:22px}
+.lclose{position:absolute;top:9px;right:9px;width:20px;height:20px;border-radius:50%;border:none;
+  background:rgba(244,235,220,.1);color:#8FB3A9;cursor:pointer;font-size:11px;line-height:1;
+  display:flex;align-items:center;justify-content:center;transition:.18s;padding:0}
+.lclose:hover{background:var(--danger);color:#fff}
+.legend .era{display:flex;align-items:center;gap:8px;margin:5px 0;padding:4px 6px;border-radius:8px;
+  color:#B9D3CB;cursor:pointer;transition:.16s}
+.legend .era:hover{background:rgba(244,235,220,.07)}
+.legend .era.on{background:rgba(200,121,65,.18);color:var(--parch)}
+.legend .era b{font-weight:500;font-size:11.5px}
+.legend .era em{font-style:normal;margin-left:auto;font-size:10px;color:#7FA79D}
+.legend .era.on em{color:var(--gold)}
 .legend .lr{display:flex;align-items:center;gap:9px;margin:6px 0;color:#B9D3CB}
 .legend .sw{width:15px;height:11px;border-radius:3px;flex:none}
 .legend .foot{margin-top:10px;padding-top:9px;border-top:1px solid rgba(244,235,220,.1);
@@ -252,6 +264,15 @@ svg{display:block}
       <input id="q" placeholder="Rechercher un lieu…" autocomplete="off">
       <div class="results" id="res"></div>
     </div>
+    <button class="pill" id="quizBtn" title="Tester mes connaissances">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9.3"/>
+        <path d="M9.15 9.2a2.9 2.9 0 1 1 3.7 2.85c-.95.3-1.4 1-1.4 1.95v.35"/>
+        <circle cx="11.45" cy="17.6" r="1.15" fill="currentColor" stroke="none"/>
+      </svg>
+      Quiz
+    </button>
     <button class="pill" id="langBtn">FR</button>
   </div>
 
@@ -279,6 +300,7 @@ svg{display:block}
   <audio id="au" preload="none"></audio>
 
   <div class="legend" id="legend">
+    <button class="lclose" id="legClose" aria-label="Fermer la légende">✕</button>
     <h6 id="legTitle">Parcs nationaux</h6>
     <div id="legBody"></div>
     <div class="foot" id="legFoot"></div>
@@ -1001,8 +1023,9 @@ function setMode(m){
   });
   if(m==='parks')legendParks();
   else if(m==='sante')legendSante();
-  else leg.className='legend';
+  else if(m!=='histoire')leg.className='legend';
 }
+document.getElementById('legClose').onclick=()=>{document.getElementById('legend').className='legend'};
 
 /* ---------- histoire : the map actually changes shape ---------- */
 const gH=document.createElementNS('http://www.w3.org/2000/svg','g');
@@ -1044,6 +1067,7 @@ function showEra(i){
   document.getElementById('tlName').textContent=e.name;
   document.getElementById('tlSub').textContent=`${e.period} · ${e.count}`;
   document.getElementById('crumb').innerHTML=`<b>RDC</b><span>·</span>${e.year}<span>·</span><b>${e.count}</b>`;
+  legendHist(i);
   renderAnthem(e);
 }
 function renderAnthem(e){
@@ -1174,6 +1198,21 @@ function legendParks(){
    <div class="lr" style="margin-top:9px;color:var(--parch)"><b style="font-family:var(--disp);font-size:16px">${fmt(tot)} km²</b></div>
    <div class="lr" style="margin-top:-4px">soit ${(tot/2345409*100).toFixed(1)}% du territoire</div>`;
   document.getElementById('legFoot').innerHTML='Limites © OpenStreetMap (ODbL), simplifiées.<br>Statuts : UNESCO · UICN.';
+}
+function legendHist(active){
+  const leg=document.getElementById('legend');leg.className='legend on';
+  document.getElementById('legTitle').textContent='Un siècle de frontières';
+  const SW=['#6E8A82','#6E8A82','#3F7F6E','#B4653C','#E4B44C'];
+  document.getElementById('legBody').innerHTML=ERAS.map((e,i)=>`
+    <div class="era ${i===active?'on':''}" onclick="showEra(${i})">
+      <span class="sw" style="background:${SW[i]}"></span>
+      <b>${e.year}</b><em>${e.count.replace(' provinces','')} prov.</em>
+    </div>`).join('')
+    +`<div class="lr" style="margin-top:8px;font-size:10.5px;line-height:1.45;color:#7FA79D">
+        ${ERAS[active].name} · ${ERAS[active].period}</div>`;
+  document.getElementById('legFoot').innerHTML=
+    'Les frontières internes ont changé 5 fois en un siècle : 4 → 6 → 9 → 11 → 26 provinces.<br>'
+    +'Le pays a aussi changé de nom et d\'hymne. Cliquez une époque.';
 }
 function legendSante(){
   const leg=document.getElementById('legend');leg.className='legend on';

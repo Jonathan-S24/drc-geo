@@ -36,6 +36,9 @@ function Shell({ data }: { data: DrcData }) {
   const { t, lang } = useLanguage()
   useUrlSync(data, lang)
   const [quizOpen, setQuizOpen] = useState(false)
+  // The legend is dismissable; reopening a layer brings it back.
+  const [legendClosed, setLegendClosed] = useState(false)
+  useEffect(() => setLegendClosed(false), [mode])
 
   const unit = selection.view === 'unit' ? data.byPcode.get(selection.pcode) : null
   const showFiche = (mode === 'provinces' || mode === 'sante') && !!unit
@@ -68,8 +71,23 @@ function Shell({ data }: { data: DrcData }) {
       <div className="fl-topright">
         <FleuveSearch data={data} />
         <PwaChrome />
-        <button className="fl-pill" onClick={() => setQuizOpen(true)} aria-label={t('play')}>
-          🎮
+        <button className="fl-pill" onClick={() => setQuizOpen(true)} title={t('quizTitleAttr')}>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9.3" />
+            <path d="M9.15 9.2a2.9 2.9 0 1 1 3.7 2.85c-.95.3-1.4 1-1.4 1.95v.35" />
+            <circle cx="11.45" cy="17.6" r="1.15" fill="currentColor" stroke="none" />
+          </svg>
+          {t('quizLabel')}
         </button>
         <LangToggle />
       </div>
@@ -77,7 +95,9 @@ function Shell({ data }: { data: DrcData }) {
       <OptionsPanel />
 
       {mode === 'parks' && <SanctuairesRail parks={data.sanctuaries} selectedPark={selectedPark} onSelect={setSelectedPark} />}
-      {(mode === 'parks' || mode === 'sante') && <FleuveLegend mode={mode} data={data} />}
+      {mode !== 'provinces' && !legendClosed && (
+        <FleuveLegend mode={mode} data={data} onClose={() => setLegendClosed(true)} />
+      )}
       {mode === 'histoire' && <HistoirePanel data={data} />}
 
       {showFiche && unit && (

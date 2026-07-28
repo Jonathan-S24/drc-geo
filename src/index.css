@@ -197,7 +197,27 @@ body {
   backdrop-filter: blur(14px); border: 1px solid rgba(244, 235, 220, 0.13); border-radius: 15px;
   padding: 13px 15px; font-size: 11.5px; width: 186px;
 }
-.fl-legend h6 { font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #6e8a82; margin-bottom: 9px; font-weight: 600; }
+.fl-legend h6 {
+  font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #6e8a82;
+  margin-bottom: 9px; font-weight: 600; padding-right: 22px; /* clears the close button */
+}
+.fl-lclose {
+  position: absolute; top: 9px; right: 9px; width: 20px; height: 20px; border-radius: 50%; border: none;
+  background: rgba(244, 235, 220, 0.1); color: #8fb3a9; cursor: pointer; font-size: 11px; line-height: 1;
+  display: flex; align-items: center; justify-content: center; transition: 0.18s; padding: 0;
+}
+.fl-lclose:hover { background: var(--danger); color: #fff; }
+
+/* clickable era rows in the Histoire legend */
+.fl-era {
+  display: flex; align-items: center; gap: 8px; margin: 5px 0; padding: 4px 6px; border-radius: 8px;
+  color: #b9d3cb; cursor: pointer; transition: 0.16s; width: 100%; background: none; border: none;
+  font-family: 'Outfit', sans-serif; text-align: left;
+}
+.fl-era:hover { background: rgba(244, 235, 220, 0.07); }
+.fl-era.on { background: rgba(200, 121, 65, 0.18); color: var(--parch); }
+.fl-era b { font-weight: 500; font-size: 11.5px; }
+.fl-era em { font-style: normal; margin-left: auto; font-size: 10px; color: #7fa79d; }
 .fl-lr { display: flex; align-items: center; gap: 9px; margin: 6px 0; color: #b9d3cb; }
 .fl-sw { width: 15px; height: 11px; border-radius: 3px; flex: none; }
 .fl-foot { margin-top: 10px; padding-top: 9px; border-top: 1px solid rgba(244, 235, 220, 0.1); font-size: 9.5px; color: #5f7a73; line-height: 1.45; }
@@ -261,7 +281,9 @@ body {
 
 /* ---- histoire panel ---- */
 .fl-hist {
-  position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 19; width: min(92vw, 460px);
+  /* width matches the prototype's .timeline so it clears the bottom-right legend at >=1280 */
+  position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 20;
+  width: min(720px, calc(100vw - 60px));
   background: rgba(8, 25, 22, 0.95); backdrop-filter: blur(16px); border: 1px solid rgba(244, 235, 220, 0.14);
   border-radius: 18px; padding: 14px 16px;
 }
