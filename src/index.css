@@ -278,7 +278,9 @@ body {
 
 /* ---- floating dossiers ---- */
 .fl-fiche {
-  position: absolute; top: 22px; right: 26px; bottom: 26px; width: 392px; z-index: 19;
+  /* top:76 clears the .fl-topright chrome (top 22 + 42 tall) — at 22px the
+     header sat over the card's top edge and hid its close button. */
+  position: absolute; top: 76px; right: 26px; bottom: 26px; width: 392px; z-index: 19;
   background: var(--parch); color: var(--ink); border-radius: 22px; overflow: hidden; display: flex;
   box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55); flex-direction: column; animation: fl-slidein 0.42s var(--ease);
 }
@@ -325,21 +327,31 @@ body {
 
 .fl-hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 17; font-size: 11.5px; color: #5f7a73; letter-spacing: 0.05em; transition: opacity 0.5s; pointer-events: none; }
 
-/* ---- compact: dossiers become bottom sheets ---- */
-@media (max-width: 1099px) {
+/* ---- responsive: stay a side panel as long as possible ----
+   The map must keep the majority of the width on every laptop size, so the
+   dossiers narrow in steps and only become a full-width sheet on phones. */
+@media (max-width: 1180px) {
+  .fl-fiche, .fl-pdetail { width: 352px; }
+}
+@media (max-width: 980px) {
+  .fl-fiche { width: 312px; right: 18px; }
+  .fl-pdetail { width: 312px; left: 18px; }
+}
+@media (max-width: 800px) {
+  .fl-fiche { width: 286px; right: 14px; }
+  .fl-pdetail { width: 286px; left: 14px; }
+}
+
+/* Phones only: full-width bottom sheet with a bigger close target. */
+@media (max-width: 560px) {
   .fl-fiche, .fl-pdetail {
     top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 84vh;
     border-radius: 24px 24px 0 0; animation: fl-sheet-up 0.35s var(--ease);
   }
-  .fl-optpanel { bottom: 80px; }
-}
-
-/* Narrow screens: dossiers are bottom sheets and the close target grows so it
-   stays comfortably tappable. */
-@media (max-width: 899px) {
   .fl-fiche .fl-close, .fl-pdetail .fl-close {
     width: 38px; height: 38px; font-size: 17px; top: 12px; right: 12px;
   }
+  .fl-optpanel { bottom: 80px; }
 }
 @keyframes fl-sheet-up {
   from { opacity: 0; transform: translateY(24px); }
