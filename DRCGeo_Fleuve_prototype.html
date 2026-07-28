@@ -169,10 +169,12 @@ svg{display:block}
 .thr{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
 .thr span{font-size:11.5px;padding:4px 10px;border-radius:9px;background:rgba(217,99,63,.11);color:#8A3A1D}
 .close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;
-  border:1px solid rgba(244,235,220,.28);background:rgba(5,16,14,.78);color:var(--parch);
-  cursor:pointer;font-size:15px;line-height:1;backdrop-filter:blur(8px);transition:.2s;z-index:6;
-  display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,.4)}
-.close:hover{background:var(--danger);border-color:var(--danger);transform:scale(1.08)}
+  border:1px solid rgba(244,235,220,.32);background:rgba(5,16,14,.82);color:var(--parch);
+  cursor:pointer;font-size:15px;line-height:1;backdrop-filter:blur(8px);transition:.2s;z-index:40;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 3px 14px rgba(0,0,0,.5);
+  font-family:var(--sans);padding:0}
+.close:hover,.close:focus-visible{background:var(--danger);border-color:var(--danger);
+  transform:scale(1.08);outline:none}
 .legend{position:absolute;right:26px;bottom:26px;z-index:18;background:rgba(8,25,22,.9);
   backdrop-filter:blur(14px);border:1px solid rgba(244,235,220,.13);border-radius:15px;padding:13px 15px;
   display:none;font-size:11.5px;min-width:186px}
@@ -229,6 +231,23 @@ svg{display:block}
 .tip b{font-weight:500}.tip i{font-style:normal;display:block;font-size:10.5px;color:#8FB3A9;margin-top:1px}
 .hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:17;font-size:11.5px;
   color:#5F7A73;letter-spacing:.05em;transition:opacity .5s}
+
+/* ---------- narrow screens: cards become bottom sheets, exit stays put ---------- */
+@media(max-width:900px){
+  .fiche{top:auto;left:0;right:0;bottom:0;width:auto;max-height:84vh;border-radius:24px 24px 0 0}
+  .fiche.on{animation:sheetup .4s cubic-bezier(.2,.9,.3,1)}
+  .fhero{height:150px}
+  .pdetail{left:0;right:0;top:auto;bottom:0;width:auto;max-height:80vh;border-radius:24px 24px 0 0}
+  .pdetail.on{animation:sheetup .4s cubic-bezier(.2,.9,.3,1)}
+  .close{top:14px;right:14px;width:38px;height:38px;font-size:17px}
+  .rail{right:26px}
+  #stage.rail-on .legend{display:none}
+  .legend{max-width:calc(100vw - 52px)}
+  .timeline{width:calc(100vw - 24px);bottom:12px}
+  .search input{width:min(190px,42vw)}
+  .search input:focus{width:min(230px,52vw)}
+}
+@keyframes sheetup{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -1028,6 +1047,7 @@ function setMode(m){
   });
   if(m==='parks')legendParks();
   else if(m==='sante')legendSante();
+  else if(m==='provinces')legendProvinces();
   else if(m!=='histoire')leg.className='legend';
 }
 document.getElementById('legClose').onclick=()=>{document.getElementById('legend').className='legend'};
@@ -1204,6 +1224,22 @@ function legendParks(){
    <div class="lr" style="margin-top:-4px">${(tot/2345409*100).toFixed(1)}% ${T('ofCountry')}</div>`;
   document.getElementById('legFoot').innerHTML=T('osmFoot');
 }
+function legendProvinces(){
+  const leg=document.getElementById('legend');leg.className='legend on';
+  const nT=UNITS.filter(u=>u.t==='territoire').length, nV=UNITS.filter(u=>u.t==='ville').length;
+  const pop=UNITS.reduce((s,u)=>s+(u.pop||0),0);
+  const sample=[...new Set(UNITS.map(u=>u.pr))].slice(0,6).map(p=>provColor[p]);
+  document.getElementById('legTitle').textContent=T('legProv');
+  document.getElementById('legBody').innerHTML=`
+   <div class="lr"><span style="display:flex;gap:2px;flex:none">
+     ${sample.map(c=>`<span class="sw" style="background:${c};width:7px;border-radius:2px"></span>`).join('')}
+   </span>26 ${T('provincesW')}</div>
+   <div class="lr"><span class="sw" style="background:rgba(244,235,220,.34)"></span>${nT} ${T('territoiresW')}</div>
+   <div class="lr"><span class="sw" style="background:rgba(244,235,220,.13);border:1px solid rgba(244,235,220,.3)"></span>${nV} ${T('villesW')}</div>
+   <div class="lr" style="margin-top:9px;color:var(--parch)">
+     <b style="font-family:var(--disp);font-size:16px">${(pop/1e6).toFixed(1)} M</b>&nbsp;${T('inhabitants')}</div>`;
+  document.getElementById('legFoot').innerHTML=T('provFoot');
+}
 function legendHist(active){
   const leg=document.getElementById('legend');leg.className='legend on';
   document.getElementById('legTitle').textContent=T('legHist');
@@ -1239,6 +1275,8 @@ const L={
    chef:'Chef-lieu',others:'autres',
    srcNote:'Recensement 1984 — populations projetées. UN COD-AB · OCHA HPC 2024 · CAID.',
    legParks:'Parcs nationaux',legSante:'Zones de santé',legHist:'Un siècle de frontières',
+   legProv:'Provinces & territoires',provincesW:'provinces',territoiresW:'territoires',villesW:'villes',
+   inhabitants:'habitants (2024)',provFoot:'Une couleur par province. Cliquez un territoire pour ouvrir sa fiche — ou tapez son nom dans la recherche.',
    pReserve:'Parc / réserve',pUnesco:'Patrimoine UNESCO',pDanger:'En péril',
    ofCountry:'du territoire',zones:'zones',clickTerr:'cliquez un territoire pour la liste',
    species:'Espèces phares',see:'À voir',threats:'Menaces',provinces:'Provinces',
@@ -1257,6 +1295,8 @@ const L={
    chef:'Capital',others:'more',
    srcNote:'1984 census — projected populations. UN COD-AB · OCHA HPC 2024 · CAID.',
    legParks:'National parks',legSante:'Health zones',legHist:'A century of borders',
+   legProv:'Provinces & territories',provincesW:'provinces',territoiresW:'territories',villesW:'cities',
+   inhabitants:'inhabitants (2024)',provFoot:'One colour per province. Click a territory to open its card — or type its name in the search.',
    pReserve:'Park / reserve',pUnesco:'UNESCO heritage',pDanger:'In danger',
    ofCountry:'of the country',zones:'zones',clickTerr:'click a territory for the list',
    species:'Flagship species',see:'Highlights',threats:'Threats',provinces:'Provinces',
@@ -1275,6 +1315,7 @@ function applyLang(){
   document.getElementById('hint').textContent=T('hint');
   document.getElementById('langBtn').textContent=lang==='fr'?'FR':'EN';
   if(mode==='parks')legendParks(); else if(mode==='sante')legendSante();
+  else if(mode==='provinces')legendProvinces();
   else if(mode==='histoire'&&era!=null)legendHist(era);
   if(mode==='parks')buildRail();
   if(sel)openFiche(sel);
