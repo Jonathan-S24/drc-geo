@@ -61,15 +61,15 @@ export function AnthemPlayer({ anthem, years }: AnthemPlayerProps) {
           )}
         </button>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-[13px] font-extrabold text-ink">
-            {title} <span className="font-semibold text-ink/50">· {years}</span>
+          <p className="fl-anthem-title truncate text-[13px] font-extrabold">
+            {title} <span className="fl-anthem-years font-semibold">· {years}</span>
           </p>
-          <p className="truncate text-[11px] text-ink/55">
+          <p className="fl-anthem-meta truncate text-[11px]">
             {t('anthemMusic')}: {anthem.composer} · {t('anthemLyrics')}: {anthem.lyricist}
           </p>
         </div>
       </div>
-      <p className="mt-1.5 text-[10.5px] leading-snug text-ink/45">
+      <p className="fl-anthem-note mt-1.5 text-[10.5px] leading-snug">
         {(lang === 'en' && anthem.note_en) || anthem.note_fr} · {anthem.audio_credit}
       </p>
       <audio

@@ -168,10 +168,11 @@ svg{display:block}
 .st-other{background:rgba(30,110,76,.13);color:#1B5B3F}
 .thr{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
 .thr span{font-size:11.5px;padding:4px 10px;border-radius:9px;background:rgba(217,99,63,.11);color:#8A3A1D}
-.close{position:absolute;top:11px;right:11px;width:29px;height:29px;border-radius:50%;border:none;
-  background:rgba(5,16,14,.5);color:var(--parch);cursor:pointer;font-size:15px;line-height:1;
-  backdrop-filter:blur(8px);transition:.2s;z-index:5}
-.close:hover{background:var(--danger)}
+.close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(244,235,220,.28);background:rgba(5,16,14,.78);color:var(--parch);
+  cursor:pointer;font-size:15px;line-height:1;backdrop-filter:blur(8px);transition:.2s;z-index:6;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,.4)}
+.close:hover{background:var(--danger);border-color:var(--danger);transform:scale(1.08)}
 .legend{position:absolute;right:26px;bottom:26px;z-index:18;background:rgba(8,25,22,.9);
   backdrop-filter:blur(14px);border:1px solid rgba(244,235,220,.13);border-radius:15px;padding:13px 15px;
   display:none;font-size:11.5px;min-width:186px}
@@ -191,8 +192,8 @@ svg{display:block}
 .legend .era.on em{color:var(--gold)}
 .legend .lr{display:flex;align-items:center;gap:9px;margin:6px 0;color:#B9D3CB}
 .legend .sw{width:15px;height:11px;border-radius:3px;flex:none}
-.legend .foot{margin-top:10px;padding-top:9px;border-top:1px solid rgba(244,235,220,.1);
-  font-size:9.5px;color:#5F7A73;line-height:1.45}
+.legend .foot{margin-top:10px;padding-top:9px;border-top:1px solid rgba(244,235,220,.12);
+  font-size:10.5px;color:#A9C4BC;line-height:1.5}
 /* ---------- histoire timeline ---------- */
 .timeline{position:absolute;left:50%;transform:translateX(-50%);bottom:22px;z-index:20;width:min(720px,calc(100vw - 60px));
   background:rgba(8,25,22,.94);backdrop-filter:blur(18px);border:1px solid rgba(244,235,220,.14);
@@ -208,16 +209,19 @@ svg{display:block}
 .tlrow button.on b,.tlrow button.on small{color:#180C04}
 .tlinfo{display:flex;align-items:center;gap:14px}
 .tlname{flex:1;min-width:0}
-.tlname h4{font-family:var(--disp);font-size:17px;font-weight:500;line-height:1.1}
-.tlname p{font-size:11.5px;color:#8FB3A9;margin-top:2px}
+.tlname h4{font-family:var(--disp);font-size:17px;font-weight:500;line-height:1.1;color:var(--parch)}
+.tlname p{font-size:12px;color:#B9D3CB;margin-top:3px}
+.tlnote{font-size:11.5px;color:#A9C4BC;line-height:1.5;margin-top:10px;padding-top:9px;
+  border-top:1px solid rgba(244,235,220,.12)}
+.tlnote b{color:var(--gold);font-weight:500}
 .anthem{display:flex;align-items:center;gap:10px;background:rgba(244,235,220,.07);border-radius:14px;
   padding:8px 14px 8px 8px;border:1px solid rgba(244,235,220,.1)}
 .anthem button{width:34px;height:34px;border-radius:50%;border:none;background:var(--leaf);color:#04140E;
   cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;flex:none;transition:.2s}
 .anthem button:hover{transform:scale(1.07)}
-.anthem .meta{font-size:11.5px;line-height:1.35}
+.anthem .meta{font-size:12px;line-height:1.4}
 .anthem .meta b{font-weight:500;color:var(--parch);display:block}
-.anthem .meta span{color:#8FB3A9;font-size:10.5px}
+.anthem .meta span{color:#B9D3CB;font-size:11px}
 .anthem.mute{opacity:.65}
 .tip{position:absolute;z-index:30;pointer-events:none;background:rgba(5,16,14,.94);color:var(--parch);
   padding:7px 12px;border-radius:11px;font-size:12px;opacity:0;transition:opacity .16s;
@@ -264,30 +268,31 @@ svg{display:block}
       <input id="q" placeholder="Rechercher un lieu…" autocomplete="off">
       <div class="results" id="res"></div>
     </div>
-    <button class="pill" id="quizBtn" title="Tester mes connaissances">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="9.3"/>
-        <path d="M9.15 9.2a2.9 2.9 0 1 1 3.7 2.85c-.95.3-1.4 1-1.4 1.95v.35"/>
-        <circle cx="11.45" cy="17.6" r="1.15" fill="currentColor" stroke="none"/>
-      </svg>
-      Quiz
-    </button>
     <button class="pill" id="langBtn">FR</button>
   </div>
 
   <button class="pill optbtn" id="optBtn">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <circle cx="12" cy="12" r="3"/><path d="M2 12h4M18 12h4M12 2v4M12 18v4"/></svg>
-    Options d'affichage
+    <span data-i18n="options">Options</span>
   </button>
   <div class="optpanel" id="optPanel">
-    <h4>Couches de la carte</h4>
-    <div class="opt on" data-layer="provinces"><i class="dot"></i>Provinces &amp; territoires<small>215</small></div>
-    <div class="opt" data-layer="parks"><i class="dot"></i>Parcs nationaux<small>9</small></div>
-    <div class="opt" data-layer="sante"><i class="dot"></i>Zones de santé<small>519</small></div>
-    <h4>Récits</h4>
-    <div class="opt" data-layer="histoire"><i class="dot"></i>Histoire &amp; hymnes<small>1919→</small></div>
+    <h4 data-i18n="layers">Couches de la carte</h4>
+    <div class="opt on" data-layer="provinces"><i class="dot"></i><span data-i18n="l_prov">Provinces &amp; territoires</span><small>215</small></div>
+    <div class="opt" data-layer="parks"><i class="dot"></i><span data-i18n="l_parks">Parcs nationaux</span><small>9</small></div>
+    <div class="opt" data-layer="sante"><i class="dot"></i><span data-i18n="l_sante">Zones de santé</span><small>519</small></div>
+    <h4 data-i18n="stories">Récits</h4>
+    <div class="opt" data-layer="histoire"><i class="dot"></i><span data-i18n="l_hist">Histoire &amp; hymnes</span><small>1919→</small></div>
+    <h4 data-i18n="explore">Explorer</h4>
+    <div class="opt quiz" id="quizOpt">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex:none">
+        <circle cx="12" cy="12" r="9.3"/>
+        <path d="M9.15 9.2a2.9 2.9 0 1 1 3.7 2.85c-.95.3-1.4 1-1.4 1.95v.35"/>
+        <circle cx="11.45" cy="17.6" r="1.15" fill="currentColor" stroke="none"/>
+      </svg>
+      <span data-i18n="quiz">Tester mes connaissances</span>
+    </div>
   </div>
 
   <div class="timeline" id="timeline">
@@ -942,20 +947,20 @@ function openFiche(p){
      <div class="kicker"><em>${u.t}</em><h2>${u.n}</h2></div>
    </div>
    <div class="fbody">
-     <div class="tags"><span class="tag cop">${u.pr}</span>${pr.capital?`<span class="tag">Chef-lieu ${pr.capital}</span>`:''}</div>
+     <div class="tags"><span class="tag cop">${u.pr}</span>${pr.capital?`<span class="tag">${T('chef')} ${pr.capital}</span>`:''}</div>
      <div class="stats">
-       <div class="stat"><em>Superficie</em><b><span class="cnt" data-v="${u.a||0}">0</span><i>km²</i></b><span>UN COD-AB</span></div>
-       <div class="stat"><em>Population</em><b><span class="cnt" data-v="${u.pop||0}">0</span></b><span>projection OCHA 2024</span></div>
+       <div class="stat"><em>${T('area')}</em><b><span class="cnt" data-v="${u.a||0}">0</span><i>km²</i></b><span>UN COD-AB</span></div>
+       <div class="stat"><em>${T('pop')}</em><b><span class="cnt" data-v="${u.pop||0}">0</span></b><span>OCHA 2024</span></div>
      </div>
      ${kubaBar()}
-     ${u.lg?`<div class="sec"><h5>Langues</h5><div class="chips">${u.lg.slice(0,5).map(l=>`<span class="chip">${l}</span>`).join('')}</div></div>`:''}
-     ${u.ac?`<div class="sec"><h5>Activités principales</h5><div class="chips">${u.ac.slice(0,6).map(l=>`<span class="chip">${l}</span>`).join('')}</div></div>`:''}
-     ${m.facts?`<div class="sec"><h5>À savoir</h5>${m.facts.map(f=>`<p style="margin-bottom:7px">${f.icon||'•'} ${f.fr}</p>`).join('')}</div>`:''}
-     ${HEALTH[u.n]?`<div class="sec"><h5>Zones de santé · ${HEALTH[u.n].n}</h5>
+     ${u.lg?`<div class="sec"><h5>${T('langs')}</h5><div class="chips">${u.lg.slice(0,5).map(l=>`<span class="chip">${l}</span>`).join('')}</div></div>`:''}
+     ${u.ac?`<div class="sec"><h5>${T('acts')}</h5><div class="chips">${u.ac.slice(0,6).map(l=>`<span class="chip">${l}</span>`).join('')}</div></div>`:''}
+     ${m.facts?`<div class="sec"><h5>${T('know')}</h5>${m.facts.map(f=>`<p style="margin-bottom:7px">${f.icon||'•'} ${lang==='fr'?f.fr:(f.en||f.fr)}</p>`).join('')}</div>`:''}
+     ${HEALTH[u.n]?`<div class="sec"><h5>${T('hz')} · ${HEALTH[u.n].n}</h5>
        <div class="chips">${HEALTH[u.n].z.slice(0,8).map(z=>`<span class="chip leaf">${z.n}<span style="opacity:.6"> · ${fmt(z.p)}</span></span>`).join('')}</div>
-       ${HEALTH[u.n].z.length>8?`<p style="font-size:11px;color:var(--ink-2);margin-top:6px">+ ${HEALTH[u.n].z.length-8} autres</p>`:''}</div>`:''}
-     ${parksIn(u.n).length?`<div class="sec"><h5>Parcs nationaux</h5><div class="chips">${parksIn(u.n).map(p=>`<span class="chip leaf">${p.name}</span>`).join('')}</div></div>`:''}
-     <div class="sec"><h5>Source</h5><p style="font-size:11.5px;color:var(--ink-2)">Recensement 1984 — populations projetées. UN COD-AB · OCHA HPC 2024 · CAID.</p></div>
+       ${HEALTH[u.n].z.length>8?`<p style="font-size:11px;color:var(--ink-2);margin-top:6px">+ ${HEALTH[u.n].z.length-8} ${T('others')}</p>`:''}</div>`:''}
+     ${parksIn(u.n).length?`<div class="sec"><h5>${T('parks')}</h5><div class="chips">${parksIn(u.n).map(p=>`<span class="chip leaf">${p.name}</span>`).join('')}</div></div>`:''}
+     <div class="sec"><h5>${T('source')}</h5><p style="font-size:11.5px;color:var(--ink-2)">${T('srcNote')}</p></div>
    </div>`;
   countUp();
 }
@@ -1074,7 +1079,7 @@ function renderAnthem(e){
   const box=document.getElementById('anthem');
   stopAnthem();
   if(!e.anthem){box.className='anthem mute';
-    box.innerHTML=`<div class="meta"><b>Pas d'hymne propre</b><span>Colonie belge — « La Brabançonne »</span></div>`;return}
+    box.innerHTML=`<div class="meta"><b>${T('noAnthem')}</b><span>${T('belgian')}</span></div>`;return}
   const a=ANTH.anthems[e.anthem];
   box.className='anthem';
   box.innerHTML=`<button id="playBtn" aria-label="Écouter l'hymne">▶</button>
@@ -1136,7 +1141,7 @@ function buildRail(){
        ${p.danger_since?`<span class="seal dg">En péril</span>`:p.unesco_year?`<span class="seal un">UNESCO ${p.unesco_year}</span>`:''}
      </div>
      <div class="pb"><h3>${p.name.replace('Parc national ','').replace('Réserve de faune ','')}</h3>
-       <div class="tl">${p.tagline_fr}</div>
+       <div class="tl">${lang==='fr'?p.tagline_fr:p.tagline_en}</div>
        <div class="mt"><span><b>${fmt(p.area_km2)}</b> km²</span><span>·</span><span>${p.established}</span>
          <span>·</span><span><b>${p.species.length}</b> espèces</span></div>
      </div>
@@ -1165,18 +1170,18 @@ function selPark(id){
          <span class="tag">UICN ${p.iucn_category}</span>
        </div>
        <div class="stats">
-         <div class="stat"><em>Superficie</em><b><span class="cnt" data-v="${p.area_km2}">0</span><i>km²</i></b>
-           <span>${(p.area_km2/2345409*100).toFixed(1)}% du pays</span></div>
-         <div class="stat"><em>Créé en</em><b>${p.established}</b><span>${2026-p.established} ans</span></div>
+         <div class="stat"><em>${T('area')}</em><b><span class="cnt" data-v="${p.area_km2}">0</span><i>km²</i></b>
+           <span>${(p.area_km2/2345409*100).toFixed(1)}% ${T('ofCountry')}</span></div>
+         <div class="stat"><em>${T('created')}</em><b>${p.established}</b><span>${2026-p.established} ${T('years')}</span></div>
        </div>
-       <div class="sec"><p>${p.summary_fr}</p></div>
+       <div class="sec"><p>${lang==='fr'?p.summary_fr:p.summary_en}</p></div>
        ${kubaBar()}
-       <div class="sec"><h5>Espèces phares</h5>
+       <div class="sec"><h5>${T('species')}</h5>
          ${p.species.map(s=>`<div class="sp"><b>${s.fr}</b><em class="${st(s.status)}">${s.status}</em></div>`).join('')}</div>
-       <div class="sec"><h5>À voir</h5><div class="chips">${p.features_fr.map(f=>`<span class="chip leaf">${f}</span>`).join('')}</div></div>
-       <div class="sec"><h5>Menaces</h5><div class="thr">${p.threats_fr.map(t=>`<span>${t}</span>`).join('')}</div></div>
-       <div class="sec"><h5>Provinces</h5><div class="chips">${p.provinces.map(x=>`<span class="chip">${x}</span>`).join('')}</div></div>
-       <div class="sec"><h5>Le saviez-vous</h5><p style="font-family:var(--disp);font-size:14.5px">${p.fact_fr}</p></div>
+       <div class="sec"><h5>${T('see')}</h5><div class="chips">${p.features_fr.map(f=>`<span class="chip leaf">${f}</span>`).join('')}</div></div>
+       <div class="sec"><h5>${T('threats')}</h5><div class="thr">${p.threats_fr.map(t=>`<span>${t}</span>`).join('')}</div></div>
+       <div class="sec"><h5>${T('provinces')}</h5><div class="chips">${p.provinces.map(x=>`<span class="chip">${x}</span>`).join('')}</div></div>
+       <div class="sec"><h5>${T('didYouKnow')}</h5><p style="font-family:var(--disp);font-size:14.5px">${lang==='fr'?p.fact_fr:p.fact_en}</p></div>
      </div>`;
     countUp();
   },mode!=='parks'?260:0);
@@ -1190,18 +1195,18 @@ function legendParks(){
   const leg=document.getElementById('legend');leg.className='legend on';
   const inDanger=PARKS.filter(p=>p.danger_since).length, un=PARKS.filter(p=>p.unesco_year).length;
   const tot=PARKS.reduce((s,p)=>s+p.area_km2,0);
-  document.getElementById('legTitle').textContent='Parcs nationaux';
+  document.getElementById('legTitle').textContent=T('legParks');
   document.getElementById('legBody').innerHTML=`
-   <div class="lr"><span class="sw" style="background:rgba(71,201,138,.45);border:1px solid #7BE8B0"></span>Parc / réserve</div>
-   <div class="lr"><span class="sw" style="background:rgba(228,180,76,.9)"></span>Patrimoine UNESCO · ${un}</div>
-   <div class="lr"><span class="sw" style="background:rgba(217,99,63,.92)"></span>En péril · ${inDanger}</div>
+   <div class="lr"><span class="sw" style="background:rgba(71,201,138,.45);border:1px solid #7BE8B0"></span>${T('pReserve')}</div>
+   <div class="lr"><span class="sw" style="background:rgba(228,180,76,.9)"></span>${T('pUnesco')} · ${un}</div>
+   <div class="lr"><span class="sw" style="background:rgba(217,99,63,.92)"></span>${T('pDanger')} · ${inDanger}</div>
    <div class="lr" style="margin-top:9px;color:var(--parch)"><b style="font-family:var(--disp);font-size:16px">${fmt(tot)} km²</b></div>
-   <div class="lr" style="margin-top:-4px">soit ${(tot/2345409*100).toFixed(1)}% du territoire</div>`;
-  document.getElementById('legFoot').innerHTML='Limites © OpenStreetMap (ODbL), simplifiées.<br>Statuts : UNESCO · UICN.';
+   <div class="lr" style="margin-top:-4px">${(tot/2345409*100).toFixed(1)}% ${T('ofCountry')}</div>`;
+  document.getElementById('legFoot').innerHTML=T('osmFoot');
 }
 function legendHist(active){
   const leg=document.getElementById('legend');leg.className='legend on';
-  document.getElementById('legTitle').textContent='Un siècle de frontières';
+  document.getElementById('legTitle').textContent=T('legHist');
   const SW=['#6E8A82','#6E8A82','#3F7F6E','#B4653C','#E4B44C'];
   document.getElementById('legBody').innerHTML=ERAS.map((e,i)=>`
     <div class="era ${i===active?'on':''}" onclick="showEra(${i})">
@@ -1211,20 +1216,79 @@ function legendHist(active){
     +`<div class="lr" style="margin-top:8px;font-size:10.5px;line-height:1.45;color:#7FA79D">
         ${ERAS[active].name} · ${ERAS[active].period}</div>`;
   document.getElementById('legFoot').innerHTML=
-    'Les frontières internes ont changé 5 fois en un siècle : 4 → 6 → 9 → 11 → 26 provinces.<br>'
-    +'Le pays a aussi changé de nom et d\'hymne. Cliquez une époque.';
+    T('histFoot');
 }
 function legendSante(){
   const leg=document.getElementById('legend');leg.className='legend on';
   const tot=Object.values(HEALTH).reduce((s,h)=>s+h.n,0);
-  document.getElementById('legTitle').textContent='Zones de santé';
+  document.getElementById('legTitle').textContent=T('legSante');
   document.getElementById('legBody').innerHTML=[.12,.28,.44,.58,.72].map((o,i)=>
-   `<div class="lr"><span class="sw" style="background:rgba(71,201,138,${o})"></span>${['1–2','3–4','5–6','7–9','10 +'][i]} zones</div>`).join('')
-   +`<div class="lr" style="margin-top:9px;color:var(--parch)"><b style="font-family:var(--disp);font-size:16px">${fmt(tot)}</b>&nbsp;zones de santé</div>
-     <div class="lr" style="margin-top:-4px">cliquez un territoire pour la liste</div>`;
-  document.getElementById('legFoot').innerHTML='Découpage sanitaire officiel · OCHA / groupe IM RDC 2024.';
+   `<div class="lr"><span class="sw" style="background:rgba(71,201,138,${o})"></span>${['1–2','3–4','5–6','7–9','10 +'][i]} ${T('zones')}</div>`).join('')
+   +`<div class="lr" style="margin-top:9px;color:var(--parch)"><b style="font-family:var(--disp);font-size:16px">${fmt(tot)}</b>&nbsp;${T('legSante').toLowerCase()}</div>
+     <div class="lr" style="margin-top:-4px">${T('clickTerr')}</div>`;
+  document.getElementById('legFoot').innerHTML=T('hzFoot');
 }
-document.getElementById('langBtn').onclick=e=>{e.target.textContent=e.target.textContent==='FR'?'EN':'FR'};
+/* ---------- langue ---------- */
+const L={
+ fr:{options:'Options',layers:'Couches de la carte',stories:'Récits',explore:'Explorer',
+   l_prov:'Provinces & territoires',l_parks:'Parcs nationaux',l_sante:'Zones de santé',
+   l_hist:'Histoire & hymnes',quiz:'Tester mes connaissances',
+   search:'Rechercher un lieu…',hint:'Survolez une province · cliquez pour ouvrir la fiche',
+   area:'Superficie',pop:'Population',langs:'Langues',acts:'Activités principales',
+   know:'À savoir',hz:'Zones de santé',parks:'Parcs nationaux',source:'Source',
+   chef:'Chef-lieu',others:'autres',
+   srcNote:'Recensement 1984 — populations projetées. UN COD-AB · OCHA HPC 2024 · CAID.',
+   legParks:'Parcs nationaux',legSante:'Zones de santé',legHist:'Un siècle de frontières',
+   pReserve:'Parc / réserve',pUnesco:'Patrimoine UNESCO',pDanger:'En péril',
+   ofCountry:'du territoire',zones:'zones',clickTerr:'cliquez un territoire pour la liste',
+   species:'Espèces phares',see:'À voir',threats:'Menaces',provinces:'Provinces',
+   didYouKnow:'Le saviez-vous',created:'Créé en',years:'ans',
+   noAnthem:"Pas d'hymne propre",belgian:'Colonie belge — « La Brabançonne »',
+   histFoot:'Les frontières internes ont changé 5 fois en un siècle : 4 → 6 → 9 → 11 → 26 provinces.<br>Le pays a aussi changé de nom et d\'hymne. Cliquez une époque.',
+   osmFoot:'Limites © OpenStreetMap (ODbL), simplifiées.<br>Statuts : UNESCO · UICN.',
+   hzFoot:'Découpage sanitaire officiel · OCHA / groupe IM RDC 2024.',
+   quizSoon:'Le quiz arrive : placer un territoire sur la carte, deviner un chef-lieu, vrai ou faux.'},
+ en:{options:'Options',layers:'Map layers',stories:'Stories',explore:'Explore',
+   l_prov:'Provinces & territories',l_parks:'National parks',l_sante:'Health zones',
+   l_hist:'History & anthems',quiz:'Test your knowledge',
+   search:'Search for a place…',hint:'Hover a province · click to open its card',
+   area:'Area',pop:'Population',langs:'Languages',acts:'Main activities',
+   know:'Good to know',hz:'Health zones',parks:'National parks',source:'Source',
+   chef:'Capital',others:'more',
+   srcNote:'1984 census — projected populations. UN COD-AB · OCHA HPC 2024 · CAID.',
+   legParks:'National parks',legSante:'Health zones',legHist:'A century of borders',
+   pReserve:'Park / reserve',pUnesco:'UNESCO heritage',pDanger:'In danger',
+   ofCountry:'of the country',zones:'zones',clickTerr:'click a territory for the list',
+   species:'Flagship species',see:'Highlights',threats:'Threats',provinces:'Provinces',
+   didYouKnow:'Did you know',created:'Established',years:'yrs',
+   noAnthem:'No anthem of its own',belgian:'Belgian colony — "La Brabançonne"',
+   histFoot:'Internal borders changed 5 times in a century: 4 → 6 → 9 → 11 → 26 provinces.<br>The country also changed its name and its anthem. Click an era.',
+   osmFoot:'Boundaries © OpenStreetMap (ODbL), simplified.<br>Status: UNESCO · IUCN.',
+   hzFoot:'Official health-zone division · OCHA / DRC IM group 2024.',
+   quizSoon:'Quiz coming: place a territory on the map, guess a capital, true or false.'}
+};
+let lang='fr';
+const T=k=>L[lang][k]||k;
+function applyLang(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{el.innerHTML=T(el.dataset.i18n)});
+  q.placeholder=T('search');
+  document.getElementById('hint').textContent=T('hint');
+  document.getElementById('langBtn').textContent=lang==='fr'?'FR':'EN';
+  if(mode==='parks')legendParks(); else if(mode==='sante')legendSante();
+  else if(mode==='histoire'&&era!=null)legendHist(era);
+  if(mode==='parks')buildRail();
+  if(sel)openFiche(sel);
+  if(selPk)selPark(selPk);
+  if(mode==='histoire'&&era!=null)showEra(era);
+}
+document.getElementById('langBtn').onclick=()=>{lang=lang==='fr'?'en':'fr';applyLang()};
+document.getElementById('quizOpt').onclick=()=>{
+  optPanel.classList.remove('on');
+  const el=document.getElementById('hint');
+  el.textContent=T('quizSoon'); el.style.opacity=1;
+  setTimeout(()=>{el.textContent=T('hint');el.style.opacity=mode==='provinces'?.75:0},4200);
+};
+applyLang();
 setTimeout(()=>{document.getElementById('hint').style.opacity=.75},2400);
 </script>
 </body>
