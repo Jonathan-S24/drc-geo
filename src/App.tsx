@@ -32,7 +32,7 @@ function LoadingState() {
 
 function Shell({ data }: { data: DrcData }) {
   const { selection, clearSelection } = useAppState()
-  const { mode, selectedPark, setSelectedPark } = useLayer()
+  const { mode, selectedPark, setSelectedPark, eraIndex } = useLayer()
   const { t, lang } = useLanguage()
   useUrlSync(data, lang)
   const [quizOpen, setQuizOpen] = useState(false)
@@ -40,6 +40,7 @@ function Shell({ data }: { data: DrcData }) {
   const [legendClosed, setLegendClosed] = useState(false)
   useEffect(() => setLegendClosed(false), [mode])
 
+  const legendVisible = mode !== 'provinces' && !legendClosed
   const unit = selection.view === 'unit' ? data.byPcode.get(selection.pcode) : null
   const showFiche = (mode === 'provinces' || mode === 'sante') && !!unit
   const park = selectedPark ? data.sanctuaries.find((p) => p.id === selectedPark) : null
@@ -61,10 +62,13 @@ function Shell({ data }: { data: DrcData }) {
     <div
       className={`relative h-screen w-screen overflow-hidden${mode === 'parks' ? ' rail-on' : ''}${
         mode === 'histoire' ? ' tl-on' : ''
-      }${showFiche ? ' fiche-on' : ''}`}
+      }${showFiche ? ' fiche-on' : ''}${legendVisible ? ' legend-on' : ''}`}
     >
       <RiverCanvas />
-      <FleuveMap data={data} />
+      <FleuveMap
+        data={data}
+        fitKey={`${mode}|${showFiche ? unit?.pcode : ''}|${selectedPark ?? ''}|${eraIndex}|${legendVisible}`}
+      />
 
       <Brand />
       <Breadcrumb data={data} />
@@ -77,7 +81,7 @@ function Shell({ data }: { data: DrcData }) {
       <OptionsPanel onOpenQuiz={() => setQuizOpen(true)} />
 
       {mode === 'parks' && <SanctuairesRail parks={data.sanctuaries} selectedPark={selectedPark} onSelect={setSelectedPark} />}
-      {mode !== 'provinces' && !legendClosed && (
+      {legendVisible && (
         <FleuveLegend mode={mode} data={data} onClose={() => setLegendClosed(true)} />
       )}
       {mode === 'histoire' && <HistoirePanel data={data} />}

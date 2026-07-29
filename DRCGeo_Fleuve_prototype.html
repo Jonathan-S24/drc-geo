@@ -120,8 +120,12 @@ svg{display:block}
 .chip.leaf{background:rgba(30,110,76,.13);color:#1B5B3F}
 
 /* ---------- parks ---------- */
-.rail{position:absolute;left:26px;right:236px;bottom:22px;z-index:18;
-  display:none;gap:13px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:6px}
+.rail{position:absolute;left:26px;right:26px;bottom:22px;z-index:18;
+  display:none;gap:13px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:6px;
+  transition:right .35s cubic-bezier(.2,.9,.3,1)}
+/* only reserve room for the legend while it is actually open */
+#stage.legend-on .rail{right:236px}
+#mapWrap{transition:transform .55s cubic-bezier(.2,.9,.3,1)}
 .rail.on{display:flex;animation:rise .5s cubic-bezier(.2,.9,.3,1)}
 .rail::-webkit-scrollbar{height:5px}
 .rail::-webkit-scrollbar-thumb{background:rgba(244,235,220,.2);border-radius:3px}
@@ -894,7 +898,37 @@ svg.innerHTML=`<defs>
     <stop offset="0" stop-color="#6FA8BC" stop-opacity="0"/><stop offset=".5" stop-color="#8CC4D6" stop-opacity=".9"/>
     <stop offset="1" stop-color="#6FA8BC" stop-opacity="0"/></linearGradient>
 </defs>
-<g id="landBack"></g><g id="units"></g><g id="riverG"></g><g id="parksG"></g><g id="labels"></g>`;
+<g id="mapWrap"><g id="landBack"></g><g id="units"></g><g id="riverG"></g><g id="parksG"></g><g id="labels"></g></g>`;
+
+/* country bounding box in projected units — used to fit the map into free space */
+const BB=(()=>{let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  const walk=c=>{ if(typeof c[0]==='number'){const x=PX(c[0]),y=PY(c[1]);
+      if(x<x0)x0=x; if(x>x1)x1=x; if(y<y0)y0=y; if(y>y1)y1=y;} else c.forEach(walk)};
+  GEO.features.forEach(f=>walk(f.geometry.coordinates));
+  return {x:x0,y:y0,w:x1-x0,h:y1-y0}})();
+
+/* the map never hides behind a panel: it re-fits into whatever space is free */
+function safeArea(){
+  const pad=18, S=document.getElementById('stage').getBoundingClientRect();
+  let top=72,left=14,right=S.width-14,bottom=S.height-14;
+  const vis=id=>{const el=document.getElementById(id);
+    return el&&el.classList.contains('on')?el.getBoundingClientRect():null};
+  const leg=vis('legend'); if(leg) right=Math.min(right,leg.left-pad);
+  const fic=vis('fiche');  if(fic) right=Math.min(right,fic.left-pad);
+  const rail=vis('rail');  if(rail) bottom=Math.min(bottom,rail.top-pad);
+  const tl=vis('timeline');if(tl)  bottom=Math.min(bottom,tl.top-pad);
+  const pd=vis('pdetail'); if(pd)  left=Math.max(left,pd.right+pad);
+  if(right-left<200){right=S.width-14;left=14}
+  if(bottom-top<200){bottom=S.height-14;top=72}
+  return {left,top,right,bottom};
+}
+function fitMap(){
+  const s=safeArea(), aw=s.right-s.left, ah=s.bottom-s.top;
+  if(aw<=0||ah<=0) return;
+  const k=Math.min(aw/BB.w, ah/BB.h, 1.9);
+  const tx=(s.left+s.right)/2-(BB.x+BB.w/2)*k, ty=(s.top+s.bottom)/2-(BB.y+BB.h/2)*k;
+  document.getElementById('mapWrap').setAttribute('transform',`translate(${tx.toFixed(1)} ${ty.toFixed(1)}) scale(${k.toFixed(3)})`);
+}
 
 /* land backing — the country reads as land floating on the river */
 const gL=svg.querySelector('#landBack');
@@ -997,11 +1031,11 @@ function openFiche(p){
      ${parksIn(u.n).length?`<div class="sec"><h5>${T('parks')}</h5><div class="chips">${parksIn(u.n).map(p=>`<span class="chip leaf">${p.name}</span>`).join('')}</div></div>`:''}
      <div class="sec"><h5>${T('source')}</h5><p style="font-size:11.5px;color:var(--ink-2)">${T('srcNote')}</p></div>
    </div>`;
-  countUp();
+  countUp();requestAnimationFrame(fitMap);
 }
 function closeFiche(){fiche.className='fiche';if(sel&&paths[sel]){paths[sel].setAttribute('fill-opacity','.30');
   paths[sel].setAttribute('stroke','rgba(244,235,220,.20)');paths[sel].setAttribute('stroke-width','.65')}sel=null;
-  document.getElementById('crumb').innerHTML=`<b>RDC</b><span>·</span>26 provinces<span>·</span>145 territoires`}
+  document.getElementById('crumb').innerHTML=`<b>RDC</b><span>·</span>26 provinces<span>·</span>145 territoires`;requestAnimationFrame(fitMap)}
 const EMB='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1280px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png';
 function kubaBar(){return `<svg class="kuba" viewBox="0 0 300 16" preserveAspectRatio="none">
   <path d="M0 8h300" stroke="rgba(13,31,27,.14)" stroke-width="1"/>
@@ -1061,12 +1095,18 @@ function setMode(m){
     p.setAttribute('stroke',(m==='parks'||m==='histoire')?'rgba(244,235,220,.08)':'rgba(244,235,220,.20)');
     p.style.pointerEvents=(m==='parks'||m==='histoire')?'none':'auto';
   });
+  requestAnimationFrame(fitMap);
   if(m==='parks')legendParks();
   else if(m==='sante')legendSante();
   else if(m==='provinces')legendProvinces();
-  else if(m!=='histoire')leg.className='legend';
+  else if(m!=='histoire')showLegend(false);
 }
-document.getElementById('legClose').onclick=()=>{document.getElementById('legend').className='legend'};
+function showLegend(on){
+  document.getElementById('legend').className=on?'legend on':'legend';
+  document.getElementById('stage').classList.toggle('legend-on',on);
+  requestAnimationFrame(fitMap);
+}
+document.getElementById('legClose').onclick=()=>showLegend(false);
 
 /* ---------- histoire : the map actually changes shape ---------- */
 const gH=document.createElementNS('http://www.w3.org/2000/svg','g');
@@ -1110,6 +1150,7 @@ function showEra(i){
   document.getElementById('crumb').innerHTML=`<b>RDC</b><span>·</span>${e.year}<span>·</span><b>${e.count}</b>`;
   legendHist(i);
   renderAnthem(e);
+  requestAnimationFrame(fitMap);
 }
 function renderAnthem(e){
   const box=document.getElementById('anthem');
@@ -1219,16 +1260,16 @@ function selPark(id){
        <div class="sec"><h5>${T('provinces')}</h5><div class="chips">${p.provinces.map(x=>`<span class="chip">${x}</span>`).join('')}</div></div>
        <div class="sec"><h5>${T('didYouKnow')}</h5><p style="font-family:var(--disp);font-size:14.5px">${lang==='fr'?p.fact_fr:p.fact_en}</p></div>
      </div>`;
-    countUp();
+    countUp();requestAnimationFrame(fitMap);
   },mode!=='parks'?260:0);
 }
 function closePark(){document.getElementById('pdetail').className='pdetail';selPk=null;
   document.querySelectorAll('.pcard').forEach(c=>c.classList.remove('sel'));
-  gP.querySelectorAll('path').forEach(pa=>{pa.setAttribute('fill-opacity','.18');pa.setAttribute('stroke-width','1.3')})}
+  gP.querySelectorAll('path').forEach(pa=>{pa.setAttribute('fill-opacity','.18');pa.setAttribute('stroke-width','1.3')});requestAnimationFrame(fitMap)}
 
 /* legends */
 function legendParks(){
-  const leg=document.getElementById('legend');leg.className='legend on';
+  const leg=document.getElementById('legend');showLegend(true);
   const inDanger=PARKS.filter(p=>p.danger_since).length, un=PARKS.filter(p=>p.unesco_year).length;
   const tot=PARKS.reduce((s,p)=>s+p.area_km2,0);
   document.getElementById('legTitle').textContent=T('legParks');
@@ -1241,7 +1282,7 @@ function legendParks(){
   document.getElementById('legFoot').innerHTML=T('osmFoot');
 }
 function legendProvinces(){
-  const leg=document.getElementById('legend');leg.className='legend on';
+  const leg=document.getElementById('legend');showLegend(true);
   const nT=UNITS.filter(u=>u.t==='territoire').length, nV=UNITS.filter(u=>u.t==='ville').length;
   const pop=UNITS.reduce((s,u)=>s+(u.pop||0),0);
   const sample=[...new Set(UNITS.map(u=>u.pr))].slice(0,6).map(p=>provColor[p]);
@@ -1257,7 +1298,7 @@ function legendProvinces(){
   document.getElementById('legFoot').innerHTML=T('provFoot');
 }
 function legendHist(active){
-  const leg=document.getElementById('legend');leg.className='legend on';
+  const leg=document.getElementById('legend');showLegend(true);
   document.getElementById('legTitle').textContent=T('legHist');
   const SW=['#6E8A82','#6E8A82','#3F7F6E','#B4653C','#E4B44C'];
   document.getElementById('legBody').innerHTML=ERAS.map((e,i)=>`
@@ -1271,7 +1312,7 @@ function legendHist(active){
     T('histFoot');
 }
 function legendSante(){
-  const leg=document.getElementById('legend');leg.className='legend on';
+  const leg=document.getElementById('legend');showLegend(true);
   const tot=Object.values(HEALTH).reduce((s,h)=>s+h.n,0);
   document.getElementById('legTitle').textContent=T('legSante');
   document.getElementById('legBody').innerHTML=[.12,.28,.44,.58,.72].map((o,i)=>
@@ -1347,6 +1388,7 @@ document.getElementById('quizOpt').onclick=()=>{
 };
 applyLang();
 setTimeout(()=>{document.getElementById('hint').style.opacity=.75},2400);
+fitMap(); addEventListener('resize',()=>requestAnimationFrame(fitMap));
 </script>
 </body>
 </html>

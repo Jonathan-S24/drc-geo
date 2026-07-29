@@ -35,7 +35,7 @@ function santeOpacity(n: number): number {
   return b < 0 ? 0.05 : SANTE_RAMP.steps[b]
 }
 
-export function FleuveMap({ data }: { data: DrcData }) {
+export function FleuveMap({ data, fitKey }: { data: DrcData; fitKey: string }) {
   const { selection, selectUnit } = useAppState()
   const { mode, selectedPark, setSelectedPark, eraIndex } = useLayer()
   const { t, lang } = useLanguage()
@@ -93,6 +93,66 @@ export function FleuveMap({ data }: { data: DrcData }) {
     return { fill: base, opacity: 0.3 }
   }
 
+  // Projected bounding box of the whole country — the target fitMap works with.
+  const bbox = useMemo(() => {
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity
+    for (const f of features) {
+      for (const ring of f.geometry.coordinates) {
+        for (const [lon, lat] of ring) {
+          const x = proj.px(lon), y = proj.py(lat)
+          if (x < x0) x0 = x
+          if (x > x1) x1 = x
+          if (y < y0) y0 = y
+          if (y > y1) y1 = y
+        }
+      }
+    }
+    return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 }
+  }, [features, proj])
+
+  // The map never hides behind a panel: it re-fits into whatever space is free.
+  const mapWrapRef = useRef<SVGGElement | null>(null)
+  useEffect(() => {
+    const fit = () => {
+      const stage = stageRef.current
+      const wrap = mapWrapRef.current
+      if (!stage || !wrap || !bbox.w || !bbox.h) return
+      const S = stage.getBoundingClientRect()
+      const pad = 18
+      let top = 72, left = 14, right = S.width - 14, bottom = S.height - 14
+      // Panels only exist in the DOM while open, so a hit here means "visible".
+      const rect = (sel: string) => {
+        const el = document.querySelector(sel)
+        return el ? el.getBoundingClientRect() : null
+      }
+      const leg = rect('.fl-legend'); if (leg) right = Math.min(right, leg.left - S.left - pad)
+      const fic = rect('.fl-fiche'); if (fic) right = Math.min(right, fic.left - S.left - pad)
+      const rail = rect('.fl-rail'); if (rail) bottom = Math.min(bottom, rail.top - S.top - pad)
+      const tl = rect('.fl-hist'); if (tl) bottom = Math.min(bottom, tl.top - S.top - pad)
+      const pd = rect('.fl-pdetail'); if (pd) left = Math.max(left, pd.right - S.left + pad)
+      // Never squeeze to nothing — fall back to the full stage.
+      if (right - left < 200) { right = S.width - 14; left = 14 }
+      if (bottom - top < 200) { bottom = S.height - 14; top = 72 }
+
+      const aw = right - left, ah = bottom - top
+      if (aw <= 0 || ah <= 0) return
+      const k = Math.min(aw / bbox.w, ah / bbox.h, 1.9)
+      const tx = (left + right) / 2 - (bbox.x + bbox.w / 2) * k
+      const ty = (top + bottom) / 2 - (bbox.y + bbox.h / 2) * k
+      wrap.setAttribute('transform', `translate(${tx.toFixed(1)} ${ty.toFixed(1)}) scale(${k.toFixed(3)})`)
+    }
+    // Panels slide/fade in, so their rect is still mid-animation on the first
+    // frame. Fit immediately for responsiveness, then again once they settle.
+    const raf = requestAnimationFrame(fit)
+    const settle = window.setTimeout(fit, 480)
+    window.addEventListener('resize', fit)
+    return () => {
+      cancelAnimationFrame(raf)
+      clearTimeout(settle)
+      window.removeEventListener('resize', fit)
+    }
+  }, [fitKey, bbox, size])
+
   const [tip, setTip] = useState<Tip | null>(null)
 
   // Arrival draw-in: stroke each province outline in, staggered, then fade the fill up.
@@ -138,6 +198,10 @@ export function FleuveMap({ data }: { data: DrcData }) {
         style={{ display: 'block', position: 'relative', zIndex: 1 }}
       >
         <FleuveDefs />
+
+        {/* every map layer lives in mapWrap, which fitMap scales/translates so
+            the country always sits in the space the panels leave free */}
+        <g id="mapWrap" ref={mapWrapRef}>
 
         {/* landBack: the country as opaque land on the living river below */}
         <path d={landPath} fill="#0A211C" stroke="none" />
@@ -208,6 +272,7 @@ export function FleuveMap({ data }: { data: DrcData }) {
             lang={lang}
           />
         )}
+        </g>
       </svg>
 
       <div className="grain" />

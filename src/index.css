@@ -153,10 +153,17 @@ body {
    Height is pinned so the bottom-anchored lifts below clear it exactly:
    rail top sits 208px above the viewport bottom (22 + 186). */
 .fl-rail {
-  position: absolute; left: 26px; right: 236px; bottom: 22px; height: 186px; z-index: 18;
+  /* Only reserve room for the legend when the legend is actually open,
+     otherwise the rail left a dead 236px gap on the right. */
+  position: absolute; left: 26px; right: 26px; bottom: 22px; height: 186px; z-index: 18;
   display: flex; gap: 13px; overflow-x: auto; overflow-y: hidden;
   scroll-behavior: smooth; scroll-snap-type: x proximity;
+  transition: right 0.35s var(--ease);
 }
+.legend-on .fl-rail { right: 236px; }
+
+/* the map re-fits into whatever space the panels leave free */
+#mapWrap { transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.3, 1); }
 /* when a bottom rail is open, everything anchored to the bottom lifts above it */
 .rail-on .fl-optbtn, .rail-on .fl-legend { bottom: 224px; }
 .rail-on .fl-optpanel { bottom: 278px; }
