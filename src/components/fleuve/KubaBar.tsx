@@ -1,3 +1,6 @@
+/** The three flag colours, cycled across the diamonds. */
+const KUBA_CYCLE = ['rgba(0,127,255,.34)', 'rgba(247,214,24,.44)', 'rgba(206,16,33,.34)']
+
 /** Kuba-cloth divider used between dossier sections. */
 export function KubaBar() {
   return (
@@ -7,7 +10,7 @@ export function KubaBar() {
         <path
           key={i}
           d={`M${i * 28 + 4} 8l6-5 6 5-6 5z`}
-          fill={i % 2 ? 'rgba(200,121,65,.42)' : 'rgba(13,31,27,.14)'}
+          fill={KUBA_CYCLE[i % 3]}
         />
       ))}
     </svg>

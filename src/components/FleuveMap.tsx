@@ -57,7 +57,13 @@ export function FleuveMap({ data, fitKey }: { data: DrcData; fitKey: string }) {
   }, [])
 
   const proj = useMemo(() => makeProjection(DRC_BOUNDS, size.w, size.h), [size])
-  const colors = useMemo(() => buildFleuveColors(data.provinces.map((p) => p.name)), [data.provinces])
+  // Key the palette on the TERRITORIES-file spelling: the provinces file writes
+  // "Équateur" while units write "Equateur", so keying on the former left that
+  // province falling back to grey.
+  const colors = useMemo(
+    () => buildFleuveColors([...new Set(data.units.map((u) => u.province))]),
+    [data.units],
+  )
 
   const features = data.boundaries.features as UnitFeature[]
   const pathById = useMemo(() => {
@@ -222,7 +228,7 @@ export function FleuveMap({ data, fitKey }: { data: DrcData; fitKey: string }) {
                 d={pathById.get(pcode)}
                 fill={st.fill}
                 fillOpacity={st.opacity}
-                stroke={isSel ? '#E4B44C' : 'rgba(244,235,220,.20)'}
+                stroke={isSel ? '#F7D618' : 'rgba(244,235,220,.20)'}
                 strokeWidth={isSel ? 1.5 : 0.65}
                 tabIndex={ghost ? -1 : 0}
                 role="button"
@@ -376,7 +382,7 @@ function HistoryEraLayer({ era, proj, reduced, onTip, t }: HistoryEraLayerProps)
             d={proj.d(f.geometry)}
             fill={ERA_PALETTE[i % ERA_PALETTE.length]}
             fillOpacity={0.62}
-            stroke="#E4B44C"
+            stroke="#F7D618"
             strokeWidth={1.4}
             style={{
               cursor: 'pointer',

@@ -17,9 +17,12 @@ export function FleuveLegend({ mode, data, onClose }: LegendProps) {
   const fmt = (n: number) => n.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US')
 
   const close = (
-    <button className="fl-lclose" onClick={onClose} aria-label={t('legendClose')}>
-      ✕
-    </button>
+    <>
+      <button className="fl-lclose" onClick={onClose} aria-label={t('legendClose')}>
+        ✕
+      </button>
+      <div className="flagband thin" style={{ margin: '-13px -15px 10px', borderRadius: '15px 15px 0 0' }} />
+    </>
   )
 
   if (mode === 'histoire') return <HistLegend data={data} close={close} />

@@ -35,8 +35,13 @@
 /* ============ Fleuve design system (ported from DRCGeo_Fleuve_prototype) ============ */
 :root {
   --abyss: #05100e; --basin: #081916; --canopy: #0f2a24; --ridge: #16443a;
-  --river: #6fa8bc; --copper: #c87941; --copper-lo: #8a4f27; --gold: #e4b44c;
-  --leaf: #47c98a; --leaf-lo: #1e6e4c; --danger: #d9633f;
+  /* National colours — each has a job: blue = river & quiz & silhouettes,
+     yellow = selection, eras, the logo star; red = alerts, peril, close.
+     The forest base and copper accent stay: saturated blue over large
+     surfaces would wreck contrast against the map. */
+  --flag-blue: #007fff; --flag-yellow: #f7d618; --flag-red: #ce1021;
+  --river: #4e9bd8; --copper: #c87941; --copper-lo: #8a4f27; --gold: #f0c63e;
+  --leaf: #47c98a; --leaf-lo: #1e6e4c; --danger: #ce1021;
   --parch: #f4ebdc; --parch-2: #e8dcc8; --ink: #0d1f1b; --ink-2: #4a5f58;
   --disp: 'Fraunces', Georgia, serif;
   --ease: cubic-bezier(0.2, 0.9, 0.3, 1);
@@ -55,6 +60,15 @@ body {
 :focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
 
 .font-disp { font-family: var(--disp); }
+
+/* the flag as a 4px ribbon — real proportions, yellow-edged red diagonal */
+.flagband {
+  height: 4px; flex: none;
+  background: linear-gradient(100deg,
+    var(--flag-blue) 0 34%, var(--flag-yellow) 34% 40%, var(--flag-red) 40% 60%,
+    var(--flag-yellow) 60% 66%, var(--flag-blue) 66% 100%);
+}
+.flagband.thin { height: 3px; opacity: 0.9; }
 
 /* the living river — bottom layer of the stage, beneath the map SVG */
 .fl-river { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; z-index: 0; }
@@ -196,7 +210,7 @@ body {
   padding: 3px 8px; border-radius: 7px; text-transform: uppercase; backdrop-filter: blur(6px);
 }
 .fl-seal.un { background: rgba(228, 180, 76, 0.9); color: #3a2a06; }
-.fl-seal.dg { background: rgba(217, 99, 63, 0.92); color: #fff; }
+.fl-seal.dg { background: var(--flag-red); color: #fff; }
 .fl-pb { padding: 10px 14px 11px; }
 .fl-pb h3 { font-size: 16.5px; font-weight: 500; line-height: 1.12; margin-bottom: 3px; }
 .fl-tl { font-size: 11.5px; color: #8fb3a9; line-height: 1.4; height: 32px; overflow: hidden; }
@@ -383,4 +397,95 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* ================= quiz (ported from DRCGeo_Fleuve_prototype) ================= */
+.fl-quiz {
+  position: fixed; inset: 0; z-index: 60; background: rgba(4, 14, 12, 0.97); backdrop-filter: blur(20px);
+  overflow-y: auto; padding: 78px 26px 40px;
+}
+.fl-quiz-inner { max-width: 760px; margin: 0 auto; }
+.qx {
+  position: absolute; top: 22px; right: 26px; width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid rgba(244, 235, 220, 0.25); background: rgba(6, 20, 17, 0.8); color: var(--parch);
+  font-size: 17px; cursor: pointer; z-index: 5; transition: 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.qx:hover { background: var(--danger); border-color: var(--danger); transform: rotate(90deg); }
+.qhead { text-align: center; margin-bottom: 26px; }
+.qhead h2 { font-family: var(--disp); font-size: 34px; font-weight: 500; margin-bottom: 7px; }
+.qhead p { color: #9fc0b6; font-size: 14px; }
+.qgames { display: grid; grid-template-columns: repeat(auto-fit, minmax(216px, 1fr)); gap: 14px; }
+.qcard {
+  background: rgba(9, 28, 24, 0.9); border: 1px solid rgba(244, 235, 220, 0.13); border-radius: 18px;
+  padding: 20px 18px; cursor: pointer; transition: 0.32s var(--ease); position: relative; overflow: hidden;
+  opacity: 0; transform: translateY(14px); animation: qin 0.5s var(--ease) forwards;
+  text-align: left; color: var(--parch); font-family: 'Outfit', sans-serif;
+}
+@keyframes qin { to { opacity: 1; transform: none; } }
+.qcard:hover { transform: translateY(-6px); border-color: var(--copper); box-shadow: 0 20px 46px rgba(0,0,0,.5), 0 0 0 1px rgba(200,121,65,.4); }
+.qcard .ic {
+  width: 44px; height: 44px; border-radius: 13px; background: rgba(0, 127, 255, 0.18);
+  display: flex; align-items: center; justify-content: center; color: #5faeff; margin-bottom: 13px; transition: 0.32s;
+}
+.qcard:hover .ic { background: var(--flag-blue); color: #fff; transform: scale(1.08) rotate(-6deg); }
+.qcard h3 { font-family: var(--disp); font-size: 18px; font-weight: 500; margin-bottom: 5px; }
+.qcard p { font-size: 12.5px; color: #9fc0b6; line-height: 1.5; }
+.qcard .best { position: absolute; top: 14px; right: 15px; font-size: 10.5px; color: var(--gold); font-weight: 500; }
+
+.qbar { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.qprog { flex: 1; height: 6px; background: rgba(244, 235, 220, 0.12); border-radius: 3px; overflow: hidden; }
+.qprog i { display: block; height: 100%; background: linear-gradient(90deg, var(--flag-yellow), var(--flag-red)); border-radius: 3px; transition: width 0.45s var(--ease); }
+.qscore { font-family: var(--disp); font-size: 20px; font-weight: 500; min-width: 34px; text-align: right; }
+.qstreak { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: 0.3s; transform: scale(0.7); }
+.qstreak.on { opacity: 1; transform: none; }
+.qq { text-align: center; margin-bottom: 22px; min-height: 52px; }
+.qq h3 { font-family: var(--disp); font-size: 25px; font-weight: 500; line-height: 1.22; animation: qslide 0.42s var(--ease); }
+.qq small { display: block; font-size: 11.5px; color: #9fc0b6; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 9px; font-weight: 600; }
+@keyframes qslide { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.qstage { display: flex; justify-content: center; margin-bottom: 24px; min-height: 186px; align-items: center; }
+.qshape { width: 270px; height: 190px; }
+.qshape path {
+  fill: rgba(0, 127, 255, 0.2); stroke: var(--flag-yellow); stroke-width: 1.6;
+  stroke-linejoin: round; filter: drop-shadow(0 0 14px rgba(247, 214, 24, 0.4));
+}
+.qshape path.draw { animation: qdraw 1.15s ease-out forwards; }
+@keyframes qdraw { from { stroke-dashoffset: var(--len); fill-opacity: 0; } to { stroke-dashoffset: 0; fill-opacity: 1; } }
+.qphoto { width: 340px; height: 196px; border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 20px 44px rgba(0,0,0,.5); animation: qpop 0.5s var(--ease); }
+.qphoto img { width: 100%; height: 100%; object-fit: cover; }
+@keyframes qpop { from { opacity: 0; transform: scale(0.93); } to { opacity: 1; transform: none; } }
+.qopts { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+.qopt {
+  background: var(--parch); color: var(--ink); border: 2px solid transparent; border-radius: 15px;
+  padding: 15px 17px; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer;
+  transition: 0.22s var(--ease); text-align: left; position: relative;
+}
+.qopt:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4); }
+.qopt:disabled { cursor: default; }
+.qopt.good { background: #3fbf84; color: #042415; border-color: #7be8b0; animation: qgood 0.55s var(--ease); }
+.qopt.bad { background: var(--flag-red); color: #fff; border-color: #f0a184; animation: qbad 0.45s; }
+.qopt.fade { opacity: 0.34; }
+@keyframes qgood { 0% { transform: scale(1); } 40% { transform: scale(1.06); } 100% { transform: scale(1); } }
+@keyframes qbad { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-8px); } 40% { transform: translateX(8px); } 60% { transform: translateX(-5px); } 80% { transform: translateX(5px); } }
+.qtf { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; max-width: 420px; margin: 0 auto; }
+.qfb { text-align: center; margin-top: 18px; font-size: 14px; min-height: 24px; color: #b9d3cb; opacity: 0; transition: 0.3s; }
+.qfb.on { opacity: 1; }
+.qend { text-align: center; }
+.qmedal { font-size: 64px; line-height: 1; margin-bottom: 10px; animation: qpop 0.6s var(--ease); }
+.qend h2 { font-family: var(--disp); font-size: 44px; font-weight: 500; margin-bottom: 4px; }
+.qend .sub { color: #9fc0b6; font-size: 14.5px; margin-bottom: 22px; }
+.qagain { display: flex; gap: 11px; justify-content: center; flex-wrap: wrap; }
+.qbtn {
+  background: var(--copper); color: #160b04; border: none; border-radius: 22px; padding: 12px 24px;
+  font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.22s;
+}
+.qbtn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(200, 121, 65, 0.4); }
+.qbtn.ghost { background: transparent; color: var(--parch); border: 1px solid rgba(244, 235, 220, 0.28); }
+.qbtn.ghost:hover { background: rgba(244, 235, 220, 0.1); }
+.spark { position: fixed; width: 7px; height: 7px; border-radius: 50%; pointer-events: none; z-index: 70; }
+@media (max-width: 620px) {
+  .qopts { grid-template-columns: 1fr; }
+  .qhead h2 { font-size: 26px; }
+  .qq h3 { font-size: 20px; }
+  .qphoto { width: 100%; max-width: 340px; }
 }

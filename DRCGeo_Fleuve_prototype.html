@@ -9,12 +9,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
+  /* national colours — drapeau de la RDC */
+  --flag-blue:#007FFF; --flag-yellow:#F7D618; --flag-red:#CE1021;
+  /* ground */
   --abyss:#05100E; --basin:#081916; --canopy:#0F2A24; --ridge:#16443A;
-  --river:#6FA8BC; --copper:#C87941; --copper-lo:#8A4F27; --gold:#E4B44C;
-  --leaf:#47C98A; --leaf-lo:#1E6E4C; --danger:#D9633F;
+  /* accents, tuned from the flag so they read on a dark map */
+  --river:#4E9BD8; --sky:#2E86D9; --gold:#F0C63E; --danger:#CE1021;
+  --copper:#C87941; --copper-lo:#8A4F27;
+  --leaf:#47C98A; --leaf-lo:#1E6E4C;
   --parch:#F4EBDC; --parch-2:#E8DCC8; --ink:#0D1F1B; --ink-2:#4A5F58;
   --sans:'Outfit',system-ui,sans-serif; --disp:'Fraunces',Georgia,serif;
 }
+/* the flag itself, as a ribbon: blue field, yellow-edged red diagonal */
+.flagband{height:4px;flex:none;background:linear-gradient(100deg,
+  var(--flag-blue) 0 34%, var(--flag-yellow) 34% 40%, var(--flag-red) 40% 60%,
+  var(--flag-yellow) 60% 66%, var(--flag-blue) 66% 100%)}
+.flagband.thin{height:3px;opacity:.9}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{background:var(--abyss);color:var(--parch);font-family:var(--sans);overflow:hidden;
@@ -236,6 +246,91 @@ svg{display:block}
 .hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:17;font-size:11.5px;
   color:#5F7A73;letter-spacing:.05em;transition:opacity .5s}
 
+/* ================= QUIZ ================= */
+#quiz{position:absolute;inset:0;z-index:60;display:none;background:rgba(4,14,12,.82);
+  backdrop-filter:blur(9px);overflow-y:auto}
+#quiz.on{display:block;animation:qfade .35s ease-out}
+@keyframes qfade{from{opacity:0}to{opacity:1}}
+.qwrap{max-width:760px;margin:0 auto;padding:44px 22px 60px;min-height:100%;
+  display:flex;flex-direction:column;justify-content:center}
+.qx{position:absolute;top:22px;right:26px;width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(244,235,220,.25);background:rgba(6,20,17,.8);color:var(--parch);
+  font-size:17px;cursor:pointer;z-index:5;transition:.2s;display:flex;align-items:center;justify-content:center}
+.qx:hover{background:var(--danger);border-color:var(--danger);transform:rotate(90deg)}
+.qhead{text-align:center;margin-bottom:26px}
+.qhead h2{font-family:var(--disp);font-size:34px;font-weight:500;margin-bottom:7px}
+.qhead p{color:#9FC0B6;font-size:14px}
+.qgames{display:grid;grid-template-columns:repeat(auto-fit,minmax(216px,1fr));gap:14px}
+.qcard{background:rgba(9,28,24,.9);border:1px solid rgba(244,235,220,.13);border-radius:18px;
+  padding:20px 18px;cursor:pointer;transition:.32s cubic-bezier(.2,.9,.3,1);position:relative;overflow:hidden;
+  opacity:0;transform:translateY(14px);animation:qin .5s cubic-bezier(.2,.9,.3,1) forwards}
+@keyframes qin{to{opacity:1;transform:none}}
+.qcard:hover{transform:translateY(-6px);border-color:var(--copper);
+  box-shadow:0 20px 46px rgba(0,0,0,.5),0 0 0 1px rgba(200,121,65,.4)}
+.qcard .ic{width:44px;height:44px;border-radius:13px;background:rgba(0,127,255,.18);
+  display:flex;align-items:center;justify-content:center;color:#5FAEFF;margin-bottom:13px;transition:.32s}
+.qcard:hover .ic{background:var(--flag-blue);color:#fff;transform:scale(1.08) rotate(-6deg)}
+.qcard h3{font-family:var(--disp);font-size:18px;font-weight:500;margin-bottom:5px}
+.qcard p{font-size:12.5px;color:#9FC0B6;line-height:1.5}
+.qcard .best{position:absolute;top:14px;right:15px;font-size:10.5px;color:var(--gold);font-weight:500}
+
+/* play view */
+.qbar{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.qprog{flex:1;height:6px;background:rgba(244,235,220,.12);border-radius:3px;overflow:hidden}
+.qprog i{display:block;height:100%;background:linear-gradient(90deg,var(--flag-yellow),var(--flag-red));
+  border-radius:3px;transition:width .45s cubic-bezier(.2,.9,.3,1)}
+.qscore{font-family:var(--disp);font-size:20px;font-weight:500;min-width:34px;text-align:right}
+.qstreak{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--gold);font-weight:500;
+  opacity:0;transition:.3s;transform:scale(.7)}
+.qstreak.on{opacity:1;transform:none}
+.qq{text-align:center;margin-bottom:22px;min-height:52px}
+.qq h3{font-family:var(--disp);font-size:25px;font-weight:500;line-height:1.22;
+  animation:qslide .42s cubic-bezier(.2,.9,.3,1)}
+.qq small{display:block;font-size:11.5px;color:#9FC0B6;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:9px;font-weight:600}
+@keyframes qslide{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.qstage{display:flex;justify-content:center;margin-bottom:24px;min-height:186px;align-items:center}
+.qshape{width:270px;height:190px}
+.qshape path{fill:rgba(0,127,255,.20);stroke:var(--flag-yellow);stroke-width:1.6;
+  stroke-linejoin:round;filter:drop-shadow(0 0 14px rgba(247,214,24,.4))}
+.qshape path.draw{animation:qdraw 1.15s ease-out forwards}
+@keyframes qdraw{from{stroke-dashoffset:var(--len);fill-opacity:0}to{stroke-dashoffset:0;fill-opacity:1}}
+.qphoto{width:340px;height:196px;border-radius:16px;overflow:hidden;position:relative;
+  box-shadow:0 20px 44px rgba(0,0,0,.5);animation:qpop .5s cubic-bezier(.2,.9,.3,1)}
+.qphoto img{width:100%;height:100%;object-fit:cover}
+@keyframes qpop{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:none}}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.qopt{background:var(--parch);color:var(--ink);border:2px solid transparent;border-radius:15px;
+  padding:15px 17px;font-family:var(--sans);font-size:15px;font-weight:500;cursor:pointer;
+  transition:.22s cubic-bezier(.2,.9,.3,1);text-align:left;position:relative}
+.qopt:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.4)}
+.qopt:disabled{cursor:default}
+.qopt.good{background:#3FBF84;color:#042415;border-color:#7BE8B0;animation:qgood .55s cubic-bezier(.2,.9,.3,1)}
+.qopt.bad{background:#D9633F;color:#2C0B03;border-color:#F0A184;animation:qbad .45s}
+.qopt.fade{opacity:.34}
+@keyframes qgood{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}
+@keyframes qbad{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}
+  40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+.qtf{display:grid;grid-template-columns:1fr 1fr;gap:11px;max-width:420px;margin:0 auto}
+.qfb{text-align:center;margin-top:18px;font-size:14px;min-height:24px;color:#B9D3CB;
+  opacity:0;transition:.3s}
+.qfb.on{opacity:1}
+.qfb b{color:var(--gold)}
+/* results */
+.qend{text-align:center}
+.qmedal{font-size:64px;line-height:1;margin-bottom:10px;animation:qpop .6s cubic-bezier(.2,.9,.3,1)}
+.qend h2{font-family:var(--disp);font-size:44px;font-weight:500;margin-bottom:4px}
+.qend .sub{color:#9FC0B6;font-size:14.5px;margin-bottom:22px}
+.qagain{display:flex;gap:11px;justify-content:center;flex-wrap:wrap}
+.qbtn{background:var(--copper);color:#160B04;border:none;border-radius:22px;padding:12px 24px;
+  font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:.22s}
+.qbtn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(200,121,65,.4)}
+.qbtn.ghost{background:transparent;color:var(--parch);border:1px solid rgba(244,235,220,.28)}
+.qbtn.ghost:hover{background:rgba(244,235,220,.1)}
+.spark{position:absolute;width:7px;height:7px;border-radius:50%;pointer-events:none;z-index:70}
+@media(max-width:620px){.qopts{grid-template-columns:1fr}.qhead h2{font-size:26px}
+  .qq h3{font-size:20px}.qphoto{width:100%;max-width:340px}}
+
 /* ---------- responsive: the card stays on the right shoulder as long as it can ---------- */
 @media(max-width:1180px){
   .fiche{width:352px}
@@ -344,6 +439,7 @@ svg{display:block}
   <audio id="au" preload="none"></audio>
 
   <div class="legend" id="legend">
+    <div class="flagband thin" style="margin:-13px -15px 11px;border-radius:15px 15px 0 0"></div>
     <button class="lclose" id="legClose" aria-label="Fermer la légende">✕</button>
     <h6 id="legTitle">Parcs nationaux</h6>
     <div id="legBody"></div>
@@ -353,6 +449,10 @@ svg{display:block}
   <div class="rail" id="rail"></div>
   <aside class="fiche" id="fiche"></aside>
   <aside class="pdetail" id="pdetail"></aside>
+  <div id="quiz">
+    <button class="qx" id="qClose" aria-label="Fermer">✕</button>
+    <div class="qwrap" id="qwrap"></div>
+  </div>
   <div class="tip" id="tip"></div>
   <div class="hint" id="hint">Survolez une province · cliquez pour ouvrir la fiche</div>
 </div>
@@ -860,7 +960,7 @@ const byP={}; UNITS.forEach(u=>byP[u.p]=u);
 const fmt=n=>n==null?'—':n.toLocaleString('fr-FR');
 
 /* palette per province — earth + copper + leaf, neighbours differ */
-const PAL=['#B4653C','#3F7F6E','#8A6E3C','#4A6E8A','#7A4A62','#5C7A46','#A8794B','#3E6B72','#6B5A82'];
+const PAL=['#2E6FA8','#B4653C','#8A6E3C','#3F7F6E','#9E4A44','#5C7A46','#4A6E8A','#A8794B','#6B5A82'];
 const provColor={}; let ci=0;
 [...new Set(UNITS.map(u=>u.pr))].sort().forEach(p=>provColor[p]=PAL[ci++%PAL.length]);
 
@@ -1001,7 +1101,7 @@ function openFiche(p){
   if(mode==='parks')return;
   const u=byP[p]; if(!u)return;
   if(sel&&paths[sel]){paths[sel].setAttribute('fill-opacity','.30');paths[sel].setAttribute('stroke','rgba(244,235,220,.20)')}
-  sel=p; paths[p].setAttribute('fill-opacity','.78'); paths[p].setAttribute('stroke','#E4B44C');
+  sel=p; paths[p].setAttribute('fill-opacity','.78'); paths[p].setAttribute('stroke','#F7D618');
   paths[p].setAttribute('stroke-width','1.5');
   const m=MEDIA[p]||{}; const isEmb=(m.scope==='national-symbol');
   const pr=PROV.find(x=>x.name===u.pr)||{};
@@ -1009,6 +1109,7 @@ function openFiche(p){
   fiche.className='fiche on';
   fiche.innerHTML=`
    <button class="close" onclick="closeFiche()">✕</button>
+   <div class="flagband"></div>
    <div class="fhero ${isEmb?'emblem':''}">
      ${m.img?`<img src="${m.img}" onerror="this.parentNode.classList.add('emblem');this.src='${EMB}'">`:''}
      <div class="shade"></div>
@@ -1039,7 +1140,7 @@ function closeFiche(){fiche.className='fiche';if(sel&&paths[sel]){paths[sel].set
 const EMB='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg/1280px-Coat_of_arms_of_the_Democratic_Republic_of_the_Congo_%28with_background%29.svg.png';
 function kubaBar(){return `<svg class="kuba" viewBox="0 0 300 16" preserveAspectRatio="none">
   <path d="M0 8h300" stroke="rgba(13,31,27,.14)" stroke-width="1"/>
-  ${Array.from({length:11},(_,i)=>`<path d="M${i*28+4} 8l6-5 6 5-6 5z" fill="${i%2?'rgba(200,121,65,.42)':'rgba(13,31,27,.14)'}"/>`).join('')}
+  ${Array.from({length:11},(_,i)=>`<path d="M${i*28+4} 8l6-5 6 5-6 5z" fill="${['rgba(0,127,255,.34)','rgba(247,214,24,.5)','rgba(206,16,33,.34)'][i%3]}"/>`).join('')}
 </svg>`}
 function countUp(){document.querySelectorAll('.cnt').forEach(el=>{
   const t=+el.dataset.v;if(!t){el.textContent='—';return}
@@ -1133,7 +1234,7 @@ function showEra(i){
       const p=document.createElementNS('http://www.w3.org/2000/svg','path');
       p.setAttribute('d',d(f.geometry));
       p.setAttribute('fill',PAL[k%PAL.length]); p.setAttribute('fill-opacity','0');
-      p.setAttribute('stroke','#E4B44C'); p.setAttribute('stroke-width','1.1');
+      p.setAttribute('stroke','#F7D618'); p.setAttribute('stroke-width','1.1');
       p.setAttribute('stroke-opacity','.55');
       p.style.transition='fill-opacity .55s ease-out';
       gH.appendChild(p);
@@ -1238,6 +1339,7 @@ function selPark(id){
     const pd=document.getElementById('pdetail');
     pd.className='pdetail on';
     pd.innerHTML=`<button class="close" onclick="closePark()">✕</button>
+     <div class="flagband"></div>
      <div class="ph">${p.image?`<img src="${p.image}">`:''}<div class="g"></div><h3>${p.name}</h3></div>
      <div class="pbody">
        <div class="tags">
@@ -1332,6 +1434,17 @@ const L={
    chef:'Chef-lieu',others:'autres',
    srcNote:'Recensement 1984 — populations projetées. UN COD-AB · OCHA HPC 2024 · CAID.',
    legParks:'Parcs nationaux',legSante:'Zones de santé',legHist:'Un siècle de frontières',
+   qTitle:'Testez vos connaissances',qSub:'Quatre jeux · 10 questions · la RDC dans le détail',
+   qN_prov:'Devine la province',qD_prov:'Une silhouette apparaît — reconnaissez-vous la province ?',
+   qN_chef:'Chef-lieu',qD_chef:'Quelle ville dirige quelle province ?',
+   qN_photo:'Photo mystère',qD_photo:'Un lieu du pays en image — sauras-tu le nommer ?',
+   qN_vf:'Vrai ou faux',qD_vf:'Ce territoire se trouve-t-il vraiment là ?',
+   qAskProv:'Quelle province est-ce ?',qAskChef:'Quel est le chef-lieu du {} ?',
+   qAskPhoto:'Quel lieu voyez-vous ?',qAskVF:'{0} se trouve dans la province du {1}.',
+   qTrue:'Vrai',qFalse:'Faux',qQuestion:'Question',qOf:'sur',
+   qPerfect:'Sans faute — vous connaissez le pays !',qGood:'Beau score !',
+   qOk:'Pas mal — encore un tour ?',qTry:'Le pays est vaste. Réessayez !',
+   qInRow:'d\'affilée',qNewBest:'nouveau record',qReplay:'Rejouer',qOther:'Un autre jeu',
    legProv:'Provinces & territoires',provincesW:'provinces',territoiresW:'territoires',villesW:'villes',
    inhabitants:'habitants (2024)',provFoot:'Une couleur par province. Cliquez un territoire pour ouvrir sa fiche — ou tapez son nom dans la recherche.',
    pReserve:'Parc / réserve',pUnesco:'Patrimoine UNESCO',pDanger:'En péril',
@@ -1352,6 +1465,17 @@ const L={
    chef:'Capital',others:'more',
    srcNote:'1984 census — projected populations. UN COD-AB · OCHA HPC 2024 · CAID.',
    legParks:'National parks',legSante:'Health zones',legHist:'A century of borders',
+   qTitle:'Test your knowledge',qSub:'Four games · 10 questions · the DRC in detail',
+   qN_prov:'Guess the province',qD_prov:'A silhouette appears — can you name the province?',
+   qN_chef:'Provincial capital',qD_chef:'Which city runs which province?',
+   qN_photo:'Mystery photo',qD_photo:'A place in the country — can you name it?',
+   qN_vf:'True or false',qD_vf:'Is this territory really there?',
+   qAskProv:'Which province is this?',qAskChef:'What is the capital of {}?',
+   qAskPhoto:'Which place is this?',qAskVF:'{0} is located in {1} province.',
+   qTrue:'True',qFalse:'False',qQuestion:'Question',qOf:'of',
+   qPerfect:'Flawless — you know this country!',qGood:'Great score!',
+   qOk:'Not bad — one more round?',qTry:'It is a vast country. Try again!',
+   qInRow:'in a row',qNewBest:'new best',qReplay:'Play again',qOther:'Another game',
    legProv:'Provinces & territories',provincesW:'provinces',territoiresW:'territories',villesW:'cities',
    inhabitants:'inhabitants (2024)',provFoot:'One colour per province. Click a territory to open its card — or type its name in the search.',
    pReserve:'Park / reserve',pUnesco:'UNESCO heritage',pDanger:'In danger',
@@ -1378,14 +1502,160 @@ function applyLang(){
   if(sel)openFiche(sel);
   if(selPk)selPark(selPk);
   if(mode==='histoire'&&era!=null)showEra(era);
+  const qz=document.getElementById('quiz');
+  if(qz&&qz.className==='on'&&!Q.game)quizHome();
 }
 document.getElementById('langBtn').onclick=()=>{lang=lang==='fr'?'en':'fr';applyLang()};
-document.getElementById('quizOpt').onclick=()=>{
-  optPanel.classList.remove('on');
-  const el=document.getElementById('hint');
-  el.textContent=T('quizSoon'); el.style.opacity=1;
-  setTimeout(()=>{el.textContent=T('hint');el.style.opacity=mode==='provinces'?.75:0},4200);
-};
+/* ================= QUIZ ================= */
+const QG=[
+ {id:'prov',ic:'<path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/>'},
+ {id:'chef',ic:'<path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M10 21v-6h4v6"/>'},
+ {id:'photo',ic:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-6 6"/>'},
+ {id:'vf',ic:'<path d="M4 12l5 5L20 6"/>'}
+];
+const shuf=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);
+const provList=[...new Set(UNITS.map(u=>u.pr))];
+const provCap={}; PROV.forEach(p=>provCap[p.name]=p.capital);
+let Q={game:null,qs:[],i:0,score:0,streak:0,bestStreak:0,locked:false};
+
+/* province silhouette drawn from the real map geometry */
+function shapeSVG(prov){
+  const fs=GEO.features.filter(f=>byP[f.properties.p]&&byP[f.properties.p].pr===prov);
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  const walk=c=>{if(typeof c[0]==='number'){if(c[0]<x0)x0=c[0];if(c[0]>x1)x1=c[0];
+    if(c[1]<y0)y0=c[1];if(c[1]>y1)y1=c[1]}else c.forEach(walk)};
+  fs.forEach(f=>walk(f.geometry.coordinates));
+  const W=250,H=176,pad=12;
+  const k=Math.min((W-pad*2)/(x1-x0||1),(H-pad*2)/(y1-y0||1));
+  const ox=(W-(x1-x0)*k)/2, oy=(H-(y1-y0)*k)/2;
+  const px=l=>ox+(l-x0)*k, py=l=>oy+(y1-l)*k;
+  const d=g=>{const rings=g.type==='Polygon'?[g.coordinates]:g.coordinates;let s='';
+    rings.forEach(poly=>poly.forEach(r=>{r.forEach((c,i)=>{s+=(i?'L':'M')+px(c[0]).toFixed(1)+' '+py(c[1]).toFixed(1)});s+='Z'}));return s};
+  return `<svg class="qshape" viewBox="0 0 ${W} ${H}">${fs.map(f=>`<path d="${d(f.geometry)}"/>`).join('')}</svg>`;
+}
+function genProv(){
+  const p=provList[Math.floor(Math.random()*provList.length)];
+  return {type:'prov',ask:T('qAskProv'),stage:shapeSVG(p),
+    opts:shuf([p,...shuf(provList.filter(x=>x!==p)).slice(0,3)]),ans:p,
+    fb:()=>`${p} — ${T('chef')} ${provCap[p]||'—'}`};
+}
+function genChef(){
+  const p=provList.filter(x=>provCap[x]&&provCap[x]!=='(city-province)');
+  const t=p[Math.floor(Math.random()*p.length)], c=provCap[t];
+  const others=shuf(p.filter(x=>x!==t).map(x=>provCap[x]).filter(x=>x&&x!==c)).slice(0,3);
+  return {type:'chef',ask:T('qAskChef').replace('{}',t),opts:shuf([c,...others]),ans:c,
+    fb:()=>`${c} — ${t}`};
+}
+function genPhoto(){
+  const pool=UNITS.filter(u=>MEDIA[u.p]&&MEDIA[u.p].img&&MEDIA[u.p].scope!=='national-symbol');
+  const u=pool[Math.floor(Math.random()*pool.length)];
+  const others=shuf(pool.filter(x=>x.n!==u.n)).slice(0,3).map(x=>x.n);
+  return {type:'photo',ask:T('qAskPhoto'),
+    stage:`<div class="qphoto"><img src="${MEDIA[u.p].img}" alt=""></div>`,
+    opts:shuf([u.n,...others]),ans:u.n,fb:()=>`${u.n} — ${u.pr}`};
+}
+function genVF(){
+  const u=UNITS[Math.floor(Math.random()*UNITS.length)];
+  const real=Math.random()<.5;
+  const shown=real?u.pr:shuf(provList.filter(p=>p!==u.pr))[0];
+  return {type:'vf',ask:T('qAskVF').replace('{0}',u.n).replace('{1}',shown),
+    opts:[T('qTrue'),T('qFalse')],ans:real?T('qTrue'):T('qFalse'),
+    fb:()=>`${u.n} — ${u.pr}`};
+}
+const GEN={prov:genProv,chef:genChef,photo:genPhoto,vf:genVF};
+function bestKey(g){return 'drcgeo_best_'+g}
+function getBest(g){try{return +localStorage.getItem(bestKey(g))||0}catch(e){return 0}}
+function setBest(g,v){try{localStorage.setItem(bestKey(g),v)}catch(e){}}
+
+function quizHome(){
+  document.getElementById('qwrap').innerHTML=`
+   <div class="qhead"><h2>${T('qTitle')}</h2><p>${T('qSub')}</p><div class="flagband" style="width:112px;margin:14px auto 0;border-radius:3px"></div></div>
+   <div class="qgames">${QG.map((g,i)=>{
+     const b=getBest(g.id);
+     return `<div class="qcard" style="animation-delay:${i*70}ms" onclick="quizStart('${g.id}')">
+       ${b?`<span class="best">★ ${b}/10</span>`:''}
+       <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${g.ic}</svg></div>
+       <h3>${T('qN_'+g.id)}</h3><p>${T('qD_'+g.id)}</p></div>`}).join('')}</div>`;
+}
+function quizStart(g){
+  Q={game:g,qs:Array.from({length:10},()=>GEN[g]()),i:0,score:0,streak:0,bestStreak:0,locked:false};
+  quizRender();
+}
+function quizRender(){
+  const q=Q.qs[Q.i], n=Q.i+1;
+  document.getElementById('qwrap').innerHTML=`
+   <div class="qbar">
+     <div class="qprog"><i style="width:${(Q.i/10)*100}%"></i></div>
+     <div class="qstreak ${Q.streak>1?'on':''}">🔥 ${Q.streak}</div>
+     <div class="qscore">${Q.score}<span style="font-size:12px;color:#9FC0B6">/10</span></div>
+   </div>
+   <div class="qq"><small>${T('qQuestion')} ${n} ${T('qOf')} 10</small><h3>${q.ask}</h3></div>
+   ${q.stage?`<div class="qstage">${q.stage}</div>`:''}
+   <div class="${q.type==='vf'?'qtf':'qopts'}" id="qopts">
+     ${q.opts.map(o=>`<button class="qopt" onclick="quizAnswer(this,'${o.replace(/'/g,"\\'")}')">${o}</button>`).join('')}
+   </div>
+   <div class="qfb" id="qfb"></div>`;
+  /* animate the silhouette drawing itself */
+  document.querySelectorAll('.qshape path').forEach((p,k)=>{
+    const L=p.getTotalLength?p.getTotalLength():0;
+    if(L){p.style.strokeDasharray=L;p.style.setProperty('--len',L);
+      p.classList.add('draw');p.style.animationDelay=(k*40)+'ms'}});
+  Q.locked=false;
+}
+function burst(el){
+  const r=el.getBoundingClientRect(), cols=['#F7D618','#007FFF','#CE1021','#F0E6D6'];
+  for(let i=0;i<16;i++){
+    const s=document.createElement('div');s.className='spark';
+    s.style.background=cols[i%4];
+    s.style.left=(r.left+r.width/2)+'px';s.style.top=(r.top+r.height/2)+'px';
+    document.body.appendChild(s);
+    const a=Math.random()*6.28, d=40+Math.random()*80;
+    s.animate([{transform:'translate(0,0) scale(1)',opacity:1},
+      {transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(0)`,opacity:0}],
+      {duration:600+Math.random()*300,easing:'cubic-bezier(.2,.9,.3,1)'}).onfinish=()=>s.remove();
+  }
+}
+function quizAnswer(btn,val){
+  if(Q.locked)return; Q.locked=true;
+  const q=Q.qs[Q.i], ok=val===q.ans;
+  document.querySelectorAll('.qopt').forEach(b=>{
+    b.disabled=true;
+    if(b.textContent===q.ans)b.classList.add('good');
+    else if(b===btn)b.classList.add('bad');
+    else b.classList.add('fade');
+  });
+  if(ok){Q.score++;Q.streak++;Q.bestStreak=Math.max(Q.bestStreak,Q.streak);burst(btn)}
+  else Q.streak=0;
+  const fb=document.getElementById('qfb');
+  fb.innerHTML=(ok?'✓ ':'✗ ')+q.fb(); fb.classList.add('on');
+  document.querySelector('.qprog i').style.width=((Q.i+1)/10*100)+'%';
+  setTimeout(()=>{Q.i++; Q.i<10?quizRender():quizEnd()},ok?1050:1750);
+}
+function quizEnd(){
+  const b=getBest(Q.game); if(Q.score>b)setBest(Q.game,Q.score);
+  const medal=Q.score>=9?'🏆':Q.score>=7?'🥇':Q.score>=5?'🥈':'🌱';
+  document.getElementById('qwrap').innerHTML=`
+   <div class="qend">
+     <div class="qmedal">${medal}</div>
+     <h2><span id="qcount">0</span>/10</h2>
+     <p class="sub">${T(Q.score>=9?'qPerfect':Q.score>=7?'qGood':Q.score>=5?'qOk':'qTry')}
+       ${Q.bestStreak>2?`· 🔥 ${Q.bestStreak} ${T('qInRow')}`:''}
+       ${Q.score>b?`· ★ ${T('qNewBest')}`:''}</p>
+     <div class="qagain">
+       <button class="qbtn" onclick="quizStart('${Q.game}')">${T('qReplay')}</button>
+       <button class="qbtn ghost" onclick="quizHome()">${T('qOther')}</button>
+     </div>
+   </div>`;
+  const el=document.getElementById('qcount'); let v=0;
+  const iv=setInterval(()=>{v++;el.textContent=v;if(v>=Q.score)clearInterval(iv)},110);
+  if(Q.score>=7)setTimeout(()=>burst(document.querySelector('.qmedal')),350);
+}
+function quizOpen(){document.getElementById('quiz').className='on';quizHome();
+  if(!au.paused)au.pause()}
+function quizClose(){document.getElementById('quiz').className=''}
+document.getElementById('qClose').onclick=quizClose;
+document.getElementById('quizOpt').onclick=()=>{optPanel.classList.remove('on');quizOpen()};
 applyLang();
 setTimeout(()=>{document.getElementById('hint').style.opacity=.75},2400);
 fitMap(); addEventListener('resize',()=>requestAnimationFrame(fitMap));

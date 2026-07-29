@@ -19,6 +19,7 @@ export function ParkDossier({ park, onClose }: { park: Park; onClose: () => void
       <button className="fl-close" onClick={onClose} aria-label={t('close2')}>
         ✕
       </button>
+      <div className="flagband" />
       <div className="fl-hero" style={{ height: 150 }}>
         {park.image && <img src={park.image} alt={name} crossOrigin="anonymous" />}
         <div className="fl-shade" />

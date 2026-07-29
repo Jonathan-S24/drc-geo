@@ -44,6 +44,7 @@ export function FicheDossier({ data, unit, onClose }: FicheDossierProps) {
       <button className="fl-close" onClick={onClose} aria-label={t('close2')}>
         ✕
       </button>
+      <div className="flagband" />
       <div className={`fl-hero${emblemMode ? ' emblem' : ''}`}>
         {media?.image && (
           <img

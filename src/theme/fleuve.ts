@@ -4,6 +4,7 @@ import { sameName } from '../utils/match'
 
 /** Fleuve province palette — earth + copper + leaf tones, neighbours differ. */
 const FLEUVE_PALETTE = [
+  '#2E6FA8', // flag-derived blue, muted for large map surfaces
   '#B4653C',
   '#3F7F6E',
   '#8A6E3C',
