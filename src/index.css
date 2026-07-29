@@ -451,8 +451,23 @@ body {
 }
 .qshape path.draw { animation: qdraw 1.15s ease-out forwards; }
 @keyframes qdraw { from { stroke-dashoffset: var(--len); fill-opacity: 0; } to { stroke-dashoffset: 0; fill-opacity: 1; } }
-.qphoto { width: 340px; height: 196px; border-radius: 16px; overflow: hidden; position: relative; box-shadow: 0 20px 44px rgba(0,0,0,.5); animation: qpop 0.5s var(--ease); }
-.qphoto img { width: 100%; height: 100%; object-fit: cover; }
+/* "guess the place": the clue is the hero, so it reads as a quoted card */
+.qfactcard {
+  position: relative; max-width: 520px; padding: 26px 30px 24px; border-radius: 18px;
+  background: rgba(9, 28, 24, 0.92); border: 1px solid rgba(244, 235, 220, 0.14);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45); animation: qpop 0.5s var(--ease);
+}
+.qfactcard::before {
+  content: ''; position: absolute; left: 0; top: 18px; bottom: 18px; width: 3px; border-radius: 3px;
+  background: linear-gradient(180deg, var(--flag-blue), var(--flag-yellow), var(--flag-red));
+}
+.qfactcard p {
+  font-family: var(--disp); font-size: 19px; font-weight: 300; line-height: 1.5; color: var(--parch);
+}
+.qfactmark {
+  position: absolute; left: 14px; top: 2px; font-family: var(--disp); font-size: 46px;
+  color: rgba(247, 214, 24, 0.35); line-height: 1; pointer-events: none;
+}
 @keyframes qpop { from { opacity: 0; transform: scale(0.93); } to { opacity: 1; transform: none; } }
 .qopts { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
 .qopt {
@@ -487,5 +502,6 @@ body {
   .qopts { grid-template-columns: 1fr; }
   .qhead h2 { font-size: 26px; }
   .qq h3 { font-size: 20px; }
-  .qphoto { width: 100%; max-width: 340px; }
+  .qfactcard { padding: 20px 22px 18px; }
+  .qfactcard p { font-size: 16.5px; }
 }

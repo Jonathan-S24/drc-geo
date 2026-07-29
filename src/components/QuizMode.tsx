@@ -7,12 +7,12 @@ import { sameName } from '../utils/match'
 
 /* ---------- games ---------- */
 
-type GameId = 'prov' | 'chef' | 'photo' | 'vf'
+type GameId = 'prov' | 'chef' | 'fact' | 'vf'
 
 const GAMES: { id: GameId; ic: React.ReactNode }[] = [
   { id: 'prov', ic: (<><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z" /><path d="M9 3v15M15 6v15" /></>) },
   { id: 'chef', ic: (<><path d="M3 21h18M5 21V8l7-5 7 5v13" /><path d="M10 21v-6h4v6" /></>) },
-  { id: 'photo', ic: (<><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="9" cy="10" r="2" /><path d="M21 16l-5-5-6 6" /></>) },
+  { id: 'fact', ic: (<><path d="M9 18h6M10 21h4" /><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.7h5.4c.1-.7.4-1.3.9-1.7A6 6 0 0 0 12 3Z" /></>) },
   { id: 'vf', ic: <path d="M4 12l5 5L20 6" /> },
 ]
 
@@ -43,9 +43,9 @@ const pick = <T,>(a: T[]): T => a[Math.floor(Math.random() * a.length)]
 interface Question {
   type: GameId
   ask: string
-  /** province silhouette paths, or a photo URL */
+  /** province silhouette paths, or the fact to identify */
   shape?: string[]
-  photo?: string
+  factText?: string
   opts: string[]
   ans: string
   fb: string
@@ -116,9 +116,38 @@ export function QuizMode({ data, onClose }: { data: DrcData; onClose: () => void
     [provCap],
   )
 
+  /**
+   * Pool for "guess the place": every curated fact, paired with the place it
+   * describes. Facts that name their own place are dropped — 10 of the 90 do
+   * (e.g. "Le pont de Matadi…"), and they would hand over the answer.
+   */
+  const factPool = useMemo(() => {
+    const norm = (x: string) =>
+      x
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9 ]/gi, ' ')
+        .toLowerCase()
+    const out: { name: string; sub: string; fr: string; en: string; isProvince: boolean }[] = []
+    for (const [key, m] of data.media) {
+      if (!m.facts?.length) continue
+      const isProvince = key.startsWith('province:')
+      const name = isProvince ? key.slice('province:'.length) : data.byPcode.get(key)?.name
+      if (!name) continue
+      const unit = isProvince ? null : data.byPcode.get(key)
+      const sub = isProvince ? `${name} — ${t('provinceLabel')}` : `${name} — ${unit!.province}`
+      for (const f of m.facts) {
+        const n = norm(name)
+        if (norm(f.fr).includes(n) || norm(f.en).includes(n)) continue
+        out.push({ name, sub, fr: f.fr, en: f.en, isProvince })
+      }
+    }
+    return out
+  }, [data, t])
+
   /** Question generators — the answer is always among the options, no duplicates. */
   const gen = useCallback(
-    (g: GameId): Question => {
+    (g: GameId, forced?: (typeof factPool)[number]): Question => {
       if (g === 'prov') {
         const p = pick(provList)
         return {
@@ -148,21 +177,23 @@ export function QuizMode({ data, onClose }: { data: DrcData; onClose: () => void
           fb: `${c} — ${target}`,
         }
       }
-      if (g === 'photo') {
-        // emblems are never questions — only places with a real local photo
-        const pool = data.units.filter((u) => {
-          const m = data.media.get(u.pcode)
-          return m?.image && m.image_scope !== 'national-symbol'
-        })
-        const u = pick(pool)
-        const others = shuf(pool.filter((x) => x.name !== u.name)).slice(0, 3).map((x) => x.name)
+      if (g === 'fact') {
+        const item = forced ?? pick(factPool)
+        // Distractors are the same kind as the answer: offering three provinces
+        // and one territoire would give the answer away by shape alone.
+        const others = shuf(factPool.filter((x) => x.isProvince === item.isProvince && x.name !== item.name))
+        const uniq: string[] = []
+        for (const o of others) {
+          if (!uniq.includes(o.name)) uniq.push(o.name)
+          if (uniq.length === 3) break
+        }
         return {
-          type: 'photo',
-          ask: t('qAskPhoto'),
-          photo: data.media.get(u.pcode)!.image,
-          opts: shuf([u.name, ...others]),
-          ans: u.name,
-          fb: `${u.name} — ${u.province}`,
+          type: 'fact',
+          ask: t('qAskFact'),
+          factText: lang === 'en' ? item.en : item.fr,
+          opts: shuf([item.name, ...uniq]),
+          ans: item.name,
+          fb: item.sub,
         }
       }
       const u = pick(data.units)
@@ -176,13 +207,18 @@ export function QuizMode({ data, onClose }: { data: DrcData; onClose: () => void
         fb: `${u.name} — ${u.province}`,
       }
     },
-    [data, provList, capFor, t],
+    [data, provList, capFor, factPool, lang, t],
   )
 
   const start = (g: GameId) => {
     prevBestRef.current = getBest(g)
     setGame(g)
-    setQs(Array.from({ length: ROUNDS }, () => gen(g)))
+    if (g === 'fact') {
+      const drawn = shuf(factPool).slice(0, ROUNDS)
+      setQs(drawn.map((item) => gen(g, item)))
+    } else {
+      setQs(Array.from({ length: ROUNDS }, () => gen(g)))
+    }
     setI(0)
     setScore(0)
     setStreak(0)
@@ -354,7 +390,7 @@ export function QuizMode({ data, onClose }: { data: DrcData; onClose: () => void
           <h3 key={i}>{q.ask}</h3>
         </div>
 
-        {(q.shape || q.photo) && (
+        {(q.shape || q.factText) && (
           <div className="qstage">
             {q.shape && (
               <svg className="qshape" viewBox="0 0 250 176" key={`s${i}`}>
@@ -363,9 +399,12 @@ export function QuizMode({ data, onClose }: { data: DrcData; onClose: () => void
                 ))}
               </svg>
             )}
-            {q.photo && (
-              <div className="qphoto" key={`p${i}`}>
-                <img src={q.photo} alt="" crossOrigin="anonymous" />
+            {q.factText && (
+              <div className="qfactcard" key={`f${i}`}>
+                <span className="qfactmark" aria-hidden>
+                  “
+                </span>
+                <p>{q.factText}</p>
               </div>
             )}
           </div>
