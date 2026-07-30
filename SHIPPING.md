@@ -122,3 +122,43 @@ functionally identical.
 2. Get ~10 people in the DRC using it. Fix what they report.
 3. Then Google Play.
 4. Microsoft Store only if you want the listing.
+
+---
+
+## Deploy — remaining manual step (v1.0.0)
+
+Everything in sections 1–6 is done and tagged `v1.0.0`. Section 7 needs
+account access, so it has to be run by hand:
+
+```bash
+npm run build          # writes dist/ — 10 MB, 74 precache entries (6.1 MB)
+npx wrangler pages deploy dist --project-name drc-geo
+```
+
+or, for auto-deploy on push, create the GitHub repo and connect it in the
+Cloudflare dashboard:
+
+- Framework preset: **Vite**
+- Build command: `npm run build`
+- Output directory: `dist`
+- Node version: 20 or newer
+
+Cloudflare Pages serves brotli and long-lived immutable caching for
+`/assets/*` out of the box, which is what the Lighthouse numbers below
+were measured against.
+
+### Measured on the production build (local host with brotli + immutable assets)
+
+| | performance | accessibility | best practices | SEO |
+|---|---|---|---|---|
+| Mobile | 100 | 100 | 100 | 100 |
+| Desktop | 96 | 100 | 100 | 100 |
+
+Lighthouse 11 PWA category: **100**, `installable-manifest` passing,
+`maskable-icon` passing, `splash-screen` passing.
+First-load transfer: **609 KiB**. Full offline run verified with the
+origin stopped: deep links, search, all four layers, quiz and anthems.
+
+After the first deploy, nothing else is needed for the screenshots —
+`public/screenshots/` already holds the six images named in
+`manifest.webmanifest` (3 × 1920×1080, 3 × 1080×1920).
