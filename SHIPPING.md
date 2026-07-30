@@ -125,40 +125,56 @@ functionally identical.
 
 ---
 
-## Deploy — remaining manual step (v1.0.0)
+---
 
-Everything in sections 1–6 is done and tagged `v1.0.0`. Section 7 needs
-account access, so it has to be run by hand:
+## Deployed — v1.0.0
+
+**Live: https://drc-geo.pages.dev**
+
+Cloudflare Pages project `drc-geo`, production branch `main`, account
+kentc5737@gmail.com. Redeploy with:
 
 ```bash
-npm run build          # writes dist/ — 10 MB, 74 precache entries (6.1 MB)
-npx wrangler pages deploy dist --project-name drc-geo
+npm run build && npx wrangler pages deploy dist --project-name drc-geo --branch main
 ```
 
-or, for auto-deploy on push, create the GitHub repo and connect it in the
-Cloudflare dashboard:
+Pages serves brotli on all text (HTML, JS, JSON, GeoJSON, the manifest)
+and correct content types — `application/geo+json`, `application/manifest+json`,
+`audio/ogg` — with no configuration needed.
 
-- Framework preset: **Vite**
-- Build command: `npm run build`
-- Output directory: `dist`
-- Node version: 20 or newer
-
-Cloudflare Pages serves brotli and long-lived immutable caching for
-`/assets/*` out of the box, which is what the Lighthouse numbers below
-were measured against.
-
-### Measured on the production build (local host with brotli + immutable assets)
+### Lighthouse, measured against the live URL
 
 | | performance | accessibility | best practices | SEO |
 |---|---|---|---|---|
-| Mobile | 100 | 100 | 100 | 100 |
-| Desktop | 96 | 100 | 100 | 100 |
+| Mobile | 99 | 100 | 100 | 100 |
+| Desktop | 100 | 100 | 100 | 100 |
 
-Lighthouse 11 PWA category: **100**, `installable-manifest` passing,
-`maskable-icon` passing, `splash-screen` passing.
-First-load transfer: **609 KiB**. Full offline run verified with the
-origin stopped: deep links, search, all four layers, quiz and anthems.
+Lighthouse 11 PWA category **100** — `installable-manifest`, `maskable-icon`
+and `splash-screen` all pass. First-load payload **897 KiB**.
 
-After the first deploy, nothing else is needed for the screenshots —
-`public/screenshots/` already holds the six images named in
-`manifest.webmanifest` (3 × 1920×1080, 3 × 1080×1920).
+### Offline, verified on the live site
+
+One visit, then DevTools → Offline (`setOfflineMode`), network confirmed
+unreachable:
+
+- deep link `/territoire/beni` resolves from the precache, fully styled
+- search → arrows → Enter navigates to `/ville/bukavu`, fiche opens with
+  its CC BY-SA credit rendered
+- all four layers draw (192 / 200 / 192 / 195 paths, each with its legend)
+- *Debout Congolais* plays from the cached `.ogg` — 81 s, playhead advancing
+- the quiz opens and serves questions
+- `/privacy` and `/offline.html` both 200
+
+### Still to do (needs a GitHub login)
+
+`gh auth login` was not completed, so there is no repo and no
+auto-deploy-on-push yet. Once authenticated:
+
+```bash
+gh repo create drc-geo --private --source=. --remote=origin --push
+git push origin v1.0.0
+```
+
+then connect the repo in the Cloudflare Pages dashboard (preset **Vite**,
+build `npm run build`, output `dist`) to get a deploy on every push.
+Until then, the wrangler command above is the way to ship changes.
