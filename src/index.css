@@ -346,7 +346,12 @@ body {
 /* AnthemPlayer sits on a dark panel here — lift its parchment styling */
 .fl-hist :is(.bg-teal\/6) { background: rgba(244, 235, 220, 0.06) !important; }
 
-.fl-hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 17; font-size: 11.5px; color: #5f7a73; letter-spacing: 0.05em; transition: opacity 0.5s; pointer-events: none; }
+.fl-hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 17; font-size: 12px; color: #6b877f; letter-spacing: 0.05em; transition: opacity 0.5s; pointer-events: none; }
+/* The hint describes hovering, which touch devices can't do — and at phone
+   widths it collides with the Options pill. Drop it there. */
+@media (max-width: 700px), (hover: none) {
+  .fl-hint { display: none; }
+}
 
 /* ---- responsive: stay a side panel as long as possible ----
    The map must keep the majority of the width on every laptop size, so the
@@ -504,4 +509,95 @@ body {
   .qq h3 { font-size: 20px; }
   .qfactcard { padding: 20px 22px 18px; }
   .qfactcard p { font-size: 16.5px; }
+}
+
+/* ================= PWA chrome ================= */
+.fl-offline {
+  display: flex; align-items: center; gap: 6px; height: 42px; padding: 0 14px; border-radius: 21px;
+  background: var(--flag-red); color: #fff; font-size: 12px; font-weight: 600; white-space: nowrap;
+}
+.fl-toast, .fl-install {
+  position: fixed; left: 50%; transform: translateX(-50%); z-index: 55;
+  display: flex; align-items: center; gap: 10px; padding: 9px 10px 9px 14px; border-radius: 22px;
+  background: rgba(8, 25, 22, 0.96); border: 1px solid rgba(244, 235, 220, 0.16);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5); backdrop-filter: blur(16px);
+  font-size: 13px; color: var(--parch); animation: fl-rise-x 0.4s var(--ease) both; max-width: min(94vw, 460px);
+}
+.fl-toast { top: 76px; }
+.fl-install { bottom: 22px; }
+/* lift clear of the rail / timeline when either is open */
+.rail-on .fl-install { bottom: 224px; }
+.tl-on .fl-install { bottom: 196px; }
+.fl-toast button, .fl-install-go {
+  background: var(--copper); color: #160b04; border: none; border-radius: 16px; padding: 7px 15px;
+  font-family: 'Outfit', sans-serif; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: 0.2s;
+  white-space: nowrap;
+}
+.fl-toast button:hover, .fl-install-go:hover { filter: brightness(1.08); }
+.fl-install-ic { display: flex; color: var(--flag-blue); flex: none; }
+.fl-install-txt { line-height: 1.35; }
+.fl-install-x {
+  background: none; border: none; color: #8fb3a9; cursor: pointer; font-size: 13px; padding: 4px 6px;
+  border-radius: 50%; flex: none; transition: 0.18s;
+}
+.fl-install-x:hover { background: rgba(244, 235, 220, 0.12); color: var(--parch); }
+/* On phones the bottom row belongs to the Options pill, so the prompts sit on
+   their own line above it rather than landing on top of it. */
+@media (max-width: 560px) {
+  .fl-toast, .fl-install {
+    left: 12px; right: 12px; transform: none; max-width: none; justify-content: center;
+  }
+  .fl-install { bottom: 74px; }
+  .rail-on .fl-install, .tl-on .fl-install { bottom: 232px; }
+}
+
+/* window-controls-overlay: keep a draggable strip and respect the titlebar rect */
+@media (display-mode: window-controls-overlay) {
+  .fl-brand {
+    top: env(titlebar-area-y, 0px);
+    left: env(titlebar-area-x, 26px);
+    height: env(titlebar-area-height, 42px);
+    -webkit-app-region: drag;
+    app-region: drag;
+  }
+  .fl-brand button, .fl-brand a { -webkit-app-region: no-drag; app-region: no-drag; }
+  .fl-topright { top: calc(env(titlebar-area-y, 0px) + env(titlebar-area-height, 42px) + 8px); }
+  .fl-crumb { top: calc(env(titlebar-area-y, 0px) + env(titlebar-area-height, 42px) + 46px); }
+}
+
+/* Options panel · about block — the data disclaimer and privacy link have to
+   be reachable from inside the app (ATTRIBUTIONS §7; Play requires the URL). */
+.fl-optnote {
+  margin: 2px 4px 8px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #A9C4BC;
+  max-width: 250px;
+}
+.fl-optnote b {
+  color: var(--parch);
+  font-weight: 600;
+}
+.fl-optlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 4px 2px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--copper);
+  text-decoration: none;
+}
+.fl-optlink:hover { text-decoration: underline; }
+
+/* Map shapes are keyboard-reachable; a plain outline traces the path's bounding
+   box and gets lost over the fills, so ring them in flag yellow instead. */
+.fl-unit:focus-visible,
+.fl-park:focus-visible,
+.fl-era:focus-visible {
+  outline: none;
+  stroke: var(--flag-yellow);
+  stroke-width: 2.2;
+  paint-order: stroke;
+  filter: drop-shadow(0 0 5px rgba(247, 214, 24, 0.75));
 }

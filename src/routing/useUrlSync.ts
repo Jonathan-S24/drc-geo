@@ -48,12 +48,20 @@ function updateMeta(data: DrcData, selection: Selection, lang: Lang) {
     }
   }
 
+  const absImage = image.startsWith('http') ? image : window.location.origin + image
   document.title = title
+  // <html lang> follows the toggle so screen readers and search engines get the
+  // right language for the chrome.
+  document.documentElement.lang = lang
   setMeta('property', 'og:title', title)
   setMeta('property', 'og:description', desc)
-  setMeta('property', 'og:image', image.startsWith('http') ? image : window.location.origin + image)
+  setMeta('property', 'og:image', absImage)
   setMeta('property', 'og:url', window.location.href)
+  setMeta('property', 'og:locale', lang === 'fr' ? 'fr_CD' : 'en_US')
   setMeta('name', 'description', desc)
+  setMeta('name', 'twitter:title', title)
+  setMeta('name', 'twitter:description', desc)
+  setMeta('name', 'twitter:image', absImage)
 }
 
 /**

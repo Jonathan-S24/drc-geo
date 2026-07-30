@@ -3,15 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#071613" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-    <meta name="theme-color" content="#0d4f5c" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="DRC.Geo" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
     <title>DRC.Geo — Référence géographique de la RDC</title>
     <meta
       name="description"
-      content="Carte interactive de la République démocratique du Congo : 26 provinces, 145 territoires, 44 villes — données, langues, histoire et quiz."
+      content="Carte interactive de la République démocratique du Congo : 26 provinces, 145 territoires, 44 villes — données, langues, histoire et quiz. Fonctionne hors ligne."
     />
-    <!-- Default Open Graph tags; per-place tags are injected at runtime for shared links. -->
+
+    <!-- Default Open Graph / Twitter tags; per-place tags are injected at runtime. -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="DRC.Geo" />
     <meta property="og:title" content="DRC.Geo — Référence géographique de la RDC" />
@@ -21,8 +32,44 @@
     />
     <meta property="og:image" content="/icons/icon-512.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DRC.Geo — Référence géographique de la RDC" />
+    <meta name="twitter:description" content="Carte interactive de la RDC : 26 provinces, 145 territoires, 44 villes." />
+    <meta name="twitter:image" content="/icons/icon-512.png" />
+
+
+    <!-- Boot skeleton. Painted straight from the HTML so first contentful paint
+         doesn't wait on the JS bundle, the stylesheet or the data files; React
+         clears #root and takes over when it mounts. -->
+    <style>
+      html, body { margin: 0; height: 100%; background: #05100E; }
+      #boot {
+        position: fixed; inset: 0; z-index: 999; background: #05100E; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 18px;
+        font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      }
+      #boot .bwm {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 44px; font-weight: 500; letter-spacing: -0.01em; color: #F4EBDC;
+      }
+      #boot .bsub { font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #6E8A82; }
+      #boot.gone { opacity: 0; pointer-events: none; transition: opacity .45s ease; }
+      #boot .bband {
+        position: fixed; top: 0; left: 0; right: 0; height: 4px;
+        background: linear-gradient(100deg, #007FFF 0 34%, #F7D618 34% 40%, #CE1021 40% 60%, #F7D618 60% 66%, #007FFF 66% 100%);
+      }
+    </style>
   </head>
   <body>
+    <div id="boot">
+      <div class="bband"></div>
+      <svg width="60" height="60" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="18.5" stroke="#C87941" stroke-width="1.2" opacity=".55" />
+        <path d="M8 27c5-1.5 6.5-7 11-9s7.5-.5 13-5" stroke="#6FA8BC" stroke-width="2.1" stroke-linecap="round" />
+        <circle cx="20" cy="20" r="3.1" fill="#E4B44C" />
+      </svg>
+      <p class="bwm">DRC&#8202;Geo</p>
+      <p class="bsub">République démocratique du Congo</p>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

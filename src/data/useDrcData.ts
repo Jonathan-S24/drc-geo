@@ -45,6 +45,8 @@ type State =
 
 let cache: DrcData | null = null
 let inflight: Promise<DrcData> | null = null
+/** Resolves with the layer payload once the second, non-blocking wave lands. */
+let layersInflight: Promise<Awaited<ReturnType<typeof loadLayers>>> | null = null
 
 async function loadAll(): Promise<DrcData> {
   const [provincesRes, territoriesRes, boundariesRes, mediaRes] = await Promise.all([
@@ -89,9 +91,11 @@ async function loadAll(): Promise<DrcData> {
     nationalSymbolImage = nationalSymbolImage ?? entry.image
   }
 
-  // Layer data (Phase 3) — all optional and non-fatal.
-  const { healthZonesByTerritory, historicalEras, historicalNote, anthems, parks, sanctuaries } =
-    await loadLayers(territoriesFile.units)
+  // Layer data (Phase 3) — all optional and non-fatal, and none of it is needed
+  // to draw the country. parks.geojson alone is 1.6 MB of JSON; awaiting it here
+  // pushed largest-contentful-paint past 4s on a throttled phone. Kick it off
+  // now, hand back the map immediately, and fold the layers in when they land.
+  layersInflight = loadLayers(territoriesFile.units)
 
   return {
     provinces: provincesFile.provinces,
@@ -103,12 +107,12 @@ async function loadAll(): Promise<DrcData> {
     byProvinceName,
     media,
     nationalSymbolImage,
-    healthZonesByTerritory,
-    historicalEras,
-    historicalNote,
-    anthems,
-    parks,
-    sanctuaries,
+    healthZonesByTerritory: new Map(),
+    historicalEras: [],
+    historicalNote: '',
+    anthems: null,
+    parks: null,
+    sanctuaries: [],
   }
 }
 
@@ -180,21 +184,43 @@ async function loadLayers(units: TerritoryUnit[]) {
   return { healthZonesByTerritory, historicalEras, historicalNote, anthems, parks, sanctuaries }
 }
 
-/** Fetches and memoizes the three source-of-truth data files (fetched once per session). */
+/**
+ * Fetches and memoizes the source-of-truth data files (once per session). The
+ * map renders on the core files; the optional layer data arrives in a second
+ * wave and triggers one more render.
+ */
 export function useDrcData(): State {
   const [state, setState] = useState<State>(cache ? { status: 'ready', data: cache } : { status: 'loading' })
 
   useEffect(() => {
-    if (cache) return
+    let alive = true
+    const absorbLayers = (base: DrcData) => {
+      if (!layersInflight) return
+      void layersInflight.then((layers) => {
+        cache = { ...base, ...layers }
+        if (alive) setState({ status: 'ready', data: cache })
+      })
+    }
+
+    if (cache) {
+      absorbLayers(cache)
+      return () => {
+        alive = false
+      }
+    }
     if (!inflight) inflight = loadAll()
     inflight
       .then((data) => {
         cache = data
-        setState({ status: 'ready', data })
+        if (alive) setState({ status: 'ready', data })
+        absorbLayers(data)
       })
       .catch((err: unknown) => {
-        setState({ status: 'error', error: err instanceof Error ? err.message : String(err) })
+        if (alive) setState({ status: 'error', error: err instanceof Error ? err.message : String(err) })
       })
+    return () => {
+      alive = false
+    }
   }, [])
 
   return state

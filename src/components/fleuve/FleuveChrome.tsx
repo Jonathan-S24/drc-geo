@@ -83,7 +83,13 @@ export function Breadcrumb({ data }: { data: DrcData }) {
 export function LangToggle() {
   const { lang, toggleLang } = useLanguage()
   return (
-    <button className="fl-pill" onClick={toggleLang} aria-label="Language">
+    // The accessible name has to contain the visible label, or voice control
+    // can't act on what the user reads ("FR").
+    <button
+      className="fl-pill"
+      onClick={toggleLang}
+      aria-label={lang === 'fr' ? 'FR — passer en anglais' : 'EN — switch to French'}
+    >
       {lang === 'fr' ? 'FR' : 'EN'}
     </button>
   )
@@ -275,6 +281,17 @@ export function OptionsPanel({ onOpenQuiz }: { onOpenQuiz: () => void }) {
             </svg>
             {t('quizTitleAttr')}
           </button>
+
+          <h4>{t('aboutHeading')}</h4>
+          <p className="fl-optnote">
+            <b>{t('disclaimerTitle')}</b> — {t('disclaimerBody')}
+          </p>
+          <a className="fl-optlink" href="/privacy" target="_blank" rel="noopener">
+            {t('privacyTitle')}
+            <svg width="11" height="11" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" aria-hidden>
+              <path d="M8 4h8v8M16 4 5 15" />
+            </svg>
+          </a>
         </div>
       )}
       <button className={`fl-pill fl-optbtn${mode !== 'provinces' ? ' hot' : ''}`} onClick={toggle}>

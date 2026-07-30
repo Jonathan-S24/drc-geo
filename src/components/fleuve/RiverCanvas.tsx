@@ -39,16 +39,41 @@ export function RiverCanvas() {
     let scene: RiverSceneInstance | null = null
     let cancelled = false
 
+    // Building the landscape is ~600ms of scripting, and the rAF loop then runs
+    // forever — both in front of first paint if started eagerly. Wait until the
+    // browser is idle so the map, the header and the hint paint first.
+    // Safari only shipped requestIdleCallback in 16.4, so treat it as optional.
+    const ric = window.requestIdleCallback as
+      | ((cb: IdleRequestCallback, o?: IdleRequestOptions) => number)
+      | undefined
+    let idle = 0
+    const whenIdle = (fn: () => void) => {
+      idle = ric ? ric.call(window, fn, { timeout: 2500 }) : window.setTimeout(fn, 300)
+    }
+
     loadRiverScript()
+      .then(
+        () =>
+          new Promise<void>((resolve) => {
+            whenIdle(() => resolve())
+          }),
+      )
       .then(() => {
         if (cancelled || !ref.current || !window.RiverScene) return
-        scene = new window.RiverScene(ref.current)
+        // Per coowork's note: the landscape is ~5200 tree crowns at density 1,
+        // which is heavy for low-end phones. Scale it down on small screens
+        // rather than dropping the animation.
+        const w = window.innerWidth
+        const density = w < 600 ? 0.3 : w < 1000 ? 0.7 : 1
+        scene = new window.RiverScene(ref.current, { density })
         scene.start()
       })
       .catch((err) => console.warn('[river]', err))
 
     return () => {
       cancelled = true
+      if (ric) window.cancelIdleCallback(idle)
+      else clearTimeout(idle)
       scene?.destroy()
     }
   }, [])

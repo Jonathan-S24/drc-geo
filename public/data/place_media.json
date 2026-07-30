@@ -15,7 +15,8 @@
    ],
    "image_scope": "\"unit\" = photo of the place itself; \"national-symbol\" = DRC flag or leopard totem placeholder (see image_note_fr/en)."
   },
-  "status": "Audited 2026-07-19: 215 entries. Real place photos where verified appropriate; 88 places with no usable freely licensed photo show a DRC national symbol (coat of arms / flag, alternating) with a bilingual \"contribute a photo\" note. Out-of-context finds removed (ISS satellite views, wrong-country matches, specimen/stock images)."
+  "status": "Audited 2026-07-19: 215 entries. Real place photos where verified appropriate; 88 places with no usable freely licensed photo show a DRC national symbol (coat of arms / flag, alternating) with a bilingual \"contribute a photo\" note. Out-of-context finds removed (ISS satellite views, wrong-country matches, specimen/stock images).",
+  "licensing": "Every image carries its licence in image_credit. Sources: Wikimedia Commons (CC0, public domain, CC BY, CC BY-SA 2.0/3.0/4.0). CC BY-SA images require attribution and share-alike; the credit string must remain visible in the UI next to the image."
  },
  "CD1000": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg/1280px-La_Gombe%2C_Kinshasa%2C_RDC_%28cropped%29.jpg",
@@ -65,7 +66,7 @@
  },
  "CD3203": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Crossing_kwilu_river.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons (Public domain)",
   "image_source_page": "fr:Kwilu (rivière)",
   "facts": [
    {
@@ -329,7 +330,7 @@
  },
  "CD7106": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Central_African_Copper_Belt.png",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Taylor, C.D., Schulz, K.J., Doebrich, J.L., Orris, G.J., Denning, P.D. (Public domain)",
   "image_source_page": "en:Copperbelt",
   "facts": [
    {
@@ -581,7 +582,7 @@
  },
  "province:Lomami": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG/1280px-Swallowtails_on_bank_of_Lomami_River_at_Katopa_Camp%2C_Democratic_Republic_of_the_Congo_%28cropped%29.JPG",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Christina Bergey (CC BY-SA 3.0)",
   "image_source_page": "fr:Lomami (rivière)",
   "facts": [
    {
@@ -819,19 +820,19 @@
  },
  "CD5204": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/CH-NB_-_Belgisch-Kongo-_Elefanten_bei_Aketi_-_Annemarie_Schwarzenbach_-_SLA-Schwarzenbach-A-5-25-056.jpg/1280px-CH-NB_-_Belgisch-Kongo-_Elefanten_bei_Aketi_-_Annemarie_Schwarzenbach_-_SLA-Schwarzenbach-A-5-25-056.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Annemarie Schwarzenbach (Public domain)",
   "image_source_page": "fr:Aketi (territoire)",
   "image_scope": "unit"
  },
  "CD5409": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Territoire_d%E2%80%99Aru%2C_Province_de_l%E2%80%99Ituri%2C_RD_Congo_-_Coucher_de_soleil_sur_la_rivi%C3%A8re_Aru%2C_en_territoire_d%E2%80%99Aru%2C_Province_de_l%E2%80%99Ituri.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Aru (territoire)",
   "image_scope": "unit"
  },
  "CD5111": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Territoire_de_Bafwasende_%28Tshopo_RDC%29.jpg/1280px-Territoire_de_Bafwasende_%28Tshopo_RDC%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / VALENTIN NVJ (CC BY-SA 4.0)",
   "image_source_page": "fr:Bafwasende (territoire)",
   "image_scope": "unit"
  },
@@ -844,61 +845,61 @@
  },
  "CD3201": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Bandundu_Centre%2C_vue_a%C3%A9rienne.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Radio Okapi (CC BY 2.0)",
   "image_source_page": "fr:Bandundu (ville)",
   "image_scope": "unit"
  },
  "CD4107": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Women_returning_from_their_gardens_Basankusu.jpg/1280px-Women_returning_from_their_gardens_Basankusu.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Francis Hannaway (CC BY-SA 3.0)",
   "image_source_page": "fr:Basankusu (territoire)",
   "image_scope": "unit"
  },
  "CD5109": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/StoryoftheCongoFreeState_72.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Unknown authorUnknown author (Public domain)",
   "image_source_page": "fr:Basoko (territoire)",
   "image_scope": "unit"
  },
  "CD4502": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Une_vue_a%C3%A9rienne_partielle_du_territoire_de_Boende_dans_la_province_de_l%E2%80%99Equateur%2C_en_RD_Congo_%2815311732917%29.jpg/1280px-Une_vue_a%C3%A9rienne_partielle_du_territoire_de_Boende_dans_la_province_de_l%E2%80%99Equateur%2C_en_RD_Congo_%2815311732917%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Boende",
   "image_scope": "unit"
  },
  "CD3308": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/BOLOBO.jpg/1280px-BOLOBO.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Sosbok78 (CC0)",
   "image_source_page": "fr:Bolobo",
   "image_scope": "unit"
  },
  "CD6211": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Une_vendeuse_de_patates_douces_%C3%A0_Baraka_Mwambangu_%C3%A0_93_KM_d%27Uvira_au_Sud-Kivu_prend_plaisir_%C3%A0_lire_%C2%AB_Les_Echos_de_la_MONUSCO_%C2%BB_dans_son_lieu_de_travail_%2815882180915%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Baraka (Congo-Kinshasa)",
   "image_scope": "unit"
  },
  "CD4405": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/The_Church_at_Eala_%28Bongandanga_district%29%2C_Congo%2C_ca._1900-1915_%28IMP-CSCNWW33-OS11-70%29.jpg/1280px-The_Church_at_Eala_%28Bongandanga_district%29%2C_Congo%2C_ca._1900-1915_%28IMP-CSCNWW33-OS11-70%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Unknown authorUnknown author (Public domain)",
   "image_source_page": "fr:Bongandanga",
   "image_scope": "unit"
  },
  "CD7306": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Luena_-_panoramio.jpg/1280px-Luena_-_panoramio.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / T. Thielemans (CC BY 3.0)",
   "image_source_page": "fr:Bukama (territoire)",
   "image_scope": "unit"
  },
  "CD5202": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pont_riv_rubi.jpg/1280px-Pont_riv_rubi.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Iyongi (CC0)",
   "image_source_page": "fr:Buta",
   "image_scope": "unit"
  },
  "CD9102": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Tshimbulu%2CCentral_Kasai._South_East_of_Kananga_in_Tshimbulu%2C_MONUSCO_reaffirms_its_commitment_to_promoting_dialogue.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Biliaminou Alao (CC BY-SA 2.0)",
   "image_source_page": "fr:Dibaya (territoire)",
   "image_scope": "unit"
  },
@@ -911,31 +912,31 @@
  },
  "CD9107": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Palm_oil_manufacture_%282%29_Lac_Mukamba%2C_Deretoire_de_Dimbelenge%2C_Kasai_occ._RD_Congo.JPG/1280px-Palm_oil_manufacture_%282%29_Lac_Mukamba%2C_Deretoire_de_Dimbelenge%2C_Kasai_occ._RD_Congo.JPG",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Thomas Erwin von Arx (CC BY-SA 4.0)",
   "image_source_page": "fr:Dimbelenge (territoire)",
   "image_scope": "unit"
  },
  "CD5210": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Uele_rivi%C3%A8re_Bomokandi.jpg/1280px-Uele_rivi%C3%A8re_Bomokandi.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Bicounet (CC BY-SA 3.0)",
   "image_source_page": "fr:Dingila",
   "image_scope": "unit"
  },
  "CD5405": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Vall%C3%A9e_rivi%C3%A8re_Kodda.jpg/1280px-Vall%C3%A9e_rivi%C3%A8re_Kodda.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Ndalilo koli (CC BY-SA 4.0)",
   "image_source_page": "fr:Djugu (territoire)",
   "image_scope": "unit"
  },
  "CD5305": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Dungu_Bridge.jpg/1280px-Dungu_Bridge.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Julien Harneis from Conakry, Guinea (CC BY-SA 2.0)",
   "image_source_page": "fr:Territoire de Dungu",
   "image_scope": "unit"
  },
  "CD5307": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/The_American_Museum_journal_%28c1900-%281918%29%29_%2818134665296%29.jpg/1280px-The_American_Museum_journal_%28c1900-%281918%29%29_%2818134665296%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Internet Archive Book Images (No restrictions)",
   "image_source_page": "fr:Faradje (territoire)",
   "image_scope": "unit"
  },
@@ -948,175 +949,175 @@
  },
  "CD6210": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Un_H%C3%A9licopt%C3%A8re_de_la_MONUSCO_en_train_d%27atterrir_sur_la_piste_de_Baraka_dans_le_Territoire_de_Fizi_%C3%A0_90_Km_d%27Uvira_au_Sud-Kivu._%2815267267554%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Territoire de Fizi",
   "image_scope": "unit"
  },
  "CD4202": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/PT9A6518_%2814273859206%29.jpg/1280px-PT9A6518_%2814273859206%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Gemena (territoire)",
   "image_scope": "unit"
  },
  "CD2018": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Zongo_Falls_13_%28chutes_de_Zongo%29_-_panoramio.jpg/1280px-Zongo_Falls_13_%28chutes_de_Zongo%29_-_panoramio.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / fabricewonga (CC BY-SA 3.0)",
   "image_source_page": "fr:Inkisi",
   "image_scope": "unit"
  },
  "CD3302": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Maindombe4.JPG",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / T. Claeys Boùùaert (CC BY 2.5)",
   "image_source_page": "fr:Inongo",
   "image_scope": "unit"
  },
  "CD5402": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Gety%2C_Province_de_l%E2%80%99Ituri%2C_RD_Congo_-_Un_casque_bleu_observe_les_alentours_depuis_les_hauteurs_de_Gety._%2823667701396%29.jpg/1280px-Gety%2C_Province_de_l%E2%80%99Ituri%2C_RD_Congo_-_Un_casque_bleu_observe_les_alentours_depuis_les_hauteurs_de_Gety._%2823667701396%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Irumu (territoire)",
   "image_scope": "unit"
  },
  "CD5105": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Des_pirogues_motoris%C3%A9es_%C3%A0_Isangi.jpg/1280px-Des_pirogues_motoris%C3%A9es_%C3%A0_Isangi.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / BamLifa (CC BY-SA 4.0)",
   "image_source_page": "fr:Isangi (territoire)",
   "image_scope": "unit"
  },
  "CD5301": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/7/73/Isiro.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Unknown authorUnknown author (Public domain)",
   "image_source_page": "fr:Isiro",
   "image_scope": "unit"
  },
  "CD6302": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Mining_in_Kailo.jpg/1280px-Mining_in_Kailo.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Julien Harneis, (CC BY-SA 2.0)",
   "image_source_page": "fr:Territoire de Kailo",
   "image_scope": "unit"
  },
  "CD6205": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/4/40/A_Token_of_care_and_affection_from_military_personnel._%2816313622959%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Kalehe",
   "image_scope": "unit"
  },
  "CD7402": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Kalemie%2C_Tanganyika_Province%2C_DR_Congo-_Military_observers_of_MONUSCO_sensitize_militiamen_known_as_%22elements%22_%28Bantu%29_on_peace.jpg/1280px-Kalemie%2C_Tanganyika_Province%2C_DR_Congo-_Military_observers_of_MONUSCO_sensitize_militiamen_known_as_%22elements%22_%28Bantu%29_on_peace.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Kalemie (territoire)",
   "image_scope": "unit"
  },
  "CD7105": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Libethenite-tuc1033a.jpg/1280px-Libethenite-tuc1033a.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Robert M. Lavinsky (CC BY-SA 3.0)",
   "image_source_page": "fr:Kambove",
   "image_scope": "unit"
  },
  "CD7302": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Kamina%2C_province_du_Katanga%2C_RD_Congo_-_Le_Ministre_de_la_d%C3%A9fense%2C_Aim%C3%A9_Ngoy_Mukena%2C_et_Jos%C3%A9_Maria_Aranaz%2C_directeur_du_BCNUDH%2C_saluent_les_ex-combattants_arriv%C3%A9s_sur_le_site_de_regroupement_de_Kamina._%2819271316328%29.jpg/1280px-thumbnail.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Kamina",
   "image_scope": "unit"
  },
  "CD9202": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Sunset_view_from_Kalonda.jpg/1280px-Sunset_view_from_Kalonda.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Sagar Bhatt (CC BY-SA 3.0)",
   "image_source_page": "fr:Territoire de Kamonia",
   "image_scope": "unit"
  },
  "CD2015": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/La_rivi%C3%A8re_Lukaya_3.jpg/1280px-La_rivi%C3%A8re_Lukaya_3.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Steeve P (CC BY-SA 4.0)",
   "image_source_page": "fr:Territoire de Kasangulu",
   "image_scope": "unit"
  },
  "CD7107": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Une_vue_du_Centre_de_vote_KASENGA_%C3%A0_la_cl%C3%B4ture_2_%286435266727%29.jpg/1280px-Une_vue_du_Centre_de_vote_KASENGA_%C3%A0_la_cl%C3%B4ture_2_%286435266727%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Kasenga",
   "image_scope": "unit"
  },
  "CD6311": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Crossing_a_stream_Wellcome_L0063347.jpg/1280px-Crossing_a_stream_Wellcome_L0063347.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons (CC BY 4.0)",
   "image_source_page": "fr:Kasongo (territoire)",
   "image_scope": "unit"
  },
  "CD8209": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Inauguration_of_Congolese_Alliance_for_Agriculture_and_Development.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Dicko Kasongo (CC BY-SA 4.0)",
   "image_source_page": "fr:Katanda",
   "image_scope": "unit"
  },
  "CD9105": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Grand_S%C3%A9minaire_de_Kabwe.jpg/1280px-Grand_S%C3%A9minaire_de_Kabwe.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Cedrick ngalula (CC BY-SA 4.0)",
   "image_source_page": "fr:Territoire de Kazumba",
   "image_scope": "unit"
  },
  "CD3102": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/3/38/Kenge%2C_avril_2019.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Euphrotte (CC BY-SA 4.0)",
   "image_source_page": "fr:Kenge",
   "image_scope": "unit"
  },
  "CD6313": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/2/26/Bridge_over_Lufubu_River%2C_1940_002.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Nicolas G. Mertens (CC BY-SA 4.0)",
   "image_source_page": "fr:Kibombo (territoire)",
   "image_scope": "unit"
  },
  "CD7102": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/3/37/Reichenbachite-Kipushite-177340.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Robert M. Lavinsky (CC BY-SA 3.0)",
   "image_source_page": "fr:Kipushi",
   "image_scope": "unit"
  },
  "CD8306": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/KoleDRC1.jpg/1280px-KoleDRC1.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Valerius Tygart (CC BY-SA 3.0)",
   "image_source_page": "fr:Kole",
   "image_scope": "unit"
  },
  "CD7409": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Congo_Railways_-_Compagnie_des_Grands_Lacs_Kongolo-Kindu_-_a_freight_train.jpg/1280px-Congo_Railways_-_Compagnie_des_Grands_Lacs_Kongolo-Kindu_-_a_freight_train.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Unknown photographer (Public domain)",
   "image_source_page": "fr:Kongolo (territoire)",
   "image_scope": "unit"
  },
  "CD3307": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Le_Kasai_pres_de_Kwamouth_%28titel_op_object%29%2C_RP-F-2001-7-823-11_%28cropped%29.jpg/1280px-Le_Kasai_pres_de_Kwamouth_%28titel_op_object%29%2C_RP-F-2001-7-823-11_%28cropped%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Rijksmuseum (CC0)",
   "image_source_page": "fr:Territoire de Kwamouth",
   "image_scope": "unit"
  },
  "CD4205": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Flooded_area_on_the_Ubangi_near_Duma%2C_1911.jpg/1280px-Flooded_area_on_the_Ubangi_near_Duma%2C_1911.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Internet Archive Book Images (No restrictions)",
   "image_source_page": "fr:Libenge (territoire)",
   "image_scope": "unit"
  },
  "CD4402": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/CH-NB_-_Belgisch-Kongo%2C_Lisala-_Landschaft_-_Annemarie_Schwarzenbach_-_SLA-Schwarzenbach-A-5-25-167.jpg/1280px-CH-NB_-_Belgisch-Kongo%2C_Lisala-_Landschaft_-_Annemarie_Schwarzenbach_-_SLA-Schwarzenbach-A-5-25-167.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Annemarie Schwarzenbach (Public domain)",
   "image_source_page": "fr:Lisala (territoire)",
   "image_scope": "unit"
  },
  "CD8303": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/PHOTO_DU_JOUR_DU_JEUDI_8_AOUT_2019_-_Mission_d%27%C3%A9valuation_de_la_MONUSCO_%C3%A0_Lodja%2C_Sankuru.jpg/1280px-PHOTO_DU_JOUR_DU_JEUDI_8_AOUT_2019_-_Mission_d%27%C3%A9valuation_de_la_MONUSCO_%C3%A0_Lodja%2C_Sankuru.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Lodja",
   "image_scope": "unit"
  },
  "CD8309": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/VingtAnnees_269.jpg/1280px-VingtAnnees_269.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Delcommune, Alexandre (Public domain)",
   "image_source_page": "fr:Lubefu",
   "image_scope": "unit"
  },
  "CD6105": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/CH-NB_-_Belgisch-Kongo%2C_Lubero-_Dorfansicht_-_Annemarie_Schwarzenbach_-_SLA-Schwarzenbach-A-5-25-190.jpg/1280px-CH-NB_-_Belgisch-Kongo%2C_Lubero-_Dorfansicht_-_Annemarie_Schwarzenbach_-_SLA-Schwarzenbach-A-5-25-190.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Annemarie Schwarzenbach (Public domain)",
   "image_source_page": "fr:Lubero",
   "image_scope": "unit"
  },
@@ -1129,115 +1130,115 @@
  },
  "CD9204": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/VingtAnnees_278.jpg/1280px-VingtAnnees_278.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Delcommune, Alexandre (Public domain)",
   "image_source_page": "fr:Luebo (territoire)",
   "image_scope": "unit"
  },
  "CD4103": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Landing_place_at_the_Lukolela_plantation.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Unknown authorUnknown author (Public domain)",
   "image_source_page": "fr:Lukolela (territoire)",
   "image_scope": "unit"
  },
  "CD8302": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/c/c6/StoryoftheCongoFreeState_200b.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Unknown authorUnknown author (Public domain)",
   "image_source_page": "fr:Lusambo",
   "image_scope": "unit"
  },
  "CD2017": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Congo_Belge._District_du_Stanley-Pool._Madimba._La_voie_ferr%C3%A9e.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Unknown photographer (Public domain)",
   "image_source_page": "fr:Madimba",
   "image_scope": "unit"
  },
  "CD5407": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/On_14_May_2020%2C_in_Mahagi_Territory%2C_MONUSCO%E2%80%99s_Bangladeshi_peacekeepers_reopen_traffic.jpeg/1280px-On_14_May_2020%2C_in_Mahagi_Territory%2C_MONUSCO%E2%80%99s_Bangladeshi_peacekeepers_reopen_traffic.jpeg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Mahagi (territoire)",
   "image_scope": "unit"
  },
  "CD7305": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Photo_of_the_day_29.09.2015_%2821182484444%29.jpg/1280px-Photo_of_the_day_29.09.2015_%2821182484444%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Malemba-Nkulu (territoire)",
   "image_scope": "unit"
  },
  "CD3212": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Surveying_the_health_of_the_population_in_the_territory_of_Masi_Manimba%2C_DRC_%287610442958%29.jpg/1280px-Surveying_the_health_of_the_population_in_the_territory_of_Masi_Manimba%2C_DRC_%287610442958%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / DFID - UK Department for International Development (CC BY-SA 2.0)",
   "image_source_page": "fr:Masi-Manimba",
   "image_scope": "unit"
  },
  "CD6103": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Paysage_du_territoire_de_Masisi_%2828130228449%29.jpg/1280px-Paysage_du_territoire_de_Masisi_%2828130228449%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Yohann Bouvier (CC BY-SA 2.0)",
   "image_source_page": "fr:Masisi (territoire)",
   "image_scope": "unit"
  },
  "CD2013": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/9/96/Monument_Mama_Mvati_Mpatu_at_Mbanza_Ngungu.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Radio Okapi (CC BY 2.0)",
   "image_source_page": "fr:Mbanza-Ngungu",
   "image_scope": "unit"
  },
  "CD7108": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/La_MONUSCO_distribue_des_cahiers_aux_enfants_du_village_pour_les_encourager_%C3%A0_fr%C3%A9quenter_l%E2%80%99%C3%A9cole_%2816151496190%29.jpg/1280px-La_MONUSCO_distribue_des_cahiers_aux_enfants_du_village_pour_les_encourager_%C3%A0_fr%C3%A9quenter_l%E2%80%99%C3%A9cole_%2816151496190%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Mitwaba (territoire)",
   "image_scope": "unit"
  },
  "CD2003": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Route_Boma_Moanda.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Radio Okapi (CC BY 2.0)",
   "image_source_page": "fr:Moanda (territoire)",
   "image_scope": "unit"
  },
  "CD7404": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Zambian_Government_repatriates_Congo_DR_refugees.jpg/1280px-Zambian_Government_repatriates_Congo_DR_refugees.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Alex Mukuka (CC BY-SA 4.0)",
   "image_source_page": "fr:Moba (territoire)",
   "image_scope": "unit"
  },
  "CD9207": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Congo_Railways_-_Mweka_train_station_-_Societe_du_Chemin_de_Fer_Leopoldville-Katanga-Dilolo_%28LKD%29_-_a_passenger_train.jpg/1280px-Congo_Railways_-_Mweka_train_station_-_Societe_du_Chemin_de_Fer_Leopoldville-Katanga-Dilolo_%28LKD%29_-_a_passenger_train.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Unknown photographer (Public domain)",
   "image_source_page": "fr:Mweka",
   "image_scope": "unit"
  },
  "CD5303": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/The_American_Museum_journal_%28c1900-%281918%29%29_%2817538579484%29.jpg/1280px-The_American_Museum_journal_%28c1900-%281918%29%29_%2817538579484%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Internet Archive Book Images (No restrictions)",
   "image_source_page": "fr:Niangara (territoire)",
   "image_scope": "unit"
  },
  "CD7410": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Nyunzu%2C_Province_du_Tanganyika%2C_RD_Congo_-_La_MONUSCO_r%C3%A9habilite_le_b%C3%A2timent_administratif_du_territoire_du_Nyunzu_dans_le_cadre_d%E2%80%99un_projet_%C3%A0_impact_rapide_initi%C3%A9_par_la_Section_des_Affaires_civiles_de_la_MONUSCO_%C3%A0_Kalemie.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Nyunzu (territoire)",
   "image_scope": "unit"
  },
  "CD6107": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/19_mai_2015%2C_Territoire_de_Beni%2C_Province_du_Nord-Kivu%2C_RD_Congo-_Le_Commandant_adjoint_de_la_Force_de_la_MONUSCO%2C_le_major-g%C3%A9n%C3%A9ral_Jean_Baillaud%2C_effectue_une_visite_sur_les_sites_de_massacres_%C3%A0_Oicha_et_Mbau_%2818338447535%29.jpg/1280px-thumbnail.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Oïcha",
   "image_scope": "unit"
  },
  "CD5208": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/The_American_Museum_journal_%28c1900-%281918%29%29_%2818161931791%29.jpg/1280px-The_American_Museum_journal_%28c1900-%281918%29%29_%2818161931791%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Internet Archive Book Images (No restrictions)",
   "image_source_page": "fr:Poko (territoire)",
   "image_scope": "unit"
  },
  "CD3108": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/MONUSCO_generator_delivery_in_Popkabaka.jpg/1280px-MONUSCO_generator_delivery_in_Popkabaka.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Michael Ali (CC BY-SA 2.0)",
   "image_source_page": "fr:Popokabaka",
   "image_scope": "unit"
  },
  "CD7109": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Road_from_Pweto_to_Dubie%2C_Katanga.jpg/1280px-Road_from_Pweto_to_Dubie%2C_Katanga.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Tom Skrinar (CC BY-SA 2.0)",
   "image_source_page": "fr:Pweto (territoire)",
   "image_scope": "unit"
  },
@@ -1250,13 +1251,13 @@
  },
  "CD6203": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/La_rivi%C3%A8re_Ulindi%2C_qui_prend_sa_source_dans_le_Mont_Piernard%2C_se_dirige_vers_l%E2%80%99ouest_en_traversant_les_territoires_de_Mwenga_et_de_Shabunda%2C_dans_la_province_du_Sud_Kivu._%2819573766866%29.jpg/1280px-thumbnail.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO Photos (CC BY-SA 2.0)",
   "image_source_page": "fr:Shabunda (territoire)",
   "image_scope": "unit"
  },
  "CD2011": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/134_L%27arr%C3%A8t_%C3%A0_Songololo.jpg/1280px-134_L%27arr%C3%A8t_%C3%A0_Songololo.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons (Public domain)",
   "image_source_page": "fr:Songololo",
   "image_scope": "unit"
  },
@@ -1283,49 +1284,49 @@
  },
  "CD4105": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Station_bangala.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Unknown authorUnknown author (Public domain)",
   "image_source_page": "en:Makanza",
   "image_scope": "unit"
  },
  "CD6212": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Miki%2C_dans_le_plateau_d%27Itombwe%2C_2005.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Radio Okapi (CC BY 2.0)",
   "image_source_page": "en:Mwenga",
   "image_scope": "unit"
  },
  "CD3305": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Aerial_view_of_Nioki_City_in_Bandundu_Province_D.R.Congo._photo_by_Ch._Naeem_Ahmad_bajwa_date_19_mai_2014.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Ch. Naeem Ahmad Bajwa (CC BY-SA 4.0)",
   "image_source_page": "en:Nioki",
   "image_scope": "unit"
  },
  "CD9201": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/1/13/Tshikapa_2022.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Johnstanbul (CC BY-SA 4.0)",
   "image_source_page": "en:Tshikapa",
   "image_scope": "unit"
  },
  "CD9103": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Tshimbulu%2CCentral_Kasai._South_East_of_Kananga_in_Tshimbulu%2C_MONUSCO_reaffirms_its_commitment_to_promoting_dialogue.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Biliaminou Alao (CC BY-SA 2.0)",
   "image_source_page": "en:Tshimbulu",
   "image_scope": "unit"
  },
  "CD5102": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/New_vessel_for_Fort_Tango%2C_on_the_Congo_River.jpg/1280px-New_vessel_for_Fort_Tango%2C_on_the_Congo_River.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / Julien Harneis from Conakry, Guinea (CC BY-SA 2.0)",
   "image_source_page": "en:Ubundu",
   "image_scope": "unit"
  },
  "CD6208": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Uvira%2C_South_Kivu%2C_DR_Congo_%28DRC%29.jpg/1280px-Uvira%2C_South_Kivu%2C_DR_Congo_%28DRC%29.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / EdwinAlden.1995 (CC BY-SA 4.0)",
   "image_source_page": "en:Uvira",
   "image_scope": "unit"
  },
  "CD6104": {
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Walikale.jpg/1280px-Walikale.jpg",
-  "image_credit": "Wikimedia Commons",
+  "image_credit": "Wikimedia Commons / MONUSCO/Sylvain Liechti (CC BY-SA 2.0)",
   "image_source_page": "en:Walikale",
   "image_scope": "unit"
  },

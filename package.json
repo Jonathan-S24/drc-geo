@@ -9,7 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "gen:sitemap": "node scripts/gen-sitemap.mjs",
-    "prebuild": "node scripts/gen-sitemap.mjs",
+    "prebuild": "node scripts/gen-sitemap.mjs && node scripts/gen-privacy.mjs",
     "fetch:parks": "node scripts/fetch-parks.mjs"
   },
   "dependencies": {

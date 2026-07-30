@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext'
 import { AppStateProvider, useAppState } from './state/AppStateContext'
-import { LayerProvider, useLayer } from './state/LayerContext'
+import { LayerProvider, useLayer, type MapMode } from './state/LayerContext'
 import { useDrcData, type DrcData } from './data/useDrcData'
 import { useUrlSync } from './routing/useUrlSync'
 import { FleuveMap } from './components/FleuveMap'
@@ -12,27 +12,26 @@ import { ParkDossier } from './components/fleuve/ParkDossier'
 import { SanctuairesRail } from './components/fleuve/SanctuairesRail'
 import { FleuveLegend } from './components/fleuve/FleuveLegend'
 import { HistoirePanel } from './components/fleuve/HistoirePanel'
-import { PwaChrome } from './components/PwaChrome'
+import { PwaChrome, PwaPrompts } from './components/PwaChrome'
 import { QuizMode } from './components/QuizMode'
 
-function LoadingState() {
-  return (
-    <div className="flex h-screen items-center justify-center" style={{ background: 'var(--abyss)' }}>
-      <div className="flex flex-col items-center gap-4">
-        <svg width="52" height="52" viewBox="0 0 40 40" fill="none" className="fl-rise">
-          <circle cx="20" cy="20" r="18.5" stroke="#C87941" strokeWidth="1.2" opacity=".55" />
-          <path d="M8 27c5-1.5 6.5-7 11-9s7.5-.5 13-5" stroke="#6FA8BC" strokeWidth="2.1" strokeLinecap="round" />
-          <circle cx="20" cy="20" r="3.1" fill="#E4B44C" />
-        </svg>
-        <p style={{ color: '#6E8A82', fontSize: 13, letterSpacing: '.05em' }}>DRC.Geo</p>
-      </div>
-    </div>
-  )
+/**
+ * Fades out and removes the boot splash that index.html painted straight from
+ * the HTML. It lives outside #root deliberately: React mounting must not wipe
+ * it, because it is what the first paint (and the LCP measurement) sees.
+ */
+function dismissBootSplash() {
+  const boot = document.getElementById('boot')
+  if (!boot || boot.classList.contains('gone')) return
+  boot.classList.add('gone')
+  boot.addEventListener('transitionend', () => boot.remove(), { once: true })
+  // Belt and braces if the transition never fires (reduced motion, hidden tab).
+  window.setTimeout(() => boot.remove(), 900)
 }
 
 function Shell({ data }: { data: DrcData }) {
   const { selection, clearSelection } = useAppState()
-  const { mode, selectedPark, setSelectedPark, eraIndex } = useLayer()
+  const { mode, setMode, selectedPark, setSelectedPark, eraIndex } = useLayer()
   const { t, lang } = useLanguage()
   useUrlSync(data, lang)
   const [quizOpen, setQuizOpen] = useState(false)
@@ -45,16 +44,40 @@ function Shell({ data }: { data: DrcData }) {
   const showFiche = (mode === 'provinces' || mode === 'sante') && !!unit
   const park = selectedPark ? data.sanctuaries.find((p) => p.id === selectedPark) : null
 
-  // Esc closes whatever dossier is open.
+  // Keyboard: Esc closes panels, 1–4 switch layers, Space plays/pauses the
+  // anthem. ("/" for search lives in FleuveSearch, arrows in its result list.)
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return
-      if (park) setSelectedPark(null)
-      else if (unit) clearSelection()
+      const el = document.activeElement
+      const typing = el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement
+      if (e.key === 'Escape') {
+        if (quizOpen) setQuizOpen(false)
+        else if (park) setSelectedPark(null)
+        else if (unit) clearSelection()
+        return
+      }
+      if (typing || quizOpen || e.metaKey || e.ctrlKey || e.altKey) return
+      if ((e.key === ' ' || e.code === 'Space') && mode === 'histoire') {
+        // Space toggles the era's anthem without scrolling the page. A focused
+        // <button> already activates on Space, so don't double-fire it.
+        const play = document.querySelector<HTMLButtonElement>('.fl-hist button[aria-label]')
+        if (play && el !== play) {
+          e.preventDefault()
+          play.click()
+        }
+        return
+      }
+      const layer = { '1': 'provinces', '2': 'parks', '3': 'sante', '4': 'histoire' }[e.key] as
+        | MapMode
+        | undefined
+      if (layer) {
+        e.preventDefault()
+        setMode(layer)
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [park, unit, setSelectedPark, clearSelection])
+  }, [park, unit, setSelectedPark, clearSelection, mode, setMode, quizOpen])
 
   const showHint = mode === 'provinces' && !unit
 
@@ -99,6 +122,8 @@ function Shell({ data }: { data: DrcData }) {
 
       {showHint && <div className="fl-hint">{t('hoverHint')}</div>}
 
+      <PwaPrompts />
+
       {quizOpen && <QuizMode data={data} onClose={() => setQuizOpen(false)} />}
     </div>
   )
@@ -106,7 +131,11 @@ function Shell({ data }: { data: DrcData }) {
 
 function AppContent() {
   const state = useDrcData()
-  if (state.status === 'loading') return <LoadingState />
+  const ready = state.status !== 'loading'
+  useEffect(() => {
+    if (ready) dismissBootSplash()
+  }, [ready])
+  if (state.status === 'loading') return null
   if (state.status === 'error') {
     return (
       <div className="flex h-screen items-center justify-center" style={{ background: 'var(--abyss)', color: '#8FB3A9' }}>

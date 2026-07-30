@@ -379,7 +379,11 @@ function HistoryEraLayer({ era, proj, reduced, onTip, t }: HistoryEraLayerProps)
         return (
           <path
             key={`${era.key}-${props.name}`}
+            className="fl-era"
             d={proj.d(f.geometry)}
+            tabIndex={0}
+            role="img"
+            aria-label={`${props.name} — ${sub}`}
             fill={ERA_PALETTE[i % ERA_PALETTE.length]}
             fillOpacity={0.62}
             stroke="#F7D618"
@@ -421,6 +425,15 @@ function ParksLayer({ parks, proj, reduced, selectedPark, onSelect, onTip, lang 
             key={pk.id}
             className="fl-park"
             d={proj.d(pk.geometry)}
+            tabIndex={0}
+            role="button"
+            aria-label={lang === 'en' ? pk.name_en : pk.name}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                onSelect(pk.id)
+              }
+            }}
             fill="#47C98A"
             fillOpacity={on ? 0.5 : selectedPark ? 0.12 : 0.18}
             stroke="#7BE8B0"
