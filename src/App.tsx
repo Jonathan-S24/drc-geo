@@ -17,6 +17,7 @@ import { QuizMode } from './components/QuizMode'
 import { useKioskMode } from './kiosk/useKioskMode'
 import { useTapRipple } from './kiosk/useTapRipple'
 import { KioskGate } from './kiosk/KioskGate'
+import { WallOverlay } from './kiosk/WallOverlay'
 
 /**
  * Fades out and removes the boot splash that index.html painted straight from
@@ -144,6 +145,9 @@ function Shell({ data }: { data: DrcData }) {
       {quizOpen && <QuizMode data={data} onClose={() => setQuizOpen(false)} />}
 
       {kiosk.showGate && <KioskGate onBegin={kiosk.dismissGate} />}
+
+      {/* Camera-tracked finger (?wall=1). Owns its own 30 Hz state; renders nothing otherwise. */}
+      <WallOverlay />
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { resolveWallFlag } from './useWallTracker'
 
 /**
  * Exhibition / kiosk touch mode — for a laptop driving a projector with an
@@ -40,7 +41,8 @@ function readStoredKioskFlag(): boolean {
 }
 
 function resolveKioskFlag(): boolean {
-  return readKioskParam() ?? readStoredKioskFlag()
+  // Wall tracking (a camera-tracked finger) only makes sense on a kiosk.
+  return readKioskParam() ?? (readStoredKioskFlag() || resolveWallFlag())
 }
 
 export interface KioskState {
@@ -114,10 +116,14 @@ export function useKioskMode(onIdleReset: () => void): KioskState {
     const bump = () => armIdleTimer()
     window.addEventListener('pointerdown', bump)
     window.addEventListener('touchstart', bump)
+    // A hand moving in front of the wall is someone present, even before it
+    // settles on anything — the tracker dispatches pointermove for it.
+    window.addEventListener('pointermove', bump)
     return () => {
       window.clearTimeout(idleTimerRef.current)
       window.removeEventListener('pointerdown', bump)
       window.removeEventListener('touchstart', bump)
+      window.removeEventListener('pointermove', bump)
     }
   }, [active, showGate, armIdleTimer])
 

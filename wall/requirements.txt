@@ -1,0 +1,7 @@
+# mediapipe 1.0.x crashes on macOS in TensorsToDetectionsCalculator (Metal
+# helper init, even on the CPU delegate) — verified on 1.0.1 / Apple Silicon.
+# 0.10.x is the last line that works.
+mediapipe<1.0
+opencv-python>=4.9
+websockets>=12
+numpy

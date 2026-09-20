@@ -1,0 +1,430 @@
+#!/usr/bin/env python3
+"""
+DRC.Geo wall tracker — turns a webcam pointed at the projected image into a
+touch-like pointer for the app.
+
+    webcam ──► MediaPipe hand landmarks ──► index fingertip (camera space)
+           ──► homography from a 4-corner calibration ──► unit square of the
+           projected image ──► WebSocket to the browser at ~30 Hz
+
+The browser (src/kiosk/useWallTracker.ts) draws the cursor and dwell ring and
+fires the click. This process never touches the OS mouse, so it needs no
+Accessibility permission — only the camera prompt, once.
+
+Run:   .venv/bin/python tracker.py            # real camera
+       .venv/bin/python tracker.py --simulate # fake finger, no camera needed
+       .venv/bin/python tracker.py --show     # + a preview window for aiming
+
+Then open the app with ?wall=1 in Chrome and press C to calibrate.
+"""
+from __future__ import annotations
+
+import argparse
+import asyncio
+import json
+import math
+import sys
+import threading
+import time
+from dataclasses import dataclass, field
+from pathlib import Path
+
+import numpy as np
+
+HERE = Path(__file__).resolve().parent
+MODEL = HERE / "hand_landmarker.task"
+CALIB_FILE = HERE / "calibration.json"
+
+# ---- tuning -----------------------------------------------------------------
+# Where the four calibration targets sit, in unit coordinates of the projected
+# image. Inset from the true corners so a finger on them is comfortably inside
+# the camera's view and doesn't hide against the bezel of the projection.
+CAL_INSET = 0.08
+CAL_TARGETS = [
+    (CAL_INSET, CAL_INSET),
+    (1 - CAL_INSET, CAL_INSET),
+    (1 - CAL_INSET, 1 - CAL_INSET),
+    (CAL_INSET, 1 - CAL_INSET),
+]
+CAL_HOLD_S = 1.6        # hold still on a target this long
+CAL_RADIUS = 0.02       # ...within this radius (camera-normalized units)
+
+DWELL_S = 1.0           # hold still this long to click
+DWELL_RADIUS = 0.028    # ...within this radius (unit-square units, ~2.8% of width)
+REARM_RADIUS = 0.06     # after a click, move this far before another can fire
+SMOOTH_ALPHA = 0.38     # EMA on the fingertip; lower = smoother but laggier
+LOST_AFTER_S = 0.25     # no hand for this long → cursor hidden
+BROADCAST_HZ = 30
+# -----------------------------------------------------------------------------
+
+
+@dataclass
+class Shared:
+    """State the vision thread writes and the WebSocket loop reads."""
+    lock: threading.Lock = field(default_factory=threading.Lock)
+    cam_pt: tuple[float, float] | None = None   # smoothed fingertip, camera-normalized
+    seen_at: float = 0.0
+    fps: float = 0.0
+    frame_wh: tuple[int, int] = (0, 0)
+    stop: bool = False
+    # --simulate only: where the fake finger should go and hold (calibration targets).
+    sim_goto: tuple[float, float] | None = None
+
+
+class Calibration:
+    def __init__(self) -> None:
+        self.H: np.ndarray | None = None
+        self.load()
+
+    def load(self) -> None:
+        if CALIB_FILE.exists():
+            data = json.loads(CALIB_FILE.read_text())
+            self.H = np.array(data["H"], dtype=np.float64)
+            print(f"[cal] loaded {CALIB_FILE.name}")
+
+    def save(self, cam_pts: list[tuple[float, float]], persist: bool = True) -> None:
+        import cv2
+        src = np.array(cam_pts, dtype=np.float32)
+        dst = np.array(CAL_TARGETS, dtype=np.float32)
+        self.H = cv2.getPerspectiveTransform(src, dst).astype(np.float64)
+        if not persist:
+            print("[cal] computed (not saved — simulate mode)")
+            return
+        CALIB_FILE.write_text(json.dumps({"H": self.H.tolist(), "cam_pts": cam_pts, "targets": CAL_TARGETS}, indent=2))
+        print(f"[cal] saved {CALIB_FILE.name}")
+
+    @property
+    def ready(self) -> bool:
+        return self.H is not None
+
+    def map(self, pt: tuple[float, float]) -> tuple[float, float]:
+        x, y = pt
+        v = self.H @ np.array([x, y, 1.0])
+        return (float(v[0] / v[2]), float(v[1] / v[2]))
+
+
+# ---- vision thread ------------------------------------------------------------
+
+def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool) -> None:
+    import cv2
+    import mediapipe as mp
+    from mediapipe.tasks import python as mpp
+    from mediapipe.tasks.python import vision
+
+    if not MODEL.exists():
+        print(f"[vision] missing {MODEL.name} — run setup.sh first", file=sys.stderr)
+        shared.stop = True
+        return
+
+    opts = vision.HandLandmarkerOptions(
+        base_options=mpp.BaseOptions(model_asset_path=str(MODEL)),
+        num_hands=1,
+        running_mode=vision.RunningMode.VIDEO,
+        min_hand_detection_confidence=0.5,
+        min_hand_presence_confidence=0.5,
+        min_tracking_confidence=0.5,
+    )
+    landmarker = vision.HandLandmarker.create_from_options(opts)
+
+    cap = cv2.VideoCapture(camera)
+    if not cap.isOpened():
+        print(f"[vision] could not open camera {camera}. On macOS, grant camera access to Terminal in "
+              "System Settings → Privacy & Security → Camera, then run again.", file=sys.stderr)
+        shared.stop = True
+        return
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+
+    smooth: tuple[float, float] | None = None
+    n = 0
+    t_fps = time.time()
+    print("[vision] camera running — point at the wall with your index finger")
+
+    while not shared.stop:
+        ok, frame = cap.read()
+        if not ok:
+            time.sleep(0.02)
+            continue
+        h, w = frame.shape[:2]
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        res = landmarker.detect_for_video(mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb), int(time.time() * 1000))
+
+        tip = None
+        if res.hand_landmarks:
+            lm = res.hand_landmarks[0][8]  # index fingertip
+            tip = (float(lm.x), float(lm.y))
+
+        n += 1
+        now = time.time()
+        if now - t_fps >= 1.0:
+            with shared.lock:
+                shared.fps = n / (now - t_fps)
+                shared.frame_wh = (w, h)
+            n, t_fps = 0, now
+
+        if tip is not None:
+            smooth = tip if smooth is None else (
+                smooth[0] + SMOOTH_ALPHA * (tip[0] - smooth[0]),
+                smooth[1] + SMOOTH_ALPHA * (tip[1] - smooth[1]),
+            )
+            with shared.lock:
+                shared.cam_pt = smooth
+                shared.seen_at = now
+        else:
+            smooth = None
+
+        if show:
+            if tip is not None:
+                cv2.circle(frame, (int(smooth[0] * w), int(smooth[1] * h)), 12, (24, 214, 247), 3)
+            cv2.putText(frame, f"{shared.fps:.0f} fps  hand: {'yes' if tip else 'no'}", (12, 28),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (244, 235, 220), 2)
+            cv2.imshow("DRC.Geo wall tracker — aim the camera at the projection", frame)
+            if cv2.waitKey(1) & 0xFF == 27:
+                shared.stop = True
+
+    cap.release()
+    if show:
+        cv2.destroyAllWindows()
+
+
+def simulate_loop(shared: Shared) -> None:
+    """A fake finger for testing the pipeline without a camera: wanders the
+    unit square and stops for ~1.5 s every few seconds to trigger dwells."""
+    t0 = time.time()
+    print("[sim] simulated finger running")
+    x = y = 0.5
+    while not shared.stop:
+        t = time.time() - t0
+        cycle = t % 6.0
+        goto = shared.sim_goto
+        if goto is not None:
+            # Calibration: glide to the target and hold there, with a little
+            # tremor so the hold logic is tested with realistic jitter.
+            x += 0.15 * (goto[0] - x)
+            y += 0.15 * (goto[1] - y)
+            jx = x + 0.004 * math.sin(t * 17)
+            jy = y + 0.004 * math.cos(t * 13)
+            with shared.lock:
+                shared.cam_pt = (jx, jy)
+                shared.seen_at = time.time()
+                shared.fps = 30.0
+                shared.frame_wh = (1280, 720)
+            time.sleep(1 / 30)
+            continue
+        if cycle < 4.0:
+            # Lissajous wander
+            x = 0.5 + 0.38 * math.sin(0.9 * t)
+            y = 0.5 + 0.34 * math.sin(1.3 * t + 1.1)
+        else:
+            # freeze wherever the wander left it at cycle == 4.0
+            tf = t - cycle + 4.0
+            x = 0.5 + 0.38 * math.sin(0.9 * tf)
+            y = 0.5 + 0.34 * math.sin(1.3 * tf + 1.1)
+        present = (t % 20.0) < 17.0  # vanish for 3 s every 20 s
+        with shared.lock:
+            shared.cam_pt = (x, y) if present else None
+            shared.seen_at = time.time() if present else shared.seen_at
+            shared.fps = 30.0
+            shared.frame_wh = (1280, 720)
+        time.sleep(1 / 30)
+
+
+# ---- pointer logic (unit space) ---------------------------------------------
+
+class Dwell:
+    def __init__(self) -> None:
+        self.anchor: tuple[float, float] | None = None
+        self.anchor_t = 0.0
+        self.armed = True
+        self.click_pt: tuple[float, float] | None = None
+
+    def reset(self) -> None:
+        self.anchor = None
+        self.armed = True
+        self.click_pt = None
+
+    def update(self, pt: tuple[float, float] | None, now: float) -> tuple[float, tuple[float, float] | None]:
+        """Returns (progress 0..1, click point or None)."""
+        if pt is None:
+            self.anchor = None
+            return 0.0, None
+        if self.click_pt is not None and not self.armed:
+            if math.dist(pt, self.click_pt) > REARM_RADIUS:
+                self.armed = True
+                self.click_pt = None
+            else:
+                self.anchor = None
+                return 0.0, None
+        if self.anchor is None or math.dist(pt, self.anchor) > DWELL_RADIUS:
+            self.anchor = pt
+            self.anchor_t = now
+            return 0.0, None
+        progress = (now - self.anchor_t) / DWELL_S
+        if progress >= 1.0:
+            click = self.anchor
+            self.armed = False
+            self.click_pt = click
+            self.anchor = None
+            return 1.0, click
+        return progress, None
+
+
+class CalibrationRun:
+    """Walks the four targets; each one needs a steady finger for CAL_HOLD_S."""
+    def __init__(self) -> None:
+        self.step = 0
+        self.pts: list[tuple[float, float]] = []
+        self.anchor: tuple[float, float] | None = None
+        self.anchor_t = 0.0
+        self.settle_until = 0.0
+
+    def update(self, cam_pt: tuple[float, float] | None, now: float) -> tuple[float, bool]:
+        """Returns (hold progress 0..1, finished)."""
+        if now < self.settle_until:
+            return 0.0, False
+        if cam_pt is None:
+            self.anchor = None
+            return 0.0, False
+        if self.anchor is None or math.dist(cam_pt, self.anchor) > CAL_RADIUS:
+            self.anchor = cam_pt
+            self.anchor_t = now
+            return 0.0, False
+        p = (now - self.anchor_t) / CAL_HOLD_S
+        if p >= 1.0:
+            self.pts.append(self.anchor)
+            print(f"[cal] corner {self.step + 1}/4 captured at cam {self.anchor[0]:.3f},{self.anchor[1]:.3f}")
+            self.step += 1
+            self.anchor = None
+            self.settle_until = now + 0.9   # give the hand time to travel to the next target
+            return 1.0, self.step >= 4
+        return p, False
+
+
+# ---- websocket server ----------------------------------------------------------
+
+async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool) -> None:
+    import websockets
+
+    clients: set = set()
+    dwell = Dwell()
+    cal_run: CalibrationRun | None = None
+    state = {"present": False}
+
+    async def send_all(msg: dict) -> None:
+        if not clients:
+            return
+        data = json.dumps(msg)
+        await asyncio.gather(*(c.send(data) for c in list(clients)), return_exceptions=True)
+
+    async def handler(ws) -> None:
+        nonlocal cal_run
+        clients.add(ws)
+        print(f"[ws] browser connected ({len(clients)} client{'s' if len(clients) != 1 else ''})")
+        await ws.send(json.dumps({"t": "hello", "calibrated": cal.ready or simulate, "simulate": simulate}))
+        try:
+            async for raw in ws:
+                try:
+                    msg = json.loads(raw)
+                except json.JSONDecodeError:
+                    continue
+                if msg.get("t") == "calibrate":
+                    cal_run = CalibrationRun()
+                    dwell.reset()
+                    print("[cal] started — hold your finger on each target")
+                elif msg.get("t") == "cancel":
+                    cal_run = None
+                    with shared.lock:
+                        shared.sim_goto = None
+                    print("[cal] cancelled")
+        finally:
+            clients.discard(ws)
+            print(f"[ws] browser disconnected ({len(clients)} left)")
+
+    async def broadcaster() -> None:
+        nonlocal cal_run
+        period = 1 / BROADCAST_HZ
+        last_log = 0.0
+        while not shared.stop:
+            t0 = time.time()
+            with shared.lock:
+                cam_pt = shared.cam_pt if (t0 - shared.seen_at) < LOST_AFTER_S else None
+                fps = shared.fps
+
+            if cal_run is not None:
+                if simulate:
+                    with shared.lock:
+                        shared.sim_goto = CAL_TARGETS[min(cal_run.step, 3)]
+                progress, done = cal_run.update(cam_pt, t0)
+                await send_all({"t": "cal", "step": min(cal_run.step, 3), "total": 4,
+                                "progress": round(progress, 3), "present": cam_pt is not None})
+                if done:
+                    cal.save(cal_run.pts, persist=not simulate)
+                    cal_run = None
+                    dwell.reset()
+                    with shared.lock:
+                        shared.sim_goto = None
+                    await send_all({"t": "cal_done"})
+            elif cal.ready or simulate:
+                unit = cam_pt if simulate else (cal.map(cam_pt) if cam_pt else None)
+                if unit is not None:
+                    # Allow a little overshoot past the calibrated targets, then clamp.
+                    unit = (min(1.0, max(0.0, unit[0])), min(1.0, max(0.0, unit[1])))
+                progress, click = dwell.update(unit, t0)
+                if unit is None:
+                    await send_all({"t": "pos", "present": False})
+                else:
+                    await send_all({"t": "pos", "present": True, "x": round(unit[0], 4), "y": round(unit[1], 4),
+                                    "dwell": round(progress, 3)})
+                if click is not None:
+                    await send_all({"t": "click", "x": round(click[0], 4), "y": round(click[1], 4)})
+                state["present"] = unit is not None
+            else:
+                await send_all({"t": "pos", "present": False, "uncalibrated": True})
+
+            if t0 - last_log > 5.0:
+                last_log = t0
+                print(f"[status] camera {fps:4.1f} fps · hand {'yes' if cam_pt else 'no '} · "
+                      f"{'calibrated' if (cal.ready or simulate) else 'NOT calibrated — press C in the app'} · "
+                      f"{len(clients)} browser{'s' if len(clients) != 1 else ''}")
+
+            await asyncio.sleep(max(0.0, period - (time.time() - t0)))
+
+    async with websockets.serve(handler, "127.0.0.1", port):
+        print(f"[ws] listening on ws://127.0.0.1:{port}")
+        await broadcaster()
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--camera", type=int, default=0, help="camera index (default 0 = built-in)")
+    ap.add_argument("--width", type=int, default=1280)
+    ap.add_argument("--height", type=int, default=720)
+    ap.add_argument("--port", type=int, default=8765)
+    ap.add_argument("--show", action="store_true", help="open a preview window to aim the camera")
+    ap.add_argument("--simulate", action="store_true", help="fake finger, no camera (pipeline test)")
+    ap.add_argument("--recalibrate", action="store_true", help="forget the saved calibration")
+    args = ap.parse_args()
+
+    if args.recalibrate and CALIB_FILE.exists():
+        CALIB_FILE.unlink()
+        print(f"[cal] removed {CALIB_FILE.name}")
+
+    shared = Shared()
+    cal = Calibration()
+    if args.simulate:
+        thread = threading.Thread(target=simulate_loop, args=(shared,), daemon=True)
+    else:
+        thread = threading.Thread(target=vision_loop, args=(shared, args.camera, args.width, args.height, args.show), daemon=True)
+    thread.start()
+
+    try:
+        asyncio.run(serve(shared, cal, args.port, args.simulate))
+    except KeyboardInterrupt:
+        pass
+    finally:
+        shared.stop = True
+        print("[exit] bye")
+
+
+if __name__ == "__main__":
+    main()

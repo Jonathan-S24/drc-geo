@@ -25,3 +25,9 @@ dist-ssr
 
 # vite-plugin-pwa dev artifacts
 dev-dist
+
+# wall tracker: private env, downloaded model, per-room calibration
+wall/.venv
+wall/hand_landmarker.task
+wall/calibration.json
+wall/__pycache__
