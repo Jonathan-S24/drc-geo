@@ -411,14 +411,25 @@ def main() -> None:
 
     shared = Shared()
     cal = Calibration()
-    if args.simulate:
-        thread = threading.Thread(target=simulate_loop, args=(shared,), daemon=True)
-    else:
-        thread = threading.Thread(target=vision_loop, args=(shared, args.camera, args.width, args.height, args.show), daemon=True)
-    thread.start()
+
+    # The camera and the preview window run on the MAIN thread: macOS will
+    # only show the camera-permission prompt (and only draws Cocoa windows)
+    # from there. The WebSocket server is the one that goes to a background
+    # thread — asyncio is happy anywhere.
+    def run_server() -> None:
+        try:
+            asyncio.run(serve(shared, cal, args.port, args.simulate))
+        except Exception as e:  # noqa: BLE001 — surface it, don't die silently
+            print(f"[ws] server stopped: {e}", file=sys.stderr)
+            shared.stop = True
+
+    threading.Thread(target=run_server, daemon=True).start()
 
     try:
-        asyncio.run(serve(shared, cal, args.port, args.simulate))
+        if args.simulate:
+            simulate_loop(shared)
+        else:
+            vision_loop(shared, args.camera, args.width, args.height, args.show)
     except KeyboardInterrupt:
         pass
     finally:
