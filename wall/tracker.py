@@ -65,6 +65,7 @@ class Shared:
     cam_pt: tuple[float, float] | None = None   # smoothed fingertip, camera-normalized
     seen_at: float = 0.0
     fps: float = 0.0
+    infer_ms: float = 0.0          # model time per frame — separates "slow camera" from "slow model"
     frame_wh: tuple[int, int] = (0, 0)
     stop: bool = False
     # --simulate only: where the fake finger should go and hold (calibration targets).
@@ -134,9 +135,12 @@ def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool
         return
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+    # FaceTime cameras drop to 15 fps in dim light unless asked otherwise.
+    cap.set(cv2.CAP_PROP_FPS, 30)
 
     smooth: tuple[float, float] | None = None
     n = 0
+    infer_total = 0.0
     t_fps = time.time()
     print("[vision] camera running — point at the wall with your index finger")
 
@@ -147,7 +151,9 @@ def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool
             continue
         h, w = frame.shape[:2]
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        t_inf = time.perf_counter()
         res = landmarker.detect_for_video(mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb), int(time.time() * 1000))
+        infer_total += time.perf_counter() - t_inf
 
         tip = None
         if res.hand_landmarks:
@@ -159,8 +165,9 @@ def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool
         if now - t_fps >= 1.0:
             with shared.lock:
                 shared.fps = n / (now - t_fps)
+                shared.infer_ms = 1000 * infer_total / max(n, 1)
                 shared.frame_wh = (w, h)
-            n, t_fps = 0, now
+            n, infer_total, t_fps = 0, 0.0, now
 
         if tip is not None:
             smooth = tip if smooth is None else (
@@ -349,6 +356,7 @@ async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool) -> 
             with shared.lock:
                 cam_pt = shared.cam_pt if (t0 - shared.seen_at) < LOST_AFTER_S else None
                 fps = shared.fps
+                infer_ms = shared.infer_ms
 
             if cal_run is not None:
                 if simulate:
@@ -383,7 +391,7 @@ async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool) -> 
 
             if t0 - last_log > 5.0:
                 last_log = t0
-                print(f"[status] camera {fps:4.1f} fps · hand {'yes' if cam_pt else 'no '} · "
+                print(f"[status] camera {fps:4.1f} fps · model {infer_ms:4.1f} ms · hand {'yes' if cam_pt else 'no '} · "
                       f"{'calibrated' if (cal.ready or simulate) else 'NOT calibrated — press C in the app'} · "
                       f"{len(clients)} browser{'s' if len(clients) != 1 else ''}")
 
