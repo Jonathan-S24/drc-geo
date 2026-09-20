@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext'
 import { AppStateProvider, useAppState } from './state/AppStateContext'
 import { LayerProvider, useLayer, type MapMode } from './state/LayerContext'
@@ -14,6 +14,9 @@ import { FleuveLegend } from './components/fleuve/FleuveLegend'
 import { HistoirePanel } from './components/fleuve/HistoirePanel'
 import { PwaChrome, PwaPrompts } from './components/PwaChrome'
 import { QuizMode } from './components/QuizMode'
+import { useKioskMode } from './kiosk/useKioskMode'
+import { useTapRipple } from './kiosk/useTapRipple'
+import { KioskGate } from './kiosk/KioskGate'
 
 /**
  * Fades out and removes the boot splash that index.html painted straight from
@@ -31,13 +34,27 @@ function dismissBootSplash() {
 
 function Shell({ data }: { data: DrcData }) {
   const { selection, clearSelection } = useAppState()
-  const { mode, setMode, selectedPark, setSelectedPark, eraIndex } = useLayer()
+  const { mode, setMode, selectedPark, setSelectedPark, eraIndex, setEraIndex } = useLayer()
   const { t, lang } = useLanguage()
   useUrlSync(data, lang)
   const [quizOpen, setQuizOpen] = useState(false)
   // The legend is dismissable; reopening a layer brings it back.
   const [legendClosed, setLegendClosed] = useState(false)
   useEffect(() => setLegendClosed(false), [mode])
+
+  // Exhibition / kiosk touch mode (?kiosk=1) — see src/kiosk for the full
+  // story. Inert (active === false) for every normal visitor; the hook does
+  // nothing at all in that case.
+  const resetToHome = useCallback(() => {
+    setQuizOpen(false)
+    setSelectedPark(null)
+    clearSelection()
+    setMode('provinces')
+    setEraIndex(0)
+    setLegendClosed(false)
+  }, [setSelectedPark, clearSelection, setMode, setEraIndex])
+  const kiosk = useKioskMode(resetToHome)
+  useTapRipple(kiosk.active && !kiosk.showGate)
 
   const legendVisible = mode !== 'provinces' && !legendClosed
   const unit = selection.view === 'unit' ? data.byPcode.get(selection.pcode) : null
@@ -122,9 +139,11 @@ function Shell({ data }: { data: DrcData }) {
 
       {showHint && <div className="fl-hint">{t('hoverHint')}</div>}
 
-      <PwaPrompts />
+      <PwaPrompts kiosk={kiosk.active} />
 
       {quizOpen && <QuizMode data={data} onClose={() => setQuizOpen(false)} />}
+
+      {kiosk.showGate && <KioskGate onBegin={kiosk.dismissGate} />}
     </div>
   )
 }

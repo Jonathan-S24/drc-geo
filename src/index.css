@@ -601,3 +601,102 @@ body {
   paint-order: stroke;
   filter: drop-shadow(0 0 5px rgba(247, 214, 24, 0.75));
 }
+
+/* ============ Exhibition / kiosk touch mode (?kiosk=1) ============
+   A laptop driving a projector through an infrared touch frame on the wall.
+   Scoped entirely under html.kiosk-mode so the public site is untouched —
+   see src/kiosk/useKioskMode.ts for what turns the class on. */
+
+.kiosk-mode,
+.kiosk-mode body {
+  cursor: none;
+}
+.kiosk-mode * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  /* Allows normal panning inside scrollable panels but drops the browser's
+     own double-tap and pinch-to-zoom — a wall of fingers hits both often. */
+  touch-action: manipulation;
+}
+/* The hover-hint text describes a mouse gesture nobody at the wall has. */
+.kiosk-mode .fl-hint { display: none; }
+
+/* Instant-feedback ripple (src/kiosk/useTapRipple.ts) — appears the moment a
+   finger lands, independently of click/hover, which is the actual answer to
+   "as responsive as a keypad": zero-latency, not a CSS transition catching up. */
+#kiosk-ripple-layer { position: fixed; inset: 0; z-index: 9990; overflow: hidden; pointer-events: none; }
+.kiosk-ripple {
+  position: fixed; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(247, 214, 24, 0.85) 0%, rgba(200, 121, 65, 0.55) 55%, transparent 75%);
+  animation: kiosk-ripple 0.55s cubic-bezier(0.15, 0.7, 0.3, 1) forwards;
+}
+@keyframes kiosk-ripple {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(9); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kiosk-ripple { animation: none; opacity: 0; }
+}
+
+/* Bigger hit areas — generous even though the projected image already makes
+   every element physically large; this is about margin for error, not size. */
+.kiosk-mode .fl-close { width: 58px; height: 58px; font-size: 22px; }
+.kiosk-mode .qx { width: 58px; height: 58px; font-size: 24px; top: 24px; right: 24px; }
+.kiosk-mode .fl-pill { height: 54px; padding: 0 22px; font-size: 15px; }
+.kiosk-mode .fl-search input { height: 54px; font-size: 16px; padding-left: 48px; }
+.kiosk-mode .fl-search-ic { top: 17px; left: 19px; }
+.kiosk-mode .fl-results > div { padding: 16px 18px; font-size: 15.5px; }
+.kiosk-mode .fl-opt { padding: 16px 14px; font-size: 16px; }
+.kiosk-mode .fl-optpanel { width: 320px; }
+.kiosk-mode .qopt { padding: 22px 20px; font-size: 18px; }
+.kiosk-mode .qbtn { padding: 18px 32px; font-size: 17px; }
+.kiosk-mode .qcard { padding: 26px 22px; }
+
+/* Touch registers as `hover` on some IR frames that report themselves as a
+   generic pointer, which leaves buttons visually "stuck" lifted after a tap.
+   :active gives real touch-down feedback instead; hover lift is dropped. */
+/* fill-opacity/stroke on .fl-unit and .fl-park come from a per-shape React
+   prop (each province/park has its own), not a fixed value this stylesheet
+   could hardcode back — `revert` is the one keyword that cancels *this*
+   stylesheet's :hover rule and falls back to that per-element attribute. */
+.kiosk-mode .fl-unit:hover { fill-opacity: revert; stroke: revert; }
+.kiosk-mode .fl-park:hover { fill-opacity: revert; stroke-width: revert; }
+.kiosk-mode .qcard:hover { transform: none; box-shadow: none; border-color: rgba(244, 235, 220, 0.13); }
+.kiosk-mode .qopt:hover:not(:disabled) { transform: none; box-shadow: none; }
+.kiosk-mode .qbtn:hover { transform: none; box-shadow: none; }
+.kiosk-mode .fl-close:hover { background: rgba(5, 16, 14, 0.82); border-color: rgba(244, 235, 220, 0.32); transform: none; }
+.kiosk-mode .fl-pill:hover { border-color: rgba(244, 235, 220, 0.16); background: rgba(6, 20, 17, 0.72); }
+.kiosk-mode .fl-opt:hover { background: none; }
+.kiosk-mode .qcard:active,
+.kiosk-mode .fl-opt:active,
+.kiosk-mode .fl-pill:active,
+.kiosk-mode .qopt:active:not(:disabled),
+.kiosk-mode .qbtn:active,
+.kiosk-mode .fl-close:active {
+  transform: scale(0.96);
+  transition: transform 0.08s ease;
+}
+
+/* ---- attract / gate screen ---- */
+.kiosk-gate {
+  position: fixed; inset: 0; z-index: 9995; background: var(--abyss);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  text-align: center; padding: 40px; cursor: pointer;
+  animation: fl-rise 0.5s var(--ease) both;
+}
+.kiosk-gate-band {
+  position: absolute; top: 0; left: 0; right: 0; height: 6px;
+  background: linear-gradient(100deg, var(--flag-blue) 0 34%, var(--flag-yellow) 34% 40%, var(--flag-red) 40% 60%, var(--flag-yellow) 60% 66%, var(--flag-blue) 66% 100%);
+}
+.kiosk-gate-mark { margin-bottom: 6px; }
+.kiosk-gate-mark.pulse { animation: kiosk-pulse 2.6s ease-in-out infinite; }
+@keyframes kiosk-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.92; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+.kiosk-gate-title { font-family: var(--disp); font-size: 56px; font-weight: 500; color: var(--parch); letter-spacing: -0.01em; }
+.kiosk-gate-line { font-size: 22px; color: var(--parch); }
+.kiosk-gate-line--fr { font-weight: 600; }
+.kiosk-gate-line--en { color: #9fc0b6; font-size: 18px; }
+.kiosk-gate-stats { margin-top: 18px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #6e8a82; }

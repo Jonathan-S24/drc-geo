@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { usePwa } from '../pwa/usePwa'
 import { useLanguage } from '../i18n/LanguageContext'
 
@@ -20,10 +21,21 @@ export function PwaChrome() {
  * Install pill + update toast, bottom-centre so they never fight the panels.
  * beforeinstallprompt fires on desktop Chrome/Edge too, so this is NOT gated by
  * viewport width; iOS Safari has no such event and gets share-sheet wording.
+ *
+ * In kiosk mode neither is shown — an "Install this app?" pill mid-demo would
+ * be confusing on a machine no visitor can install anything on, and a
+ * pending update is applied silently instead of waiting for a tap on a toast
+ * nobody is there to see.
  */
-export function PwaPrompts() {
+export function PwaPrompts({ kiosk = false }: { kiosk?: boolean }) {
   const { promptVisible, showIosHint, promptInstall, dismissPrompt, updateReady, applyUpdate } = usePwa()
   const { t } = useLanguage()
+
+  useEffect(() => {
+    if (kiosk && updateReady) applyUpdate()
+  }, [kiosk, updateReady, applyUpdate])
+
+  if (kiosk) return null
 
   return (
     <>
