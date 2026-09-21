@@ -23,6 +23,9 @@ import argparse
 import asyncio
 import json
 import math
+import os
+import signal
+import subprocess
 import sys
 import threading
 import time
@@ -413,7 +416,32 @@ class CalibrationRun:
 
 # ---- websocket server ----------------------------------------------------------
 
-async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool) -> None:
+def take_over_port(port: int) -> bool:
+    """If an earlier tracker is still holding the port (a tab that never got
+    Ctrl-C), stop it. Only ever kills our own tracker.py — anything else on
+    the port is left alone and reported."""
+    try:
+        pids = subprocess.run(["lsof", "-t", f"-iTCP:{port}", "-sTCP:LISTEN"],
+                              capture_output=True, text=True, check=False).stdout.split()
+    except FileNotFoundError:
+        return False
+    took = False
+    for pid in pids:
+        if int(pid) == os.getpid():
+            continue
+        cmd = subprocess.run(["ps", "-o", "command=", "-p", pid], capture_output=True, text=True, check=False).stdout
+        if "tracker.py" in cmd:
+            print(f"[ws] an older tracker (pid {pid}) is still running — stopping it and taking over")
+            os.kill(int(pid), signal.SIGTERM)
+            took = True
+        else:
+            print(f"[ws] port {port} is held by another program (pid {pid}): {cmd.strip()[:80]}", file=sys.stderr)
+    if took:
+        time.sleep(1.0)
+    return took
+
+
+async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool, bound: threading.Event) -> None:
     import websockets
 
     clients: set = set()
@@ -505,8 +533,15 @@ async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool) -> 
 
             await asyncio.sleep(max(0.0, period - (time.time() - t0)))
 
-    async with websockets.serve(handler, "127.0.0.1", port):
+    try:
+        server = await websockets.serve(handler, "127.0.0.1", port)
+    except OSError:
+        if not take_over_port(port):
+            raise
+        server = await websockets.serve(handler, "127.0.0.1", port)
+    async with server:
         print(f"[ws] listening on ws://127.0.0.1:{port}")
+        bound.set()
         await broadcaster()
 
 
@@ -532,14 +567,22 @@ def main() -> None:
     # only show the camera-permission prompt (and only draws Cocoa windows)
     # from there. The WebSocket server is the one that goes to a background
     # thread — asyncio is happy anywhere.
+    bound = threading.Event()
+
     def run_server() -> None:
         try:
-            asyncio.run(serve(shared, cal, args.port, args.simulate))
+            asyncio.run(serve(shared, cal, args.port, args.simulate, bound))
         except Exception as e:  # noqa: BLE001 — surface it, don't die silently
-            print(f"[ws] server stopped: {e}", file=sys.stderr)
+            print(f"\n[ws] COULD NOT START: {e}\n", file=sys.stderr)
             shared.stop = True
+            bound.set()
 
     threading.Thread(target=run_server, daemon=True).start()
+    # Don't touch the camera until the port is ours: if it isn't, the reason
+    # must be the last thing on screen, not buried under camera chatter.
+    bound.wait(timeout=10)
+    if shared.stop:
+        sys.exit(1)
 
     try:
         if args.simulate:
