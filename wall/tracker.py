@@ -54,7 +54,13 @@ CAL_MIN_SPREAD = 0.06   # any two captured corners closer than this → the run 
 DWELL_S = 1.0           # hold still this long to click
 DWELL_RADIUS = 0.028    # ...within this radius (unit-square units, ~2.8% of width)
 REARM_RADIUS = 0.06     # after a click, move this far before another can fire
-SMOOTH_ALPHA = 0.38     # EMA on the fingertip; lower = smoother but laggier
+# One Euro filter (Casiez et al.): heavy smoothing when the hand is still,
+# light smoothing when it moves fast — the standard for pointer tracking.
+# min_cutoff: jitter suppression at rest (lower = smoother, more lag at rest)
+# beta: how quickly smoothing relaxes with speed (higher = less lag when moving)
+ONE_EURO_MIN_CUTOFF = 1.0
+ONE_EURO_BETA = 2.0
+ONE_EURO_D_CUTOFF = 1.0
 LOST_AFTER_S = 0.25     # no hand for this long → cursor hidden
 BROADCAST_HZ = 30
 # -----------------------------------------------------------------------------
@@ -74,16 +80,86 @@ class Shared:
     sim_goto: tuple[float, float] | None = None
 
 
+class OneEuro:
+    """Adaptive low-pass filter for one 2-D point stream."""
+    def __init__(self, min_cutoff: float, beta: float, d_cutoff: float) -> None:
+        self.min_cutoff, self.beta, self.d_cutoff = min_cutoff, beta, d_cutoff
+        self.x: tuple[float, float] | None = None
+        self.dx = (0.0, 0.0)
+        self.t: float | None = None
+
+    @staticmethod
+    def _alpha(cutoff: float, dt: float) -> float:
+        tau = 1.0 / (2 * math.pi * cutoff)
+        return 1.0 / (1.0 + tau / dt)
+
+    def reset(self) -> None:
+        self.x = None
+        self.t = None
+
+    def __call__(self, pt: tuple[float, float], t: float) -> tuple[float, float]:
+        if self.x is None or self.t is None:
+            self.x, self.t = pt, t
+            return pt
+        dt = max(1e-3, t - self.t)
+        self.t = t
+        a_d = self._alpha(self.d_cutoff, dt)
+        dx = tuple((pt[i] - self.x[i]) / dt for i in range(2))
+        self.dx = tuple(a_d * dx[i] + (1 - a_d) * self.dx[i] for i in range(2))
+        speed = math.hypot(*self.dx)
+        cutoff = self.min_cutoff + self.beta * speed
+        a = self._alpha(cutoff, dt)
+        self.x = (a * pt[0] + (1 - a) * self.x[0], a * pt[1] + (1 - a) * self.x[1])
+        return self.x
+
+
+def calibration_problem(cam_pts: list[tuple[float, float]]) -> str | None:
+    """Why a set of four captured corners can't be trusted, or None if it can.
+    The two failure modes seen in practice are two corners on top of each
+    other and a hand that wandered so the quad folds over itself; both give
+    a homography that flips one axis and collapses the other."""
+    if len(cam_pts) != 4:
+        return "need four corners"
+    for i in range(4):
+        for j in range(i + 1, 4):
+            if math.dist(cam_pts[i], cam_pts[j]) < CAL_MIN_SPREAD:
+                return f"corners {i + 1} and {j + 1} are on top of each other"
+    # Convex, consistently wound quadrilateral: every consecutive edge pair
+    # must turn the same way.
+    signs = []
+    for i in range(4):
+        a, b, c = cam_pts[i], cam_pts[(i + 1) % 4], cam_pts[(i + 2) % 4]
+        cross = (b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0])
+        signs.append(cross > 0)
+    if len(set(signs)) != 1:
+        return "the four corners don't form a rectangle-ish shape (crossed or folded)"
+    area = 0.0
+    for i in range(4):
+        x1, y1 = cam_pts[i]
+        x2, y2 = cam_pts[(i + 1) % 4]
+        area += x1 * y2 - x2 * y1
+    if abs(area) / 2 < 0.02:
+        return "the rectangle is too small in the camera's view — trace a bigger one"
+    return None
+
+
 class Calibration:
     def __init__(self) -> None:
         self.H: np.ndarray | None = None
         self.load()
 
     def load(self) -> None:
-        if CALIB_FILE.exists():
-            data = json.loads(CALIB_FILE.read_text())
-            self.H = np.array(data["H"], dtype=np.float64)
-            print(f"[cal] loaded {CALIB_FILE.name}")
+        if not CALIB_FILE.exists():
+            return
+        data = json.loads(CALIB_FILE.read_text())
+        pts = [tuple(p) for p in data.get("cam_pts", [])]
+        problem = calibration_problem(pts)
+        if problem:
+            print(f"[cal] ignoring saved {CALIB_FILE.name}: {problem} — press C to calibrate")
+            CALIB_FILE.unlink()
+            return
+        self.H = np.array(data["H"], dtype=np.float64)
+        print(f"[cal] loaded {CALIB_FILE.name}")
 
     def save(self, cam_pts: list[tuple[float, float]], persist: bool = True) -> None:
         import cv2
@@ -140,6 +216,7 @@ def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool
     # FaceTime cameras drop to 15 fps in dim light unless asked otherwise.
     cap.set(cv2.CAP_PROP_FPS, 30)
 
+    smoother = OneEuro(ONE_EURO_MIN_CUTOFF, ONE_EURO_BETA, ONE_EURO_D_CUTOFF)
     smooth: tuple[float, float] | None = None
     n = 0
     infer_total = 0.0
@@ -172,15 +249,13 @@ def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool
             n, infer_total, t_fps = 0, 0.0, now
 
         if tip is not None:
-            smooth = tip if smooth is None else (
-                smooth[0] + SMOOTH_ALPHA * (tip[0] - smooth[0]),
-                smooth[1] + SMOOTH_ALPHA * (tip[1] - smooth[1]),
-            )
+            smooth = smoother(tip, now)
             with shared.lock:
                 shared.cam_pt = smooth
                 shared.seen_at = now
         else:
             smooth = None
+            smoother.reset()
 
         if show:
             if tip is not None:
@@ -324,6 +399,14 @@ class CalibrationRun:
             self.pts.append(pt)
             print(f"[cal] corner {self.step + 1}/4 captured at cam {pt[0]:.3f},{pt[1]:.3f}")
             self.step += 1
+            if self.step >= 4:
+                problem = calibration_problem(self.pts)
+                if problem:
+                    print(f"[cal] {problem} — starting over")
+                    self.step = 0
+                    self.pts = []
+                    self.restarted = True
+                    return 0.0, False
             return 1.0, self.step >= 4
         return p, False
 
