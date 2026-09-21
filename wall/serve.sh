@@ -12,5 +12,14 @@ cd "$(dirname "$0")/.."
 # is a much worse failure than a two-second wait.
 echo "building…"
 npm run build >/dev/null
+# Newest wins: an earlier serve.sh left running in another tab is stopped
+# rather than making this one fail with "port in use".
+for pid in $(lsof -t -iTCP:4173 -sTCP:LISTEN 2>/dev/null); do
+  if ps -o command= -p "$pid" | grep -q "vite preview"; then
+    echo "stopping the older app server (pid $pid) and taking over"
+    kill "$pid" 2>/dev/null || true
+  fi
+done
+sleep 0.5
 echo "serving dist/ — open  http://localhost:4173/?wall=1  in Chrome"
 exec npx vite preview --port 4173 --strictPort
