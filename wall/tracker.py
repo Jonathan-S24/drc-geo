@@ -187,7 +187,7 @@ class Calibration:
 
 # ---- vision thread ------------------------------------------------------------
 
-def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool) -> None:
+def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool, mirror: bool) -> None:
     import cv2
     import mediapipe as mp
     from mediapipe.tasks import python as mpp
@@ -261,8 +261,14 @@ def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool
             smoother.reset()
 
         if show:
+            # Preview only. A raw webcam feed is not mirrored (FaceTime flips it
+            # for you); --mirror flips it here so a desk test feels like a mirror.
+            # Tracking is unaffected either way — calibration absorbs orientation.
+            sx = (1 - smooth[0]) if (mirror and smooth is not None) else (smooth[0] if smooth else 0)
+            if mirror:
+                frame = cv2.flip(frame, 1)
             if tip is not None:
-                cv2.circle(frame, (int(smooth[0] * w), int(smooth[1] * h)), 12, (24, 214, 247), 3)
+                cv2.circle(frame, (int(sx * w), int(smooth[1] * h)), 12, (24, 214, 247), 3)
             cv2.putText(frame, f"{shared.fps:.0f} fps  hand: {'yes' if tip else 'no'}", (12, 28),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (244, 235, 220), 2)
             cv2.imshow("DRC.Geo wall tracker — aim the camera at the projection", frame)
@@ -552,6 +558,7 @@ def main() -> None:
     ap.add_argument("--height", type=int, default=720)
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--show", action="store_true", help="open a preview window to aim the camera")
+    ap.add_argument("--mirror", action="store_true", help="flip the preview like a mirror (desk testing; not for a wall-facing camera)")
     ap.add_argument("--simulate", action="store_true", help="fake finger, no camera (pipeline test)")
     ap.add_argument("--recalibrate", action="store_true", help="forget the saved calibration")
     args = ap.parse_args()
@@ -588,7 +595,7 @@ def main() -> None:
         if args.simulate:
             simulate_loop(shared)
         else:
-            vision_loop(shared, args.camera, args.width, args.height, args.show)
+            vision_loop(shared, args.camera, args.width, args.height, args.show, args.mirror)
     except KeyboardInterrupt:
         pass
     finally:
