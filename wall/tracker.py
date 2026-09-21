@@ -58,7 +58,7 @@ DWELL_S = 1.0           # hold still this long to click
 DWELL_RADIUS = 0.045    # ...within this radius (unit-square units, 4.5% of width)
 DWELL_GRACE_S = 0.2     # a tremor spike outside the radius shorter than this doesn't cancel the hold
 DWELL_DRIFT = 0.06      # the anchor follows slow movement (per frame), so a wandering-but-still hand still clicks
-REARM_RADIUS = 0.06     # after a click, move this far before another can fire
+REARM_RADIUS = 0.09     # after a click, move this far before another can fire (well beyond tremor)
 # One Euro filter (Casiez et al.): heavy smoothing when the hand is still,
 # light smoothing when it moves fast — the standard for pointer tracking.
 # min_cutoff: jitter suppression at rest (lower = smoother, more lag at rest)
