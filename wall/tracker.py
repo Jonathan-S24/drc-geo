@@ -187,7 +187,7 @@ class Calibration:
 
 # ---- vision thread ------------------------------------------------------------
 
-def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool, mirror: bool) -> None:
+def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool, mirror: bool, infer_width: int) -> None:
     import cv2
     import mediapipe as mp
     from mediapipe.tasks import python as mpp
@@ -232,7 +232,12 @@ def vision_loop(shared: Shared, camera: int, width: int, height: int, show: bool
             time.sleep(0.02)
             continue
         h, w = frame.shape[:2]
-        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        # The palm detector works on a ~192 px thumbnail and the landmark model
+        # on a ~224 px crop; handing MediaPipe the full 1280×720 frame only
+        # costs resize time inside it. Landmarks come back normalized, so the
+        # cursor is unaffected. The preview still shows the full frame.
+        small = frame if w <= infer_width else cv2.resize(frame, (infer_width, int(h * infer_width / w)), interpolation=cv2.INTER_AREA)
+        rgb = cv2.cvtColor(small, cv2.COLOR_BGR2RGB)
         t_inf = time.perf_counter()
         res = landmarker.detect_for_video(mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb), int(time.time() * 1000))
         infer_total += time.perf_counter() - t_inf
@@ -557,6 +562,7 @@ def main() -> None:
     ap.add_argument("--width", type=int, default=1280)
     ap.add_argument("--height", type=int, default=720)
     ap.add_argument("--port", type=int, default=8765)
+    ap.add_argument("--infer-width", type=int, default=640, help="frame width handed to the model (smaller = faster)")
     ap.add_argument("--show", action="store_true", help="open a preview window to aim the camera")
     ap.add_argument("--mirror", action="store_true", help="flip the preview like a mirror (desk testing; not for a wall-facing camera)")
     ap.add_argument("--simulate", action="store_true", help="fake finger, no camera (pipeline test)")
@@ -595,7 +601,7 @@ def main() -> None:
         if args.simulate:
             simulate_loop(shared)
         else:
-            vision_loop(shared, args.camera, args.width, args.height, args.show, args.mirror)
+            vision_loop(shared, args.camera, args.width, args.height, args.show, args.mirror, args.infer_width)
     except KeyboardInterrupt:
         pass
     finally:
