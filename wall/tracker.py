@@ -58,7 +58,8 @@ DWELL_S = 1.0           # hold still this long to click
 DWELL_RADIUS = 0.045    # ...within this radius (unit-square units, 4.5% of width)
 DWELL_GRACE_S = 0.2     # a tremor spike outside the radius shorter than this doesn't cancel the hold
 DWELL_DRIFT = 0.06      # the anchor follows slow movement (per frame), so a wandering-but-still hand still clicks
-REARM_RADIUS = 0.09     # after a click, move this far before another can fire (well beyond tremor)
+REARM_RADIUS = 0.09     # after a click, move this far before another can fire...
+REARM_AWAY_S = 0.25     # ...and stay that far for this long — a tremor spike is momentary, a real move isn't
 # One Euro filter (Casiez et al.): heavy smoothing when the hand is still,
 # light smoothing when it moves fast — the standard for pointer tracking.
 # min_cutoff: jitter suppression at rest (lower = smoother, more lag at rest)
@@ -340,12 +341,14 @@ class Dwell:
         self.anchor: tuple[float, float] | None = None
         self.anchor_t = 0.0
         self.outside_since: float | None = None
+        self.away_since: float | None = None
         self.armed = True
         self.click_pt: tuple[float, float] | None = None
 
     def reset(self) -> None:
         self.anchor = None
         self.outside_since = None
+        self.away_since = None
         self.armed = True
         self.click_pt = None
 
@@ -357,9 +360,15 @@ class Dwell:
             return 0.0, None
         if self.click_pt is not None and not self.armed:
             if math.dist(pt, self.click_pt) > REARM_RADIUS:
+                if self.away_since is None:
+                    self.away_since = now
+                if now - self.away_since < REARM_AWAY_S:
+                    return 0.0, None
                 self.armed = True
                 self.click_pt = None
+                self.away_since = None
             else:
+                self.away_since = None
                 self.anchor = None
                 return 0.0, None
         if self.anchor is None:
