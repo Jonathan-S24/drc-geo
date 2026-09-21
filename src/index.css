@@ -765,3 +765,5 @@ body {
 .wall-chip-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
 .wall-chip-dot.off { background: var(--flag-red); box-shadow: 0 0 0 3px rgba(206, 16, 33, 0.25); }
 .wall-chip-dot.warn { background: var(--flag-yellow); box-shadow: 0 0 0 3px rgba(247, 214, 24, 0.25); }
+.wall-cal-text p.move { margin-top: 14px; font-size: 17px; color: var(--leaf); }
+.wall-cal-text p.warn { margin-top: 14px; font-size: 16px; color: var(--flag-yellow); }

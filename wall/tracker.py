@@ -48,6 +48,8 @@ CAL_TARGETS = [
 ]
 CAL_HOLD_S = 1.6        # hold still on a target this long
 CAL_RADIUS = 0.02       # ...within this radius (camera-normalized units)
+CAL_MOVE_AWAY = 0.07    # after a corner is captured, the finger must travel this far before the next arms
+CAL_MIN_SPREAD = 0.06   # any two captured corners closer than this → the run is garbage, start over
 
 DWELL_S = 1.0           # hold still this long to click
 DWELL_RADIUS = 0.028    # ...within this radius (unit-square units, ~2.8% of width)
@@ -277,32 +279,51 @@ class Dwell:
 
 
 class CalibrationRun:
-    """Walks the four targets; each one needs a steady finger for CAL_HOLD_S."""
+    """Walks the four targets; each one needs a steady finger for CAL_HOLD_S.
+
+    After a corner is captured the finger must move CAL_MOVE_AWAY before the
+    next target arms — a fixed pause is not enough, a person who hasn't yet
+    noticed the target changed just gets captured twice at the same spot.
+    """
     def __init__(self) -> None:
         self.step = 0
         self.pts: list[tuple[float, float]] = []
         self.anchor: tuple[float, float] | None = None
         self.anchor_t = 0.0
-        self.settle_until = 0.0
+        self.await_move_from: tuple[float, float] | None = None
+        self.restarted = False
+
+    @property
+    def phase(self) -> str:
+        return "move" if self.await_move_from is not None else "hold"
 
     def update(self, cam_pt: tuple[float, float] | None, now: float) -> tuple[float, bool]:
         """Returns (hold progress 0..1, finished)."""
-        if now < self.settle_until:
-            return 0.0, False
         if cam_pt is None:
             self.anchor = None
             return 0.0, False
+        if self.await_move_from is not None:
+            if math.dist(cam_pt, self.await_move_from) < CAL_MOVE_AWAY:
+                return 0.0, False
+            self.await_move_from = None
         if self.anchor is None or math.dist(cam_pt, self.anchor) > CAL_RADIUS:
             self.anchor = cam_pt
             self.anchor_t = now
             return 0.0, False
         p = (now - self.anchor_t) / CAL_HOLD_S
         if p >= 1.0:
-            self.pts.append(self.anchor)
-            print(f"[cal] corner {self.step + 1}/4 captured at cam {self.anchor[0]:.3f},{self.anchor[1]:.3f}")
-            self.step += 1
+            pt = self.anchor
             self.anchor = None
-            self.settle_until = now + 0.9   # give the hand time to travel to the next target
+            self.await_move_from = pt
+            if any(math.dist(pt, q) < CAL_MIN_SPREAD for q in self.pts):
+                print(f"[cal] corner {self.step + 1}/4 is on top of an earlier one — starting over")
+                self.step = 0
+                self.pts = []
+                self.restarted = True
+                return 0.0, False
+            self.pts.append(pt)
+            print(f"[cal] corner {self.step + 1}/4 captured at cam {pt[0]:.3f},{pt[1]:.3f}")
+            self.step += 1
             return 1.0, self.step >= 4
         return p, False
 
@@ -335,6 +356,8 @@ async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool) -> 
                 except json.JSONDecodeError:
                     continue
                 if msg.get("t") == "calibrate":
+                    if cal_run is not None:
+                        continue   # already running (a held-down C key repeats)
                     cal_run = CalibrationRun()
                     dwell.reset()
                     print("[cal] started — hold your finger on each target")
@@ -364,7 +387,9 @@ async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool) -> 
                         shared.sim_goto = CAL_TARGETS[min(cal_run.step, 3)]
                 progress, done = cal_run.update(cam_pt, t0)
                 await send_all({"t": "cal", "step": min(cal_run.step, 3), "total": 4,
-                                "progress": round(progress, 3), "present": cam_pt is not None})
+                                "progress": round(progress, 3), "present": cam_pt is not None,
+                                "phase": cal_run.phase, "restarted": cal_run.restarted})
+                cal_run.restarted = False
                 if done:
                     cal.save(cal_run.pts, persist=not simulate)
                     cal_run = None

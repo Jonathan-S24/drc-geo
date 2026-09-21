@@ -90,6 +90,12 @@ export function WallOverlay() {
             <p className="en">
               Hold your index finger on target <b>{cal.step + 1}</b> and keep it still until the ring fills.
             </p>
+            {cal.phase === 'move' && (
+              <p className="move">Corner {cal.step} captured — now <b>move your finger away</b> to the next target · Cible {cal.step} enregistrée — <b>déplacez le doigt</b> vers la suivante</p>
+            )}
+            {cal.restarted && (
+              <p className="warn">Deux cibles au même endroit — on recommence · Two targets landed on the same spot — starting over</p>
+            )}
             <p className="hint">{cal.present ? 'Main détectée · Hand detected' : 'Aucune main détectée · No hand detected'} — Échap pour annuler · Esc to cancel</p>
           </div>
         </div>

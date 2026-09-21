@@ -59,7 +59,7 @@ export interface WallState {
   /** The finger is in an edge band that is auto-scrolling a panel. */
   scrolling: boolean
   /** Calibration in progress: which target (0-3) and how far into the hold. */
-  cal: { step: number; total: number; progress: number; present: boolean } | null
+  cal: { step: number; total: number; progress: number; present: boolean; phase: 'hold' | 'move'; restarted: boolean } | null
   startCalibration: () => void
 }
 
@@ -68,7 +68,7 @@ type Msg =
   | { t: 'pos'; present: false; uncalibrated?: boolean }
   | { t: 'pos'; present: true; x: number; y: number; dwell: number }
   | { t: 'click'; x: number; y: number }
-  | { t: 'cal'; step: number; total: number; progress: number; present: boolean }
+  | { t: 'cal'; step: number; total: number; progress: number; present: boolean; phase: 'hold' | 'move'; restarted?: boolean }
   | { t: 'cal_done' }
 
 const POINTER_ID = 7
@@ -248,7 +248,15 @@ export function useWallTracker(): WallState {
             clickAt(msg.x * W, msg.y * H)
             break
           case 'cal':
-            setCal({ step: msg.step, total: msg.total, progress: msg.progress, present: msg.present })
+            setCal((prev) => ({
+              step: msg.step,
+              total: msg.total,
+              progress: msg.progress,
+              present: msg.present,
+              phase: msg.phase,
+              // Latch the restart notice until the next corner is captured.
+              restarted: msg.restarted || (prev?.restarted === true && msg.step === 0),
+            }))
             setPos(null)
             setDwell(0)
             break
@@ -288,6 +296,7 @@ export function useWallTracker(): WallState {
     const onKey = (e: KeyboardEvent) => {
       const el = document.activeElement
       if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) return
+      if (e.repeat) return // a held key auto-repeats; one press is one press
       if (e.key === 'c' || e.key === 'C') startCalibration()
       else if (e.key === 'Escape' && calRef.current) wsRef.current?.send(JSON.stringify({ t: 'cancel' }))
     }
