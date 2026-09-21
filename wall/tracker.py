@@ -528,6 +528,7 @@ async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool, bou
         nonlocal cal_run
         period = 1 / BROADCAST_HZ
         last_log = 0.0
+        dwell_peak = 0.0   # best hold progress since the last status line — shows how close a click got
         while not shared.stop:
             t0 = time.time()
             with shared.lock:
@@ -557,6 +558,9 @@ async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool, bou
                     # Allow a little overshoot past the calibrated targets, then clamp.
                     unit = (min(1.0, max(0.0, unit[0])), min(1.0, max(0.0, unit[1])))
                 progress, click = dwell.update(unit, t0)
+                dwell_peak = max(dwell_peak, progress)
+                if click is not None:
+                    print(f"[click] at {click[0]:.2f},{click[1]:.2f} of the image")
                 if unit is None:
                     await send_all({"t": "pos", "present": False})
                 else:
@@ -570,9 +574,11 @@ async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool, bou
 
             if t0 - last_log > 5.0:
                 last_log = t0
+                hold = f" · hold {int(dwell_peak * 100):3d}%" if (cal.ready or simulate) else ""
                 print(f"[status] camera {fps:4.1f} fps · model {infer_ms:4.1f} ms · hand {'yes' if cam_pt else 'no '} · "
-                      f"{'calibrated' if (cal.ready or simulate) else 'NOT calibrated — press C in the app'} · "
+                      f"{'calibrated' if (cal.ready or simulate) else 'NOT calibrated — press C in the app'}{hold} · "
                       f"{len(clients)} browser{'s' if len(clients) != 1 else ''}")
+                dwell_peak = 0.0
 
             await asyncio.sleep(max(0.0, period - (time.time() - t0)))
 
