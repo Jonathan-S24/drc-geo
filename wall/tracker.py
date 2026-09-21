@@ -55,7 +55,9 @@ CAL_MOVE_AWAY = 0.07    # after a corner is captured, the finger must travel thi
 CAL_MIN_SPREAD = 0.06   # any two captured corners closer than this → the run is garbage, start over
 
 DWELL_S = 1.0           # hold still this long to click
-DWELL_RADIUS = 0.028    # ...within this radius (unit-square units, ~2.8% of width)
+DWELL_RADIUS = 0.045    # ...within this radius (unit-square units, 4.5% of width)
+DWELL_GRACE_S = 0.2     # a tremor spike outside the radius shorter than this doesn't cancel the hold
+DWELL_DRIFT = 0.06      # the anchor follows slow movement (per frame), so a wandering-but-still hand still clicks
 REARM_RADIUS = 0.06     # after a click, move this far before another can fire
 # One Euro filter (Casiez et al.): heavy smoothing when the hand is still,
 # light smoothing when it moves fast — the standard for pointer tracking.
@@ -330,14 +332,20 @@ def simulate_loop(shared: Shared) -> None:
 # ---- pointer logic (unit space) ---------------------------------------------
 
 class Dwell:
+    """Hold-still-to-click. A finger in mid-air trembles, and a small
+    calibration rectangle magnifies that on screen, so "still" has to be
+    forgiving: a generous radius, an anchor that drifts with slow movement,
+    and a grace period so one tremor spike doesn't restart the second."""
     def __init__(self) -> None:
         self.anchor: tuple[float, float] | None = None
         self.anchor_t = 0.0
+        self.outside_since: float | None = None
         self.armed = True
         self.click_pt: tuple[float, float] | None = None
 
     def reset(self) -> None:
         self.anchor = None
+        self.outside_since = None
         self.armed = True
         self.click_pt = None
 
@@ -345,6 +353,7 @@ class Dwell:
         """Returns (progress 0..1, click point or None)."""
         if pt is None:
             self.anchor = None
+            self.outside_since = None
             return 0.0, None
         if self.click_pt is not None and not self.armed:
             if math.dist(pt, self.click_pt) > REARM_RADIUS:
@@ -353,16 +362,30 @@ class Dwell:
             else:
                 self.anchor = None
                 return 0.0, None
-        if self.anchor is None or math.dist(pt, self.anchor) > DWELL_RADIUS:
+        if self.anchor is None:
             self.anchor = pt
             self.anchor_t = now
+            self.outside_since = None
             return 0.0, None
+        if math.dist(pt, self.anchor) > DWELL_RADIUS:
+            if self.outside_since is None:
+                self.outside_since = now
+            elif now - self.outside_since > DWELL_GRACE_S:
+                self.anchor = pt
+                self.anchor_t = now
+                self.outside_since = None
+                return 0.0, None
+        else:
+            self.outside_since = None
+            self.anchor = (self.anchor[0] + DWELL_DRIFT * (pt[0] - self.anchor[0]),
+                           self.anchor[1] + DWELL_DRIFT * (pt[1] - self.anchor[1]))
         progress = (now - self.anchor_t) / DWELL_S
         if progress >= 1.0:
             click = self.anchor
             self.armed = False
             self.click_pt = click
             self.anchor = None
+            self.outside_since = None
             return 1.0, click
         return progress, None
 
