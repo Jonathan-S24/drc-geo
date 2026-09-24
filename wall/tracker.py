@@ -68,6 +68,11 @@ ONE_EURO_MIN_CUTOFF = 1.0
 ONE_EURO_BETA = 2.0
 ONE_EURO_D_CUTOFF = 1.0
 LOST_AFTER_S = 0.25     # no hand for this long → cursor hidden
+# How far outside the calibrated rectangle still counts as pointing at it.
+# Beyond this the pointer is *gone*, not pinned to the edge: a clamped point
+# sits perfectly still, which the dwell timer reads as a deliberate hold and
+# fires a click into the corner.
+OUT_OF_RANGE = 0.12
 BROADCAST_HZ = 30
 # -----------------------------------------------------------------------------
 
@@ -555,8 +560,18 @@ async def serve(shared: Shared, cal: Calibration, port: int, simulate: bool, bou
             elif cal.ready or simulate:
                 unit = cam_pt if simulate else (cal.map(cam_pt) if cam_pt else None)
                 if unit is not None:
-                    # Allow a little overshoot past the calibrated targets, then clamp.
-                    unit = (min(1.0, max(0.0, unit[0])), min(1.0, max(0.0, unit[1])))
+                    if (unit[0] < -OUT_OF_RANGE or unit[0] > 1 + OUT_OF_RANGE
+                            or unit[1] < -OUT_OF_RANGE or unit[1] > 1 + OUT_OF_RANGE):
+                        unit = None          # pointing away from the image entirely
+                    else:
+                        # Inside the tolerance band: clamp so the very edges stay
+                        # reachable, and reset the dwell so a hand parked just
+                        # outside can't hold a clamped point into a click.
+                        cx = min(1.0, max(0.0, unit[0]))
+                        cy = min(1.0, max(0.0, unit[1]))
+                        if (cx, cy) != unit:
+                            dwell.reset()
+                        unit = (cx, cy)
                 progress, click = dwell.update(unit, t0)
                 dwell_peak = max(dwell_peak, progress)
                 if click is not None:
